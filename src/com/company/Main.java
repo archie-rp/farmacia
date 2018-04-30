@@ -20,6 +20,15 @@ public class Main implements CatVia {
         System.out.println(armario.getQuantidadGaveta(2,1));
         System.out.println(armario.toString());
         System.out.println(armario.removerMedicamento("Nacix"));
+        /* -----
 
+        olaalsdlasdnjasndkjsadkjsnadkjnasdknaskjdnsajkndaskjnda
+        asdsabdaskjdnsakjndjksandjkasndjksandsjkndasdãsdnjaksndjkas
+
+        asdasdasdasda
+        
+
+
+         */
     }
 }
