@@ -22,6 +22,13 @@ public class Medicamento implements CatVia {
         Categoria = medicamento.getCategoria();
         ViaAdmin = medicamento.getViaAdmin();
     }
+    public Medicamento() {
+        this.nome = "";
+        this.preco = 0;
+        Categoria = 0;
+        ViaAdmin = 0;
+    }
+
 
     public String getNome() {
         return nome;
@@ -61,9 +68,9 @@ public class Medicamento implements CatVia {
         StringBuilder string = new StringBuilder();
 
         string.append("Nome = " + nome);
-        string.append(" || Preço = " + preco);
-        string.append(" || Categoria = " + categorias[this.getCategoria()]);
-        string.append(" || ViaAdmin = " + vias[this.getViaAdmin()] + "\n" );
+        string.append("\nPreço = " + preco);
+        string.append("\nCategoria = " + categorias[this.getCategoria()]);
+        string.append("\nViaAdmin = " + vias[this.getViaAdmin()] + "\n" );
 
         return string.toString();
     }
