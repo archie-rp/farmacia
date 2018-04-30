@@ -1,10 +1,9 @@
 package com.company;
 
 
-import java.util.Arrays;
-import java.util.List;
 
-public class Armario  extends Coluna{
+
+public class Armario{
     private Gaveta armario[][];
     private String nome;
     private int quantidade;
