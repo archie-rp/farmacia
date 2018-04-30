@@ -2,20 +2,21 @@ package com.company;
 
 import java.util.HashMap;
 
-public class Medicamento implements CatVia{
+public class Medicamento implements CatVia {
     private String nome;
     private float preco;
     private int Categoria;
     private int ViaAdmin;
 
 
-    public Medicamento(String nome, float preco,int cate, int via) {
+    public Medicamento(String nome, float preco, int cate, int via) {
         this.nome = nome;
         this.preco = preco;
         Categoria = cate;
         ViaAdmin = via;
     }
-    public Medicamento (Medicamento medicamento){
+
+    public Medicamento(Medicamento medicamento) {
         this.nome = medicamento.getNome();
         this.preco = medicamento.getPreco();
         Categoria = medicamento.getCategoria();
@@ -56,12 +57,15 @@ public class Medicamento implements CatVia{
 
     @Override
     public String toString() {
-        return "Medicamento{" +
-                "nome='" + nome + '\'' +
-                ", preco=" + preco +
-                ", Categoria='" + categorias[this.getCategoria()] + '\'' +
-                ", ViaAdmin='" + vias[this.getViaAdmin()] + '\'' +
-                '}';
+
+        StringBuilder string = new StringBuilder();
+
+        string.append("Nome = " + nome);
+        string.append(" || Preço = " + preco);
+        string.append(" || Categoria = " + categorias[this.getCategoria()]);
+        string.append(" || ViaAdmin = " + vias[this.getViaAdmin()] + "\n" );
+
+        return string.toString();
     }
 
 }

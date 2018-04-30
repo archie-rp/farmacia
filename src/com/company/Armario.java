@@ -46,11 +46,14 @@ public class Armario{
     @Override
     public String toString() {
         StringBuilder string = new StringBuilder();
-        string.append("\t Medicamentos:");
+
         for (int i=0; i<20;i++){
             for(int j=0;j<10;j++){
                 if (armario[i][j] != null){
                     string.append(armario[i][j].toString());
+                }
+                else{
+
                 }
             }
         }

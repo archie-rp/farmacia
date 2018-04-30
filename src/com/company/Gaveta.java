@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Gaveta {
     Medicamento medicamentos[];
-    private int quantidade=0;
+    private int quantidade = 0;
 
     public Gaveta() {
         this.medicamentos = new Medicamento[10];
@@ -33,9 +33,10 @@ public class Gaveta {
         this.medicamentos[this.quantidade] = medicamentos;
         this.quantidade++;
     }
-    public boolean removerMedicamento(String nome){
-        for (int i=0; i < medicamentos.length;i++){
-            if (medicamentos[i] != null && medicamentos[i].getNome() == nome ){
+
+    public boolean removerMedicamento(String nome) {
+        for (int i = 0; i < medicamentos.length; i++) {
+            if (medicamentos[i] != null && medicamentos[i].getNome() == nome) {
                 return true;
             }
         }
@@ -44,8 +45,15 @@ public class Gaveta {
 
     @Override
     public String toString() {
-        return "Gaveta{" +
-                "medicamentos=" + Arrays.toString(medicamentos) +
-                '}';
+        StringBuilder string = new StringBuilder();
+
+
+
+                string.append("Gaveta: ");
+                string.append("\nMedicamento = " + Arrays.toString(medicamentos));
+
+
+
+        return string.toString();
     }
 }
