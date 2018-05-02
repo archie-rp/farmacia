@@ -51,7 +51,9 @@
 - [ ] Fazer Carregamento de ficheiros ao arrancar o programa
 - etc.. 
 
+#####
+
 ***
-######Exemplo de registar a concluir cada tarefa é assim:
+##### Exemplo de registar a concluir cada tarefa é assim:
 - [x] nome da tarefa 'Rafael|Hugo'
  
