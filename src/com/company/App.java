@@ -116,7 +116,7 @@ public class App extends JFrame implements CatVia{
 			panel.add(textField, gbc_textField);
 			textField.setColumns(10);
 			
-			JLabel lblNewLabel_1 = new JLabel("Pre?o");
+			JLabel lblNewLabel_1 = new JLabel("Preço");
 			GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 			gbc_lblNewLabel_1.anchor = GridBagConstraints.WEST;
 			gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
@@ -159,7 +159,7 @@ public class App extends JFrame implements CatVia{
 			
 			
 			
-			JLabel lblViaDeAdministrao = new JLabel("Via de Administra??o");
+			JLabel lblViaDeAdministrao = new JLabel("Via de Administração");
 			GridBagConstraints gbc_lblViaDeAdministrao = new GridBagConstraints();
 			gbc_lblViaDeAdministrao.anchor = GridBagConstraints.WEST;
 			gbc_lblViaDeAdministrao.insets = new Insets(0, 0, 5, 5);
