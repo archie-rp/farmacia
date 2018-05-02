@@ -20,7 +20,7 @@
 
 
 ##### Medicamentos
-- [x] Criar Classe Medicamento
+- [ x ] Criar Classe Medicamento
     - [ ] id, data_validade
 - [ ] Adicionar funcao para verificar validade (boolean)
 
