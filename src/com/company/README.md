@@ -9,8 +9,25 @@
 - [ ] Criar Secçao de relatorios para Vendas
 - etc..
 
+##### Separador Relatorios
+
+- [ ] Criar Classe Relatorio
+    - [ ] Ver todas as compras 
+    - [ ] Ver todos os medicamentos do mes inseridos
+    - [ ] Ver produtos fora de stock
+- [ ] Remover Relatorio
+- etc..
+
+
+##### Medicamentos
+- [x] Criar Classe Medicamento
+    - [ ] id, data_validade
+- [ ] Adicionar funcao para verificar validade (boolean)
+
+
 ##### Clientes e Gestor de Clientes
 - [ ] Criar Classe Clientes
+    - [ ] id,nome,bi,data_inscriçao
 - [ ] Registar Clientes
 - [ ] Remover Clientes
 - etc..
