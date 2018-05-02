@@ -1,13 +1,6 @@
 ### Farmacia Tarefas
 
-##### Vendas
 
-- [ ] Criar Classe Vendas
-    - [ ] Elaborar registo de cada compra por cliente
-    - [ ] Guardar em ficheiro todas as compras
-    - [ ] Criar Relatórios
-- [ ] Criar Secçao de relatorios para Vendas
-- etc..
 
 ##### Separador Relatorios
 
@@ -21,7 +14,7 @@
 
 ##### Medicamentos
 - [x] Criar Classe Medicamento
-    - [ ] id, data_validade
+    - [x] id, data_validade | Hugo
 - [ ] Adicionar funcao para verificar validade (boolean)
 
 ##### Armario
@@ -51,7 +44,10 @@
 - [x] Criar Classe Vendas | Rafael
     - [x] cod_venda,Cliente,ArrayList<Medicamentos>,data_venda | Rafael
 - [x] Adicionar Venda
-- [ ] Remover Venda
+- [ ] Remover Venda 
+- [ ] Guardar em ficheiro todas as compras
+- [ ] Criar Relatórios
+- [ ] Criar Secçao de relatorios para Vendas
 - etc..
 
 
