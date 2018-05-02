@@ -37,12 +37,23 @@
 - [ ] Editar medicamento
 
 
-##### Clientes e Gestor de Clientes
+##### Gestor de Clientes e Clientes 
+- [ ] Criar Gestor de Clientes
 - [x] Criar Classe Clientes | Hugo
     - [x] id,nome,bi,data_inscriçao | Hugo
 - [ ] Registar Clientes
 - [ ] Remover Clientes
 - etc..
+
+##### Gestor de Vendas e Vendas
+- [x] Criar Gestor de Vendas | Rafael
+    - [x] nome,ArrayList<Vendas>,quantidade_vendas,quantidade_maxima | Rafael
+- [x] Criar Classe Vendas | Rafael
+    - [x] cod_venda,Cliente,ArrayList<Medicamentos>,data_venda | Rafael
+- [x] Adicionar Venda
+- [ ] Remover Venda
+- etc..
+
 
 ##### Save Data
 - [ ] Criar Serializaçao para (armario)
