@@ -69,7 +69,7 @@ public class Medicamento implements CatVia {
         StringBuilder string = new StringBuilder();
 
         string.append("\n"+"Nome = " + nome);
-        string.append("\nPreço = " + preco);
+        string.append("\nPreÃ§o = " + preco);
         string.append("\nCategoria = " + categorias[this.getCategoria()]);
         string.append("\nViaAdmin = " + vias[this.getViaAdmin()] + "\n" );
 

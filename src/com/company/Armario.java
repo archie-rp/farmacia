@@ -3,8 +3,8 @@ package com.company;
 
 import java.io.Serializable;
 
-public class Armario implements Serializable{
-	private static final long serialVersionUID = 1L;
+public class Armario implements Serializable {
+    private static final long serialVersionUID = 1L;
     private Gaveta armario[][];
     private String nome;
     private int quantidade;
@@ -16,10 +16,10 @@ public class Armario implements Serializable{
     }
 
     public Armario(Object readObject) {
-		// TODO Auto-generated constructor stub
-	}
+        // TODO Auto-generated constructor stub
+    }
 
-	public Gaveta[][] getArmario() {
+    public Gaveta[][] getArmario() {
         return armario;
     }
 
@@ -36,13 +36,12 @@ public class Armario implements Serializable{
     }
 
 
-    public void adicionarMedicamento(Medicamento medicamento){
-        if (armario[medicamento.getCategoria()][medicamento.getViaAdmin()] == null){
-            armario[medicamento.getCategoria()][medicamento.getViaAdmin()]= new Gaveta();
+    public void adicionarMedicamento(Medicamento medicamento) {
+        if (armario[medicamento.getCategoria()][medicamento.getViaAdmin()] == null) {
+            armario[medicamento.getCategoria()][medicamento.getViaAdmin()] = new Gaveta();
             armario[medicamento.getCategoria()][medicamento.getViaAdmin()].setMedicamento(medicamento);
             this.quantidade++;
-        }
-        else{
+        } else {
             armario[medicamento.getCategoria()][medicamento.getViaAdmin()].setMedicamento(medicamento);
             this.quantidade++;
         }
@@ -52,26 +51,27 @@ public class Armario implements Serializable{
     public String toString() {
         StringBuilder string = new StringBuilder();
 
-        for (int i=0; i<20;i++){
-            for(int j=0;j<10;j++){
-                if (armario[i][j] != null){
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (armario[i][j] != null) {
                     string.append(armario[i][j].toString());
-                }
-                else{
+
+                } else {
 
                 }
             }
         }
         return string.toString();
     }
-    public int getQuantidadGaveta(int cat , int via){
-        return  armario[cat][via].getQuantidade();
+
+    public int getQuantidadGaveta(int cat, int via) {
+        return armario[cat][via].getQuantidade();
     }
 
-    public boolean removerMedicamento(String nome){
-        for (int i=0; i<20;i++){
-            for(int j=0;j<10;j++){
-                if (armario[i][j] != null && armario[i][j].removerMedicamento(nome)){
+    public boolean removerMedicamento(String nome) {
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (armario[i][j] != null && armario[i][j].removerMedicamento(nome)) {
                     return true;
                 }
             }
