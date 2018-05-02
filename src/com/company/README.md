@@ -3,10 +3,7 @@
 ##### Vendas
 
 - [ ] Criar Classe Vendas
-    - [ ] Elaborar registo de cada compra por cliente
-    - [ ] Guardar em ficheiro todas as compras
-    - [ ] Criar Relatórios
-- [ ] Criar Secçao de relatorios para Vendas
+   
 - etc..
 
 ##### Separador Relatorios
@@ -51,7 +48,10 @@
 - [x] Criar Classe Vendas | Rafael
     - [x] cod_venda,Cliente,ArrayList<Medicamentos>,data_venda | Rafael
 - [x] Adicionar Venda
-- [ ] Remover Venda
+- [ ] Remover Venda 
+- [ ] Guardar em ficheiro todas as compras
+- [ ] Criar Relatórios
+- [ ] Criar Secçao de relatorios para Vendas
 - etc..
 
 
