@@ -44,6 +44,8 @@ public class Main implements CatVia {
         medic.setCategoria(listarCategorias());
         medic.setViaAdmin(listarVias());
         armario.adicionarMedicamento(medic);
+        
+        
     }
 
     public static void main(String[] args) {

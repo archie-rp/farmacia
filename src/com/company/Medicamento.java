@@ -7,6 +7,7 @@ public class Medicamento implements CatVia {
     private float preco;
     private int Categoria;
     private int ViaAdmin;
+	
 
 
     public Medicamento(String nome, float preco, int cate, int via) {
@@ -67,8 +68,8 @@ public class Medicamento implements CatVia {
 
         StringBuilder string = new StringBuilder();
 
-        string.append("Nome = " + nome);
-        string.append("\nPreÃ§o = " + preco);
+        string.append("\n"+"Nome = " + nome);
+        string.append("\nPreço = " + preco);
         string.append("\nCategoria = " + categorias[this.getCategoria()]);
         string.append("\nViaAdmin = " + vias[this.getViaAdmin()] + "\n" );
 

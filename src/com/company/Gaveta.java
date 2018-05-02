@@ -43,17 +43,25 @@ public class Gaveta {
         return false;
     }
 
-    @Override
+  
     public String toString() {
         StringBuilder string = new StringBuilder();
 
 
 
-                string.append("Gaveta: ");
+                string.append("\nGaveta: ");
+                if(Arrays.toString(medicamentos)==null) {
+                	
+                }else {
+                	
+                
                 string.append("\nMedicamento = " + Arrays.toString(medicamentos));
 
-
+                }
 
         return string.toString();
+    
+				
     }
 }
+ 
