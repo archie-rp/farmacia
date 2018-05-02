@@ -26,8 +26,8 @@
 
 
 ##### Clientes e Gestor de Clientes
-- [ ] Criar Classe Clientes
-    - [ ] id,nome,bi,data_inscriçao
+- [ x ] Criar Classe Clientes | Hugo
+    - [ x ] id,nome,bi,data_inscriçao | Hugo
 - [ ] Registar Clientes
 - [ ] Remover Clientes
 - etc..
