@@ -21,7 +21,7 @@
 
 ##### Medicamentos
 - [x] Criar Classe Medicamento
-    - [ ] id, data_validade
+    - [x] id, data_validade | Hugo
 - [ ] Adicionar funcao para verificar validade (boolean)
 
 ##### Armario
