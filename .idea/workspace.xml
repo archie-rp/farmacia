@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c36bb1cc-6bd6-4b9c-ae9a-4d812d5c6d26" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/README.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.idea/shelf/" />
@@ -108,8 +108,8 @@
         <entry file="file://$PROJECT_DIR$/src/com/company/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="365">
-                <caret line="41" column="42" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
+              <first_editor relative-caret-position="331">
+                <caret line="49" selection-start-line="49" selection-end-line="49" />
               </first_editor>
               <second_editor />
             </state>
@@ -355,7 +355,7 @@
       <workItem from="1525116010307" duration="1872000" />
       <workItem from="1525175093821" duration="576000" />
       <workItem from="1525259831179" duration="765000" />
-      <workItem from="1525271466606" duration="489000" />
+      <workItem from="1525271466606" duration="767000" />
     </task>
     <task id="LOCAL-00001" summary="Removi o extend Coluna e apaguei a classe coluna">
       <created>1525105310944</created>
@@ -441,11 +441,18 @@
       <option name="project" value="LOCAL" />
       <updated>1525270812466</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Readme atualizado">
+      <created>1525272004696</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1525272004696</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14102000" />
+    <option name="totallyTimeSpent" value="14380000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -919,8 +926,8 @@
     <entry file="file://$PROJECT_DIR$/src/com/company/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="365">
-            <caret line="41" column="42" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
+          <first_editor relative-caret-position="331">
+            <caret line="49" selection-start-line="49" selection-end-line="49" />
           </first_editor>
           <second_editor />
         </state>

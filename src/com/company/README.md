@@ -1,10 +1,6 @@
 ### Farmacia Tarefas
 
-##### Vendas
 
-- [ ] Criar Classe Vendas
-   
-- etc..
 
 ##### Separador Relatorios
 
