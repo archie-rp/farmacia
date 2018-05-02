@@ -24,6 +24,18 @@
     - [ ] id, data_validade
 - [ ] Adicionar funcao para verificar validade (boolean)
 
+##### Armario
+- [x] Criar Classe Armario
+- [x] Adicionar medicamento
+- [x] Remover medicamento
+- [ ] Editar medicamento
+
+##### Gaveta
+- [x] Criar Classe Gaveta
+- [x] Adicionar medicamento
+- [x] Remover medicamento
+- [ ] Editar medicamento
+
 
 ##### Clientes e Gestor de Clientes
 - [ ] Criar Classe Clientes
