@@ -64,7 +64,6 @@
 
 #####
 
-***
 ##### Exemplo de registar a concluir cada tarefa é assim:
 - [x] nome da tarefa 'Rafael|Hugo'
  
