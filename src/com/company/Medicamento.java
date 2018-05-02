@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.Date;
 import java.util.HashMap;
 
 public class Medicamento implements CatVia {
@@ -8,14 +9,16 @@ public class Medicamento implements CatVia {
     private float preco;
     private int Categoria;
     private int ViaAdmin;
+    private Date dataValidade;
 
 
-    public Medicamento(int id, String nome, float preco, int cate, int via) {
+    public Medicamento(int id, String nome, float preco, int cate, int via, Date dataValidade) {
         this.id = id;
         this.nome = nome;
         this.preco = preco;
-        Categoria = cate;
-        ViaAdmin = via;
+        this.Categoria = cate;
+        this.ViaAdmin = via;
+        this.dataValidade = dataValidade;
     }
 
     public void setId(int id) {
@@ -27,21 +30,31 @@ public class Medicamento implements CatVia {
         return id;
     }
 
+    public Date getDataValidade() {
+        return dataValidade;
+    }
+
+    public void setDataValidade(Date dataValidade) {
+        this.dataValidade = dataValidade;
+    }
+
     public Medicamento(Medicamento medicamento) {
         this.id = medicamento.getId();
-
         this.nome = medicamento.getNome();
         this.preco = medicamento.getPreco();
-        Categoria = medicamento.getCategoria();
-        ViaAdmin = medicamento.getViaAdmin();
+        this.Categoria = medicamento.getCategoria();
+        this.ViaAdmin = medicamento.getViaAdmin();
+        this.dataValidade = medicamento.getDataValidade();
+
     }
 
     public Medicamento() {
         this.id = 0;
         this.nome = "";
         this.preco = 0;
-        Categoria = 0;
-        ViaAdmin = 0;
+        this.Categoria = 0;
+        this.ViaAdmin = 0;
+        this.dataValidade = new Date();
     }
 
 
@@ -87,8 +100,19 @@ public class Medicamento implements CatVia {
         string.append("\nPreço = " + preco);
         string.append("\nCategoria = " + categorias[this.getCategoria()]);
         string.append("\nViaAdmin = " + vias[this.getViaAdmin()] + "\n");
+        string.append("\nData Validade" + getDataValidade());
 
         return string.toString();
     }
 
+
+    public boolean verificarValidade(Date data) {
+        if (this.getDataValidade().compareTo(data)>0) {
+            return false;
+        } else {
+            return true;
+        }
+
+
+    }
 }
