@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Main implements CatVia {
@@ -49,12 +50,36 @@ public class Main implements CatVia {
     }
 
     public static void main(String[] args) {
+        //Criar Armario
         Armario armario = new Armario();
-
-        System.out.print("Inserir Medicamento");
+        //Gestor de Vendas
+        GestorVendas gestorvendas = new GestorVendas();
+        //Criar uma venda
+        Venda venda1 = new Venda();
+        //Criar uma compra que é uma arraylist de Medicamentos
+        ArrayList<Medicamento> compra1= new ArrayList<Medicamento>();
+        //Criar Medicamento para inserir na compra
+        Medicamento medicamento1 = new Medicamento();
+        //Definir medicamento
+        medicamento1.setNome("MEd1");
+        medicamento1.setCategoria(1);
+        medicamento1.setViaAdmin(2);
+        //Defenir a venda
+        venda1.setCod_venda(102);
+        venda1.setData_compra(new Date());
+        venda1.setNome_cliente("Leonardo");
+        //Adicionar medicamento na compra
+        compra1.add(medicamento1);
+        //Adicionar o arraylist dos medicamentos
+        venda1.setMedicamentos(compra1);
+        //Adicionar Vendas ao gestor de vendas
+        gestorvendas.adicionarVenda(venda1);
+        //Imprimir a Vendas
+        System.out.println(gestorvendas.getVendas());
+        /*System.out.print("Inserir Medicamento");
         inserirMedicamento(armario);
         listarMedicamento(armario);
-
+        */
 
         //Criar Medicamento
 
