@@ -2,20 +2,20 @@ package com.company;
 
 import java.util.Date;
 
-public class Clientes {
+public class Cliente {
     int id;
     String nome;
     int bi;
     Date dataInscricao;
 
-    public Clientes(int id, String nome, int bi, Date dataInscricao) {
+    public Cliente(int id, String nome, int bi, Date dataInscricao) {
         this.id = id;
         this.nome = nome;
         this.bi = bi;
         this.dataInscricao = dataInscricao;
     }
 
-    public Clientes() {
+    public Cliente() {
         this.id = 0;
         this.nome = "";
         this.bi = 0;

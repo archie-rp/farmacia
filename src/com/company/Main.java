@@ -67,7 +67,7 @@ public class Main implements CatVia {
         //Defenir a venda
         venda1.setCod_venda(102);
         venda1.setData_compra(new Date());
-        venda1.setNome_cliente("Leonardo");
+        venda1.setCliente(new Cliente(2,"Nome Cliente",1222, new Date()));
         //Adicionar medicamento na compra
         compra1.add(medicamento1);
         //Adicionar o arraylist dos medicamentos
