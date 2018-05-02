@@ -20,7 +20,7 @@
 
 
 ##### Medicamentos
-- [ x ] Criar Classe Medicamento
+- [x] Criar Classe Medicamento
     - [ ] id, data_validade
 - [ ] Adicionar funcao para verificar validade (boolean)
 
@@ -38,8 +38,8 @@
 
 
 ##### Clientes e Gestor de Clientes
-- [ x ] Criar Classe Clientes | Hugo
-    - [ x ] id,nome,bi,data_inscriçao | Hugo
+- [x] Criar Classe Clientes | Hugo
+    - [x] id,nome,bi,data_inscriçao | Hugo
 - [ ] Registar Clientes
 - [ ] Remover Clientes
 - etc..
