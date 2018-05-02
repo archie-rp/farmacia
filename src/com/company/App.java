@@ -52,14 +52,14 @@ public class App extends JFrame implements CatVia{
 				}
 			}			
 		});
-		
-		
-		
-		
+
+
+
+
 	}
-	
-	
-	
+
+
+
 
 	/**
 	 * Create the frame.
@@ -193,17 +193,16 @@ public class App extends JFrame implements CatVia{
 						 String preco=textField_1.getText();
 					        float f = Float.parseFloat(preco);
 						
-						//Inserir Medicamento
+						    //Inserir Medicamento
 						 Medicamento medic = new Medicamento();
 					        medic.setNome(textField.getText());
-					        
-					        
+
 					       medic.setPreco(f);
 					        medic.setCategoria(comboBox.getSelectedIndex());
 					        medic.setViaAdmin(comboBox_1.getSelectedIndex());
 					        armario.adicionarMedicamento(medic);
 					        
-					        textField_2.setText(armario.toString());
+					        textField_2.setText(medic.toString());
 					}
 				});
 				

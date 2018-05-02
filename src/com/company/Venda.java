@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Venda {
     private int cod_venda;
-    private String nome_cliente;
+    private Cliente cliente;
     private Date data_compra;
     ArrayList<Medicamento> medicamentos;
 
@@ -13,8 +13,8 @@ public class Venda {
         this.cod_venda = cod_venda;
     }
 
-    public void setNome_cliente(String nome_cliente) {
-        this.nome_cliente = nome_cliente;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public void setData_compra(Date data_compra) {
@@ -25,23 +25,23 @@ public class Venda {
         this.medicamentos = medicamentos;
     }
 
-    public Venda(int cod_venda, String nome_cliente, Date data_compra, ArrayList<Medicamento> medicamentos) {
+    public Venda(int cod_venda, Cliente cliente, Date data_compra, ArrayList<Medicamento> medicamentos) {
         this.cod_venda = cod_venda;
-        this.nome_cliente = nome_cliente;
+        this.cliente = cliente;
         this.data_compra = data_compra;
         this.medicamentos = medicamentos;
     }
 
     public Venda(Venda venda){
         this.cod_venda = venda.cod_venda;
-        this.nome_cliente = venda.nome_cliente;
+        this.cliente = venda.cliente;
         this.data_compra = venda.data_compra;
         this.medicamentos = venda.medicamentos;
     }
 
     public Venda(){
         this.cod_venda = 0;
-        this.nome_cliente = "";
+        this.cliente = new Cliente();
         this.data_compra = new Date();
         this.medicamentos = new ArrayList<Medicamento>();
     }
@@ -50,7 +50,7 @@ public class Venda {
     public String toString() {
         return "Venda{" +
                 "cod_venda=" + cod_venda +
-                ", nome_cliente='" + nome_cliente + '\'' +
+                ", nome_cliente='" + cliente + '\'' +
                 ", data_compra=" + data_compra +
                 ", medicamentos=" + medicamentos +
                 '}';
