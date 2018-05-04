@@ -1,9 +1,10 @@
 package com.company;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 
-public class Medicamento implements CatVia {
+public class Medicamento implements CatVia,Serializable {
     private int id;
     private String nome;
     private float preco;

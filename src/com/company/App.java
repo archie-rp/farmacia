@@ -52,14 +52,7 @@ public class App extends JFrame implements CatVia{
 				}
 			}			
 		});
-
-
-
-
 	}
-
-
-
 
 	/**
 	 * Create the frame.

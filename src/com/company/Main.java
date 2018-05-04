@@ -2,24 +2,20 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.io.*;
+
 
 public class Main implements CatVia {
 
     public static int listarCategorias() {
-
-
         for (int i = 0; i < categorias.length; i++) {
             System.out.println(categorias[i]);
         }
         int escolha = Console.readInt("\nEscolha uma categoria");
-
         return escolha;
     }
 
     public static int listarVias() {
-
-
         for (int i = 0; i < vias.length; i++) {
             System.out.println(vias[i]);
         }
@@ -28,14 +24,10 @@ public class Main implements CatVia {
     }
 
     public static void listarMedicamento(Armario armario) {
-
-        if (armario.toString() == null) {
-
-        } else {
+        if (armario.toString() != null) {
             System.out.println(armario.toString());
         }
     }
-
 
     public static void inserirMedicamento(Armario armario) {
         Medicamento medic = new Medicamento();
@@ -60,7 +52,7 @@ public class Main implements CatVia {
         //Definir medicamento
         medicamento1.setNome("MEd1");
         medicamento1.setCategoria(1);
-        medicamento1.setViaAdmin(2);
+        medicamento1.setViaAdmin(1);
         //Defenir a venda
         venda1.setCod_venda(102);
         venda1.setData_compra(new Date());
@@ -72,24 +64,35 @@ public class Main implements CatVia {
         //Adicionar Vendas ao gestor de vendas
         gestorvendas.adicionarVenda(venda1);
         //Imprimir a Vendas
-        System.out.println(gestorvendas.getVendas());
-
-        /*System.out.print("Inserir Medicamento");
-        inserirMedicamento(armario);
-        listarMedicamento(armario);
-        */
-
-        //Criar Medicamento
-
-        /*Medicamento medicamento1 = new Medicamento("Nacix", 12.3f, 2, 1);
-        Medicamento medicamento2 = new Medicamento("benuron", 12.3f, 0, 0);
-
-        //adicionar medicamento
+        //System.out.println(gestorvendas.getVendas());
         armario.adicionarMedicamento(medicamento1);
-        armario.adicionarMedicamento(medicamento1);
-        System.out.println(armario.getQuantidadGaveta(2, 1));
-        System.out.println(armario.toString());
-        System.out.println(armario.removerMedicamento("Nacix"));*/
+        // Serializaçao
+        try {
+            FileOutputStream fileOut = new FileOutputStream("Armario.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(armario);
+            out.close();
+            fileOut.close();
+            System.out.printf("Serialized data foi guardada em Armario.ser");
+        } catch (IOException i) {
+            i.printStackTrace();
+        }
+        Armario armario_serializado = new Armario();
 
+        try {
+            FileInputStream fileIn = new FileInputStream("Armario.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            armario_serializado = (Armario) in.readObject();
+            in.close();
+            fileIn.close();
+        } catch (IOException i) {
+            i.printStackTrace();
+            return;
+        } catch (ClassNotFoundException c) {
+            System.out.println("Armario class nao encontrado!");
+            c.printStackTrace();
+            return;
+        }
+        System.out.println(armario_serializado.toString());
     }
 }

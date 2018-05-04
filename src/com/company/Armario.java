@@ -1,10 +1,8 @@
 package com.company;
 
-
 import java.io.Serializable;
 
 public class Armario implements Serializable {
-    private static final long serialVersionUID = 1L;
     private Gaveta armario[][];
     private String nome;
     private int quantidade;
@@ -13,10 +11,6 @@ public class Armario implements Serializable {
         this.armario = new Gaveta[20][10];
         this.nome = "";
         this.quantidade = 0;
-    }
-
-    public Armario(Object readObject) {
-        // TODO Auto-generated constructor stub
     }
 
     public Gaveta[][] getArmario() {
@@ -53,7 +47,7 @@ public class Armario implements Serializable {
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
                 if (armario[i][j] != null) {
-                    string.append(armario[i][j].toString());
+                    string.append(armario[i][j].getMedicamentos());
                 }
             }
         }
