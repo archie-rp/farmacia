@@ -50,14 +50,10 @@ public class Armario implements Serializable {
     @Override
     public String toString() {
         StringBuilder string = new StringBuilder();
-
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
                 if (armario[i][j] != null) {
                     string.append(armario[i][j].toString());
-
-                } else {
-
                 }
             }
         }
@@ -69,13 +65,36 @@ public class Armario implements Serializable {
     }
 
     public boolean removerMedicamento(String nome) {
+        int back_quantidade= this.quantidade;
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
                 if (armario[i][j] != null && armario[i][j].removerMedicamento(nome)) {
-                    return true;
+                    this.quantidade--;
                 }
             }
         }
-        return false;
+        if (back_quantidade > this.quantidade){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public boolean atualizarMedicamento(String nome, Medicamento novo_med) {
+        int med_actualizados= 0;
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (armario[i][j] != null && armario[i][j].updateMedicamento(nome, novo_med)) {
+                    med_actualizados++;
+                }
+            }
+        }
+        if (med_actualizados > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

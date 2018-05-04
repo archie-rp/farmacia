@@ -1,67 +1,63 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Gaveta {
-    Medicamento medicamentos[];
-    private int quantidade = 0;
+    ArrayList<Medicamento> medicamentos;
 
     public Gaveta() {
-        this.medicamentos = new Medicamento[10];
-        this.quantidade = 0;
+        this.medicamentos = new ArrayList<Medicamento>(10);
     }
 
     public Gaveta(Medicamento medicamento, String via_admin) {
-        this.medicamentos[this.quantidade] = medicamento;
-        this.quantidade++;
+        this.medicamentos.add(medicamento);
     }
-
 
     public int getQuantidade() {
-        return this.quantidade;
+        return this.medicamentos.size();
     }
 
-    public void setQuantidade() {
-        this.quantidade = quantidade;
-    }
-
-    public Medicamento[] getMedicamentos() {
+    public ArrayList<Medicamento> getMedicamentos() {
         return medicamentos;
     }
 
-    public void setMedicamento(Medicamento medicamentos) {
-        this.medicamentos[this.quantidade] = medicamentos;
-        this.quantidade++;
+    public boolean setMedicamentos(Medicamento medicamento) {
+        if (medicamentos.size() <= 10) {
+            this.medicamentos.add(medicamento);
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     public boolean removerMedicamento(String nome) {
-        for (int i = 0; i < medicamentos.length; i++) {
-            if (medicamentos[i] != null && medicamentos[i].getNome() == nome) {
+        for (Medicamento medicamento : medicamentos) {
+            if (medicamento != null && medicamento.getNome() == nome) {
+                medicamentos.remove(medicamento);
                 return true;
             }
         }
         return false;
     }
 
-  
+    public boolean updateMedicamento(String nome, Medicamento novo_med) {
+        for (Medicamento medicamento : medicamentos) {
+            if (medicamento != null && medicamento.getNome() == nome) {
+                medicamento= novo_med;
+            }
+        }
+        return false;
+    }
+
     public String toString() {
         StringBuilder string = new StringBuilder();
-
-
-
-                string.append("\nGaveta: ");
-                if(Arrays.toString(medicamentos)==null) {
-                	
-                }else {
-                	
-                
-                string.append("\nMedicamento = " + Arrays.toString(medicamentos));
-
-                }
-
+        string.append("\nGaveta: ");
+        for (Medicamento medicamento : medicamentos) {
+            string.append("\nMedicamento = " + medicamento.toString());
+        }
         return string.toString();
-    
-				
     }
 }
  

@@ -26,7 +26,6 @@ public class Medicamento implements CatVia {
     }
 
     public int getId() {
-
         return id;
     }
 
@@ -45,7 +44,6 @@ public class Medicamento implements CatVia {
         this.Categoria = medicamento.getCategoria();
         this.ViaAdmin = medicamento.getViaAdmin();
         this.dataValidade = medicamento.getDataValidade();
-
     }
 
     public Medicamento() {
@@ -92,19 +90,15 @@ public class Medicamento implements CatVia {
 
     @Override
     public String toString() {
-
         StringBuilder string = new StringBuilder();
-
-        string.append("\n" + "ID = " + id);
-        string.append("\n" + "Nome = " + nome);
-        string.append("\nPreço = " + preco);
-        string.append("\nCategoria = " + categorias[this.getCategoria()]);
-        string.append("\nViaAdmin = " + vias[this.getViaAdmin()] + "\n");
-        string.append("\nData Validade" + getDataValidade());
-
+        string.append("\n" + "ID = " + this.id);
+        string.append("\n" + "Nome = " + this.nome);
+        string.append("\nPreço = " + this.preco);
+        string.append("\nCategoria = " + this.categorias[this.getCategoria()]);
+        string.append("\nViaAdmin = " + this.vias[this.getViaAdmin()] + "\n");
+        string.append("\nData Validade" + this.getDataValidade());
         return string.toString();
     }
-
 
     public boolean verificarValidade(Date data) {
         if (this.getDataValidade().compareTo(data)>0) {
@@ -112,7 +106,5 @@ public class Medicamento implements CatVia {
         } else {
             return true;
         }
-
-
     }
 }

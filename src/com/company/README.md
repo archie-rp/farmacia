@@ -13,21 +13,22 @@
 
 
 ##### Medicamentos
-- [x] Criar Classe Medicamento
-    - [x] id, data_validade | Hugo
-- [ ] Adicionar funcao para verificar validade (boolean)
+- [x] Criar Classe Medicamento 
+- [x] Fiz update em vez de Medicamentos[] para ArrayList, tirando assim a quantidade;
+    - [x] id,ArrayList ,data_validade | Hugo
+- [x] Adicionar funcao para verificar validade (boolean)
 
 ##### Armario
 - [x] Criar Classe Armario
 - [x] Adicionar medicamento
-- [x] Remover medicamento
-- [ ] Editar medicamento
+- [x] Remover medicamento (todos)
+- [x] Editar medicamento (todos)
 
 ##### Gaveta
 - [x] Criar Classe Gaveta
 - [x] Adicionar medicamento
-- [x] Remover medicamento
-- [ ] Editar medicamento
+- [x] Remover medicamento (nome) <- o primeiro que encontrar!
+- [x] Editar medicamento (nome) <- Editar mas só se houver engano ao adicionar individualmente! 
 
 
 ##### Gestor de Clientes e Clientes 

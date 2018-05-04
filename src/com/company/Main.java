@@ -24,7 +24,6 @@ public class Main implements CatVia {
             System.out.println(vias[i]);
         }
         int escolha = Console.readInt("\nEscolha uma Via de Administração");
-
         return escolha;
     }
 
@@ -45,8 +44,6 @@ public class Main implements CatVia {
         medic.setCategoria(listarCategorias());
         medic.setViaAdmin(listarVias());
         armario.adicionarMedicamento(medic);
-        
-        
     }
 
     public static void main(String[] args) {
@@ -76,6 +73,7 @@ public class Main implements CatVia {
         gestorvendas.adicionarVenda(venda1);
         //Imprimir a Vendas
         System.out.println(gestorvendas.getVendas());
+
         /*System.out.print("Inserir Medicamento");
         inserirMedicamento(armario);
         listarMedicamento(armario);
