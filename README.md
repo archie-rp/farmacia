@@ -53,7 +53,7 @@
 
 
 ##### Save Data
-- [ ] Criar Serializaçao para (armario)
+- [X] Criar Serializaçao para (armario)
 - [ ] Criar Serializaçao para (Gestor de clientes)
     - [ ] Criar pasta dedicada
 - [ ] Fazer Carregamento de ficheiros ao arrancar o programa
