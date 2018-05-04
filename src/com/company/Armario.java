@@ -39,10 +39,10 @@ public class Armario implements Serializable {
     public void adicionarMedicamento(Medicamento medicamento) {
         if (armario[medicamento.getCategoria()][medicamento.getViaAdmin()] == null) {
             armario[medicamento.getCategoria()][medicamento.getViaAdmin()] = new Gaveta();
-            armario[medicamento.getCategoria()][medicamento.getViaAdmin()].setMedicamento(medicamento);
+            armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.add(medicamento);
             this.quantidade++;
         } else {
-            armario[medicamento.getCategoria()][medicamento.getViaAdmin()].setMedicamento(medicamento);
+            armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.add(medicamento);
             this.quantidade++;
         }
     }
