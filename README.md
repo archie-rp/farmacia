@@ -25,19 +25,21 @@
 - [x] Fiz update em vez de Medicamentos[] para ArrayList, tirando assim a quantidade;
     - [x] id,ArrayList ,data_validade | Hugo
 - [x] Adicionar funcao para verificar validade (boolean)
+- [ ] Adicionar Exceptions
 
 ##### Armario
 - [x] Criar Classe Armario
 - [x] Adicionar medicamento
 - [x] Remover medicamento (todos)
 - [x] Editar medicamento (todos)
+- [ ] Adicionar Exceptions
 
 ##### Gaveta
 - [x] Criar Classe Gaveta
 - [x] Adicionar medicamento
 - [x] Remover medicamento (nome) <- o primeiro que encontrar!
 - [x] Editar medicamento (nome) <- Editar mas só se houver engano ao adicionar individualmente! 
-
+- [ ] Adicionar Exceptions
 
 ##### Gestor de Clientes e Clientes 
 - [ ] Criar Gestor de Clientes
@@ -45,6 +47,7 @@
     - [x] id,nome,bi,data_inscriçao | Hugo
 - [ ] Registar Clientes
 - [ ] Remover Clientes
+- [ ] Adicionar Exceptions
 - etc..
 
 ##### Gestor de Vendas e Vendas
@@ -57,6 +60,7 @@
 - [ ] Guardar em ficheiro todas as compras
 - [ ] Criar Relatórios
 - [ ] Criar Secçao de relatorios para Vendas
+- [ ] Adicionar Exceptions
 - etc..
 
 
