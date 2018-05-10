@@ -14,7 +14,7 @@
 
 ##### Layout 
 -[x] Criar layout | Hugo
--[x] Painel Vendas já com combobox a inicializar com dados corretos | Hugo
+-[x] Painel Vendas já com combobox a inicializar com dados corretos | hugo
 
 ##### Medicamentos
 - [x] Criar Classe Medicamento 

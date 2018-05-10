@@ -3,7 +3,8 @@ package com.company;
 import java.util.HashMap;
 
 public interface CatVia {
-    String categorias[]= {"cat1","cat2","cat3"};
-    String vias[]= {"via1","via2","via3"};
+    String categorias[]= {"Antiácidos‎","Anticoagulantes‎ ","Cardiotônicos‎","Diuréticos‎","Antidepressivos","Hipertensores‎","Fibrinolíticos‎","Anti-hemorrágicos‎","Laxantes","Antipiréticos‎",
+            "Relaxantes musculares‎","Anti-histamínicos‎","Imunossupressores","Anti-inflamatórios‎","Teratogênicos‎","Agentes hormonais‎","Plantas medicinais‎","Antiarrítmicos‎","Expectorantes‎","Inibidores da lactação‎ "};
+    String vias[]= {"Oral","Injetável","Dermatológica","Nasal","Oftálmica","Ocular","Intra-Nasal","Cutânea","Auricular"};
 
 }

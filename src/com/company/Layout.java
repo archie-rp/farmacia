@@ -1,18 +1,10 @@
 package com.company;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.EventQueue;
 
+import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JToolBar;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JMenu;
-import javax.swing.event.MenuKeyListener;
-import javax.swing.event.MenuKeyEvent;
+import javax.swing.UIManager;
 import java.awt.CardLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -28,8 +20,15 @@ public class Layout extends JFrame implements CatVia {
     private JPanel cliente;
     private JTextField txtNome;
     private JTextField textProcurarCliente;
+    private JTextField textPesquisarStock;
 
     public static void main(String[] args) {
+
+        try {
+            UIManager.setLookAndFeel("javax.swing.plaf.windows.WindowsLookAndFeel");
+        } catch (Throwable e) {
+        }
+
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -39,7 +38,11 @@ public class Layout extends JFrame implements CatVia {
                     e.printStackTrace();
                 }
             }
+
+
         });
+
+
     }
 
     public Layout() {
@@ -162,9 +165,17 @@ public class Layout extends JFrame implements CatVia {
         button_14.setBounds(197, 36, 99, 39);
         relatorio.add(button_14);
 
-        JLabel lblRelatorio = new JLabel("Relatorio");
-        lblRelatorio.setBounds(214, 171, 55, 16);
-        relatorio.add(lblRelatorio);
+        JLabel lblUltimosRelatrios = new JLabel("Ultimos relatórios");
+        lblUltimosRelatrios.setBounds(72, 114, 135, 16);
+        relatorio.add(lblUltimosRelatrios);
+
+        JTextPane textRelatorio = new JTextPane();
+        textRelatorio.setBounds(72, 143, 556, 218);
+        relatorio.add(textRelatorio);
+
+        JLabel lblAlertas = new JLabel("Total alertas: ");
+        lblAlertas.setBounds(712, 147, 108, 16);
+        relatorio.add(lblAlertas);
 
         //Botao home
         JButton btnHome = new JButton("Home");
@@ -295,7 +306,6 @@ public class Layout extends JFrame implements CatVia {
         JComboBox comboBoxViaAdmin = new JComboBox();
         comboBoxViaAdmin.setBounds(466, 140, 158, 20);
         venda.add(comboBoxViaAdmin);
-
         for (int i = 0; i < vias.length; i++) {
             comboBoxViaAdmin.addItem(vias[i]);
         }
@@ -406,6 +416,26 @@ public class Layout extends JFrame implements CatVia {
         JTextPane textDadosCompra = new JTextPane();
         textDadosCompra.setBounds(64, 445, 810, 244);
         venda.add(textDadosCompra);
+
+        JLabel lblEstadoCompra = new JLabel("Estado Compra");
+        lblEstadoCompra.setBounds(900, 457, 113, 16);
+        venda.add(lblEstadoCompra);
+
+        JLabel lblSubtotal = new JLabel("Sub-Total:");
+        lblSubtotal.setBounds(920, 485, 85, 16);
+        venda.add(lblSubtotal);
+
+        JLabel lblIva = new JLabel("IVA:");
+        lblIva.setBounds(920, 510, 55, 16);
+        venda.add(lblIva);
+
+        JLabel lblDesconto = new JLabel("Desconto:");
+        lblDesconto.setBounds(920, 538, 75, 16);
+        venda.add(lblDesconto);
+
+        JLabel lblTotal = new JLabel("Total:");
+        lblTotal.setBounds(920, 566, 55, 16);
+        venda.add(lblTotal);
 
 
         JButton button_15 = new JButton("Clientes");
@@ -598,6 +628,27 @@ public class Layout extends JFrame implements CatVia {
         });
         btnClientesStock.setBounds(683, 36, 120, 39);
         stock.add(btnClientesStock);
+
+        JLabel lblProcurarProduto = new JLabel("Procurar Produto:");
+        lblProcurarProduto.setBounds(51, 104, 141, 16);
+        stock.add(lblProcurarProduto);
+
+        textPesquisarStock = new JTextField();
+        textPesquisarStock.setBounds(162, 102, 192, 20);
+        stock.add(textPesquisarStock);
+        textPesquisarStock.setColumns(10);
+
+        JButton btnPesquisar = new JButton("Pesquisar");
+        btnPesquisar.setBounds(366, 99, 98, 26);
+        stock.add(btnPesquisar);
+
+        JTextPane textProdutosStock = new JTextPane();
+        textProdutosStock.setBounds(51, 150, 637, 232);
+        stock.add(textProdutosStock);
+
+        JLabel lblProdutosSemStock = new JLabel("Produtos sem Stock: ");
+        lblProdutosSemStock.setBounds(744, 150, 156, 16);
+        stock.add(lblProdutosSemStock);
 
 
     }
