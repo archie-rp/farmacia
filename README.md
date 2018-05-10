@@ -16,6 +16,10 @@
 -[x] Criar layout | Hugo
 -[x] Painel Vendas já com combobox a inicializar com dados corretos | hugo
 
+##### Cat Via Admin 
+-[x] Inserir os itens | Hugo
+
+
 ##### Medicamentos
 - [x] Criar Classe Medicamento 
 - [x] Fiz update em vez de Medicamentos[] para ArrayList, tirando assim a quantidade;
