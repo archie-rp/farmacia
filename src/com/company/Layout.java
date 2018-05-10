@@ -13,6 +13,8 @@ import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JTextPane;
+import javax.swing.JList;
+import java.awt.Color;
 
 public class Layout extends JFrame implements CatVia {
     private JPanel main;
@@ -21,12 +23,15 @@ public class Layout extends JFrame implements CatVia {
     private JTextField txtNome;
     private JTextField textProcurarCliente;
     private JTextField textPesquisarStock;
+    private JTextField textField;
+    private JTextField textField_1;
 
     public static void main(String[] args) {
 
         try {
         	UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Throwable e) {
+        	System.out.println(e.getMessage());
         }
 
         EventQueue.invokeLater(new Runnable() {
@@ -47,7 +52,34 @@ public class Layout extends JFrame implements CatVia {
 
     public Layout() {
         getContentPane().setLayout(new CardLayout(0, 0));
-        setBounds(100, 100, 1150, 800);
+        setBounds(100, 100, 842, 580);
+        
+        JPanel login = new JPanel();
+        getContentPane().add(login, "name_4164308832893");
+        login.setLayout(null);
+        
+        JLabel lblUsername = new JLabel("Username");
+        lblUsername.setBounds(42, 101, 60, 14);
+        login.add(lblUsername);
+        
+        JLabel lblPassword = new JLabel("Password");
+        lblPassword.setBounds(42, 144, 46, 14);
+        login.add(lblPassword);
+        
+        textField = new JTextField();
+        textField.setBounds(117, 98, 86, 20);
+        login.add(textField);
+        textField.setColumns(10);
+        
+        textField_1 = new JTextField();
+        textField_1.setBounds(117, 141, 86, 20);
+        login.add(textField_1);
+        textField_1.setColumns(10);
+        
+        
+        JLabel lblBemVindoA = new JLabel("Bem Vindo a Farmacia!");
+        lblBemVindoA.setBounds(26, 36, 165, 14);
+        login.add(lblBemVindoA);
 
         JPanel main = new JPanel();
         getContentPane().add(main, "name_2347007504240");
@@ -77,6 +109,17 @@ public class Layout extends JFrame implements CatVia {
         clientes.setVisible(false);
 
 
+        JButton btnLogin = new JButton("Login");
+        btnLogin.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		login.setVisible(false);
+                main.setVisible(true);
+        	}
+        });
+        btnLogin.setBounds(114, 191, 89, 23);
+        login.add(btnLogin);
+        
         //Botao Vendas
         JButton btnVendas = new JButton("Vendas");
         btnVendas.addMouseListener(new MouseAdapter() {
@@ -91,7 +134,7 @@ public class Layout extends JFrame implements CatVia {
             }
         });
 
-        btnVendas.setBounds(318, 36, 99, 39);
+        btnVendas.setBounds(152, 35, 99, 39);
         main.add(btnVendas);
 
         JButton button_10 = new JButton("Clientes");
@@ -105,7 +148,7 @@ public class Layout extends JFrame implements CatVia {
                 stock.setVisible(false);
             }
         });
-        button_10.setBounds(683, 36, 120, 39);
+        button_10.setBounds(517, 37, 120, 39);
         relatorio.add(button_10);
 
         JButton btnStockRelatorio = new JButton("Stock");
@@ -119,7 +162,7 @@ public class Layout extends JFrame implements CatVia {
                 stock.setVisible(true);
             }
         });
-        btnStockRelatorio.setBounds(557, 36, 108, 39);
+        btnStockRelatorio.setBounds(391, 37, 108, 39);
         relatorio.add(btnStockRelatorio);
 
         JButton btnRelatorioRelatorio = new JButton("Relatório");
@@ -134,7 +177,7 @@ public class Layout extends JFrame implements CatVia {
             }
         });
 
-        btnRelatorioRelatorio.setBounds(438, 36, 99, 39);
+        btnRelatorioRelatorio.setBounds(272, 37, 99, 39);
         relatorio.add(btnRelatorioRelatorio);
 
         JButton button_13 = new JButton("Vendas");
@@ -148,7 +191,7 @@ public class Layout extends JFrame implements CatVia {
                 stock.setVisible(false);
             }
         });
-        button_13.setBounds(318, 36, 99, 39);
+        button_13.setBounds(152, 37, 99, 39);
         relatorio.add(button_13);
 
         JButton button_14 = new JButton("Home");
@@ -162,19 +205,19 @@ public class Layout extends JFrame implements CatVia {
                 stock.setVisible(false);
             }
         });
-        button_14.setBounds(197, 36, 99, 39);
+        button_14.setBounds(31, 37, 99, 39);
         relatorio.add(button_14);
 
         JLabel lblUltimosRelatrios = new JLabel("Ultimos relatórios");
-        lblUltimosRelatrios.setBounds(72, 114, 135, 16);
+        lblUltimosRelatrios.setBounds(31, 100, 135, 16);
         relatorio.add(lblUltimosRelatrios);
 
         JTextPane textRelatorio = new JTextPane();
-        textRelatorio.setBounds(72, 143, 556, 218);
+        textRelatorio.setBounds(31, 127, 366, 218);
         relatorio.add(textRelatorio);
 
         JLabel lblAlertas = new JLabel("Total alertas: ");
-        lblAlertas.setBounds(712, 147, 108, 16);
+        lblAlertas.setBounds(418, 125, 108, 16);
         relatorio.add(lblAlertas);
 
         //Botao home
@@ -189,7 +232,7 @@ public class Layout extends JFrame implements CatVia {
                 stock.setVisible(false);
             }
         });
-        btnHome.setBounds(197, 36, 99, 39);
+        btnHome.setBounds(31, 35, 99, 39);
         main.add(btnHome);
 
         //Botao Relatorio
@@ -204,11 +247,11 @@ public class Layout extends JFrame implements CatVia {
                 stock.setVisible(false);
             }
         });
-        btnRelatorio.setBounds(438, 36, 99, 39);
+        btnRelatorio.setBounds(272, 35, 99, 39);
         main.add(btnRelatorio);
 
         JLabel label = new JLabel("09/05/2018");
-        label.setBounds(869, 11, 99, 23);
+        label.setBounds(675, 11, 99, 23);
         main.add(label);
 
         JButton btnStock = new JButton("Stock");
@@ -222,7 +265,7 @@ public class Layout extends JFrame implements CatVia {
                 stock.setVisible(true);
             }
         });
-        btnStock.setBounds(557, 36, 108, 39);
+        btnStock.setBounds(391, 35, 108, 39);
         main.add(btnStock);
 
         JButton btnClientes = new JButton("Clientes");
@@ -236,75 +279,75 @@ public class Layout extends JFrame implements CatVia {
                 stock.setVisible(false);
             }
         });
-        btnClientes.setBounds(683, 36, 120, 39);
+        btnClientes.setBounds(517, 35, 120, 39);
         main.add(btnClientes);
 
         JLabel lblVendasMes = new JLabel("Vendas este mês:");
-        lblVendasMes.setBounds(31, 133, 133, 14);
+        lblVendasMes.setBounds(31, 96, 133, 14);
         main.add(lblVendasMes);
 
         JLabel lblQuantidade = new JLabel("Quantidade:");
-        lblQuantidade.setBounds(57, 167, 107, 14);
+        lblQuantidade.setBounds(57, 130, 107, 14);
         main.add(lblQuantidade);
 
         JLabel lblNovosClientes = new JLabel("Novos Clientes");
-        lblNovosClientes.setBounds(57, 192, 127, 14);
+        lblNovosClientes.setBounds(57, 155, 127, 14);
         main.add(lblNovosClientes);
 
         JLabel lblProdutoMaisVendido = new JLabel("Produto mais vendido:");
-        lblProdutoMaisVendido.setBounds(57, 217, 149, 14);
+        lblProdutoMaisVendido.setBounds(57, 183, 149, 14);
         main.add(lblProdutoMaisVendido);
 
         JLabel lblProdutosEmCaminho = new JLabel("Produtos em caminho:");
-        lblProdutosEmCaminho.setBounds(31, 305, 153, 14);
+        lblProdutosEmCaminho.setBounds(31, 208, 153, 14);
         main.add(lblProdutosEmCaminho);
 
-        JTextPane textProdutosCaminho = new JTextPane();
-        textProdutosCaminho.setBounds(42, 364, 416, 180);
-        main.add(textProdutosCaminho);
-
         JLabel lblArmazem = new JLabel("Armazem:");
-        lblArmazem.setBounds(612, 137, 85, 14);
+        lblArmazem.setBounds(425, 107, 85, 14);
         main.add(lblArmazem);
 
         JLabel lblProdutosForaDe = new JLabel("Produtos fora de stock");
-        lblProdutosForaDe.setBounds(622, 167, 149, 14);
+        lblProdutosForaDe.setBounds(438, 130, 149, 14);
         main.add(lblProdutosForaDe);
 
         JTextPane textProdutosForaStock = new JTextPane();
-        textProdutosForaStock.setBounds(585, 211, 450, 192);
+        textProdutosForaStock.setBounds(448, 155, 353, 147);
         main.add(textProdutosForaStock);
 
         JLabel lblProdutosAdicionadosRecentemente = new JLabel("Produtos adicionados recentemente:");
-        lblProdutosAdicionadosRecentemente.setBounds(595, 414, 250, 14);
+        lblProdutosAdicionadosRecentemente.setBounds(438, 313, 250, 14);
         main.add(lblProdutosAdicionadosRecentemente);
 
         JTextPane textProdutosRecentes = new JTextPane();
-        textProdutosRecentes.setBounds(585, 453, 450, 147);
+        textProdutosRecentes.setBounds(448, 338, 353, 147);
         main.add(textProdutosRecentes);
+        
+        JList list = new JList();
+        list.setBounds(31, 245, 386, 246);
+        main.add(list);
 
 
         JLabel lblEscolhaProduto = new JLabel("Escolha produto:");
-        lblEscolhaProduto.setBounds(64, 92, 113, 25);
+        lblEscolhaProduto.setBounds(31, 92, 113, 25);
         venda.add(lblEscolhaProduto);
 
         JLabel lblCategoria = new JLabel("Categoria:");
-        lblCategoria.setBounds(64, 140, 85, 20);
+        lblCategoria.setBounds(31, 128, 85, 20);
         venda.add(lblCategoria);
 
         JLabel lblViaAdmin = new JLabel("Via Administração:");
-        lblViaAdmin.setBounds(346, 142, 124, 17);
+        lblViaAdmin.setBounds(212, 130, 124, 17);
         venda.add(lblViaAdmin);
 
         JComboBox comboBoxCategoria = new JComboBox();
-        comboBoxCategoria.setBounds(164, 140, 172, 20);
+        comboBoxCategoria.setBounds(31, 155, 172, 20);
         venda.add(comboBoxCategoria);
         for (int i = 0; i < categorias.length; i++) {
             comboBoxCategoria.addItem(categorias[i]);
         }
 
         JComboBox comboBoxViaAdmin = new JComboBox();
-        comboBoxViaAdmin.setBounds(466, 140, 158, 20);
+        comboBoxViaAdmin.setBounds(212, 155, 158, 20);
         venda.add(comboBoxViaAdmin);
         for (int i = 0; i < vias.length; i++) {
             comboBoxViaAdmin.addItem(vias[i]);
@@ -321,7 +364,7 @@ public class Layout extends JFrame implements CatVia {
                 stock.setVisible(false);
             }
         });
-        button.setBounds(683, 36, 120, 39);
+        button.setBounds(517, 42, 120, 39);
         venda.add(button);
 
         JButton button_1 = new JButton("Stock");
@@ -335,7 +378,7 @@ public class Layout extends JFrame implements CatVia {
                 stock.setVisible(true);
             }
         });
-        button_1.setBounds(557, 36, 108, 39);
+        button_1.setBounds(391, 42, 108, 39);
         venda.add(button_1);
 
         JButton button_2 = new JButton("Relatório");
@@ -349,7 +392,7 @@ public class Layout extends JFrame implements CatVia {
                 stock.setVisible(false);
             }
         });
-        button_2.setBounds(438, 36, 99, 39);
+        button_2.setBounds(272, 42, 99, 39);
         venda.add(button_2);
 
         JButton button_3 = new JButton("Vendas");
@@ -363,7 +406,7 @@ public class Layout extends JFrame implements CatVia {
                 stock.setVisible(false);
             }
         });
-        button_3.setBounds(318, 36, 99, 39);
+        button_3.setBounds(152, 42, 99, 39);
         venda.add(button_3);
 
         JButton button_4 = new JButton("Home");
@@ -377,64 +420,64 @@ public class Layout extends JFrame implements CatVia {
                 stock.setVisible(false);
             }
         });
-        button_4.setBounds(197, 36, 99, 39);
+        button_4.setBounds(31, 42, 99, 39);
         venda.add(button_4);
 
         JLabel lblNome = new JLabel("Nome");
-        lblNome.setBounds(663, 108, 46, 14);
+        lblNome.setBounds(391, 131, 46, 14);
         venda.add(lblNome);
 
         txtNome = new JTextField();
-        txtNome.setBounds(661, 140, 199, 20);
+        txtNome.setBounds(391, 155, 199, 20);
         venda.add(txtNome);
         txtNome.setColumns(10);
 
         JLabel lblCliente = new JLabel("Cliente:");
-        lblCliente.setBounds(900, 108, 70, 14);
+        lblCliente.setBounds(415, 206, 70, 14);
         venda.add(lblCliente);
 
         JLabel lblNome_1 = new JLabel("Nome:");
-        lblNome_1.setBounds(910, 131, 46, 14);
+        lblNome_1.setBounds(425, 229, 46, 14);
         venda.add(lblNome_1);
 
         JLabel lblBi = new JLabel("BI:");
-        lblBi.setBounds(910, 154, 46, 14);
+        lblBi.setBounds(425, 252, 46, 14);
         venda.add(lblBi);
 
         JButton btnAdicionar = new JButton("Adicionar");
-        btnAdicionar.setBounds(900, 219, 95, 30);
+        btnAdicionar.setBounds(415, 313, 95, 30);
         venda.add(btnAdicionar);
 
         JTextPane textPesquisaProduto = new JTextPane();
-        textPesquisaProduto.setBounds(64, 186, 810, 207);
+        textPesquisaProduto.setBounds(31, 186, 340, 157);
         venda.add(textPesquisaProduto);
 
         JLabel lblDadosCompra = new JLabel("Dados Compra");
-        lblDadosCompra.setBounds(64, 420, 120, 14);
+        lblDadosCompra.setBounds(31, 365, 120, 14);
         venda.add(lblDadosCompra);
 
         JTextPane textDadosCompra = new JTextPane();
-        textDadosCompra.setBounds(64, 445, 810, 244);
+        textDadosCompra.setBounds(31, 390, 407, 158);
         venda.add(textDadosCompra);
 
         JLabel lblEstadoCompra = new JLabel("Estado Compra");
-        lblEstadoCompra.setBounds(900, 457, 113, 16);
+        lblEstadoCompra.setBounds(462, 390, 113, 16);
         venda.add(lblEstadoCompra);
 
         JLabel lblSubtotal = new JLabel("Sub-Total:");
-        lblSubtotal.setBounds(920, 485, 85, 16);
+        lblSubtotal.setBounds(482, 418, 85, 16);
         venda.add(lblSubtotal);
 
         JLabel lblIva = new JLabel("IVA:");
-        lblIva.setBounds(920, 510, 55, 16);
+        lblIva.setBounds(482, 443, 55, 16);
         venda.add(lblIva);
 
         JLabel lblDesconto = new JLabel("Desconto:");
-        lblDesconto.setBounds(920, 538, 75, 16);
+        lblDesconto.setBounds(482, 471, 75, 16);
         venda.add(lblDesconto);
 
         JLabel lblTotal = new JLabel("Total:");
-        lblTotal.setBounds(920, 566, 55, 16);
+        lblTotal.setBounds(482, 499, 55, 16);
         venda.add(lblTotal);
 
 
@@ -449,7 +492,7 @@ public class Layout extends JFrame implements CatVia {
                 stock.setVisible(false);
             }
         });
-        button_15.setBounds(683, 36, 120, 39);
+        button_15.setBounds(517, 37, 120, 39);
         clientes.add(button_15);
 
         JButton btnVendasClientes = new JButton("Vendas");
@@ -463,7 +506,7 @@ public class Layout extends JFrame implements CatVia {
                 stock.setVisible(false);
             }
         });
-        btnVendasClientes.setBounds(318, 36, 99, 39);
+        btnVendasClientes.setBounds(152, 37, 99, 39);
         clientes.add(btnVendasClientes);
 
         JButton btnRelatorioClientes = new JButton("Relatório");
@@ -478,7 +521,7 @@ public class Layout extends JFrame implements CatVia {
 
             }
         });
-        btnRelatorioClientes.setBounds(438, 36, 99, 39);
+        btnRelatorioClientes.setBounds(272, 37, 99, 39);
         clientes.add(btnRelatorioClientes);
 
         JButton btnStockClientes = new JButton("Stock");
@@ -492,7 +535,7 @@ public class Layout extends JFrame implements CatVia {
                 stock.setVisible(true);
             }
         });
-        btnStockClientes.setBounds(557, 36, 108, 39);
+        btnStockClientes.setBounds(391, 37, 108, 39);
         clientes.add(btnStockClientes);
 
         JButton btnHomeClientes = new JButton("Home");
@@ -506,56 +549,52 @@ public class Layout extends JFrame implements CatVia {
                 stock.setVisible(false);
             }
         });
-        btnHomeClientes.setBounds(197, 36, 99, 39);
+        btnHomeClientes.setBounds(31, 37, 99, 39);
         clientes.add(btnHomeClientes);
 
         JLabel lblProcurarCliente = new JLabel("Procurar Cliente:");
-        lblProcurarCliente.setBounds(43, 152, 108, 16);
+        lblProcurarCliente.setBounds(31, 96, 108, 16);
         clientes.add(lblProcurarCliente);
 
         textProcurarCliente = new JTextField();
-        textProcurarCliente.setBounds(152, 150, 161, 20);
+        textProcurarCliente.setBounds(140, 94, 161, 20);
         clientes.add(textProcurarCliente);
         textProcurarCliente.setColumns(10);
 
         JButton btnAdicionarCliente = new JButton("Adicionar");
-        btnAdicionarCliente.setBounds(354, 147, 120, 26);
+        btnAdicionarCliente.setBounds(342, 91, 120, 26);
         clientes.add(btnAdicionarCliente);
 
-        JTextPane textListarClientes = new JTextPane();
-        textListarClientes.setBounds(42, 180, 527, 214);
-        clientes.add(textListarClientes);
-
         JButton btnAdicionar_2 = new JButton("Adicionar");
-        btnAdicionar_2.setBounds(624, 180, 120, 26);
+        btnAdicionar_2.setBounds(517, 108, 120, 26);
         clientes.add(btnAdicionar_2);
 
         JButton btnEditar = new JButton("Editar");
-        btnEditar.setBounds(624, 234, 118, 26);
+        btnEditar.setBounds(517, 162, 118, 26);
         clientes.add(btnEditar);
 
         JButton btnRemover = new JButton("Remover");
-        btnRemover.setBounds(624, 286, 120, 26);
+        btnRemover.setBounds(517, 214, 120, 26);
         clientes.add(btnRemover);
 
         JLabel lblTodosOsClientes = new JLabel("Todos os clientes");
-        lblTodosOsClientes.setBounds(43, 442, 148, 16);
+        lblTodosOsClientes.setBounds(10, 214, 148, 16);
         clientes.add(lblTodosOsClientes);
 
         JTextPane textTodosClientes = new JTextPane();
-        textTodosClientes.setBounds(43, 470, 527, 214);
+        textTodosClientes.setBounds(10, 242, 527, 214);
         clientes.add(textTodosClientes);
 
         JLabel lblRegistos = new JLabel("Registos");
-        lblRegistos.setBounds(660, 493, 78, 16);
+        lblRegistos.setBounds(557, 266, 78, 16);
         clientes.add(lblRegistos);
 
         JLabel lblTotalClientes = new JLabel("Total Clientes: ");
-        lblTotalClientes.setBounds(683, 521, 99, 16);
+        lblTotalClientes.setBounds(580, 294, 99, 16);
         clientes.add(lblTotalClientes);
 
         JLabel lblEsteMs = new JLabel("Este Mês:");
-        lblEsteMs.setBounds(683, 549, 78, 16);
+        lblEsteMs.setBounds(580, 322, 78, 16);
         clientes.add(lblEsteMs);
 
 
@@ -570,7 +609,7 @@ public class Layout extends JFrame implements CatVia {
                 stock.setVisible(false);
             }
         });
-        btnHomeStock.setBounds(197, 36, 99, 39);
+        btnHomeStock.setBounds(31, 36, 99, 39);
         stock.add(btnHomeStock);
 
         JButton btnVendasStock = new JButton("Vendas");
@@ -584,7 +623,7 @@ public class Layout extends JFrame implements CatVia {
                 stock.setVisible(false);
             }
         });
-        btnVendasStock.setBounds(318, 36, 99, 39);
+        btnVendasStock.setBounds(152, 36, 99, 39);
         stock.add(btnVendasStock);
 
         JButton btnRelatorioStock = new JButton("Relatório");
@@ -598,7 +637,7 @@ public class Layout extends JFrame implements CatVia {
                 stock.setVisible(false);
             }
         });
-        btnRelatorioStock.setBounds(438, 36, 99, 39);
+        btnRelatorioStock.setBounds(272, 36, 99, 39);
         stock.add(btnRelatorioStock);
 
         JButton btnStockStock = new JButton("Stock");
@@ -612,7 +651,7 @@ public class Layout extends JFrame implements CatVia {
                 stock.setVisible(true);
             }
         });
-        btnStockStock.setBounds(557, 36, 108, 39);
+        btnStockStock.setBounds(391, 36, 108, 39);
         stock.add(btnStockStock);
 
         JButton btnClientesStock = new JButton("Clientes");
@@ -626,28 +665,28 @@ public class Layout extends JFrame implements CatVia {
                 stock.setVisible(false);
             }
         });
-        btnClientesStock.setBounds(683, 36, 120, 39);
+        btnClientesStock.setBounds(517, 36, 120, 39);
         stock.add(btnClientesStock);
 
         JLabel lblProcurarProduto = new JLabel("Procurar Produto:");
-        lblProcurarProduto.setBounds(51, 104, 141, 16);
+        lblProcurarProduto.setBounds(51, 102, 141, 16);
         stock.add(lblProcurarProduto);
 
         textPesquisarStock = new JTextField();
-        textPesquisarStock.setBounds(162, 102, 192, 20);
+        textPesquisarStock.setBounds(162, 100, 192, 20);
         stock.add(textPesquisarStock);
         textPesquisarStock.setColumns(10);
 
         JButton btnPesquisar = new JButton("Pesquisar");
-        btnPesquisar.setBounds(366, 99, 98, 26);
+        btnPesquisar.setBounds(366, 97, 98, 26);
         stock.add(btnPesquisar);
 
         JTextPane textProdutosStock = new JTextPane();
-        textProdutosStock.setBounds(51, 150, 637, 232);
+        textProdutosStock.setBounds(51, 148, 413, 232);
         stock.add(textProdutosStock);
 
         JLabel lblProdutosSemStock = new JLabel("Produtos sem Stock: ");
-        lblProdutosSemStock.setBounds(744, 150, 156, 16);
+        lblProdutosSemStock.setBounds(474, 102, 156, 16);
         stock.add(lblProdutosSemStock);
 
 
