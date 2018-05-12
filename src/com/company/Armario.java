@@ -1,6 +1,7 @@
 package com.company;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Armario implements Serializable {
     private Gaveta armario[][];
@@ -15,6 +16,9 @@ public class Armario implements Serializable {
 
     public Gaveta[][] getArmario() {
         return armario;
+    }
+    public Gaveta getArmarioGaveta(int cat, int via) {
+        return armario[cat][via];
     }
 
     public void setArmario(Gaveta[][] armario) {
@@ -38,6 +42,19 @@ public class Armario implements Serializable {
         } else {
             armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.add(medicamento);
             this.quantidade++;
+        }
+    }
+
+    public void adicionarMedicamentos(Medicamento[] medicamentos) {
+        for (Medicamento medicamento : medicamentos) {
+            if (armario[medicamento.getCategoria()][medicamento.getViaAdmin()] == null) {
+                armario[medicamento.getCategoria()][medicamento.getViaAdmin()] = new Gaveta();
+                armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.add(medicamento);
+                this.quantidade++;
+            } else {
+                armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.add(medicamento);
+                this.quantidade++;
+            }
         }
     }
 

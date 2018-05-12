@@ -15,6 +15,11 @@ import java.awt.event.MouseEvent;
 import javax.swing.JTextPane;
 import javax.swing.JList;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.border.TitledBorder;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 public class Layout extends JFrame implements CatVia {
     private JPanel main;
@@ -51,7 +56,35 @@ public class Layout extends JFrame implements CatVia {
     }
 
     public Layout() {
-        getContentPane().setLayout(new CardLayout(0, 0));
+        //Criar Armario
+        Armario armario = new Armario();
+        //Gestor de Vendas
+        GestorVendas gestorvendas = new GestorVendas();
+        //Criar uma venda
+        Venda venda1 = new Venda();
+        //Criar uma compra que é uma arraylist de Medicamentos
+        ArrayList<Medicamento> compra1= new ArrayList<Medicamento>();
+        //Criar Medicamento para inserir na compra
+        Medicamento medicamento1 = new Medicamento();
+        //Definir medicamento
+        medicamento1.setNome("Benuron");
+        medicamento1.setCategoria(1);
+        medicamento1.setViaAdmin(1);
+        //Defenir a venda
+        venda1.setCod_venda(102);
+        venda1.setData_compra(new Date());
+        venda1.setCliente(new Cliente(2,"Nome Cliente",1222, new Date()));
+        //Adicionar medicamento na compra
+        compra1.add(medicamento1);
+        //Adicionar o arraylist dos medicamentos
+        venda1.setMedicamentos(compra1);
+        //Adicionar Vendas ao gestor de vendas
+        gestorvendas.adicionarVenda(venda1);
+        //Imprimir a Vendas
+        //System.out.println(gestorvendas.getVendas());
+        for (int i=0;i<10;i++) {
+            armario.adicionarMedicamento(medicamento1);
+        }getContentPane().setLayout(new CardLayout(0, 0));
         setBounds(100, 100, 842, 580);
         
         JPanel login = new JPanel();
@@ -299,16 +332,12 @@ public class Layout extends JFrame implements CatVia {
         main.add(lblProdutoMaisVendido);
 
         JLabel lblProdutosEmCaminho = new JLabel("Produtos em caminho:");
-        lblProdutosEmCaminho.setBounds(31, 208, 153, 14);
+        lblProdutosEmCaminho.setBounds(31, 197, 153, 14);
         main.add(lblProdutosEmCaminho);
 
         JLabel lblArmazem = new JLabel("Armazem:");
         lblArmazem.setBounds(425, 107, 85, 14);
         main.add(lblArmazem);
-
-        JLabel lblProdutosForaDe = new JLabel("Produtos fora de stock");
-        lblProdutosForaDe.setBounds(438, 130, 149, 14);
-        main.add(lblProdutosForaDe);
 
         JTextPane textProdutosForaStock = new JTextPane();
         textProdutosForaStock.setBounds(448, 155, 353, 147);
@@ -322,9 +351,37 @@ public class Layout extends JFrame implements CatVia {
         textProdutosRecentes.setBounds(448, 338, 353, 147);
         main.add(textProdutosRecentes);
         
-        JList list = new JList();
-        list.setBounds(31, 245, 386, 246);
+        JList list = new JList(armario.getArmarioGaveta(1,1).getMedicamentos().toArray());
+        list.setBounds(31, 261, 386, 244);
         main.add(list);
+        
+        JPanel panel = new JPanel();
+        panel.setToolTipText("");
+        panel.setBorder(new TitledBorder(null, "Produtos Adicionados Recentemente", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+        panel.setBounds(20, 222, 408, 292);
+        main.add(panel);
+        panel.setLayout(null);
+        
+        JLabel lblNome_2 = new JLabel("Nome");
+        lblNome_2.setBounds(6, 16, 46, 14);
+        panel.add(lblNome_2);
+        
+        JLabel lblCategoria_1 = new JLabel("Categoria");
+        lblCategoria_1.setBounds(76, 16, 64, 14);
+        panel.add(lblCategoria_1);
+        
+        JLabel lblViaDeAdm = new JLabel("Via de Admin");
+        lblViaDeAdm.setBounds(149, 16, 77, 14);
+        panel.add(lblViaDeAdm);
+        
+        JLabel lblDataValidade = new JLabel("Data Validade");
+        lblDataValidade.setBounds(247, 16, 77, 14);
+        panel.add(lblDataValidade);
+        
+        JLabel lblPreo = new JLabel("Preço");
+        lblPreo.setBounds(334, 16, 46, 14);
+        panel.add(lblPreo);
+        panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblNome_2, lblCategoria_1, lblViaDeAdm, lblDataValidade, lblPreo}));
 
 
         JLabel lblEscolhaProduto = new JLabel("Escolha produto:");
