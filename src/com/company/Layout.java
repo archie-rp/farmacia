@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import java.awt.CardLayout;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
@@ -20,6 +22,8 @@ import java.util.Date;
 import javax.swing.border.TitledBorder;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Layout extends JFrame implements CatVia {
     private JPanel main;
@@ -66,10 +70,16 @@ public class Layout extends JFrame implements CatVia {
         ArrayList<Medicamento> compra1= new ArrayList<Medicamento>();
         //Criar Medicamento para inserir na compra
         Medicamento medicamento1 = new Medicamento();
+        Medicamento medicamento2 = new Medicamento();
+
         //Definir medicamento
         medicamento1.setNome("Benuron");
-        medicamento1.setCategoria(1);
-        medicamento1.setViaAdmin(1);
+        medicamento1.setCategoria(0);
+        medicamento1.setViaAdmin(0);
+        //medicamento 2
+        medicamento2.setNome("Aspirina");
+        medicamento2.setCategoria(1);
+        medicamento2.setViaAdmin(0);
         //Defenir a venda
         venda1.setCod_venda(102);
         venda1.setData_compra(new Date());
@@ -84,6 +94,7 @@ public class Layout extends JFrame implements CatVia {
         //System.out.println(gestorvendas.getVendas());
         for (int i=0;i<10;i++) {
             armario.adicionarMedicamento(medicamento1);
+            armario.adicionarMedicamento(medicamento2);
         }getContentPane().setLayout(new CardLayout(0, 0));
         setBounds(100, 100, 842, 580);
         
@@ -351,7 +362,7 @@ public class Layout extends JFrame implements CatVia {
         textProdutosRecentes.setBounds(448, 338, 353, 147);
         main.add(textProdutosRecentes);
         
-        JList list = new JList(armario.getArmarioGaveta(1,1).getMedicamentos().toArray());
+        JList list = new JList(armario.getArmarioGaveta(0,0).getMedicamentos().toArray());
         list.setBounds(31, 261, 386, 244);
         main.add(list);
         
@@ -396,19 +407,13 @@ public class Layout extends JFrame implements CatVia {
         lblViaAdmin.setBounds(212, 130, 124, 17);
         venda.add(lblViaAdmin);
 
-        JComboBox comboBoxCategoria = new JComboBox();
+        JComboBox comboBoxCategoria = new JComboBox(categorias);
         comboBoxCategoria.setBounds(31, 155, 172, 20);
         venda.add(comboBoxCategoria);
-        for (int i = 0; i < categorias.length; i++) {
-            comboBoxCategoria.addItem(categorias[i]);
-        }
 
-        JComboBox comboBoxViaAdmin = new JComboBox();
+        JComboBox comboBoxViaAdmin = new JComboBox(vias);
         comboBoxViaAdmin.setBounds(212, 155, 158, 20);
         venda.add(comboBoxViaAdmin);
-        for (int i = 0; i < vias.length; i++) {
-            comboBoxViaAdmin.addItem(vias[i]);
-        }
 
         JButton button = new JButton("Clientes");
         button.addMouseListener(new MouseAdapter() {
@@ -505,10 +510,6 @@ public class Layout extends JFrame implements CatVia {
         btnAdicionar.setBounds(415, 313, 95, 30);
         venda.add(btnAdicionar);
 
-        JTextPane textPesquisaProduto = new JTextPane();
-        textPesquisaProduto.setBounds(31, 186, 340, 157);
-        venda.add(textPesquisaProduto);
-
         JLabel lblDadosCompra = new JLabel("Dados Compra");
         lblDadosCompra.setBounds(31, 365, 120, 14);
         venda.add(lblDadosCompra);
@@ -536,7 +537,53 @@ public class Layout extends JFrame implements CatVia {
         JLabel lblTotal = new JLabel("Total:");
         lblTotal.setBounds(482, 499, 55, 16);
         venda.add(lblTotal);
-
+        //Pre-inicializaçao de valores
+        //Criar a model <- vai armazenar a arraylist, mas usando um Model que é uma especia de Array Próprio do Jlist para ser actualizado! 
+        DefaultListModel model = new DefaultListModel();
+        //Adicionar Elementos caso exista medicamentos na gaveta, caso nao haja remove tudo
+        try {
+	        ArrayList<Medicamento> med= armario.getArmarioGaveta(comboBoxCategoria.getSelectedIndex(),comboBoxViaAdmin.getSelectedIndex()).getMedicamentos();
+	        for(Medicamento medicamento : med){
+	        	//Adiciona os elemetos ao Model
+	        	model.addElement(medicamento.toString());
+	        }
+        }catch (Exception e1){
+			 model.removeAllElements();
+		}
+        //Define qual a Model vai estar a representar na jList
+        JList list_1 = new JList(model);
+        list_1.setBounds(31, 186, 339, 157);
+        venda.add(list_1);
+        //Criar evento caso a Categoria seja Alterada!
+        comboBoxCategoria.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		 try {
+	    			 ArrayList<Medicamento> med= armario.getArmarioGaveta(comboBoxCategoria.getSelectedIndex(),comboBoxViaAdmin.getSelectedIndex()).getMedicamentos();
+	    			 DefaultListModel model = (DefaultListModel)list_1.getModel();
+	    			 model.removeAllElements();
+	        		 for(Medicamento medicamento : med){
+	        	        model.addElement(medicamento.toString());
+	        	     }
+        		 }catch (Exception e1){
+        			 model.removeAllElements();
+        		 }
+        	}
+        });
+      //Criar evento caso a Via de Administraçao seja Alterada!
+        comboBoxViaAdmin.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		try {
+	    			 ArrayList<Medicamento> med= armario.getArmarioGaveta(comboBoxCategoria.getSelectedIndex(),comboBoxViaAdmin.getSelectedIndex()).getMedicamentos();
+	    			 DefaultListModel model = (DefaultListModel)list_1.getModel();
+	    			 model.removeAllElements();
+	        		 for(Medicamento medicamento : med){
+	        	        model.addElement(medicamento.toString());
+	        	     }
+	       		 }catch (Exception e1){
+	       			 model.removeAllElements();
+	       		 }
+        	}
+        });
 
         JButton button_15 = new JButton("Clientes");
         button_15.addMouseListener(new MouseAdapter() {
