@@ -20,7 +20,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.border.TitledBorder;
-import org.eclipse.wb.swing.FocusTraversalOnArray;
+
 import java.awt.Component;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -392,7 +392,7 @@ public class Layout extends JFrame implements CatVia {
         JLabel lblPreo = new JLabel("Preço");
         lblPreo.setBounds(334, 16, 46, 14);
         panel.add(lblPreo);
-        panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblNome_2, lblCategoria_1, lblViaDeAdm, lblDataValidade, lblPreo}));
+
 
 
         JLabel lblEscolhaProduto = new JLabel("Escolha produto:");

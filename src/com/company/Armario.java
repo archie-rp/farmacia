@@ -13,6 +13,7 @@ public class Armario implements Serializable {
         this.nome = "";
         this.quantidade = 0;
     }
+   
 
     public Gaveta[][] getArmario() {
         return armario;
