@@ -25,11 +25,11 @@
 
 
 ##### Panel Adicionar Medicamento
--[ ] Painel para adicionar medicamentos
+- [ ] Painel para adicionar medicamentos
 
 
 ##### Cat Via Admin 
--[x] Inserir os itens | Hugo
+- [x] Inserir os itens | Hugo
 
 
 ##### Medicamentos
