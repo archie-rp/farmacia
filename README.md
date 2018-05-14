@@ -13,15 +13,15 @@
 
 
 ##### Layout 
--[x] Criar layout | Hugo
--[x] Painel Vendas já com combobox a inicializar com dados corretos | hugo
+- [x] Criar layout | Hugo
+- [x] Painel Vendas já com combobox a inicializar com dados corretos | hugo
 
 
 ##### Panel Gerir
--[x] Jlist com os medicamentos | Hugo
--[x] Painel Info com informação detalhada do medicamento selecionado na JList | Hugo
--[ ] Botões Editar para editar um medicamento e remover  
--[ ] Botão para adicionar um novo medicamento 
+- [x] Jlist com os medicamentos | Hugo
+- [x] Painel Info com informação detalhada do medicamento selecionado na JList | Hugo
+- [ ] Botões Editar para editar um medicamento e remover  
+- [ ] Botão para adicionar um novo medicamento 
 
 
 ##### Panel Adicionar Medicamento
