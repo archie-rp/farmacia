@@ -60,5 +60,13 @@ public class Gaveta implements Serializable {
         }
         return string.toString();
     }
+    
+    public boolean contains(String nome) {
+    	
+    	
+    	
+    	return false;
+    }
+    
 }
  
