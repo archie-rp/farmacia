@@ -31,7 +31,7 @@ public class Layout extends JFrame implements CatVia {
     public static void main(String[] args) {
 
         try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.Nimbus.LookAndFeel");
         } catch (Throwable e) {
             System.out.println(e.getMessage());
         }
@@ -879,14 +879,14 @@ public class Layout extends JFrame implements CatVia {
         gbc_lblValidadeShow.gridx = 2;
         gbc_lblValidadeShow.gridy = 5;
         panel_1.add(lblValidadeShow, gbc_lblValidadeShow);
-        
+
         JLabel lblPreo_1 = new JLabel("Preço:");
         GridBagConstraints gbc_lblPreo_1 = new GridBagConstraints();
         gbc_lblPreo_1.insets = new Insets(0, 0, 5, 5);
         gbc_lblPreo_1.gridx = 1;
         gbc_lblPreo_1.gridy = 6;
         panel_1.add(lblPreo_1, gbc_lblPreo_1);
-        
+
         JLabel lblPrecoShow = new JLabel("");
         GridBagConstraints gbc_lblPrecoShow = new GridBagConstraints();
         gbc_lblPrecoShow.insets = new Insets(0, 0, 5, 5);
@@ -910,9 +910,9 @@ public class Layout extends JFrame implements CatVia {
         panel_1.add(btnApagar, gbc_btnApagar);
 
 
-    //Inicializar Jlist
+        //Inicializar Jlist
         JList<Medicamento> list_2 = new JList(armario.getTodos().toArray());
-        list_2.setBounds(61, 131, 423, 255); 
+        list_2.setBounds(61, 131, 423, 255);
         //Inicializar o Scroll Pane para termos barra de scroll
         JScrollPane scrollPane_1 = new JScrollPane();
         scrollPane_1.setViewportView(list_2);
@@ -920,13 +920,13 @@ public class Layout extends JFrame implements CatVia {
         scrollPane_1.setBounds(31, 343, 472, 276);
         //Adicona o scroll pane ao painel Stock
         stock.add(scrollPane_1);
-        
+
         JPanel panel_3 = new JPanel();
         panel_3.setBorder(new TitledBorder(null, "Adicionar Medicamento", TitledBorder.LEADING, TitledBorder.TOP, null, null));
         panel_3.setBounds(25, 102, 635, 182);
         stock.add(panel_3);
         panel_3.setLayout(null);
-        
+
         Panel panel_2 = new Panel();
         panel_2.setBounds(6, 16, 434, 188);
         panel_3.add(panel_2);
@@ -936,7 +936,7 @@ public class Layout extends JFrame implements CatVia {
         gbl_panel_2.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         gbl_panel_2.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         panel_2.setLayout(gbl_panel_2);
-        
+
         JLabel label_2 = new JLabel("Categoria:");
         GridBagConstraints gbc_label_2 = new GridBagConstraints();
         gbc_label_2.insets = new Insets(0, 0, 5, 5);
@@ -944,7 +944,7 @@ public class Layout extends JFrame implements CatVia {
         gbc_label_2.gridx = 1;
         gbc_label_2.gridy = 0;
         panel_2.add(label_2, gbc_label_2);
-        
+
         JLabel label_1 = new JLabel("Via Administração:");
         GridBagConstraints gbc_label_1 = new GridBagConstraints();
         gbc_label_1.anchor = GridBagConstraints.WEST;
@@ -952,7 +952,7 @@ public class Layout extends JFrame implements CatVia {
         gbc_label_1.gridx = 2;
         gbc_label_1.gridy = 0;
         panel_2.add(label_1, gbc_label_1);
-        
+
         JLabel lblDataValidade_2 = new JLabel("Data Validade");
         GridBagConstraints gbc_lblDataValidade_2 = new GridBagConstraints();
         gbc_lblDataValidade_2.anchor = GridBagConstraints.WEST;
@@ -960,7 +960,7 @@ public class Layout extends JFrame implements CatVia {
         gbc_lblDataValidade_2.gridx = 3;
         gbc_lblDataValidade_2.gridy = 0;
         panel_2.add(lblDataValidade_2, gbc_lblDataValidade_2);
-        
+
         JComboBox comboCat = new JComboBox(categorias);
         GridBagConstraints gbc_comboCat = new GridBagConstraints();
         gbc_comboCat.fill = GridBagConstraints.HORIZONTAL;
@@ -969,7 +969,7 @@ public class Layout extends JFrame implements CatVia {
         gbc_comboCat.gridx = 1;
         gbc_comboCat.gridy = 1;
         panel_2.add(comboCat, gbc_comboCat);
-        
+
         JComboBox comboVia = new JComboBox(vias);
         GridBagConstraints gbc_comboVia = new GridBagConstraints();
         gbc_comboVia.fill = GridBagConstraints.HORIZONTAL;
@@ -978,7 +978,7 @@ public class Layout extends JFrame implements CatVia {
         gbc_comboVia.gridx = 2;
         gbc_comboVia.gridy = 1;
         panel_2.add(comboVia, gbc_comboVia);
-        
+
         JLabel lblNome_4 = new JLabel("Nome");
         GridBagConstraints gbc_lblNome_4 = new GridBagConstraints();
         gbc_lblNome_4.anchor = GridBagConstraints.WEST;
@@ -986,7 +986,7 @@ public class Layout extends JFrame implements CatVia {
         gbc_lblNome_4.gridx = 1;
         gbc_lblNome_4.gridy = 2;
         panel_2.add(lblNome_4, gbc_lblNome_4);
-        
+
         textNome = new JTextField();
         GridBagConstraints gbc_textNome = new GridBagConstraints();
         gbc_textNome.insets = new Insets(0, 0, 5, 5);
@@ -995,7 +995,7 @@ public class Layout extends JFrame implements CatVia {
         gbc_textNome.gridy = 2;
         panel_2.add(textNome, gbc_textNome);
         textNome.setColumns(10);
-        
+
         JLabel lblNewLabel = new JLabel("Quantidade");
         GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
         gbc_lblNewLabel.anchor = GridBagConstraints.WEST;
@@ -1003,7 +1003,7 @@ public class Layout extends JFrame implements CatVia {
         gbc_lblNewLabel.gridx = 1;
         gbc_lblNewLabel.gridy = 3;
         panel_2.add(lblNewLabel, gbc_lblNewLabel);
-        
+
         textQuantidade = new JTextField();
         GridBagConstraints gbc_textQuantidade = new GridBagConstraints();
         gbc_textQuantidade.insets = new Insets(0, 0, 5, 5);
@@ -1012,7 +1012,7 @@ public class Layout extends JFrame implements CatVia {
         gbc_textQuantidade.gridy = 3;
         panel_2.add(textQuantidade, gbc_textQuantidade);
         textQuantidade.setColumns(10);
-        
+
         JLabel lblPreo_2 = new JLabel("Preço:");
         GridBagConstraints gbc_lblPreo_2 = new GridBagConstraints();
         gbc_lblPreo_2.anchor = GridBagConstraints.WEST;
@@ -1020,7 +1020,7 @@ public class Layout extends JFrame implements CatVia {
         gbc_lblPreo_2.gridx = 1;
         gbc_lblPreo_2.gridy = 4;
         panel_2.add(lblPreo_2, gbc_lblPreo_2);
-        
+
         textPreco = new JTextField();
         GridBagConstraints gbc_textPreco = new GridBagConstraints();
         gbc_textPreco.insets = new Insets(0, 0, 5, 5);
@@ -1029,35 +1029,34 @@ public class Layout extends JFrame implements CatVia {
         gbc_textPreco.gridy = 4;
         panel_2.add(textPreco, gbc_textPreco);
         textPreco.setColumns(10);
-        
+
         JCalendar dataValidade = new JCalendar();
         dataValidade.setBounds(446, 16, 167, 157);
         panel_3.add(dataValidade);
-        
+
         JButton btnAdicionarGerir = new JButton("Adicionar");
         btnAdicionarGerir.addMouseListener(new MouseAdapter() {
-        	@Override
-        	public void mouseClicked(MouseEvent arg0) {
-        		
-        		if(textNome.getText()!=null&&textQuantidade.getText()!=null) {
-        		Medicamento medic=new Medicamento(textNome.getText(),Integer.valueOf(textPreco.getText()),comboCat.getSelectedIndex(),comboVia.getSelectedIndex(),dataValidade.getCalendar().getTime());
-        			armario.adicionarMedicamento(medic);
-        			list_2.removeAll();
-        			JList<Medicamento> list_2 = new JList(armario.getTodos().toArray());
-        			stock.remove(list_2);
-        			stock.add(list_2);
-        		}
-        		
-        		
-        		
-        	}
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+
+                if (textNome.getText() != null && textQuantidade.getText() != null) {
+                    Medicamento medic = new Medicamento(textNome.getText(), Integer.valueOf(textPreco.getText()), comboCat.getSelectedIndex(), comboVia.getSelectedIndex(), dataValidade.getCalendar().getTime());
+                    armario.adicionarMedicamento(medic);
+                    list_2.removeAll();
+                    JList<Medicamento> list_2 = new JList(armario.getTodos().toArray());
+                    stock.remove(list_2);
+                    stock.add(list_2);
+                }
+
+
+            }
         });
         GridBagConstraints gbc_btnAdicionarGerir = new GridBagConstraints();
         gbc_btnAdicionarGerir.gridx = 3;
         gbc_btnAdicionarGerir.gridy = 5;
         panel_2.add(btnAdicionarGerir, gbc_btnAdicionarGerir);
-        
-      
+
+
         //Evento Selection change e mostra os valores detalhados no form ao lado
         list_2.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent arg0) {
