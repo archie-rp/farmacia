@@ -8,7 +8,7 @@
     - [ ] Ver todas as compras 
     - [ ] Ver todos os medicamentos do mes inseridos
     - [ ] Ver produtos fora de stock
-- [ ] Remover Relatorio
+- [ ] Remover Relatório
 - etc..
 
 
@@ -23,6 +23,7 @@
 - [ ] Botões Editar para editar um medicamento e remover  
 - [ ] Botão para adicionar um novo medicamento 
 - [x] Scroll Panel para a listagem | Hugo Rafael
+- [x] Adicionar Medicamento | Hugo Rafael
 
 
 ##### Panel Adicionar Medicamento

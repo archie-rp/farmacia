@@ -2,7 +2,6 @@ package com.company;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashMap;
 
 public class Medicamento implements CatVia,Serializable {
     private int id;
@@ -15,6 +14,15 @@ public class Medicamento implements CatVia,Serializable {
 
     public Medicamento(int id, String nome, float preco, int cate, int via, Date dataValidade) {
         this.id = id;
+        this.nome = nome;
+        this.preco = preco;
+        this.Categoria = cate;
+        this.ViaAdmin = via;
+        this.dataValidade = dataValidade;
+    }
+    
+    public Medicamento( String nome, float preco, int cate, int via, Date dataValidade) {
+        this.id = 0;
         this.nome = nome;
         this.preco = preco;
         this.Categoria = cate;

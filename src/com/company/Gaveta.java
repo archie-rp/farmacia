@@ -2,7 +2,6 @@ package com.company;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Gaveta implements Serializable {
     ArrayList<Medicamento> medicamentos;

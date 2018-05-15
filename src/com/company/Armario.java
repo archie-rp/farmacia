@@ -15,8 +15,23 @@ public class Armario implements Serializable {
     }
 
 
-    public Gaveta[][] getArmario() {
-        return armario;
+    public ArrayList<Medicamento> getTodos() {
+    	ArrayList<Medicamento> medic=new ArrayList<Medicamento>();
+    	for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 10; j++) {
+
+                try {
+                   medic.addAll(  armario[i][j].getMedicamentos());
+                  
+                    }
+                catch (Exception e){
+
+                }
+
+            }
+        }
+    	
+    	return medic;
     }
 
     public Gaveta getArmarioGaveta(int cat, int via) {
