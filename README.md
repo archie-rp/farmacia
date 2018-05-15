@@ -19,9 +19,10 @@
 
 ##### Panel Gerir
 - [x] Jlist com os medicamentos | Hugo
-- [x] Painel Info com informação detalhada do medicamento selecionado na JList | Hugo
+- [x] Painel Info com informação detalhada do medicamento selecionado na JList e já com stock | Hugo
 - [ ] Botões Editar para editar um medicamento e remover  
 - [ ] Botão para adicionar um novo medicamento 
+- [x] Scroll Panel para a listagem | Hugo Rafael
 
 
 ##### Panel Adicionar Medicamento
@@ -45,6 +46,7 @@
 - [x] Remover medicamento (todos)
 - [x] Editar medicamento (todos)
 - [ ] Adicionar Exceptions
+- [x] Adicionar metodo para contagem de stock de determinado medicamento | Rafael
 
 ##### Gaveta
 - [x] Criar Classe Gaveta
@@ -52,6 +54,7 @@
 - [x] Remover medicamento (nome) <- o primeiro que encontrar!
 - [x] Editar medicamento (nome) <- Editar mas só se houver engano ao adicionar individualmente! 
 - [ ] Adicionar Exceptions
+- [x] Adicionar metodo para contagem de stock de determinado medicamento | Rafael
 
 ##### Gestor de Clientes e Clientes 
 - [ ] Criar Gestor de Clientes

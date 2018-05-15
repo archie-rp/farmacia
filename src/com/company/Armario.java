@@ -13,13 +13,34 @@ public class Armario implements Serializable {
         this.nome = "";
         this.quantidade = 0;
     }
-   
+
 
     public Gaveta[][] getArmario() {
         return armario;
     }
+
     public Gaveta getArmarioGaveta(int cat, int via) {
         return armario[cat][via];
+    }
+
+    public int getMedicamentoQuantidade(Medicamento medicamento) {
+        int total = 0;
+
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 10; j++) {
+
+                try {
+                    int medic = armario[i][j].getMedicamentoQuantidade(medicamento);
+                    if (medic > 0) {
+                        total += medic;
+                    }
+                } catch (Exception e){
+
+                }
+
+            }
+        }
+        return total;
     }
 
     public void setArmario(Gaveta[][] armario) {
@@ -77,7 +98,7 @@ public class Armario implements Serializable {
     }
 
     public boolean removerMedicamento(String nome) {
-        int back_quantidade= this.quantidade;
+        int back_quantidade = this.quantidade;
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
                 if (armario[i][j] != null && armario[i][j].removerMedicamento(nome)) {
@@ -85,16 +106,15 @@ public class Armario implements Serializable {
                 }
             }
         }
-        if (back_quantidade > this.quantidade){
+        if (back_quantidade > this.quantidade) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
 
     public boolean atualizarMedicamento(String nome, Medicamento novo_med) {
-        int med_actualizados= 0;
+        int med_actualizados = 0;
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
                 if (armario[i][j] != null && armario[i][j].updateMedicamento(nome, novo_med)) {
@@ -102,10 +122,9 @@ public class Armario implements Serializable {
                 }
             }
         }
-        if (med_actualizados > 0){
+        if (med_actualizados > 0) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }

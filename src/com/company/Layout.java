@@ -31,6 +31,7 @@ import java.lang.*;
 
 
 import javax.swing.event.ListSelectionEvent;
+import javax.swing.JScrollPane;
 
 public class Layout extends JFrame implements CatVia {
     private JPanel main;
@@ -85,7 +86,7 @@ public class Layout extends JFrame implements CatVia {
         medicamento1.setViaAdmin(0);
         //medicamento 2
         medicamento2.setNome("Aspirina");
-        medicamento2.setCategoria(1);
+        medicamento2.setCategoria(0);
         medicamento2.setViaAdmin(0);
         //Defenir a venda
         venda1.setCod_venda(102);
@@ -99,9 +100,13 @@ public class Layout extends JFrame implements CatVia {
         gestorvendas.adicionarVenda(venda1);
         //Imprimir a Vendas
         //System.out.println(gestorvendas.getVendas());
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
             armario.adicionarMedicamento(medicamento1);
             armario.adicionarMedicamento(medicamento2);
+        }
+        for (int i = 0; i < 10; i++) {
+            armario.adicionarMedicamento(medicamento1);
+
         }
         getContentPane().setLayout(new CardLayout(0, 0));
         setBounds(100, 100, 980, 630);
@@ -780,11 +785,11 @@ public class Layout extends JFrame implements CatVia {
         stock.add(btnClientesStock);
 
         JLabel lblProcurarProduto = new JLabel("Procurar Produto:");
-        lblProcurarProduto.setBounds(51, 102, 141, 16);
+        lblProcurarProduto.setBounds(31, 251, 141, 16);
         stock.add(lblProcurarProduto);
 
         textPesquisarStock = new JTextField();
-        textPesquisarStock.setBounds(162, 100, 192, 20);
+        textPesquisarStock.setBounds(142, 249, 192, 20);
         stock.add(textPesquisarStock);
         textPesquisarStock.setColumns(10);
 
@@ -796,15 +801,12 @@ public class Layout extends JFrame implements CatVia {
 
             }
         });
-        btnPesquisar.setBounds(366, 97, 98, 26);
+        btnPesquisar.setBounds(346, 246, 98, 26);
         stock.add(btnPesquisar);
 
-        JLabel lblProdutosSemStock = new JLabel("Info:");
-        lblProdutosSemStock.setBounds(529, 102, 72, 16);
-        stock.add(lblProdutosSemStock);
-
         JPanel panel_1 = new JPanel();
-        panel_1.setBounds(523, 125, 429, 255);
+        panel_1.setBorder(new TitledBorder(null, "Informação detalhada: ", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+        panel_1.setBounds(523, 294, 429, 255);
         stock.add(panel_1);
         GridBagLayout gbl_panel_1 = new GridBagLayout();
         gbl_panel_1.columnWidths = new int[]{138, 288, 0};
@@ -908,20 +910,25 @@ public class Layout extends JFrame implements CatVia {
         panel_1.add(btnApagar, gbc_btnApagar);
 
 
+    //Inicializar Jlist
         JList<Medicamento> list_2 = new JList(armario.getArmarioGaveta(0, 0).getMedicamentos().toArray());
+        list_2.setBounds(61, 131, 423, 255); 
+        //Inicializar o Scroll Pane para termos barra de scroll
+        JScrollPane scrollPane_1 = new JScrollPane();
+        scrollPane_1.setViewportView(list_2);
+        scrollPane_1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane_1.setBounds(31, 294, 472, 276);
+        //Adicona o scroll pane ao painel Stock
+        stock.add(scrollPane_1);
 
-        list_2.setBounds(61, 129, 423, 255);
-        stock.add(list_2);
-
+        //Evento Selection change e mostra os valores detalhados no form ao lado
         list_2.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent arg0) {
-
                 Medicamento s = (Medicamento) list_2.getSelectedValue();
-
-
                 lblNomeShow.setText(s.getNome());
                 lbCategoriaShow.setText(categorias[s.getCategoria()]);
                 lblViaShow.setText(vias[s.getViaAdmin()]);
+                lblStockShow.setText(String.valueOf(armario.getMedicamentoQuantidade(s)));
                 lblValidadeShow.setText(s.getDataValidade().toString());
             }
         });

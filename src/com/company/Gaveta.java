@@ -18,6 +18,17 @@ public class Gaveta implements Serializable {
     public int getQuantidade() {
         return this.medicamentos.size();
     }
+    
+    public int getMedicamentoQuantidade(Medicamento medicamento) {
+    	int i=0;
+    	for (Medicamento medicamento_ : medicamentos) {
+            if (medicamento_ != null && medicamento_.getNome() == medicamento.getNome()) {
+               i++;
+            }            
+        }
+    	
+    	return i;
+    }
 
     public ArrayList<Medicamento> getMedicamentos() {
         return medicamentos;
