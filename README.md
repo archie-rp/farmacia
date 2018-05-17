@@ -21,9 +21,10 @@
 - [x] Jlist com os medicamentos | Hugo
 - [x] Painel Info com informação detalhada do medicamento selecionado na JList e já com stock | Hugo
 - [ ] Botões Editar para editar um medicamento e remover  
-- [ ] Botão para adicionar um novo medicamento 
 - [x] Scroll Panel para a listagem | Hugo Rafael
 - [x] Adicionar Medicamento | Hugo Rafael
+- [x] Remover Medicamento | Hugo Rafael
+- [x] JList sempre atualizada adicionando ou removendo medicamentos | Hugo Rafael
 
 
 ##### Panel Adicionar Medicamento
@@ -48,6 +49,7 @@
 - [x] Editar medicamento (todos)
 - [ ] Adicionar Exceptions
 - [x] Adicionar metodo para contagem de stock de determinado medicamento | Rafael
+- [ ] Melhorar o metodo getMedicamentos() para validar se os valores são nulos
 
 ##### Gaveta
 - [x] Criar Classe Gaveta
