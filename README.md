@@ -20,7 +20,7 @@
 ##### Panel Gerir
 - [x] Jlist com os medicamentos | Hugo
 - [x] Painel Info com informação detalhada do medicamento selecionado na JList e já com stock | Hugo
-- [ ] Botões Editar para editar um medicamento e remover  
+- [ ] Botões Editar para editar um medicamento  
 - [x] Scroll Panel para a listagem | Hugo Rafael
 - [x] Adicionar Medicamento | Hugo Rafael
 - [x] Remover Medicamento | Hugo Rafael
