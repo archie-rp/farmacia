@@ -21,10 +21,10 @@
 
 ##### Painel Home
 - [ ] Calcular o valores para apresentar
-    -[ ] Apresetar vendas mensais
-    -[ ] Apresentar Quantidade de vendas
-    -[ ] Apresentar Total de Novos Clientes
-    -[ ] Apresentar Produto mais Vendido
+    - [ ] Apresetar vendas mensais
+    - [ ] Apresentar Quantidade de vendas
+    - [ ] Apresentar Total de Novos Clientes
+    - [ ] Apresentar Produto mais Vendido
 - [ ] Calcular os medicamentos certos para apresentar nos Produtos Recentes
 - [ ] Apresentar os medicamentos em armazem
 
