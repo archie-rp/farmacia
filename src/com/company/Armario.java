@@ -21,7 +21,7 @@ public class Armario implements Serializable {
             for (int j = 0; j < 10; j++) {
 
                 try {
-                   medic.addAll(  armario[i][j].getMedicamentos());
+                   medic.addAll( armario[i][j].getMedicamentos());
                   
                     }
                 catch (Exception e){
@@ -101,7 +101,7 @@ public class Armario implements Serializable {
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
                 if (armario[i][j] != null) {
-                    string.append(armario[i][j].getMedicamentos());
+                    string.append("\n"+ armario[i][j].getMedicamentos());
                 }
             }
         }

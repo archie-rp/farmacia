@@ -105,7 +105,7 @@ public class Medicamento implements CatVia,Serializable {
         string.append(this.categorias[this.getCategoria()]+ " ");
         string.append(this.vias[this.getViaAdmin()]+ " ");
         string.append(this.getDataValidade()+ " ");
-        string.append(this.preco+ " ");
+        string.append(this.preco+ "  \n");
         return string.toString();
     }
 

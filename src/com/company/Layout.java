@@ -45,11 +45,7 @@ public class Layout extends JFrame implements CatVia {
                     e.printStackTrace();
                 }
             }
-
-
         });
-
-
     }
 
     public Layout() {
@@ -793,6 +789,7 @@ public class Layout extends JFrame implements CatVia {
         panel_1.setBorder(new TitledBorder(null, "Informação detalhada: ", TitledBorder.LEADING, TitledBorder.TOP, null, null));
         panel_1.setBounds(523, 345, 429, 255);
         stock.add(panel_1);
+
         GridBagLayout gbl_panel_1 = new GridBagLayout();
         gbl_panel_1.columnWidths = new int[]{59, 138, 288, 0, 0};
         gbl_panel_1.rowHeights = new int[]{0, 32, 30, 34, 30, 30, 0, 0, 0};
@@ -903,6 +900,7 @@ public class Layout extends JFrame implements CatVia {
         panel_1.add(btnNewButton, gbc_btnNewButton);
 
         JButton btnApagar = new JButton("Apagar");
+       
         GridBagConstraints gbc_btnApagar = new GridBagConstraints();
         gbc_btnApagar.insets = new Insets(0, 0, 0, 5);
         gbc_btnApagar.gridx = 2;
@@ -911,7 +909,11 @@ public class Layout extends JFrame implements CatVia {
 
 
         //Inicializar Jlist
-        JList<Medicamento> list_2 = new JList(armario.getTodos().toArray());
+       /* DefaultListModel model1 = new DefaultListModel();
+        model1.addElement(armario.getTodos().toArray());
+        JList<Medicamento> list_2 = new JList(model1);*/
+        JList list_2 = new JList(armario.getTodos().toArray());
+
         list_2.setBounds(61, 131, 423, 255);
         //Inicializar o Scroll Pane para termos barra de scroll
         JScrollPane scrollPane_1 = new JScrollPane();
@@ -923,7 +925,7 @@ public class Layout extends JFrame implements CatVia {
 
         JPanel panel_3 = new JPanel();
         panel_3.setBorder(new TitledBorder(null, "Adicionar Medicamento", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        panel_3.setBounds(25, 102, 635, 182);
+        panel_3.setBounds(25, 87, 839, 212);
         stock.add(panel_3);
         panel_3.setLayout(null);
 
@@ -979,6 +981,7 @@ public class Layout extends JFrame implements CatVia {
         gbc_comboVia.gridy = 1;
         panel_2.add(comboVia, gbc_comboVia);
 
+
         JLabel lblNome_4 = new JLabel("Nome");
         GridBagConstraints gbc_lblNome_4 = new GridBagConstraints();
         gbc_lblNome_4.anchor = GridBagConstraints.WEST;
@@ -1030,9 +1033,11 @@ public class Layout extends JFrame implements CatVia {
         panel_2.add(textPreco, gbc_textPreco);
         textPreco.setColumns(10);
 
+
         JCalendar dataValidade = new JCalendar();
-        dataValidade.setBounds(446, 16, 167, 157);
+        dataValidade.setBounds(489, 16, 315, 188);
         panel_3.add(dataValidade);
+
 
         JButton btnAdicionarGerir = new JButton("Adicionar");
         btnAdicionarGerir.addMouseListener(new MouseAdapter() {
@@ -1042,15 +1047,23 @@ public class Layout extends JFrame implements CatVia {
                 if (textNome.getText() != null && textQuantidade.getText() != null) {
                     Medicamento medic = new Medicamento(textNome.getText(), Integer.valueOf(textPreco.getText()), comboCat.getSelectedIndex(), comboVia.getSelectedIndex(), dataValidade.getCalendar().getTime());
                     armario.adicionarMedicamento(medic);
-                    list_2.removeAll();
-                    JList<Medicamento> list_2 = new JList(armario.getTodos().toArray());
-                    stock.remove(list_2);
-                    stock.add(list_2);
+
+
+                    try {
+                        Object[] modelMedic = armario.getTodos().toArray();
+                        // list_2.removeAll();
+                        list_2.setListData(modelMedic);
+
+                        scrollPane_1.revalidate();
+                        scrollPane_1.repaint();
+                    } catch (Exception b) {
+                        JOptionPane.showMessageDialog(null, "Erro ao introduzir medicamento");
+
+                    }
                 }
-
-
             }
         });
+
         GridBagConstraints gbc_btnAdicionarGerir = new GridBagConstraints();
         gbc_btnAdicionarGerir.gridx = 3;
         gbc_btnAdicionarGerir.gridy = 5;
@@ -1070,6 +1083,29 @@ public class Layout extends JFrame implements CatVia {
             }
         });
 
+        btnApagar.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent arg0) {
+        		try {
+        			
+        			 Medicamento s = (Medicamento) list_2.getSelectedValue();
+        			 
+        		}
+        		catch(Exception e){
+        			
+        		}
+        		  try {
+                      Object[] modelMedic = armario.getTodos().toArray();
+                      // list_2.removeAll();
+                      list_2.setListData(modelMedic);
 
+                      scrollPane_1.revalidate();
+                      scrollPane_1.repaint();
+                  } catch (Exception b) {
+                      JOptionPane.showMessageDialog(null, "Erro ao introduzir medicamento");
+
+                  }
+        	}
+        });
     }
 }
