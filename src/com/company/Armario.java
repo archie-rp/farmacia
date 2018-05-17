@@ -16,22 +16,29 @@ public class Armario implements Serializable {
 
 
     public ArrayList<Medicamento> getTodos() {
-    	ArrayList<Medicamento> medic=new ArrayList<Medicamento>();
-    	for (int i = 0; i < 20; i++) {
+        ArrayList<Medicamento> medic = new ArrayList<Medicamento>();
+        for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
 
                 try {
-                   medic.addAll( armario[i][j].getMedicamentos());
-                  
+                    if (armario[i][j].getMedicamentos().isEmpty() ) {
+
+                    } else {
+
+                        medic.addAll(armario[i][j].getMedicamentos());
                     }
-                catch (Exception e){
+
+                } catch (NullPointerException e) {
+                    //Se o medic for nulo não fazer nada
+                   // System.out.println(e);
+                    break;
 
                 }
 
             }
         }
-    	
-    	return medic;
+
+        return medic;
     }
 
     public Gaveta getArmarioGaveta(int cat, int via) {
@@ -49,7 +56,7 @@ public class Armario implements Serializable {
                     if (medic > 0) {
                         total += medic;
                     }
-                } catch (Exception e){
+                } catch (Exception e) {
 
                 }
 
@@ -101,7 +108,7 @@ public class Armario implements Serializable {
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
                 if (armario[i][j] != null) {
-                    string.append("\n"+ armario[i][j].getMedicamentos());
+                    string.append("\n" + armario[i][j].getMedicamentos());
                 }
             }
         }
@@ -112,11 +119,11 @@ public class Armario implements Serializable {
         return armario[cat][via].getQuantidade();
     }
 
-    public boolean removerMedicamento(String nome) {
+    public boolean removerMedicamento(Medicamento medic) {
         int back_quantidade = this.quantidade;
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
-                if (armario[i][j] != null && armario[i][j].removerMedicamento(nome)) {
+                if (armario[i][j] != null && armario[i][j].removerMedicamento(medic.getNome().toString())) {
                     this.quantidade--;
                 }
             }

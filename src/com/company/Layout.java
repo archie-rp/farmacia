@@ -900,7 +900,7 @@ public class Layout extends JFrame implements CatVia {
         panel_1.add(btnNewButton, gbc_btnNewButton);
 
         JButton btnApagar = new JButton("Apagar");
-       
+
         GridBagConstraints gbc_btnApagar = new GridBagConstraints();
         gbc_btnApagar.insets = new Insets(0, 0, 0, 5);
         gbc_btnApagar.gridx = 2;
@@ -1084,28 +1084,24 @@ public class Layout extends JFrame implements CatVia {
         });
 
         btnApagar.addMouseListener(new MouseAdapter() {
-        	@Override
-        	public void mouseClicked(MouseEvent arg0) {
-        		try {
-        			
-        			 Medicamento s = (Medicamento) list_2.getSelectedValue();
-        			 
-        		}
-        		catch(Exception e){
-        			
-        		}
-        		  try {
-                      Object[] modelMedic = armario.getTodos().toArray();
-                      // list_2.removeAll();
-                      list_2.setListData(modelMedic);
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                try {
+                    Medicamento s = (Medicamento) list_2.getSelectedValue();
+                    armario.removerMedicamento(s);
+                } catch (Exception e) {
 
-                      scrollPane_1.revalidate();
-                      scrollPane_1.repaint();
-                  } catch (Exception b) {
-                      JOptionPane.showMessageDialog(null, "Erro ao introduzir medicamento");
+                }
+                try {
+                    list_2.setListData(armario.getTodos().toArray());
+                    scrollPane_1.revalidate();
+                    scrollPane_1.repaint();
+                } catch (NullPointerException e) {
+                    //se o objecto for nulo não fazer nada :)
 
-                  }
-        	}
+
+                }
+            }
         });
     }
 }
