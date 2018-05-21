@@ -546,11 +546,12 @@ public class Layout extends JFrame implements CatVia {
         DefaultListModel model = new DefaultListModel();
         //Adicionar Elementos caso exista medicamentos na gaveta, caso nao haja remove tudo
         try {
-            ArrayList<Medicamento> med = armario.getArmarioGaveta(comboBoxCategoria.getSelectedIndex(), comboBoxViaAdmin.getSelectedIndex()).getMedicamentos();
-            for (Medicamento medicamento : med) {
+            ArrayList <GestorVendas> vendas = new ArrayList<GestorVendas> ();
+            //for (GestorVendas vendas_ : venda1) {
                 //Adiciona os elemetos ao Model
-                model.addElement(medicamento.toString());
-            }
+            	System.out.println(venda1.toString());
+                model.addElement(venda1.toString());
+            //}
         } catch (Exception e1) {
             model.removeAllElements();
         }

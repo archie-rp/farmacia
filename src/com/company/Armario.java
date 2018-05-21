@@ -125,6 +125,7 @@ public class Armario implements Serializable {
             for (int j = 0; j < 10; j++) {
                 if (armario[i][j] != null && armario[i][j].removerMedicamento(medic.getNome().toString())) {
                     this.quantidade--;
+                   medic =null;
                 }
             }
         }
