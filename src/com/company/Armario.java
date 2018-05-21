@@ -31,7 +31,7 @@ public class Armario implements Serializable {
                 } catch (NullPointerException e) {
                     //Se o medic for nulo não fazer nada
                    // System.out.println(e);
-                    break;
+                    //break;
 
                 }
 

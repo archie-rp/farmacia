@@ -1,5 +1,5 @@
 package com.company;
-
+//import com.sun.beans.editors.IntegerEditor;
 
 import com.toedter.calendar.JCalendar;
 
@@ -27,6 +27,11 @@ public class Layout extends JFrame implements CatVia {
     private JTextField textNome;
     private JTextField textQuantidade;
     private JTextField textPreco;
+    private JTextField nomeStock;
+    private JTextField stockStock;
+    private JTextField validadeStock;
+    private JTextField precoStock;
+    private boolean editar = false;
 
     public static void main(String[] args) {
 
@@ -87,7 +92,6 @@ public class Layout extends JFrame implements CatVia {
         }
         for (int i = 0; i < 10; i++) {
             armario.adicionarMedicamento(medicamento1);
-
         }
         getContentPane().setLayout(new CardLayout(0, 0));
         setBounds(100, 100, 980, 691);
@@ -124,7 +128,6 @@ public class Layout extends JFrame implements CatVia {
 
         main.setLayout(null);
 
-
         //Paineis e a iniciliação
         JPanel stock = new JPanel();
         getContentPane().add(stock, "name_14847299319921");
@@ -145,7 +148,6 @@ public class Layout extends JFrame implements CatVia {
         getContentPane().add(clientes, "name_14223925552743");
         clientes.setLayout(null);
         clientes.setVisible(false);
-
 
         JButton btnLogin = new JButton("Login");
         btnLogin.addMouseListener(new MouseAdapter() {
@@ -168,7 +170,6 @@ public class Layout extends JFrame implements CatVia {
                 relatorio.setVisible(false);
                 clientes.setVisible(false);
                 stock.setVisible(false);
-
             }
         });
 
@@ -250,13 +251,23 @@ public class Layout extends JFrame implements CatVia {
         lblUltimosRelatrios.setBounds(31, 100, 135, 16);
         relatorio.add(lblUltimosRelatrios);
 
-        JTextPane textRelatorio = new JTextPane();
-        textRelatorio.setBounds(31, 127, 366, 218);
-        relatorio.add(textRelatorio);
-
         JLabel lblAlertas = new JLabel("Total alertas: ");
         lblAlertas.setBounds(418, 125, 108, 16);
         relatorio.add(lblAlertas);
+
+        JList list_3 = new JList();
+        list_3.setBounds(31, 123, 381, 304);
+        relatorio.add(list_3);
+
+
+        try {
+            list_3.setListData(armario.getTodos().toArray());
+
+        } catch (NullPointerException e) {
+            //se o objecto for nulo não fazer nada :)
+
+
+        }
 
         //Botao home
         JButton btnHome = new JButton("Home");
@@ -787,113 +798,178 @@ public class Layout extends JFrame implements CatVia {
 
         JPanel panel_1 = new JPanel();
         panel_1.setBorder(new TitledBorder(null, "Informação detalhada: ", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        panel_1.setBounds(523, 345, 429, 255);
+        panel_1.setBounds(523, 345, 429, 296);
         stock.add(panel_1);
 
         GridBagLayout gbl_panel_1 = new GridBagLayout();
-        gbl_panel_1.columnWidths = new int[]{59, 138, 288, 0, 0};
-        gbl_panel_1.rowHeights = new int[]{0, 32, 30, 34, 30, 30, 0, 0, 0};
-        gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+        gbl_panel_1.columnWidths = new int[]{8, 156, 210, 0};
+        gbl_panel_1.rowHeights = new int[]{0, 32, 30, 34, 30, 22, 10, 65, 0};
+        gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
         gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         panel_1.setLayout(gbl_panel_1);
 
         JLabel lblNome_3 = new JLabel("Nome:");
         GridBagConstraints gbc_lblNome_3 = new GridBagConstraints();
-        gbc_lblNome_3.fill = GridBagConstraints.BOTH;
+        gbc_lblNome_3.anchor = GridBagConstraints.WEST;
+        gbc_lblNome_3.fill = GridBagConstraints.VERTICAL;
         gbc_lblNome_3.insets = new Insets(0, 0, 5, 5);
         gbc_lblNome_3.gridx = 1;
         gbc_lblNome_3.gridy = 1;
         panel_1.add(lblNome_3, gbc_lblNome_3);
 
-        JLabel lblNomeShow = new JLabel("");
-        GridBagConstraints gbc_lblNomeShow = new GridBagConstraints();
-        gbc_lblNomeShow.anchor = GridBagConstraints.WEST;
-        gbc_lblNomeShow.insets = new Insets(0, 0, 5, 5);
-        gbc_lblNomeShow.gridx = 2;
-        gbc_lblNomeShow.gridy = 1;
-        panel_1.add(lblNomeShow, gbc_lblNomeShow);
+        nomeStock = new JTextField();
+        nomeStock.setEditable(false);
+        GridBagConstraints gbc_nomeStock = new GridBagConstraints();
+        gbc_nomeStock.insets = new Insets(0, 0, 5, 0);
+        gbc_nomeStock.fill = GridBagConstraints.HORIZONTAL;
+        gbc_nomeStock.gridx = 2;
+        gbc_nomeStock.gridy = 1;
+        panel_1.add(nomeStock, gbc_nomeStock);
+        nomeStock.setColumns(10);
 
         JLabel lblCategoria_2 = new JLabel("Categoria:");
         GridBagConstraints gbc_lblCategoria_2 = new GridBagConstraints();
-        gbc_lblCategoria_2.fill = GridBagConstraints.BOTH;
+        gbc_lblCategoria_2.anchor = GridBagConstraints.WEST;
+        gbc_lblCategoria_2.fill = GridBagConstraints.VERTICAL;
         gbc_lblCategoria_2.insets = new Insets(0, 0, 5, 5);
         gbc_lblCategoria_2.gridx = 1;
         gbc_lblCategoria_2.gridy = 2;
         panel_1.add(lblCategoria_2, gbc_lblCategoria_2);
 
-        JLabel lbCategoriaShow = new JLabel("");
-        GridBagConstraints gbc_lbCategoriaShow = new GridBagConstraints();
-        gbc_lbCategoriaShow.anchor = GridBagConstraints.WEST;
-        gbc_lbCategoriaShow.insets = new Insets(0, 0, 5, 5);
-        gbc_lbCategoriaShow.gridx = 2;
-        gbc_lbCategoriaShow.gridy = 2;
-        panel_1.add(lbCategoriaShow, gbc_lbCategoriaShow);
+        JComboBox comboBox = new JComboBox(categorias);
+        comboBox.setEnabled(false);
+        GridBagConstraints gbc_comboBox = new GridBagConstraints();
+        gbc_comboBox.insets = new Insets(0, 0, 5, 0);
+        gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
+        gbc_comboBox.gridx = 2;
+        gbc_comboBox.gridy = 2;
+        panel_1.add(comboBox, gbc_comboBox);
 
         JLabel lblViaDeAdministrao = new JLabel("Via de Administração:");
         GridBagConstraints gbc_lblViaDeAdministrao = new GridBagConstraints();
-        gbc_lblViaDeAdministrao.fill = GridBagConstraints.BOTH;
+        gbc_lblViaDeAdministrao.anchor = GridBagConstraints.WEST;
+        gbc_lblViaDeAdministrao.fill = GridBagConstraints.VERTICAL;
         gbc_lblViaDeAdministrao.insets = new Insets(0, 0, 5, 5);
         gbc_lblViaDeAdministrao.gridx = 1;
         gbc_lblViaDeAdministrao.gridy = 3;
         panel_1.add(lblViaDeAdministrao, gbc_lblViaDeAdministrao);
 
-        JLabel lblViaShow = new JLabel("");
-        GridBagConstraints gbc_lblViaShow = new GridBagConstraints();
-        gbc_lblViaShow.anchor = GridBagConstraints.WEST;
-        gbc_lblViaShow.insets = new Insets(0, 0, 5, 5);
-        gbc_lblViaShow.gridx = 2;
-        gbc_lblViaShow.gridy = 3;
-        panel_1.add(lblViaShow, gbc_lblViaShow);
+        JComboBox comboBox_1 = new JComboBox(vias);
+        comboBox_1.setEnabled(false);
+        GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
+        gbc_comboBox_1.insets = new Insets(0, 0, 5, 0);
+        gbc_comboBox_1.fill = GridBagConstraints.HORIZONTAL;
+        gbc_comboBox_1.gridx = 2;
+        gbc_comboBox_1.gridy = 3;
+        panel_1.add(comboBox_1, gbc_comboBox_1);
 
         JLabel lblStock = new JLabel("Stock:");
         GridBagConstraints gbc_lblStock = new GridBagConstraints();
-        gbc_lblStock.fill = GridBagConstraints.BOTH;
+        gbc_lblStock.anchor = GridBagConstraints.WEST;
+        gbc_lblStock.fill = GridBagConstraints.VERTICAL;
         gbc_lblStock.insets = new Insets(0, 0, 5, 5);
         gbc_lblStock.gridx = 1;
         gbc_lblStock.gridy = 4;
         panel_1.add(lblStock, gbc_lblStock);
 
-        JLabel lblStockShow = new JLabel("");
-        GridBagConstraints gbc_lblStockShow = new GridBagConstraints();
-        gbc_lblStockShow.anchor = GridBagConstraints.WEST;
-        gbc_lblStockShow.insets = new Insets(0, 0, 5, 5);
-        gbc_lblStockShow.gridx = 2;
-        gbc_lblStockShow.gridy = 4;
-        panel_1.add(lblStockShow, gbc_lblStockShow);
+        stockStock = new JTextField();
+        stockStock.setEditable(false);
+        GridBagConstraints gbc_stockStock = new GridBagConstraints();
+        gbc_stockStock.insets = new Insets(0, 0, 5, 0);
+        gbc_stockStock.fill = GridBagConstraints.HORIZONTAL;
+        gbc_stockStock.gridx = 2;
+        gbc_stockStock.gridy = 4;
+        panel_1.add(stockStock, gbc_stockStock);
+        stockStock.setColumns(10);
 
         JLabel lblDataValidade_1 = new JLabel("Data Validade");
         GridBagConstraints gbc_lblDataValidade_1 = new GridBagConstraints();
+        gbc_lblDataValidade_1.anchor = GridBagConstraints.WEST;
         gbc_lblDataValidade_1.insets = new Insets(0, 0, 5, 5);
-        gbc_lblDataValidade_1.fill = GridBagConstraints.BOTH;
+        gbc_lblDataValidade_1.fill = GridBagConstraints.VERTICAL;
         gbc_lblDataValidade_1.gridx = 1;
         gbc_lblDataValidade_1.gridy = 5;
         panel_1.add(lblDataValidade_1, gbc_lblDataValidade_1);
 
-        JLabel lblValidadeShow = new JLabel("");
-        GridBagConstraints gbc_lblValidadeShow = new GridBagConstraints();
-        gbc_lblValidadeShow.anchor = GridBagConstraints.WEST;
-        gbc_lblValidadeShow.insets = new Insets(0, 0, 5, 5);
-        gbc_lblValidadeShow.gridx = 2;
-        gbc_lblValidadeShow.gridy = 5;
-        panel_1.add(lblValidadeShow, gbc_lblValidadeShow);
+        validadeStock = new JTextField();
+        validadeStock.setEditable(false);
+        GridBagConstraints gbc_validadeStock = new GridBagConstraints();
+        gbc_validadeStock.insets = new Insets(0, 0, 5, 0);
+        gbc_validadeStock.fill = GridBagConstraints.HORIZONTAL;
+        gbc_validadeStock.gridx = 2;
+        gbc_validadeStock.gridy = 5;
+        panel_1.add(validadeStock, gbc_validadeStock);
+        validadeStock.setColumns(10);
 
         JLabel lblPreo_1 = new JLabel("Preço:");
         GridBagConstraints gbc_lblPreo_1 = new GridBagConstraints();
+        gbc_lblPreo_1.anchor = GridBagConstraints.WEST;
         gbc_lblPreo_1.insets = new Insets(0, 0, 5, 5);
         gbc_lblPreo_1.gridx = 1;
         gbc_lblPreo_1.gridy = 6;
         panel_1.add(lblPreo_1, gbc_lblPreo_1);
 
-        JLabel lblPrecoShow = new JLabel("");
-        GridBagConstraints gbc_lblPrecoShow = new GridBagConstraints();
-        gbc_lblPrecoShow.insets = new Insets(0, 0, 5, 5);
-        gbc_lblPrecoShow.gridx = 2;
-        gbc_lblPrecoShow.gridy = 6;
-        panel_1.add(lblPrecoShow, gbc_lblPrecoShow);
+        JList list_2 = new JList(armario.getTodos().toArray());
 
         JButton btnNewButton = new JButton("Editar");
+        btnNewButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+            }
+        });
+
+        btnNewButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                if (editar == false) {
+                    btnNewButton.setText("Gravar");
+                    Medicamento medic = new Medicamento();
+                    medic = (Medicamento) list_2.getSelectedValue();
+
+                    nomeStock.setEditable(true);
+                    comboBox.setEnabled(true);
+                    comboBox_1.setEnabled(true);
+                    stockStock.setEditable(true);
+                    validadeStock.setEditable(true);
+                    precoStock.setEditable(true);
+
+                    editar = true;
+
+
+                } else {
+                    Medicamento medic = new Medicamento();
+                    medic = (Medicamento) list_2.getSelectedValue();
+                    medic.setNome(nomeStock.getText());
+                    medic.setPreco(Float.parseFloat(precoStock.getText()));
+                    medic.setCategoria(comboBox.getSelectedIndex());
+                    medic.setViaAdmin(comboBox_1.getSelectedIndex());
+
+                    armario.atualizarMedicamento(nomeStock.getText(), medic);
+
+                    nomeStock.setEditable(false);
+                    comboBox.setEnabled(false);
+                    comboBox_1.setEnabled(false);
+                    stockStock.setEditable(false);
+                    validadeStock.setEditable(false);
+                    precoStock.setEditable(false);
+
+
+                    //variavel para controlar botao editar
+                    editar = false;
+                    btnNewButton.setText("Editar");
+                }
+            }
+        });
+
+        precoStock = new JTextField();
+        precoStock.setEditable(false);
+        GridBagConstraints gbc_precoStock = new GridBagConstraints();
+        gbc_precoStock.insets = new Insets(0, 0, 5, 0);
+        gbc_precoStock.fill = GridBagConstraints.HORIZONTAL;
+        gbc_precoStock.gridx = 2;
+        gbc_precoStock.gridy = 6;
+        panel_1.add(precoStock, gbc_precoStock);
+        precoStock.setColumns(10);
         GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-        gbc_btnNewButton.anchor = GridBagConstraints.EAST;
         gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
         gbc_btnNewButton.gridx = 1;
         gbc_btnNewButton.gridy = 7;
@@ -902,17 +978,10 @@ public class Layout extends JFrame implements CatVia {
         JButton btnApagar = new JButton("Apagar");
 
         GridBagConstraints gbc_btnApagar = new GridBagConstraints();
-        gbc_btnApagar.insets = new Insets(0, 0, 0, 5);
         gbc_btnApagar.gridx = 2;
         gbc_btnApagar.gridy = 7;
         panel_1.add(btnApagar, gbc_btnApagar);
 
-
-        //Inicializar Jlist
-       /* DefaultListModel model1 = new DefaultListModel();
-        model1.addElement(armario.getTodos().toArray());
-        JList<Medicamento> list_2 = new JList(model1);*/
-        JList list_2 = new JList(armario.getTodos().toArray());
 
         list_2.setBounds(61, 131, 423, 255);
         //Inicializar o Scroll Pane para termos barra de scroll
@@ -981,7 +1050,6 @@ public class Layout extends JFrame implements CatVia {
         gbc_comboVia.gridy = 1;
         panel_2.add(comboVia, gbc_comboVia);
 
-
         JLabel lblNome_4 = new JLabel("Nome");
         GridBagConstraints gbc_lblNome_4 = new GridBagConstraints();
         gbc_lblNome_4.anchor = GridBagConstraints.WEST;
@@ -1033,22 +1101,18 @@ public class Layout extends JFrame implements CatVia {
         panel_2.add(textPreco, gbc_textPreco);
         textPreco.setColumns(10);
 
-
         JCalendar dataValidade = new JCalendar();
         dataValidade.setBounds(489, 16, 315, 188);
         panel_3.add(dataValidade);
 
-
+        //Botao Adicionar Medicamento
         JButton btnAdicionarGerir = new JButton("Adicionar");
         btnAdicionarGerir.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
-
                 if (textNome.getText() != null && textQuantidade.getText() != null) {
                     Medicamento medic = new Medicamento(textNome.getText(), Integer.valueOf(textPreco.getText()), comboCat.getSelectedIndex(), comboVia.getSelectedIndex(), dataValidade.getCalendar().getTime());
                     armario.adicionarMedicamento(medic);
-
-
                     try {
                         Object[] modelMedic = armario.getTodos().toArray();
                         // list_2.removeAll();
@@ -1056,9 +1120,8 @@ public class Layout extends JFrame implements CatVia {
 
                         scrollPane_1.revalidate();
                         scrollPane_1.repaint();
-                    } catch (Exception b) {
+                    } catch (Exception e) {
                         JOptionPane.showMessageDialog(null, "Erro ao introduzir medicamento");
-
                     }
                 }
             }
@@ -1069,20 +1132,30 @@ public class Layout extends JFrame implements CatVia {
         gbc_btnAdicionarGerir.gridy = 5;
         panel_2.add(btnAdicionarGerir, gbc_btnAdicionarGerir);
 
-
         //Evento Selection change e mostra os valores detalhados no form ao lado
         list_2.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent arg0) {
                 Medicamento s = (Medicamento) list_2.getSelectedValue();
-                lblNomeShow.setText(s.getNome());
-                lbCategoriaShow.setText(categorias[s.getCategoria()]);
-                lblViaShow.setText(vias[s.getViaAdmin()]);
-                lblStockShow.setText(String.valueOf(armario.getMedicamentoQuantidade(s)));
-                lblValidadeShow.setText(s.getDataValidade().toString());
-                lblPrecoShow.setText(String.valueOf(s.getPreco()));
+                nomeStock.setText(s.getNome());
+                comboBox.setSelectedIndex(s.getCategoria());
+                comboBox_1.setSelectedIndex(s.getViaAdmin());
+                stockStock.setText(String.valueOf(armario.getMedicamentoQuantidade(s)));
+                validadeStock.setText(s.getDataValidade().toString());
+                precoStock.setText(String.valueOf(s.getPreco()));
+                
+                //Coloca as texbox BLOQUEADAS
+                nomeStock.setEditable(false);
+                comboBox.setEnabled(false);
+        		comboBox_1.setEnabled(false);
+                stockStock.setEditable(false);
+                validadeStock.setEditable(false);
+                precoStock.setEditable(false);
+                //variavel para controlar botao editar
+                editar = false;
+                btnNewButton.setText("Editar");
             }
         });
-
+        //botao apagar medicamento
         btnApagar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
