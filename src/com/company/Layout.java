@@ -60,8 +60,9 @@ public class Layout extends JFrame implements CatVia {
         GestorVendas gestorvendas = new GestorVendas();
         //Criar uma venda
         Venda venda1 = new Venda();
+        Venda venda2 = new Venda();
         //Criar uma compra que é uma arraylist de Medicamentos
-        ArrayList<Medicamento> compra1 = new ArrayList<Medicamento>();
+        ArrayList<Medicamento> compra1 = new ArrayList<>();
         //Criar Medicamento para inserir na compra
         Medicamento medicamento1 = new Medicamento();
         Medicamento medicamento2 = new Medicamento();
@@ -77,13 +78,24 @@ public class Layout extends JFrame implements CatVia {
         //Defenir a venda
         venda1.setCod_venda(102);
         venda1.setData_compra(new Date());
-        venda1.setCliente(new Cliente(2, "Nome Cliente", 1222, new Date()));
+        venda1.setCliente(new Cliente(2, "António", 1222, new Date()));
+        
+        venda2.setCod_venda(103);
+        venda2.setData_compra(new Date());
+        venda2.setCliente(new Cliente(3, "José", 1222, new Date()));        
+      
+      
         //Adicionar medicamento na compra
         compra1.add(medicamento1);
+        compra1.add(medicamento2);
         //Adicionar o arraylist dos medicamentos
-        venda1.setMedicamentos(compra1);
+        venda1.setMedicamentos(compra1);   
+        venda2.setMedicamentos(compra1);
+     
         //Adicionar Vendas ao gestor de vendas
         gestorvendas.adicionarVenda(venda1);
+        gestorvendas.adicionarVenda(venda2);
+        
         //Imprimir a Vendas
         //System.out.println(gestorvendas.getVendas());
         for (int i = 0; i < 10; i++) {
@@ -490,56 +502,58 @@ public class Layout extends JFrame implements CatVia {
         venda.add(button_4);
 
         JLabel lblNome = new JLabel("Nome");
-        lblNome.setBounds(391, 131, 46, 14);
+        lblNome.setBounds(737, 179, 46, 14);
         venda.add(lblNome);
 
         txtNome = new JTextField();
-        txtNome.setBounds(391, 155, 199, 20);
+        txtNome.setBounds(737, 203, 199, 30);
         venda.add(txtNome);
         txtNome.setColumns(10);
 
         JLabel lblCliente = new JLabel("Cliente:");
-        lblCliente.setBounds(415, 206, 70, 14);
+        lblCliente.setBounds(737, 253, 70, 14);
         venda.add(lblCliente);
 
         JLabel lblNome_1 = new JLabel("Nome:");
-        lblNome_1.setBounds(425, 229, 46, 14);
+        lblNome_1.setBounds(747, 276, 46, 14);
         venda.add(lblNome_1);
 
         JLabel lblBi = new JLabel("BI:");
-        lblBi.setBounds(425, 252, 46, 14);
+        lblBi.setBounds(747, 299, 46, 14);
         venda.add(lblBi);
 
         JButton btnAdicionar = new JButton("Adicionar");
-        btnAdicionar.setBounds(415, 313, 95, 30);
+        btnAdicionar.setBounds(761, 361, 95, 30);
         venda.add(btnAdicionar);
-
-        JLabel lblDadosCompra = new JLabel("Dados Compra");
-        lblDadosCompra.setBounds(31, 365, 120, 14);
-        venda.add(lblDadosCompra);
-
-        JTextPane textDadosCompra = new JTextPane();
-        textDadosCompra.setBounds(31, 390, 407, 158);
-        venda.add(textDadosCompra);
+        
+        JPanel panel_5 = new JPanel();
+        panel_5.setBorder(new TitledBorder(null, "Detalhes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+        panel_5.setBounds(17, 447, 714, 190);
+        venda.add(panel_5);
+        panel_5.setLayout(null);
+        
+        JList list_4 = new JList();
+        list_4.setBounds(16, 20, 678, 153);
+        panel_5.add(list_4);
 
         JLabel lblEstadoCompra = new JLabel("Estado Compra");
-        lblEstadoCompra.setBounds(462, 390, 113, 16);
+        lblEstadoCompra.setBounds(737, 466, 113, 16);
         venda.add(lblEstadoCompra);
 
         JLabel lblSubtotal = new JLabel("Sub-Total:");
-        lblSubtotal.setBounds(482, 418, 85, 16);
+        lblSubtotal.setBounds(757, 494, 85, 16);
         venda.add(lblSubtotal);
 
         JLabel lblIva = new JLabel("IVA:");
-        lblIva.setBounds(482, 443, 55, 16);
+        lblIva.setBounds(757, 519, 55, 16);
         venda.add(lblIva);
 
         JLabel lblDesconto = new JLabel("Desconto:");
-        lblDesconto.setBounds(482, 471, 75, 16);
+        lblDesconto.setBounds(757, 547, 75, 16);
         venda.add(lblDesconto);
 
         JLabel lblTotal = new JLabel("Total:");
-        lblTotal.setBounds(482, 499, 55, 16);
+        lblTotal.setBounds(757, 575, 55, 16);
         venda.add(lblTotal);
         //Pre-inicializaçao de valores
         //Criar a model <- vai armazenar a arraylist, mas usando um Model que é uma especia de Array Próprio do Jlist para ser actualizado! 
@@ -549,29 +563,55 @@ public class Layout extends JFrame implements CatVia {
             ArrayList <GestorVendas> vendas = new ArrayList<GestorVendas> ();
             //for (GestorVendas vendas_ : venda1) {
                 //Adiciona os elemetos ao Model
-            	System.out.println(venda1.toString());
-                model.addElement(venda1.toString());
+            	//System.out.println(venda1.toString());
+                model.addElement(gestorvendas.getVendas().toArray());
             //}
         } catch (Exception e1) {
             model.removeAllElements();
         }
+        
+        JPanel panel_4 = new JPanel();
+        panel_4.setBorder(new TitledBorder(null, "Vendas", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+        panel_4.setBounds(17, 205, 708, 188);
+        venda.add(panel_4);
+        panel_4.setLayout(null);
+        
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.setBounds(14, 18, 680, 156);
+        panel_4.add(scrollPane);
         //Define qual a Model vai estar a representar na jList
         JList list_1 = new JList(model);
-        list_1.setBounds(31, 186, 339, 157);
-        venda.add(list_1);
+        
+        list_1.addListSelectionListener(new ListSelectionListener() {
+        	public void valueChanged(ListSelectionEvent arg0) {
+        		 DefaultListModel model1 = new DefaultListModel();
+        	        //Adicionar Elementos caso exista medicamentos na gaveta, caso nao haja remove tudo
+        	        try {
+        	         
+        	                model1.addElement(gestorvendas.getVendas().get(list_1.getSelectedIndex()).getMedicamento());
+        	                list_4.setModel(model1);
+        	         
+        	                
+        	            //  System.out.println(gestorvendas.getVendas().get(0).getMedicamento());
+        	            //}
+        	        } catch (Exception e1) {
+        	            model.removeAllElements();
+        	        }
+        		
+        	}
+        });
+        scrollPane.setViewportView(list_1);
         //Criar evento caso a Categoria seja Alterada!
-        comboBoxCategoria.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    ArrayList<Medicamento> med = armario.getArmarioGaveta(comboBoxCategoria.getSelectedIndex(), comboBoxViaAdmin.getSelectedIndex()).getMedicamentos();
-                    DefaultListModel model = (DefaultListModel) list_1.getModel();
-                    model.removeAllElements();
-                    for (Medicamento medicamento : med) {
-                        model.addElement(medicamento.toString());
-                    }
-                } catch (Exception e1) {
-                    model.removeAllElements();
+        comboBoxCategoria.addActionListener(e -> {
+            try {
+                ArrayList<Medicamento> med = armario.getArmarioGaveta(comboBoxCategoria.getSelectedIndex(), comboBoxViaAdmin.getSelectedIndex()).getMedicamentos();
+                DefaultListModel model1 = (DefaultListModel) list_1.getModel();
+                model1.removeAllElements();
+                for (Medicamento medicamento : med) {
+                    model1.addElement(medicamento.toString());
                 }
+            } catch (Exception e1) {
+                model.removeAllElements();
             }
         });
         //Criar evento caso a Via de Administraçao seja Alterada!
@@ -790,7 +830,7 @@ public class Layout extends JFrame implements CatVia {
         btnPesquisar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
-
+System.out.print(armario.procurarMedicamento(textPesquisarStock.getText()));
 
             }
         });
@@ -933,7 +973,7 @@ public class Layout extends JFrame implements CatVia {
                     validadeStock.setEditable(true);
                     precoStock.setEditable(true);
 
-                    editar = true;
+                   // editar = true;
 
 
                 } else {
@@ -955,7 +995,7 @@ public class Layout extends JFrame implements CatVia {
 
 
                     //variavel para controlar botao editar
-                    editar = false;
+                   // editar = false;
                     btnNewButton.setText("Editar");
                 }
             }
@@ -1034,6 +1074,7 @@ public class Layout extends JFrame implements CatVia {
         panel_2.add(lblDataValidade_2, gbc_lblDataValidade_2);
 
         JComboBox comboCat = new JComboBox(categorias);
+        
         GridBagConstraints gbc_comboCat = new GridBagConstraints();
         gbc_comboCat.fill = GridBagConstraints.HORIZONTAL;
         gbc_comboCat.anchor = GridBagConstraints.NORTH;
@@ -1165,6 +1206,7 @@ public class Layout extends JFrame implements CatVia {
                     armario.removerMedicamento(s);
                 } catch (Exception e) {
 
+                    JOptionPane.showMessageDialog(null, e);
                 }
                 try {
                     list_2.setListData(armario.getTodos().toArray());

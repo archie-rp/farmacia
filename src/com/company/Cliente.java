@@ -58,9 +58,9 @@ public class Cliente {
     public String toString() {
         StringBuilder string = new StringBuilder();
 
-        string.append("\nNome: " + getNome());
-        string.append("\nBI : " + getBi());
-        string.append("\nData Inscrição: " + getDataInscricao());
+        string.append(getNome()+" ");
+        string.append(getBi()+" ");
+        string.append( getDataInscricao()+" ");
 
         return string.toString();
     }

@@ -49,6 +49,5 @@ public class GestorVendas {
         this.vendas.add(venda);
         this.quantidade_vendas++;
         return true;
-    }
-
+    }   
 }

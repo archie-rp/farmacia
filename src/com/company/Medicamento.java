@@ -101,7 +101,7 @@ public class Medicamento implements CatVia,Serializable {
     public String toString() {
         StringBuilder string = new StringBuilder();
         //string.append("\n" + "ID = " + this.id);
-        string.append(this.nome + " ");
+        string.append(this.getNome() + " ");
         string.append(this.categorias[this.getCategoria()]+ " ");
         string.append(this.vias[this.getViaAdmin()]+ " ");
         string.append(this.getDataValidade()+ " ");

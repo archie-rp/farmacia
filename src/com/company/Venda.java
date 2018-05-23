@@ -24,6 +24,8 @@ public class Venda {
     public void setMedicamentos(ArrayList<Medicamento> medicamentos) {
         this.medicamentos = medicamentos;
     }
+    
+ 
 
     public Venda(int cod_venda, Cliente cliente, Date data_compra, ArrayList<Medicamento> medicamentos) {
         this.cod_venda = cod_venda;
@@ -45,15 +47,42 @@ public class Venda {
         this.data_compra = new Date();
         this.medicamentos = new ArrayList<Medicamento>();
     }
+    
+    
+    public String getMedicamento() {
+    	StringBuilder string =new StringBuilder();   	
+    	
+    			for (Medicamento medicamento_:medicamentos) {
+    				
+    				string.append(medicamento_.toString()+"\n");
+    			}
+    			return string.toString();
+    }
 
     @Override
     public String toString() {
-        return "Venda{" +
+    	StringBuilder string =new StringBuilder();
+    	string.append(cod_venda+" ");
+    	string.append(cliente+" ");
+    	string.append(data_compra+" ");
+    	
+    			/*for (Medicamento medicamento_:medicamentos) {
+    				
+    				string.append(medicamento_.toString());
+    			}*/
+    			
+    		
+    	
+    	return string.toString();
+    	
+    	
+    	
+    /*    return "Venda{" +
                 "cod_venda=" + cod_venda +
                 ", nome_cliente='" + cliente + '\'' +
                 ", data_compra=" + data_compra +
                 ", medicamentos=" + medicamentos +
-                '}';
+                '}';*/
     }
 
 }

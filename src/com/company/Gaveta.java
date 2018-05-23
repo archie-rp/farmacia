@@ -33,6 +33,17 @@ public class Gaveta implements Serializable {
         return medicamentos;
     }
 
+    public Medicamento getMedicamento(String nome) {
+    	Medicamento medicamento =new Medicamento();
+    	for (Medicamento medicamento_ : medicamentos) {
+            if (medicamento_ != null && medicamento_.getNome() == nome) {
+            	medicamento=medicamento_;
+            }
+        }
+    	
+    	
+        return medicamento;
+    }
 
 
     public boolean setMedicamentos(Medicamento medicamento) {
