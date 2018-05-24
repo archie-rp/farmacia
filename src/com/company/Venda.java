@@ -64,7 +64,7 @@ public class Venda {
     	StringBuilder string =new StringBuilder();
     	string.append(cod_venda+" ");
     	string.append(cliente+" ");
-    	string.append(data_compra+" ");
+    	string.append(data_compra+" \n");
     	
     			/*for (Medicamento medicamento_:medicamentos) {
     				
