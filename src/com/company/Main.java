@@ -35,7 +35,7 @@ public class Main implements CatVia {
         medic.setPreco(Console.readFloat("\nInsira um preço"));
         medic.setCategoria(listarCategorias());
         medic.setViaAdmin(listarVias());
-        armario.adicionarMedicamento(medic);
+        armario.adicionarMedicamento(medic,1);
     }
 
     public static void main(String[] args) {
@@ -65,7 +65,7 @@ public class Main implements CatVia {
         gestorvendas.adicionarVenda(venda1);
         //Imprimir a Vendas
         //System.out.println(gestorvendas.getVendas());
-        armario.adicionarMedicamento(medicamento1);
+        armario.adicionarMedicamento(medicamento1,1);
         // Serializaçao
         try {
             FileOutputStream fileOut = new FileOutputStream("Armario.ser");

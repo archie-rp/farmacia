@@ -170,7 +170,7 @@ public class App extends JFrame implements CatVia{
 					       medic.setPreco(f);
 					        medic.setCategoria(comboBox.getSelectedIndex());
 					        medic.setViaAdmin(comboBox_1.getSelectedIndex());
-					        armario.adicionarMedicamento(medic);
+					        armario.adicionarMedicamento(medic,1);
 					        
 					        textField_2.setText(medic.toString());
 					}

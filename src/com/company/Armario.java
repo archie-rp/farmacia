@@ -74,24 +74,39 @@ public class Armario implements Serializable {
     }
 
 //
-    public JDialog adicionarMedicamento(Medicamento medicamento) {
+    public JDialog adicionarMedicamento(Medicamento medicamento, int quantidade) {
         if (armario[medicamento.getCategoria()][medicamento.getViaAdmin()] == null) {
+            //Criar gaveta
             armario[medicamento.getCategoria()][medicamento.getViaAdmin()] = new Gaveta();
-            armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.add(medicamento);
-            this.quantidade++;
+            //Adicionar medicamento na gaveta
+            for (int i=0; i<quantidade;i++ ){
+                armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.add(medicamento);
+                // Aumentar quantidade
+                this.quantidade++;
+            }
             JOptionPane optionPane = new JOptionPane("Produto adicionado com sucesso!",JOptionPane.WARNING_MESSAGE);
             JDialog dialog = optionPane.createDialog("Informação!");
             dialog.setAlwaysOnTop(true);
             dialog.setVisible(true);
             return dialog;
         } else {
-            armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.add(medicamento);
-            this.quantidade++;
-            JOptionPane optionPane = new JOptionPane("Produto adicionado com sucesso!",JOptionPane.WARNING_MESSAGE);
-            JDialog dialog = optionPane.createDialog("Informação!");
-            dialog.setAlwaysOnTop(true);
-            dialog.setVisible(true);
-            return dialog;
+            if ((armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.size() + quantidade) <= 10){
+                for (int i=0; i<quantidade;i++ ) {
+                    armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.add(medicamento);
+                    this.quantidade++;
+                }
+                    JOptionPane optionPane = new JOptionPane("Produto adicionado com sucesso!", JOptionPane.WARNING_MESSAGE);
+                    JDialog dialog = optionPane.createDialog("Informação!");
+                    dialog.setAlwaysOnTop(true);
+                    dialog.setVisible(true);
+                    return dialog;
+            }else{
+                JOptionPane optionPane = new JOptionPane("Não é permitido adicionar o medicamento!",JOptionPane.WARNING_MESSAGE);
+                JDialog dialog = optionPane.createDialog("Alerta!");
+                dialog.setAlwaysOnTop(true);
+                dialog.setVisible(true);
+                return dialog;
+            }
         }
 
     }
@@ -173,4 +188,5 @@ public class Armario implements Serializable {
             return false;
         }
     }
+
 }

@@ -1152,7 +1152,7 @@ public class Layout extends JFrame implements CatVia {
                 if (textNome.getText() != null && textQuantidade.getText() != null) {
                     try {
                         Medicamento medic = new Medicamento(textNome.getText(), Integer.valueOf(textPreco.getText()), comboCat.getSelectedIndex(), comboVia.getSelectedIndex(), dataValidade.getCalendar().getTime());
-                        armario.adicionarMedicamento(medic);
+                        armario.adicionarMedicamento(medic, Integer.valueOf(textQuantidade.getText()));
                         Object[] modelMedic = armario.getTodos().toArray();
                         // list_2.removeAll();
                         list_2.setListData(modelMedic);
