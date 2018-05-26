@@ -1,7 +1,9 @@
 package com.company;
 
+import javax.swing.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class Armario implements Serializable {
     private Gaveta armario[][];
@@ -71,16 +73,27 @@ public class Armario implements Serializable {
         this.nome = nome;
     }
 
-
-    public void adicionarMedicamento(Medicamento medicamento) {
+//
+    public JDialog adicionarMedicamento(Medicamento medicamento) {
         if (armario[medicamento.getCategoria()][medicamento.getViaAdmin()] == null) {
             armario[medicamento.getCategoria()][medicamento.getViaAdmin()] = new Gaveta();
             armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.add(medicamento);
             this.quantidade++;
+            JOptionPane optionPane = new JOptionPane("Produto adicionado com sucesso!",JOptionPane.WARNING_MESSAGE);
+            JDialog dialog = optionPane.createDialog("Informação!");
+            dialog.setAlwaysOnTop(true);
+            dialog.setVisible(true);
+            return dialog;
         } else {
             armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.add(medicamento);
             this.quantidade++;
+            JOptionPane optionPane = new JOptionPane("Produto adicionado com sucesso!",JOptionPane.WARNING_MESSAGE);
+            JDialog dialog = optionPane.createDialog("Informação!");
+            dialog.setAlwaysOnTop(true);
+            dialog.setVisible(true);
+            return dialog;
         }
+
     }
 
     public void adicionarMedicamentos(Medicamento[] medicamentos) {

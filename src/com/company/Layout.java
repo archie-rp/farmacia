@@ -14,6 +14,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.concurrent.ExecutionException;
 
 public class Layout extends JFrame implements CatVia {
     private JPanel main;
@@ -36,7 +37,7 @@ public class Layout extends JFrame implements CatVia {
     public static void main(String[] args) {
 
         try {
-            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.Nimbus.LookAndFeel");
+            UIManager.setLookAndFeel("javax.swing.plaf.windows.Windows.LookAndFeel");
         } catch (Throwable e) {
             System.out.println(e.getMessage());
         }
@@ -101,15 +102,16 @@ public class Layout extends JFrame implements CatVia {
         gestorvendas.adicionarVenda(venda1);
         gestorvendas.adicionarVenda(venda2);
 
-        //Imprimir a Vendas
         //System.out.println(gestorvendas.getVendas());
-        for (int i = 0; i < 10; i++) {
+
+        /* for (int i = 0; i < 3; i++) {
             armario.adicionarMedicamento(medicamento1);
             armario.adicionarMedicamento(medicamento2);
         }
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 3; i++) {
             armario.adicionarMedicamento(medicamento1);
-        }
+        }*/
+
         getContentPane().setLayout(new CardLayout(0, 0));
         setBounds(100, 100, 980, 691);
 
@@ -384,9 +386,12 @@ public class Layout extends JFrame implements CatVia {
         textProdutosRecentes.setBounds(448, 338, 353, 147);
         main.add(textProdutosRecentes);
 
-        JList list = new JList(armario.getArmarioGaveta(0, 0).getMedicamentos().toArray());
-        list.setBounds(31, 261, 386, 244);
-        main.add(list);
+        try {
+            JList list = new JList(armario.getArmarioGaveta(0, 0).getMedicamentos().toArray());
+            list.setBounds(31, 261, 386, 244);
+            main.add(list);
+
+        } catch (Exception e) {}
 
         JPanel panel = new JPanel();
         panel.setToolTipText("");
@@ -1145,9 +1150,9 @@ public class Layout extends JFrame implements CatVia {
             @Override
             public void mouseClicked(MouseEvent arg0) {
                 if (textNome.getText() != null && textQuantidade.getText() != null) {
-                    Medicamento medic = new Medicamento(textNome.getText(), Integer.valueOf(textPreco.getText()), comboCat.getSelectedIndex(), comboVia.getSelectedIndex(), dataValidade.getCalendar().getTime());
-                    armario.adicionarMedicamento(medic);
                     try {
+                        Medicamento medic = new Medicamento(textNome.getText(), Integer.valueOf(textPreco.getText()), comboCat.getSelectedIndex(), comboVia.getSelectedIndex(), dataValidade.getCalendar().getTime());
+                        armario.adicionarMedicamento(medic);
                         Object[] modelMedic = armario.getTodos().toArray();
                         // list_2.removeAll();
                         list_2.setListData(modelMedic);
