@@ -1,13 +1,19 @@
 package com.company;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
-public class Venda {
+public class Venda  implements CatVia{
     private int cod_venda;
     private Cliente cliente;
     private Date data_compra;
     ArrayList<Medicamento> medicamentos;
+    private float preco_total;
+    private float preco_sub;
+    private float desconto;
+
 
     public void setCod_venda(int cod_venda) {
         this.cod_venda = cod_venda;
@@ -24,14 +30,22 @@ public class Venda {
     public void setMedicamentos(ArrayList<Medicamento> medicamentos) {
         this.medicamentos = medicamentos;
     }
-    
- 
+
+
+    public Date getData_compra() {
+        return data_compra;
+    }
+
+    public float getDesconto() {
+        return desconto;
+    }
 
     public Venda(int cod_venda, Cliente cliente, Date data_compra, ArrayList<Medicamento> medicamentos) {
         this.cod_venda = cod_venda;
         this.cliente = cliente;
         this.data_compra = data_compra;
         this.medicamentos = medicamentos;
+        this.desconto = 0f;
     }
 
     public Venda(Venda venda){
@@ -39,6 +53,7 @@ public class Venda {
         this.cliente = venda.cliente;
         this.data_compra = venda.data_compra;
         this.medicamentos = venda.medicamentos;
+        this.desconto = 0f;
     }
 
     public Venda(){
@@ -47,16 +62,9 @@ public class Venda {
         this.data_compra = new Date();
         this.medicamentos = new ArrayList<Medicamento>();
     }
-    
-    
-    public String getMedicamento() {
-    	StringBuilder string =new StringBuilder();   	
-    	
-    			for (Medicamento medicamento_:medicamentos) {
-    				
-    				string.append(medicamento_.toString()+"\n");
-    			}
-    			return string.toString();
+
+    public ArrayList<Medicamento> getMedicamentos() {
+        return medicamentos;
     }
 
     @Override
@@ -64,25 +72,29 @@ public class Venda {
     	StringBuilder string =new StringBuilder();
     	string.append(cod_venda+" ");
     	string.append(cliente+" ");
-    	string.append(data_compra+" \n");
-    	
-    			/*for (Medicamento medicamento_:medicamentos) {
-    				
-    				string.append(medicamento_.toString());
-    			}*/
-    			
-    		
-    	
+        DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.getDefault());
+        String formattedDate = df.format(this.data_compra);
+    	string.append(formattedDate);
     	return string.toString();
-    	
-    	
-    	
-    /*    return "Venda{" +
-                "cod_venda=" + cod_venda +
-                ", nome_cliente='" + cliente + '\'' +
-                ", data_compra=" + data_compra +
-                ", medicamentos=" + medicamentos +
-                '}';*/
+    }
+
+    public float getPreco_total(){
+     float total=0f;
+     for (Medicamento med:medicamentos){
+         total +=med.getPreco();
+     }
+        return total+(total*0.23f);
+    }
+
+    public float getPreco_sub() {
+        float sub=0f;
+        for (Medicamento med:medicamentos){
+            sub +=med.getPreco();
+        }
+        return sub;
+    }
+    public float getIVA(){
+        return IVA;
     }
 
 }

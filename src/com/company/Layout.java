@@ -7,6 +7,8 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,6 +35,11 @@ public class Layout extends JFrame implements CatVia {
     private JTextField validadeStock;
     private JTextField precoStock;
     private boolean editar = false;
+    private JTable table;
+    private JTextField textSub_total;
+    private JTextField textIVA;
+    private JTextField textDesconto;
+    private JTextField textTotal;
 
     public static void main(String[] args) {
 
@@ -73,10 +80,14 @@ public class Layout extends JFrame implements CatVia {
         medicamento1.setNome("Benuron");
         medicamento1.setCategoria(0);
         medicamento1.setViaAdmin(0);
+        medicamento1.setPreco(13.2f);
+        medicamento1.setDataValidade(new Date());
         //medicamento 2
         medicamento2.setNome("Aspirina");
         medicamento2.setCategoria(1);
         medicamento2.setViaAdmin(0);
+        medicamento2.setPreco(15.0f);
+        medicamento2.setDataValidade(new Date());
         //Defenir a venda
         venda1.setCod_venda(102);
         venda1.setData_compra(new Date());
@@ -104,13 +115,8 @@ public class Layout extends JFrame implements CatVia {
 
         //System.out.println(gestorvendas.getVendas());
 
-        /* for (int i = 0; i < 3; i++) {
-            armario.adicionarMedicamento(medicamento1);
-            armario.adicionarMedicamento(medicamento2);
-        }
-        for (int i = 0; i < 3; i++) {
-            armario.adicionarMedicamento(medicamento1);
-        }*/
+            armario.adicionarMedicamento(medicamento1,1);
+            armario.adicionarMedicamento(medicamento2,1);
 
         getContentPane().setLayout(new CardLayout(0, 0));
         setBounds(100, 100, 980, 691);
@@ -525,7 +531,7 @@ public class Layout extends JFrame implements CatVia {
         venda.add(lblCliente);
 
         JLabel lblNome_1 = new JLabel("Nome:");
-        lblNome_1.setBounds(747, 276, 46, 14);
+        lblNome_1.setBounds(737, 278, 46, 14);
         venda.add(lblNome_1);
 
         JLabel lblBi = new JLabel("BI:");
@@ -542,16 +548,18 @@ public class Layout extends JFrame implements CatVia {
         venda.add(panel_5);
         panel_5.setLayout(null);
 
-        JList list_4 = new JList();
-        list_4.setBounds(16, 20, 678, 153);
-        panel_5.add(list_4);
+        JScrollPane scrollPane_2 = new JScrollPane();
+        scrollPane_2.setBounds(10, 20, 694, 153);
+        panel_5.add(scrollPane_2);
+
+
 
         JLabel lblEstadoCompra = new JLabel("Estado Compra");
         lblEstadoCompra.setBounds(737, 466, 113, 16);
         venda.add(lblEstadoCompra);
 
         JLabel lblSubtotal = new JLabel("Sub-Total:");
-        lblSubtotal.setBounds(757, 494, 85, 16);
+        lblSubtotal.setBounds(757, 494, 55, 16);
         venda.add(lblSubtotal);
 
         JLabel lblIva = new JLabel("IVA:");
@@ -559,7 +567,7 @@ public class Layout extends JFrame implements CatVia {
         venda.add(lblIva);
 
         JLabel lblDesconto = new JLabel("Desconto:");
-        lblDesconto.setBounds(757, 547, 75, 16);
+        lblDesconto.setBounds(757, 547, 55, 16);
         venda.add(lblDesconto);
 
         JLabel lblTotal = new JLabel("Total:");
@@ -584,13 +592,24 @@ public class Layout extends JFrame implements CatVia {
                 DefaultListModel model1 = new DefaultListModel();
                 //Adicionar Elementos caso exista medicamentos na gaveta, caso nao haja remove tudo
                 try {
-
-                    model1.addElement(gestorvendas.getVendas().get(list_1.getSelectedIndex()).getMedicamento());
-                    list_4.setModel(model1);
-
-
-                    //  System.out.println(gestorvendas.getVendas().get(0).getMedicamento());
-                    //}
+                    //Tabela
+                    //Recebe medicamentos da venda selecionada
+                    ArrayList<Medicamento> med = gestorvendas.getVendas().get(list_1.getSelectedIndex()).getMedicamentos();
+                    //Cria a tabela
+                    table = new JTable();
+                    //Cria a estrutura e campos representados em cada celula
+                    DefaultTableModel model = new DefaultTableModel(new Object[]{"Nome", "Categoria","Via de Administração","Data Validade", "Preço"}, 0);
+                    //Adiciona os medicamentos na tablela
+                    for(Medicamento meds:med){
+                        model.addRow(new Object[]{meds.getNome(), categorias[meds.getCategoria()],vias[meds.getViaAdmin()],meds.getDataValidade(),meds.getPreco()});
+                    }
+                    table.setModel(model);
+                    scrollPane_2.setViewportView(table);
+                    //Alterar Valores de preco,desconto, etc.. de cada Venda
+                    textTotal.setText(String.valueOf(gestorvendas.getVendas().get(list_1.getSelectedIndex()).getPreco_total()));
+                    textIVA.setText(String.valueOf(gestorvendas.getVendas().get(list_1.getSelectedIndex()).getIVA()));
+                    textDesconto.setText(String.valueOf(gestorvendas.getVendas().get(list_1.getSelectedIndex()).getDesconto()));
+                    textSub_total.setText(String.valueOf(gestorvendas.getVendas().get(list_1.getSelectedIndex()).getPreco_sub()));
                 } catch (Exception e1) {
                     model1.removeAllElements();
                 }
@@ -598,6 +617,26 @@ public class Layout extends JFrame implements CatVia {
             }
         });
         scrollPane.setViewportView(list_1);
+        
+        textSub_total = new JTextField();
+        textSub_total.setBounds(822, 492, 86, 20);
+        venda.add(textSub_total);
+        textSub_total.setColumns(10);
+        
+        textIVA = new JTextField();
+        textIVA.setBounds(822, 517, 86, 20);
+        venda.add(textIVA);
+        textIVA.setColumns(10);
+        
+        textDesconto = new JTextField();
+        textDesconto.setBounds(822, 545, 86, 20);
+        venda.add(textDesconto);
+        textDesconto.setColumns(10);
+        
+        textTotal = new JTextField();
+        textTotal.setBounds(822, 573, 86, 20);
+        venda.add(textTotal);
+        textTotal.setColumns(10);
         //Criar evento caso a Categoria seja Alterada!
         comboBoxCategoria.addActionListener(e -> {
             try {

@@ -1,7 +1,9 @@
 package com.company;
 
 import java.io.Serializable;
+import java.text.DateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class Medicamento implements CatVia,Serializable {
     private int id;
@@ -104,7 +106,9 @@ public class Medicamento implements CatVia,Serializable {
         string.append(this.getNome() + " ");
         string.append(this.categorias[this.getCategoria()]+ " ");
         string.append(this.vias[this.getViaAdmin()]+ " ");
-        string.append(this.getDataValidade()+ " ");
+        DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.getDefault());
+        String formattedDate = df.format(this.getDataValidade());
+        string.append(formattedDate + " ");
         string.append(this.preco+ "  \n");
         return string.toString();
     }
