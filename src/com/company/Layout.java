@@ -17,6 +17,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.ExecutionException;
+import javax.swing.border.LineBorder;
 
 public class Layout extends JFrame implements CatVia {
     private JPanel main;
@@ -40,6 +41,7 @@ public class Layout extends JFrame implements CatVia {
     private JTextField textIVA;
     private JTextField textDesconto;
     private JTextField textTotal;
+    private JTable table_1;
 
     public static void main(String[] args) {
 
@@ -272,26 +274,72 @@ public class Layout extends JFrame implements CatVia {
         button_14.setBounds(31, 37, 99, 39);
         relatorio.add(button_14);
 
-        JLabel lblUltimosRelatrios = new JLabel("Ultimos relatórios");
+        JLabel lblUltimosRelatrios = new JLabel("Relatórios do Dia");
         lblUltimosRelatrios.setBounds(31, 100, 135, 16);
         relatorio.add(lblUltimosRelatrios);
 
-        JLabel lblAlertas = new JLabel("Total alertas: ");
-        lblAlertas.setBounds(418, 125, 108, 16);
+        JLabel lblAlertas = new JLabel("Relatorios da Semana");
+        lblAlertas.setBounds(418, 100, 108, 16);
         relatorio.add(lblAlertas);
 
         JList list_3 = new JList();
-        list_3.setBounds(31, 123, 381, 304);
+        list_3.setBorder(new LineBorder(new Color(0, 0, 0)));
+        list_3.setBounds(31, 123, 381, 185);
         relatorio.add(list_3);
 
 
         try {
             list_3.setListData(armario.getTodos().toArray());
+            
+            JList list = new JList();
+            list.setBorder(new LineBorder(new Color(0, 0, 0)));
+            list.setBounds(428, 123, 475, 185);
+            relatorio.add(list);
+            
+            JPanel panel = new JPanel();
+            panel.setBorder(new TitledBorder(null, "Estatiticas dos Medicamentos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+            panel.setBounds(31, 330, 402, 311);
+            relatorio.add(panel);
+            panel.setLayout(null);
+            
+            JLabel lblViaDeAdministrao_1 = new JLabel("Via de Administração");
+            lblViaDeAdministrao_1.setBounds(10, 27, 104, 14);
+            panel.add(lblViaDeAdministrao_1);
+            
+            JComboBox comboBox_1 = new JComboBox(vias);
+            
+            comboBox_1.setBounds(10, 52, 159, 20);
+            panel.add(comboBox_1);
+            
+            JScrollPane scrollPane_Estatisticas = new JScrollPane();
+            scrollPane_Estatisticas.setBounds(10, 83, 382, 217);
+            panel.add(scrollPane_Estatisticas);
+
+            table_1 = new JTable();
+
+            //Default
+            DefaultTableModel model_d = new DefaultTableModel(new Object[]{"Nome Categoria","Quantidade","Preço Total"}, 0);
+            //Adiciona os medicamentos na tablela
+            for(int i=0;i<20;i++){
+                    model_d.addRow(new Object[]{categorias[i],armario.getQuantidadGaveta(i,0),armario.getPrecoGaveta(i,0)});
+            }
+            table_1.setModel(model_d);
+            comboBox_1.addActionListener(new ActionListener() {
+            	public void actionPerformed(ActionEvent arg0) {
+            		DefaultTableModel model = new DefaultTableModel(new Object[]{"Nome Categoria","Quantidade","Preço Total"}, 0);
+                    //Adiciona os medicamentos na tablela
+                    for(int i=0;i<20;i++){     
+                    	model.addRow(new Object[]{categorias[i],armario.getQuantidadGaveta(i,comboBox_1.getSelectedIndex()),armario.getPrecoGaveta(i,comboBox_1.getSelectedIndex())});
+                    }
+                    table_1.setModel(model);		
+            	}
+            });
+            //Cria a tabela
+            //Cria a estrutura e campos representados em cada celula
+            scrollPane_Estatisticas.setViewportView(table_1);
 
         } catch (NullPointerException e) {
             //se o objecto for nulo não fazer nada :)
-
-
         }
 
         //Botao home

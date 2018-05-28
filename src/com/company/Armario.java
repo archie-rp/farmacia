@@ -40,22 +40,22 @@ public class Armario implements Serializable {
     public Gaveta getArmarioGaveta(int cat, int via) {
         return armario[cat][via];
     }
+    public ArrayList<Medicamento> getMedicamentosGaveta(int cat, int via) {
+        return armario[cat][via].getMedicamentos();
+    }
 
     public int getMedicamentoQuantidade(Medicamento medicamento) {
         int total = 0;
-
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
-
                 try {
                     int medic = armario[i][j].getMedicamentoQuantidade(medicamento);
-                    if (medic > 0) {
+                    if (medic != 0) {
                         total += medic;
                     }
                 } catch (Exception e) {
 
                 }
-
             }
         }
         return total;
@@ -108,7 +108,6 @@ public class Armario implements Serializable {
                 return dialog;
             }
         }
-
     }
 
     public void adicionarMedicamentos(Medicamento[] medicamentos) {
@@ -138,7 +137,22 @@ public class Armario implements Serializable {
     }
 
     public int getQuantidadGaveta(int cat, int via) {
-        return armario[cat][via].getQuantidade();
+        try {
+            return armario[cat][via].getMedicamentos().size();
+        }catch (Exception e){
+            return 0;
+        }
+    }
+    public float getPrecoGaveta(int cat, int via) {
+        float preco_gaveta=0;
+        try{
+        for(Medicamento med:this.getMedicamentosGaveta(cat,via)){
+            preco_gaveta+=med.getPreco();
+        }
+        return preco_gaveta;
+        }catch (Exception e){
+            return 0f;
+        }
     }
 
     public boolean removerMedicamento(Medicamento medic) {
@@ -164,29 +178,20 @@ public class Armario implements Serializable {
             for (int j = 0; j < 10; j++) {
                 if (armario[i][j] != null && armario[i][j].contains(nome)) {
                     medic = armario[i][j].getMedicamento(nome);
-
-
                 }
             }
         }
         return medic;
-
     }
 
     public boolean atualizarMedicamento(String nome, Medicamento novo_med) {
-        int med_actualizados = 0;
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
                 if (armario[i][j] != null && armario[i][j].updateMedicamento(nome, novo_med)) {
-                    med_actualizados++;
+                    return true;
                 }
             }
         }
-        if (med_actualizados > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return false;
     }
-
 }

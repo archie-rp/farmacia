@@ -15,7 +15,11 @@ public class Gaveta implements Serializable {
     }
 
     public int getQuantidade() {
-        return this.medicamentos.size();
+        if (this.medicamentos.size()!= 0){
+            return this.medicamentos.size();
+        }else{
+            return 0;
+        }
     }
 
     public int getMedicamentoQuantidade(Medicamento medicamento) {
@@ -25,7 +29,6 @@ public class Gaveta implements Serializable {
                 i++;
             }
         }
-
         return i;
     }
 
@@ -40,8 +43,6 @@ public class Gaveta implements Serializable {
             	medicamento=medicamento_;
             }
         }
-    	
-    	
         return medicamento;
     }
 
@@ -84,8 +85,6 @@ public class Gaveta implements Serializable {
     }
 
     public boolean contains(String nome) {
-
-
         return false;
     }
 
