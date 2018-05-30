@@ -32,7 +32,6 @@ public class Layout extends JFrame implements CatVia {
     private JTextField textQuantidade;
     private JTextField textPreco;
     private JTextField nomeStock;
-    private JTextField stockStock;
     private JTextField validadeStock;
     private JTextField precoStock;
     private boolean editar = false;
@@ -71,6 +70,9 @@ public class Layout extends JFrame implements CatVia {
         //Criar uma venda
         Venda venda1 = new Venda();
         Venda venda2 = new Venda();
+        //Criar Relatorio
+        Relatorio relat=new Relatorio(venda2,"Teste","Teste1");
+
         //Criar uma compra que é uma arraylist de Medicamentos
         ArrayList<Medicamento> compra1 = new ArrayList<>();
         ArrayList<Medicamento> compra2 = new ArrayList<>();
@@ -279,10 +281,27 @@ public class Layout extends JFrame implements CatVia {
         relatorio.add(lblUltimosRelatrios);
 
         JLabel lblAlertas = new JLabel("Relatorios da Semana");
-        lblAlertas.setBounds(418, 100, 108, 16);
+        lblAlertas.setBounds(489, 100, 108, 16);
         relatorio.add(lblAlertas);
 
         JList list_3 = new JList();
+        list_3.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		if(e.getClickCount()==2){
+        			Dialog dialog=new Dialog(relat);
+            		dialog.setVisible(true);
+            		
+            		
+                }
+        		
+        		
+        		
+        		
+        	}
+        });
+       
+        
         list_3.setBorder(new LineBorder(new Color(0, 0, 0)));
         list_3.setBounds(31, 123, 381, 185);
         relatorio.add(list_3);
@@ -293,7 +312,7 @@ public class Layout extends JFrame implements CatVia {
             
             JList list = new JList();
             list.setBorder(new LineBorder(new Color(0, 0, 0)));
-            list.setBounds(428, 123, 475, 185);
+            list.setBounds(489, 123, 475, 185);
             relatorio.add(list);
             
             JPanel panel = new JPanel();
@@ -928,9 +947,9 @@ public class Layout extends JFrame implements CatVia {
 
         GridBagLayout gbl_panel_1 = new GridBagLayout();
         gbl_panel_1.columnWidths = new int[]{8, 156, 210, 0};
-        gbl_panel_1.rowHeights = new int[]{0, 32, 30, 34, 30, 22, 10, 65, 0};
+        gbl_panel_1.rowHeights = new int[]{0, 32, 30, 34, 22, 10, 65, 0};
         gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
-        gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+        gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         panel_1.setLayout(gbl_panel_1);
 
         JLabel lblNome_3 = new JLabel("Nome:");
@@ -988,32 +1007,13 @@ public class Layout extends JFrame implements CatVia {
         gbc_comboBox_1.gridy = 3;
         panel_1.add(comboBox_1, gbc_comboBox_1);
 
-        JLabel lblStock = new JLabel("Stock:");
-        GridBagConstraints gbc_lblStock = new GridBagConstraints();
-        gbc_lblStock.anchor = GridBagConstraints.WEST;
-        gbc_lblStock.fill = GridBagConstraints.VERTICAL;
-        gbc_lblStock.insets = new Insets(0, 0, 5, 5);
-        gbc_lblStock.gridx = 1;
-        gbc_lblStock.gridy = 4;
-        panel_1.add(lblStock, gbc_lblStock);
-
-        stockStock = new JTextField();
-        stockStock.setEditable(false);
-        GridBagConstraints gbc_stockStock = new GridBagConstraints();
-        gbc_stockStock.insets = new Insets(0, 0, 5, 0);
-        gbc_stockStock.fill = GridBagConstraints.HORIZONTAL;
-        gbc_stockStock.gridx = 2;
-        gbc_stockStock.gridy = 4;
-        panel_1.add(stockStock, gbc_stockStock);
-        stockStock.setColumns(10);
-
         JLabel lblDataValidade_1 = new JLabel("Data Validade");
         GridBagConstraints gbc_lblDataValidade_1 = new GridBagConstraints();
         gbc_lblDataValidade_1.anchor = GridBagConstraints.WEST;
         gbc_lblDataValidade_1.insets = new Insets(0, 0, 5, 5);
         gbc_lblDataValidade_1.fill = GridBagConstraints.VERTICAL;
         gbc_lblDataValidade_1.gridx = 1;
-        gbc_lblDataValidade_1.gridy = 5;
+        gbc_lblDataValidade_1.gridy = 4;
         panel_1.add(lblDataValidade_1, gbc_lblDataValidade_1);
 
         validadeStock = new JTextField();
@@ -1022,7 +1022,7 @@ public class Layout extends JFrame implements CatVia {
         gbc_validadeStock.insets = new Insets(0, 0, 5, 0);
         gbc_validadeStock.fill = GridBagConstraints.HORIZONTAL;
         gbc_validadeStock.gridx = 2;
-        gbc_validadeStock.gridy = 5;
+        gbc_validadeStock.gridy = 4;
         panel_1.add(validadeStock, gbc_validadeStock);
         validadeStock.setColumns(10);
 
@@ -1031,17 +1031,43 @@ public class Layout extends JFrame implements CatVia {
         gbc_lblPreo_1.anchor = GridBagConstraints.WEST;
         gbc_lblPreo_1.insets = new Insets(0, 0, 5, 5);
         gbc_lblPreo_1.gridx = 1;
-        gbc_lblPreo_1.gridy = 6;
+        gbc_lblPreo_1.gridy = 5;
         panel_1.add(lblPreo_1, gbc_lblPreo_1);
 
         JList list_2 = new JList(armario.getTodos().toArray());
 
         JButton btnNewButton = new JButton("Editar");
-        btnNewButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-            }
-        });
+       
 
+        
+
+        precoStock = new JTextField();
+        precoStock.setEditable(false);
+        GridBagConstraints gbc_precoStock = new GridBagConstraints();
+        gbc_precoStock.insets = new Insets(0, 0, 5, 0);
+        gbc_precoStock.fill = GridBagConstraints.HORIZONTAL;
+        gbc_precoStock.gridx = 2;
+        gbc_precoStock.gridy = 5;
+        panel_1.add(precoStock, gbc_precoStock);
+        precoStock.setColumns(10);
+        GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+        gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
+        gbc_btnNewButton.gridx = 1;
+        gbc_btnNewButton.gridy = 6;
+        panel_1.add(btnNewButton, gbc_btnNewButton);
+
+        JButton btnApagar = new JButton("Apagar");
+
+        GridBagConstraints gbc_btnApagar = new GridBagConstraints();
+        gbc_btnApagar.gridx = 2;
+        gbc_btnApagar.gridy = 6;
+        panel_1.add(btnApagar, gbc_btnApagar);
+
+
+        list_2.setBounds(61, 131, 423, 255);
+        //Inicializar o Scroll Pane para termos barra de scroll
+        JScrollPane scrollPane_1 = new JScrollPane();
+        
         btnNewButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
@@ -1053,11 +1079,11 @@ public class Layout extends JFrame implements CatVia {
                     nomeStock.setEditable(true);
                     comboBox.setEnabled(true);
                     comboBox_1.setEnabled(true);
-                    stockStock.setEditable(true);
+                   
                     validadeStock.setEditable(true);
                     precoStock.setEditable(true);
 
-                    // editar = true;
+                     editar = !editar;
 
 
                 } else {
@@ -1068,49 +1094,24 @@ public class Layout extends JFrame implements CatVia {
                     medic.setCategoria(comboBox.getSelectedIndex());
                     medic.setViaAdmin(comboBox_1.getSelectedIndex());
 
-                    armario.atualizarMedicamento(nomeStock.getText(), medic);
+                    armario.atualizarMedicamento( medic);
 
                     nomeStock.setEditable(false);
                     comboBox.setEnabled(false);
                     comboBox_1.setEnabled(false);
-                    stockStock.setEditable(false);
+                  
                     validadeStock.setEditable(false);
                     precoStock.setEditable(false);
 
+                    scrollPane_1.revalidate();
+                    scrollPane_1.repaint();
 
                     //variavel para controlar botao editar
-                    // editar = false;
+                     editar = !editar;
                     btnNewButton.setText("Editar");
                 }
             }
         });
-
-        precoStock = new JTextField();
-        precoStock.setEditable(false);
-        GridBagConstraints gbc_precoStock = new GridBagConstraints();
-        gbc_precoStock.insets = new Insets(0, 0, 5, 0);
-        gbc_precoStock.fill = GridBagConstraints.HORIZONTAL;
-        gbc_precoStock.gridx = 2;
-        gbc_precoStock.gridy = 6;
-        panel_1.add(precoStock, gbc_precoStock);
-        precoStock.setColumns(10);
-        GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-        gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
-        gbc_btnNewButton.gridx = 1;
-        gbc_btnNewButton.gridy = 7;
-        panel_1.add(btnNewButton, gbc_btnNewButton);
-
-        JButton btnApagar = new JButton("Apagar");
-
-        GridBagConstraints gbc_btnApagar = new GridBagConstraints();
-        gbc_btnApagar.gridx = 2;
-        gbc_btnApagar.gridy = 7;
-        panel_1.add(btnApagar, gbc_btnApagar);
-
-
-        list_2.setBounds(61, 131, 423, 255);
-        //Inicializar o Scroll Pane para termos barra de scroll
-        JScrollPane scrollPane_1 = new JScrollPane();
         scrollPane_1.setViewportView(list_2);
         scrollPane_1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane_1.setBounds(31, 343, 472, 276);
@@ -1241,11 +1242,9 @@ public class Layout extends JFrame implements CatVia {
                         Medicamento medic = new Medicamento(textNome.getText(), Integer.valueOf(textPreco.getText()), comboCat.getSelectedIndex(), comboVia.getSelectedIndex(), dataValidade.getCalendar().getTime());
                         armario.adicionarMedicamento(medic, Integer.valueOf(textQuantidade.getText()));
                         Object[] modelMedic = armario.getTodos().toArray();
-                        // list_2.removeAll();
+
                         list_2.setListData(modelMedic);
 
-                        scrollPane_1.revalidate();
-                        scrollPane_1.repaint();
                     } catch (Exception e) {
                         JOptionPane.showMessageDialog(null, "Erro ao introduzir medicamento");
                     }
@@ -1265,7 +1264,7 @@ public class Layout extends JFrame implements CatVia {
                 nomeStock.setText(s.getNome());
                 comboBox.setSelectedIndex(s.getCategoria());
                 comboBox_1.setSelectedIndex(s.getViaAdmin());
-                stockStock.setText(String.valueOf(armario.getMedicamentoQuantidade(s)));
+
                 validadeStock.setText(s.getDataValidade().toString());
                 precoStock.setText(String.valueOf(s.getPreco()));
 
@@ -1273,7 +1272,7 @@ public class Layout extends JFrame implements CatVia {
                 nomeStock.setEditable(false);
                 comboBox.setEnabled(false);
                 comboBox_1.setEnabled(false);
-                stockStock.setEditable(false);
+
                 validadeStock.setEditable(false);
                 precoStock.setEditable(false);
                 //variavel para controlar botao editar

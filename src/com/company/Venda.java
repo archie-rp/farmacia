@@ -13,6 +13,9 @@ public class Venda  implements CatVia{
     private float preco_total;
     private float preco_sub;
     private float desconto;
+    private Funcionario funcionario;
+    private Date dataCompra;
+    private int formaPagamento;
 
 
     public void setCod_venda(int cod_venda) {
@@ -61,6 +64,9 @@ public class Venda  implements CatVia{
         this.cliente = new Cliente();
         this.data_compra = new Date();
         this.medicamentos = new ArrayList<Medicamento>();
+        this.formaPagamento=0;
+        this.funcionario=new Funcionario();
+        this.dataCompra=new Date();
     }
 
     public ArrayList<Medicamento> getMedicamentos() {

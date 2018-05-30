@@ -66,9 +66,9 @@ public class Gaveta implements Serializable {
         return false;
     }
 
-    public boolean updateMedicamento(String nome, Medicamento novo_med) {
+    public boolean updateMedicamento( Medicamento novo_med) {
         for (Medicamento medicamento : medicamentos) {
-            if (medicamento != null && medicamento.getNome() == nome) {
+            if (medicamento != null && medicamento.getNome() == novo_med.getNome()) {
                 medicamento = novo_med;
             }
         }

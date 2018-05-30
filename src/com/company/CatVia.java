@@ -5,4 +5,5 @@ public interface CatVia {
             "Relaxantes musculares‎","Anti-histamínicos‎","Imunossupressores","Anti-inflamatórios‎","Teratogênicos‎","Agentes hormonais‎","Plantas medicinais‎","Antiarrítmicos‎","Expectorantes‎","Inibidores da lactação‎ "};
     String vias[]= {"Oral","Injetável","Dermatológica","Nasal","Oftálmica","Ocular","Intra-Nasal","Cutânea","Auricular"};
     Float IVA = 23f;
+    String modoPagamento[]= {"Multibanco","Dinheiro","Cheque"};
 }
