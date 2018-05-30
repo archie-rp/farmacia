@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dad6e76c-2b0d-4a65-b9ce-0623d3102971" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/company/Funcionario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/Relatorio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Armario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Armario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/CatVia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/CatVia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Gaveta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Gaveta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/GestorRelatorio.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Layout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Layout.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Venda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Venda.java" afterDir="false" />
-    </list>
+    <list default="true" id="dad6e76c-2b0d-4a65-b9ce-0623d3102971" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -83,7 +73,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/company/Relatorio.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="15" column="24" lean-forward="true" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+              <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -91,7 +81,7 @@
       <file leaf-file-name="Dialog.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Dialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2465">
+            <state relative-caret-position="2533">
               <caret line="169" selection-start-line="169" selection-end-line="169" />
             </state>
           </provider>
@@ -171,6 +161,8 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -193,8 +185,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -368,6 +358,7 @@
       <workItem from="1527681632816" duration="194000" />
       <workItem from="1527682244644" duration="3782000" />
       <workItem from="1527695173581" duration="48000" />
+      <workItem from="1527718277201" duration="258000" />
     </task>
     <task id="LOCAL-00001" summary="classe layout adicionada">
       <created>1525885211867</created>
@@ -516,11 +507,18 @@
       <option name="project" value="LOCAL" />
       <updated>1526907096139</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Classe Funcionario criada&#10;Classe Relatorio crida&#10;Classe Dialog para apresentar os relatorios criada">
+      <created>1527718458903</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1527718458903</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47228000" />
+    <option name="totallyTimeSpent" value="47486000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1840" height="1002" extended-state="6" />
@@ -528,7 +526,6 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.3280543" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
@@ -548,6 +545,7 @@
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.45701358" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.3280543" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="PlantUML" order="3" weight="0.3296501" />
@@ -580,7 +578,8 @@
     <MESSAGE value="Atualizações&#10;* Gerir já remove medicamento, melhorei as Exception para tratar os NullExceptions na classe Layout e Armario" />
     <MESSAGE value="Readme Atualizado" />
     <MESSAGE value="Editar medicamento já funcional, mas altera todos os medicamentos com o mesmo nome, ainda tenho de melhorar o metodo de atualização de medicamentos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Editar medicamento já funcional, mas altera todos os medicamentos com o mesmo nome, ainda tenho de melhorar o metodo de atualização de medicamentos" />
+    <MESSAGE value="Classe Funcionario criada&#10;Classe Relatorio crida&#10;Classe Dialog para apresentar os relatorios criada" />
+    <option name="LAST_COMMIT_MESSAGE" value="Classe Funcionario criada&#10;Classe Relatorio crida&#10;Classe Dialog para apresentar os relatorios criada" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1011,7 +1010,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Dialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2465">
+        <state relative-caret-position="2533">
           <caret line="169" selection-start-line="169" selection-end-line="169" />
         </state>
       </provider>
@@ -1019,7 +1018,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/company/Relatorio.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="15" column="24" lean-forward="true" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
         </state>
       </provider>
     </entry>
