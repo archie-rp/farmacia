@@ -11,4 +11,13 @@ public class Funcionario {
     public Funcionario() {
         this.nome = "";
     }
+
+    @Override
+    public String toString() {
+       StringBuilder string=new StringBuilder();
+       string.append(nome);
+
+       return string.toString();
+
+    }
 }

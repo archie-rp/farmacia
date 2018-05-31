@@ -39,15 +39,11 @@
 ##### Panel Gerir
 - [x] Jlist com os medicamentos | Hugo
 - [x] Painel Info com informação detalhada do medicamento selecionado na JList e já com stock | Hugo
-- [ ] Botões Editar para editar um medicamento  
+- [x] Botões Editar para editar um medicamento  Hugo
 - [x] Scroll Panel para a listagem | Hugo Rafael
 - [x] Adicionar Medicamento | Hugo Rafael
 - [x] Remover Medicamento | Hugo Rafael
 - [x] JList sempre atualizada adicionando ou removendo medicamentos | Hugo Rafael
-
-
-##### Panel Adicionar Medicamento
-- [ ] Painel para adicionar medicamentos
 
 
 ##### Cat Via Admin 
@@ -95,15 +91,14 @@
 - [x] Adicionar Venda
 - [ ] Remover Venda 
 - [ ] Guardar em ficheiro todas as compras
-- [ ] Criar Relatórios
 - [ ] Criar Secçao de relatorios para Vendas
 - [ ] Adicionar Exceptions
 - etc..
 
 
 ##### Gestor de Relatórios e Relatórios
-- [ ] Criar o Gestor de Relatórios -> Enviamos um medicamento e um cliente e o gestor gera o relatorio
-    - [ ] Criar um "layout" padrão para a criaçao dos relatório
+- [x] Criar o Gestor de Relatórios -> Enviamos uma venda Hugo|Rafael
+    - [x] Dialog para apresentar os relatorios Hugo|Rafael
     
     
 ##### Gestor de Alertas e Alertas
@@ -113,7 +108,7 @@
 
 
 ##### Save Data
-- [X] Criar Serializaçao para (armario)
+- [ ] Criar Serializaçao para (armario)
 - [ ] Criar Serializaçao para (Gestor de clientes)
     - [ ] Criar pasta dedicada
 - [ ] Fazer Carregamento de ficheiros ao arrancar o programa

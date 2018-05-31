@@ -12,6 +12,12 @@ public class Relatorio {
         this.nomeFarmacia = nomeFarmacia;
         this.morada = morada;
     }
+    
+    public Relatorio(Venda venda,  String morada) {
+        this.venda = venda;
+        this.nomeFarmacia = venda.getFuncionario().toString();
+        this.morada = morada;
+    }
 
     public Relatorio() {
         this.venda = new Venda();

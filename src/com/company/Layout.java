@@ -71,7 +71,7 @@ public class Layout extends JFrame implements CatVia {
         Venda venda1 = new Venda();
         Venda venda2 = new Venda();
         //Criar Relatorio
-        Relatorio relat=new Relatorio(venda2,"Teste","Teste1");
+        Relatorio relat=new Relatorio(venda1,"Costa-Prozelo");
 
         //Criar uma compra que é uma arraylist de Medicamentos
         ArrayList<Medicamento> compra1 = new ArrayList<>();

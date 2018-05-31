@@ -59,6 +59,26 @@ public class Venda  implements CatVia{
         this.desconto = 0f;
     }
 
+    public int getCod_venda() {
+        return cod_venda;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public Date getDataCompra() {
+        return dataCompra;
+    }
+
+    public int getFormaPagamento() {
+        return formaPagamento;
+    }
+
     public Venda(){
         this.cod_venda = 0;
         this.cliente = new Cliente();
@@ -72,6 +92,8 @@ public class Venda  implements CatVia{
     public ArrayList<Medicamento> getMedicamentos() {
         return medicamentos;
     }
+
+
 
     @Override
     public String toString() {
