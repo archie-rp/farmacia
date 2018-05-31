@@ -69,7 +69,7 @@ public class Login extends JDialog implements Variaveis {
 		lblSelecioneUmaDas.setBounds(10, 153, 187, 14);
 		contentPanel.add(lblSelecioneUmaDas);
 		
-		JComboBox comboLoja = new JComboBox(farmacia);
+		JComboBox comboLoja = new JComboBox(farmacias);
 		comboLoja.setBounds(10, 180, 168, 20);
 		contentPanel.add(comboLoja);
 		
