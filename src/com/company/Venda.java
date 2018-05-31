@@ -79,6 +79,16 @@ public class Venda  implements CatVia{
         return formaPagamento;
     }
 
+    public Venda(String funcionario){
+        this.cod_venda = 0;
+        this.cliente = new Cliente();
+        this.data_compra = new Date();
+        this.medicamentos = new ArrayList<Medicamento>();
+        this.formaPagamento=0;
+        this.funcionario=new Funcionario(funcionario);
+        this.dataCompra=new Date();
+    }
+
     public Venda(){
         this.cod_venda = 0;
         this.cliente = new Cliente();

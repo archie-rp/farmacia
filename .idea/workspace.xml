@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="dad6e76c-2b0d-4a65-b9ce-0623d3102971" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Dialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Dialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Funcionario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Funcionario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Layout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Layout.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Relatorio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Relatorio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Venda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Venda.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -25,15 +22,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Armario.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/Armario.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1343">
-              <caret line="90" column="11" selection-start-line="90" selection-start-column="11" selection-end-line="90" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Medicamento.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Medicamento.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -43,11 +31,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Layout.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Layout.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/Layout.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-17594">
-              <caret line="73" column="44" selection-start-line="73" selection-start-column="44" selection-end-line="73" selection-end-column="44" />
+            <state relative-caret-position="185">
+              <caret line="70" column="41" lean-forward="true" selection-start-line="70" selection-start-column="41" selection-end-line="70" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -55,10 +43,19 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Cliente.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/Cliente.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Relatorio.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Relatorio.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
+            <state relative-caret-position="476">
               <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
               <folding>
                 <element signature="e#507#508#0" expanded="true" />
@@ -90,17 +87,23 @@
       <file leaf-file-name="Dialog.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Dialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="153" column="129" selection-start-line="153" selection-start-column="129" selection-end-line="153" selection-end-column="129" />
+            <state relative-caret-position="113">
+              <caret line="107" column="93" selection-start-line="107" selection-start-column="93" selection-end-line="107" selection-end-column="93" />
+              <folding>
+                <element signature="e#4584#4771#0" expanded="true" />
+                <element signature="e#4770#4771#0" expanded="true" />
+                <element signature="e#5061#5247#0" expanded="true" />
+                <element signature="e#5246#5247#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="255">
+              <first_editor relative-caret-position="816">
                 <caret line="110" column="4" selection-start-line="110" selection-start-column="4" selection-end-line="110" selection-end-column="4" />
               </first_editor>
               <second_editor />
@@ -120,8 +123,8 @@
       <file leaf-file-name="Venda.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Venda.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="95" selection-start-line="95" selection-end-line="95" />
+            <state relative-caret-position="408">
+              <caret line="87" column="52" selection-start-line="87" selection-start-column="52" selection-end-line="87" selection-end-column="52" />
               <folding>
                 <element signature="e#1571#1572#0" expanded="true" />
                 <element signature="e#1603#1604#0" expanded="true" />
@@ -180,12 +183,12 @@
         <option value="$PROJECT_DIR$/src/com/company/Gaveta.java" />
         <option value="$PROJECT_DIR$/src/com/company/Armario.java" />
         <option value="$PROJECT_DIR$/src/com/company/GestorRelatorio.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Funcionario.java" />
         <option value="$PROJECT_DIR$/src/com/company/Relatorio.java" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/com/company/Dialog.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Funcionario.java" />
         <option value="$PROJECT_DIR$/src/com/company/Venda.java" />
         <option value="$PROJECT_DIR$/src/com/company/Layout.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Dialog.java" />
-        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -198,6 +201,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-26" />
     <option name="width" value="994" />
@@ -407,7 +411,7 @@
       <workItem from="1527682244644" duration="3782000" />
       <workItem from="1527695173581" duration="48000" />
       <workItem from="1527718277201" duration="565000" />
-      <workItem from="1527760651097" duration="5650000" />
+      <workItem from="1527760651097" duration="7188000" />
     </task>
     <task id="LOCAL-00001" summary="classe layout adicionada">
       <created>1525885211867</created>
@@ -570,11 +574,25 @@
       <option name="project" value="LOCAL" />
       <updated>1527718561998</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Melhoramentos no Relatorio&#10;&#10;Dialog já apresenta todos os medicamentos de uma venda, com os dados respectivos">
+      <created>1527768272886</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1527768272886</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Melhoramentos no Relatorio&#10;&#10;Dialog já apresenta todos os dados relativos ao medicamento, cliente e funcionario">
+      <created>1527771747270</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1527771747271</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53443000" />
+    <option name="totallyTimeSpent" value="54981000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1840" height="1002" extended-state="6" />
@@ -590,11 +608,11 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32918552" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3280543" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3280543" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32903227" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19627193" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19627193" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -635,7 +653,9 @@
     <MESSAGE value="Readme Atualizado" />
     <MESSAGE value="Editar medicamento já funcional, mas altera todos os medicamentos com o mesmo nome, ainda tenho de melhorar o metodo de atualização de medicamentos" />
     <MESSAGE value="Classe Funcionario criada&#10;Classe Relatorio crida&#10;Classe Dialog para apresentar os relatorios criada" />
-    <option name="LAST_COMMIT_MESSAGE" value="Classe Funcionario criada&#10;Classe Relatorio crida&#10;Classe Dialog para apresentar os relatorios criada" />
+    <MESSAGE value="Melhoramentos no Relatorio&#10;&#10;Dialog já apresenta todos os medicamentos de uma venda, com os dados respectivos" />
+    <MESSAGE value="Melhoramentos no Relatorio&#10;&#10;Dialog já apresenta todos os dados relativos ao medicamento, cliente e funcionario" />
+    <option name="LAST_COMMIT_MESSAGE" value="Melhoramentos no Relatorio&#10;&#10;Dialog já apresenta todos os dados relativos ao medicamento, cliente e funcionario" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -643,13 +663,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/company/CatVia.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="121" selection-start-line="7" selection-start-column="121" selection-end-line="7" selection-end-column="121" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -998,13 +1011,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/GestorVendas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Medicamento.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="901">
@@ -1019,19 +1025,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Layout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17594">
-          <caret line="73" column="44" selection-start-line="73" selection-start-column="44" selection-end-line="73" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Relatorio.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
+        <state relative-caret-position="476">
           <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
           <folding>
             <element signature="e#507#508#0" expanded="true" />
@@ -1050,6 +1046,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="816">
+            <caret line="110" column="4" selection-start-line="110" selection-start-column="4" selection-end-line="110" selection-end-column="4" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Dialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="107" column="93" selection-start-line="107" selection-start-column="93" selection-end-line="107" selection-end-column="93" />
+          <folding>
+            <element signature="e#4584#4771#0" expanded="true" />
+            <element signature="e#4770#4771#0" expanded="true" />
+            <element signature="e#5061#5247#0" expanded="true" />
+            <element signature="e#5246#5247#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Cliente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Funcionario.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1063,10 +1089,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/GestorVendas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Venda.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="95" selection-start-line="95" selection-end-line="95" />
+        <state relative-caret-position="408">
+          <caret line="87" column="52" selection-start-line="87" selection-start-column="52" selection-end-line="87" selection-end-column="52" />
           <folding>
             <element signature="e#1571#1572#0" expanded="true" />
             <element signature="e#1603#1604#0" expanded="true" />
@@ -1093,20 +1126,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Dialog.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/Layout.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="153" column="129" selection-start-line="153" selection-start-column="129" selection-end-line="153" selection-end-column="129" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="255">
-            <caret line="110" column="4" selection-start-line="110" selection-start-column="4" selection-end-line="110" selection-end-column="4" />
-          </first_editor>
-          <second_editor />
+        <state relative-caret-position="185">
+          <caret line="70" column="41" lean-forward="true" selection-start-line="70" selection-start-column="41" selection-end-line="70" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

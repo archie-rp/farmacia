@@ -68,10 +68,10 @@ public class Layout extends JFrame implements CatVia {
         //Gestor de Vendas
         GestorVendas gestorvendas = new GestorVendas();
         //Criar uma venda
-        Venda venda1 = new Venda();
-        Venda venda2 = new Venda();
+        Venda venda1 = new Venda("José");
+        Venda venda2 = new Venda("António");
         //Criar Relatorio
-        Relatorio relat=new Relatorio(venda1,"Costa-Prozelo");
+        Relatorio relat=new Relatorio(venda2,"Costa-Prozelo");
 
 
         //Criar uma compra que é uma arraylist de Medicamentos
