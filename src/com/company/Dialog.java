@@ -21,10 +21,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-import static com.company.CatVia.categorias;
-import static com.company.CatVia.vias;
-
-public class Dialog extends JDialog {
+public class Dialog extends JDialog implements Variaveis {
 
     private final JPanel contentPanel = new JPanel();
     private JTable table;

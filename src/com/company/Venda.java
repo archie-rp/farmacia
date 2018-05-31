@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
-public class Venda  implements CatVia{
+public class Venda  implements Variaveis{
     private int cod_venda;
     private Cliente cliente;
     private Date data_compra;
@@ -48,6 +48,7 @@ public class Venda  implements CatVia{
         this.cliente = cliente;
         this.data_compra = data_compra;
         this.medicamentos = medicamentos;
+        this.funcionario = new Funcionario();
         this.desconto = 0f;
     }
 

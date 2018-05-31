@@ -19,15 +19,13 @@ import java.util.Date;
 import java.util.concurrent.ExecutionException;
 import javax.swing.border.LineBorder;
 
-public class Layout extends JFrame implements CatVia {
+public class Layout extends JFrame implements Variaveis {
     private JPanel main;
     private JPanel venda;
     private JPanel cliente;
     private JTextField txtNome;
     private JTextField textProcurarCliente;
     private JTextField textPesquisarStock;
-    private JTextField textField;
-    private JTextField textField_1;
     private JTextField textNome;
     private JTextField textQuantidade;
     private JTextField textPreco;
@@ -41,6 +39,11 @@ public class Layout extends JFrame implements CatVia {
     private JTextField textDesconto;
     private JTextField textTotal;
     private JTable table_1;
+
+    public Layout() {
+
+    }
+
 
     public static void main(String[] args) {
 
@@ -62,7 +65,7 @@ public class Layout extends JFrame implements CatVia {
         });
     }
 
-    public Layout() {
+    public Layout(Funcionario funcionario, int nrloja) {
         //Criar Armario
         Armario armario = new Armario();
         //Gestor de Vendas
@@ -70,17 +73,12 @@ public class Layout extends JFrame implements CatVia {
         //Criar uma venda
         Venda venda1 = new Venda("José");
         Venda venda2 = new Venda("António");
-        //Criar Relatorio
-        
-
-
         //Criar uma compra que é uma arraylist de Medicamentos
         ArrayList<Medicamento> compra1 = new ArrayList<>();
         ArrayList<Medicamento> compra2 = new ArrayList<>();
         //Criar Medicamento para inserir na compra
         Medicamento medicamento1 = new Medicamento();
         Medicamento medicamento2 = new Medicamento();
-
         //Definir medicamento
         medicamento1.setNome("Benuron");
         medicamento1.setCategoria(0);
@@ -97,61 +95,29 @@ public class Layout extends JFrame implements CatVia {
         venda1.setCod_venda(102);
         venda1.setData_compra(new Date());
         venda1.setCliente(new Cliente(2, "António", 1222, new Date()));
-
         venda2.setCod_venda(103);
         venda2.setData_compra(new Date());
         venda2.setCliente(new Cliente(3, "José", 1222, new Date()));
-
-
         //Adicionar medicamento na compra
         compra1.add(medicamento1);
         compra1.add(medicamento2);
-
         compra2.add(medicamento1);
         compra2.add(medicamento1);
         //Adicionar o arraylist dos medicamentos
         venda1.setMedicamentos(compra1);
         venda2.setMedicamentos(compra1);
         venda2.setMedicamentos(compra2);
-
         //Adicionar Vendas ao gestor de vendas
         gestorvendas.adicionarVenda(venda1);
         gestorvendas.adicionarVenda(venda2);
-
         //System.out.println(gestorvendas.getVendas());
-
-            armario.adicionarMedicamento(medicamento1,1);
-            armario.adicionarMedicamento(medicamento2,1);
-
+        armario.adicionarMedicamento(medicamento1,1);
+        armario.adicionarMedicamento(medicamento2,1);
+        //Defenir farmacia
+        Farmacia farmacia1 = new Farmacia(farmacia[nrloja],gestorvendas,armario);
+        
         getContentPane().setLayout(new CardLayout(0, 0));
-        setBounds(100, 100, 1118, 691);
-
-        JPanel login = new JPanel();
-        getContentPane().add(login, "name_4164308832893");
-        login.setLayout(null);
-
-        JLabel lblUsername = new JLabel("Username");
-        lblUsername.setBounds(42, 101, 60, 14);
-        login.add(lblUsername);
-
-        JLabel lblPassword = new JLabel("Password");
-        lblPassword.setBounds(42, 144, 46, 14);
-        login.add(lblPassword);
-
-        textField = new JTextField();
-        textField.setBounds(117, 98, 86, 20);
-        login.add(textField);
-        textField.setColumns(10);
-
-        textField_1 = new JTextField();
-        textField_1.setBounds(117, 141, 86, 20);
-        login.add(textField_1);
-        textField_1.setColumns(10);
-
-
-        JLabel lblBemVindoA = new JLabel("Bem Vindo a Farmacia!");
-        lblBemVindoA.setBounds(26, 36, 165, 14);
-        login.add(lblBemVindoA);
+        setBounds(100, 100, 861, 684);
 
         JPanel main = new JPanel();
         getContentPane().add(main, "name_2347007504240");
@@ -178,17 +144,6 @@ public class Layout extends JFrame implements CatVia {
         getContentPane().add(clientes, "name_14223925552743");
         clientes.setLayout(null);
         clientes.setVisible(false);
-
-        JButton btnLogin = new JButton("Login");
-        btnLogin.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                login.setVisible(false);
-                main.setVisible(true);
-            }
-        });
-        btnLogin.setBounds(114, 191, 89, 23);
-        login.add(btnLogin);
 
         //Botao Vendas
         JButton btnVendas = new JButton("Vendas");
@@ -294,22 +249,14 @@ public class Layout extends JFrame implements CatVia {
         			Relatorio relat=new Relatorio(gestorvendas.getVendas().get(list_3.getSelectedIndex()),"Costa-Prozelo");
         			
         			Dialog dialog=new Dialog(relat);
-            		dialog.setVisible(true);
-            		
-            		
+            		dialog.setVisible(true);	
                 }
-        		
-        		
-        		
-        		
         	}
         });
-       
-        
+
         list_3.setBorder(new LineBorder(new Color(0, 0, 0)));
         list_3.setBounds(31, 123, 560, 185);
         relatorio.add(list_3);
-
 
         try {
             list_3.setListData(gestorvendas.getVendas().toArray());
@@ -496,6 +443,16 @@ public class Layout extends JFrame implements CatVia {
         JLabel lblPreo = new JLabel("Preço");
         lblPreo.setBounds(334, 16, 46, 14);
         panel.add(lblPreo);
+        
+        JLabel lblNewLabel_1 = new JLabel("Loja:");
+        lblNewLabel_1.setBounds(10, 15, 46, 14);
+        main.add(lblNewLabel_1);
+        
+        JLabel textLoja = new JLabel();
+        textLoja.setBounds(57, 15, 46, 14);
+        textLoja.setText(farmacia[nrloja]);
+        main.add(textLoja);
+        
 
 
         JLabel lblEscolhaProduto = new JLabel("Escolha produto:");
@@ -1303,10 +1260,10 @@ public class Layout extends JFrame implements CatVia {
                     scrollPane_1.repaint();
                 } catch (NullPointerException e) {
                     //se o objecto for nulo não fazer nada :)
-
-
+                    
                 }
             }
         });
+
     }
 }
