@@ -9,7 +9,7 @@ public class Funcionario {
     }
 
     public Funcionario() {
-        this.nome = "";
+        this.nome = "Luis Silva";
     }
 
     @Override

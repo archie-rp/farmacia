@@ -71,6 +71,7 @@ public class Dialog extends JDialog {
         {
             JLabel lblNewLabel = new JLabel(relatorio.getNomeFarmacia());
             GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+            gbc_lblNewLabel.anchor = GridBagConstraints.WEST;
             gbc_lblNewLabel.insets = new Insets(0, 0, 5, 0);
             gbc_lblNewLabel.gridx = 3;
             gbc_lblNewLabel.gridy = 1;
@@ -86,8 +87,9 @@ public class Dialog extends JDialog {
             contentPanel.add(lblNCliente, gbc_lblNCliente);
         }
         {
-            JLabel lblNewLabel_1 = new JLabel("");
+            JLabel lblNewLabel_1 = new JLabel(relatorio.getMorada());
             GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+            gbc_lblNewLabel_1.anchor = GridBagConstraints.WEST;
             gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 0);
             gbc_lblNewLabel_1.gridx = 3;
             gbc_lblNewLabel_1.gridy = 2;
@@ -103,7 +105,7 @@ public class Dialog extends JDialog {
             contentPanel.add(lblDataCompra, gbc_lblDataCompra);
         }
         {
-            JLabel lblNewLabel_2 = new JLabel("");
+            JLabel lblNewLabel_2 = new JLabel(relatorio.getVenda().getDataCompra().toString());
             GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
             gbc_lblNewLabel_2.gridx = 3;
             gbc_lblNewLabel_2.gridy = 3;
@@ -142,16 +144,16 @@ public class Dialog extends JDialog {
         {
             JPanel panel = new JPanel();
             panel.setBorder(new TitledBorder(null, "Medicamentos Adquiridos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-            panel.setBounds(73, 149, 700, 258);
+            panel.setBounds(26, 152, 881, 255);
             getContentPane().add(panel);
             panel.setLayout(null);
             {
                 JScrollPane scrollPane = new JScrollPane();
-                scrollPane.setBounds(6, 16, 688, 235);
+                scrollPane.setBounds(6, 16, 839, 231);
                 panel.add(scrollPane);
                 {
                     table = new JTable();
-                    DefaultTableModel model_d = new DefaultTableModel(new Object[]{"Medicamento", "Categoria", "Via Administração"}, 0);
+                    DefaultTableModel model_d = new DefaultTableModel(new Object[]{"Medicamento", "Categoria", "Via Administração","Peço"}, 0);
                     ArrayList<Object> array = new ArrayList(relatorio.getVenda().getMedicamentos());
 
 
@@ -159,7 +161,7 @@ public class Dialog extends JDialog {
                         if (array.get(i) != null) {
                             Medicamento m=new Medicamento();
                             m = (Medicamento) array.get(i);
-                            model_d.addRow(new Object[]{m.getNome(),categorias[m.getCategoria()],vias[m.getViaAdmin()]});
+                            model_d.addRow(new Object[]{m.getNome(),categorias[m.getCategoria()],vias[m.getViaAdmin()],m.getPreco()});
                            // System.out.println(array.get(i));
                         }
                     }
