@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class App extends JFrame implements CatVia{
+public class App extends JFrame implements Variaveis{
 	static Armario armario = new Armario();
 	private JPanel contentPane;
 	private JTextField textField;

@@ -5,7 +5,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class Medicamento implements CatVia,Serializable {
+public class Medicamento implements Variaveis,Serializable {
     private int id;
     private String nome;
     private float preco;

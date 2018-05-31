@@ -14,11 +14,11 @@ import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class Login extends JDialog {
+public class Login extends JDialog implements Variaveis {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField textUtilizador;
+	private JTextField textPassword;
 
 	/**
 	 * Launch the application.
@@ -51,27 +51,27 @@ public class Login extends JDialog {
 		lblUtilizador.setBounds(10, 47, 60, 14);
 		contentPanel.add(lblUtilizador);
 		
-		textField = new JTextField();
-		textField.setBounds(10, 66, 110, 20);
-		contentPanel.add(textField);
-		textField.setColumns(10);
+		textUtilizador = new JTextField();
+		textUtilizador.setBounds(10, 66, 110, 20);
+		contentPanel.add(textUtilizador);
+		textUtilizador.setColumns(10);
 		
 		JLabel lblPalavrapasse = new JLabel("Palavra-passe");
 		lblPalavrapasse.setBounds(10, 97, 99, 14);
 		contentPanel.add(lblPalavrapasse);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(10, 122, 110, 20);
-		contentPanel.add(textField_1);
-		textField_1.setColumns(10);
+		textPassword = new JTextField();
+		textPassword.setBounds(10, 122, 110, 20);
+		contentPanel.add(textPassword);
+		textPassword.setColumns(10);
 		
 		JLabel lblSelecioneUmaDas = new JLabel("Selecione uma das Lojas");
 		lblSelecioneUmaDas.setBounds(10, 153, 187, 14);
 		contentPanel.add(lblSelecioneUmaDas);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(10, 180, 168, 20);
-		contentPanel.add(comboBox);
+		JComboBox comboLoja = new JComboBox(farmacia);
+		comboLoja.setBounds(10, 180, 168, 20);
+		contentPanel.add(comboLoja);
 		
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon("C:\\Users\\Archierp\\Pictures\\phamacy.png"));
@@ -90,7 +90,9 @@ public class Login extends JDialog {
 				okButton.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent arg0) {
-						Layout frame = new Layout();
+						Funcionario funcionario = new Funcionario(textUtilizador.getText());
+						int nrloja = comboLoja.getSelectedIndex();
+						Layout frame = new Layout(funcionario,nrloja);
 						dispose();
 						frame.setVisible(true);
 					}

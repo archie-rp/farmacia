@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 
-public class Main implements CatVia {
+public class Main implements Variaveis {
 
     public static int listarCategorias() {
         for (int i = 0; i < categorias.length; i++) {
