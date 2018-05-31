@@ -71,7 +71,7 @@ public class Layout extends JFrame implements CatVia {
         Venda venda1 = new Venda("José");
         Venda venda2 = new Venda("António");
         //Criar Relatorio
-        Relatorio relat=new Relatorio(venda2,"Costa-Prozelo");
+        
 
 
         //Criar uma compra que é uma arraylist de Medicamentos
@@ -290,6 +290,8 @@ public class Layout extends JFrame implements CatVia {
         	@Override
         	public void mouseClicked(MouseEvent e) {
         		if(e.getClickCount()==2){
+        			Relatorio relat=new Relatorio(gestorvendas.getVendas().get(list_3.getSelectedIndex()),"Costa-Prozelo");
+        			
         			Dialog dialog=new Dialog(relat);
             		dialog.setVisible(true);
             		
