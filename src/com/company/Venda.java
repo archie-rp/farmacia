@@ -48,6 +48,7 @@ public class Venda  implements CatVia{
         this.cliente = cliente;
         this.data_compra = data_compra;
         this.medicamentos = medicamentos;
+        this.funcionario = new Funcionario();
         this.desconto = 0f;
     }
 

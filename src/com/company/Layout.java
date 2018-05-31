@@ -124,7 +124,7 @@ public class Layout extends JFrame implements CatVia {
             armario.adicionarMedicamento(medicamento2,1);
 
         getContentPane().setLayout(new CardLayout(0, 0));
-        setBounds(100, 100, 1118, 691);
+        setBounds(100, 100, 980, 691);
 
         JPanel login = new JPanel();
         getContentPane().add(login, "name_4164308832893");
@@ -282,11 +282,10 @@ public class Layout extends JFrame implements CatVia {
         relatorio.add(lblUltimosRelatrios);
 
         JLabel lblAlertas = new JLabel("Relatorios da Semana");
-        lblAlertas.setBounds(617, 100, 108, 16);
+        lblAlertas.setBounds(489, 100, 108, 16);
         relatorio.add(lblAlertas);
 
         JList list_3 = new JList();
-        
         list_3.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
@@ -307,16 +306,16 @@ public class Layout extends JFrame implements CatVia {
        
         
         list_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-        list_3.setBounds(31, 123, 560, 185);
+        list_3.setBounds(31, 123, 381, 185);
         relatorio.add(list_3);
 
 
         try {
-            list_3.setListData(gestorvendas.getVendas().toArray());
+            list_3.setListData(armario.getTodos().toArray());
             
             JList list = new JList();
             list.setBorder(new LineBorder(new Color(0, 0, 0)));
-            list.setBounds(617, 123, 475, 185);
+            list.setBounds(489, 123, 475, 185);
             relatorio.add(list);
             
             JPanel panel = new JPanel();
@@ -937,9 +936,7 @@ public class Layout extends JFrame implements CatVia {
         btnPesquisar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
-            	 System.out.print(textPesquisarStock.getText());
-            	Medicamento m = new Medicamento(armario.procurarMedicamento(textPesquisarStock.getText()));
-                System.out.print(m.getNome());
+                System.out.print(armario.procurarMedicamento(textPesquisarStock.getText()));
 
             }
         });
