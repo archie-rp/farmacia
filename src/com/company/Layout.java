@@ -26,8 +26,6 @@ public class Layout extends JFrame implements CatVia {
     private JTextField txtNome;
     private JTextField textProcurarCliente;
     private JTextField textPesquisarStock;
-    private JTextField textField;
-    private JTextField textField_1;
     private JTextField textNome;
     private JTextField textQuantidade;
     private JTextField textPreco;
@@ -103,6 +101,7 @@ public class Layout extends JFrame implements CatVia {
         venda2.setCliente(new Cliente(3, "José", 1222, new Date()));
 
 
+
         //Adicionar medicamento na compra
         compra1.add(medicamento1);
         compra1.add(medicamento2);
@@ -124,34 +123,8 @@ public class Layout extends JFrame implements CatVia {
             armario.adicionarMedicamento(medicamento2,1);
 
         getContentPane().setLayout(new CardLayout(0, 0));
-        setBounds(100, 100, 980, 691);
+       setBounds(100, 100, 861, 684);
 
-        JPanel login = new JPanel();
-        getContentPane().add(login, "name_4164308832893");
-        login.setLayout(null);
-
-        JLabel lblUsername = new JLabel("Username");
-        lblUsername.setBounds(42, 101, 60, 14);
-        login.add(lblUsername);
-
-        JLabel lblPassword = new JLabel("Password");
-        lblPassword.setBounds(42, 144, 46, 14);
-        login.add(lblPassword);
-
-        textField = new JTextField();
-        textField.setBounds(117, 98, 86, 20);
-        login.add(textField);
-        textField.setColumns(10);
-
-        textField_1 = new JTextField();
-        textField_1.setBounds(117, 141, 86, 20);
-        login.add(textField_1);
-        textField_1.setColumns(10);
-
-
-        JLabel lblBemVindoA = new JLabel("Bem Vindo a Farmacia!");
-        lblBemVindoA.setBounds(26, 36, 165, 14);
-        login.add(lblBemVindoA);
 
         JPanel main = new JPanel();
         getContentPane().add(main, "name_2347007504240");
@@ -178,17 +151,6 @@ public class Layout extends JFrame implements CatVia {
         getContentPane().add(clientes, "name_14223925552743");
         clientes.setLayout(null);
         clientes.setVisible(false);
-
-        JButton btnLogin = new JButton("Login");
-        btnLogin.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                login.setVisible(false);
-                main.setVisible(true);
-            }
-        });
-        btnLogin.setBounds(114, 191, 89, 23);
-        login.add(btnLogin);
 
         //Botao Vendas
         JButton btnVendas = new JButton("Vendas");
@@ -282,10 +244,11 @@ public class Layout extends JFrame implements CatVia {
         relatorio.add(lblUltimosRelatrios);
 
         JLabel lblAlertas = new JLabel("Relatorios da Semana");
-        lblAlertas.setBounds(489, 100, 108, 16);
+        lblAlertas.setBounds(617, 100, 108, 16);
         relatorio.add(lblAlertas);
 
         JList list_3 = new JList();
+        
         list_3.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
@@ -293,29 +256,23 @@ public class Layout extends JFrame implements CatVia {
         			Relatorio relat=new Relatorio(gestorvendas.getVendas().get(list_3.getSelectedIndex()),"Costa-Prozelo");
         			
         			Dialog dialog=new Dialog(relat);
-            		dialog.setVisible(true);
-            		
-            		
+            		dialog.setVisible(true);	
                 }
-        		
-        		
-        		
-        		
         	}
         });
        
         
         list_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-        list_3.setBounds(31, 123, 381, 185);
+        list_3.setBounds(31, 123, 560, 185);
         relatorio.add(list_3);
 
 
         try {
-            list_3.setListData(armario.getTodos().toArray());
+            list_3.setListData(gestorvendas.getVendas().toArray());
             
             JList list = new JList();
             list.setBorder(new LineBorder(new Color(0, 0, 0)));
-            list.setBounds(489, 123, 475, 185);
+            list.setBounds(617, 123, 475, 185);
             relatorio.add(list);
             
             JPanel panel = new JPanel();
@@ -936,7 +893,9 @@ public class Layout extends JFrame implements CatVia {
         btnPesquisar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
-                System.out.print(armario.procurarMedicamento(textPesquisarStock.getText()));
+            	 System.out.print(textPesquisarStock.getText());
+            	Medicamento m = new Medicamento(armario.procurarMedicamento(textPesquisarStock.getText()));
+                System.out.print(m.getNome());
 
             }
         });
