@@ -114,7 +114,7 @@ public class Layout extends JFrame implements Variaveis {
         armario.adicionarMedicamento(medicamento1,1);
         armario.adicionarMedicamento(medicamento2,1);
         //Defenir farmacia
-        Farmacia farmacia1 = new Farmacia(farmacia[nrloja],gestorvendas,armario);
+        Farmacia farmacia = new Farmacia(farmacias[nrloja],gestorvendas,armario);
         
         getContentPane().setLayout(new CardLayout(0, 0));
         setBounds(100, 100, 861, 684);
@@ -450,7 +450,7 @@ public class Layout extends JFrame implements Variaveis {
         
         JLabel textLoja = new JLabel();
         textLoja.setBounds(57, 15, 46, 14);
-        textLoja.setText(farmacia[nrloja]);
+        textLoja.setText(farmacias[nrloja]);
         main.add(textLoja);
         
 

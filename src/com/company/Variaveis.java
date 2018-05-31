@@ -6,5 +6,5 @@ public interface Variaveis {
     String vias[]= {"Oral","Injetável","Dermatológica","Nasal","Oftálmica","Ocular","Intra-Nasal","Cutânea","Auricular"};
     Float IVA = 23f;
     String modoPagamento[]= {"Multibanco","Dinheiro","Cheque"};
-    String farmacia[]= {"Loja 1","Loja 2","Loja 3"};
+    String farmacias[]= {"Loja 1","Loja 2","Loja 3"};
 }
