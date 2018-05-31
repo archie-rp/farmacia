@@ -2,12 +2,12 @@ package com.company;
 
 public class Farmacia {
     private String nome;
-    private GestorVendas gestorVendas;
-    private Armario armario;
+    public GestorVendas gestorvendas;
+    public Armario armario;
 
     public Farmacia(String nome, GestorVendas gestorVendas, Armario armario) {
         this.nome = nome;
-        this.gestorVendas = gestorVendas;
+        this.gestorvendas = gestorVendas;
         this.armario = armario;
     }
 
@@ -16,7 +16,7 @@ public class Farmacia {
     }
 
     public GestorVendas getGestorVendas() {
-        return gestorVendas;
+        return gestorvendas;
     }
 
     public Armario getArmario() {
