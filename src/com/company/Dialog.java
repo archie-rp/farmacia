@@ -60,7 +60,7 @@ public class Dialog extends JDialog {
         gbl_contentPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         contentPanel.setLayout(gbl_contentPanel);
         {
-            JLabel lblNFuncionario = new JLabel("Nº Funcionário: ");
+            JLabel lblNFuncionario = new JLabel("Nome Funcionário: ");
             GridBagConstraints gbc_lblNFuncionario = new GridBagConstraints();
             gbc_lblNFuncionario.insets = new Insets(0, 0, 5, 5);
             gbc_lblNFuncionario.anchor = GridBagConstraints.WEST;
@@ -69,7 +69,13 @@ public class Dialog extends JDialog {
             contentPanel.add(lblNFuncionario, gbc_lblNFuncionario);
         }
         {
-            JLabel lblNewLabel = new JLabel(relatorio.getNomeFarmacia());
+            JLabel lblNewLabel = new JLabel("");
+            if (relatorio.getVenda().getFuncionario() != null) {
+                lblNewLabel.setText(relatorio.getVenda().getFuncionario().toString());
+            } else {
+                lblNewLabel.setText("");
+            }
+
             GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
             gbc_lblNewLabel.anchor = GridBagConstraints.WEST;
             gbc_lblNewLabel.insets = new Insets(0, 0, 5, 0);
@@ -78,7 +84,7 @@ public class Dialog extends JDialog {
             contentPanel.add(lblNewLabel, gbc_lblNewLabel);
         }
         {
-            JLabel lblNCliente = new JLabel("Nº Cliente:");
+            JLabel lblNCliente = new JLabel("Nome Cliente:");
             GridBagConstraints gbc_lblNCliente = new GridBagConstraints();
             gbc_lblNCliente.anchor = GridBagConstraints.WEST;
             gbc_lblNCliente.insets = new Insets(0, 0, 5, 5);
@@ -87,7 +93,14 @@ public class Dialog extends JDialog {
             contentPanel.add(lblNCliente, gbc_lblNCliente);
         }
         {
-            JLabel lblNewLabel_1 = new JLabel(relatorio.getMorada());
+            JLabel lblNewLabel_1 = new JLabel();
+            System.out.println(relatorio.getVenda().getCliente().getNome());
+            if (relatorio.getVenda().getCliente() != null) {
+                lblNewLabel_1.setText(relatorio.getVenda().getCliente().getNome());
+            } else {
+                lblNewLabel_1.setText("");
+            }
+
             GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
             gbc_lblNewLabel_1.anchor = GridBagConstraints.WEST;
             gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 0);
@@ -153,23 +166,23 @@ public class Dialog extends JDialog {
                 panel.add(scrollPane);
                 {
                     table = new JTable();
-                    DefaultTableModel model_d = new DefaultTableModel(new Object[]{"Medicamento", "Categoria", "Via Administração","Peço"}, 0);
+                    DefaultTableModel model_d = new DefaultTableModel(new Object[]{"Medicamento", "Categoria", "Via Administração", "Peço"}, 0);
                     ArrayList<Object> array = new ArrayList(relatorio.getVenda().getMedicamentos());
 
 
                     for (int i = 0; i < array.size(); i++) {
                         if (array.get(i) != null) {
-                            Medicamento m=new Medicamento();
+                            Medicamento m = new Medicamento();
                             m = (Medicamento) array.get(i);
-                            model_d.addRow(new Object[]{m.getNome(),categorias[m.getCategoria()],vias[m.getViaAdmin()],m.getPreco()});
-                           // System.out.println(array.get(i));
+                            model_d.addRow(new Object[]{m.getNome(), categorias[m.getCategoria()], vias[m.getViaAdmin()], m.getPreco()});
+                            // System.out.println(array.get(i));
                         }
                     }
                     //
                     // model_d.addRow(new Object[]{array});
 
 
-                   // System.out.println(array.get(1));
+                    // System.out.println(array.get(1));
                     table.setModel(model_d);
                     scrollPane.setViewportView(table);
                 }

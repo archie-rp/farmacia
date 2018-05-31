@@ -44,7 +44,7 @@
 - [x] Adicionar Medicamento | Hugo Rafael
 - [x] Remover Medicamento | Hugo Rafael
 - [x] JList sempre atualizada adicionando ou removendo medicamentos | Hugo Rafael
-
+- [ ] Botão pesquisar por nome e apresentar na JList
 
 ##### Cat Via Admin 
 - [x] Inserir os itens | Hugo
@@ -99,6 +99,7 @@
 ##### Gestor de Relatórios e Relatórios
 - [x] Criar o Gestor de Relatórios -> Enviamos uma venda Hugo|Rafael
     - [x] Dialog para apresentar os relatorios Hugo|Rafael
+    - [x] Gerar relatório por venda
     
     
 ##### Gestor de Alertas e Alertas
