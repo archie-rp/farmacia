@@ -840,7 +840,7 @@ public class Layout extends JFrame implements Variaveis {
         clientes.add(panel_8);
         panel_8.setLayout(null);
         
-        JList list = new JList();
+        JList list = new JList(farmacia.gestorclientes.getClientes().toArray());
         list.setBorder(new LineBorder(new Color(0, 0, 0)));
         list.setBounds(10, 16, 448, 188);
         panel_8.add(list);
