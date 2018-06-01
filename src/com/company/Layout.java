@@ -68,6 +68,8 @@ public class Layout extends JFrame implements Variaveis {
         Armario armario = new Armario();
         //Gestor de Vendas
         GestorVendas gestorvendas = new GestorVendas();
+        //Gestor de Clientes
+        GestorClientes gestorClientes = new GestorClientes();
         //Criar uma venda
         Venda venda1 = new Venda("José");
         Venda venda2 = new Venda("António");
@@ -111,8 +113,11 @@ public class Layout extends JFrame implements Variaveis {
         //System.out.println(gestorvendas.getVendas());
         armario.adicionarMedicamento(medicamento1,1);
         armario.adicionarMedicamento(medicamento2,1);
+        //Adicionar clientes ao Gestor de Clientes
+        Cliente cliente1 = new Cliente(12,"Paulo",12341222,new Date());
+        gestorClientes.setCliente(cliente1);
         //Defenir farmacia
-        Farmacia farmacia = new Farmacia(farmacias[nrloja],gestorvendas,armario);
+        Farmacia farmacia = new Farmacia(farmacias[nrloja],gestorvendas,armario,gestorClientes);
 
         
         getContentPane().setLayout(new CardLayout(0, 0));
