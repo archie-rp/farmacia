@@ -40,9 +40,7 @@ public class Layout extends JFrame implements Variaveis {
     private JTextField textTotal;
     private JTable table_1;
 
-    public Layout() {
-
-    }
+    
 
 
     public static void main(String[] args) {
@@ -56,8 +54,8 @@ public class Layout extends JFrame implements Variaveis {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    Layout frame = new Layout();
-                    frame.setVisible(true);
+                   // Layout frame = new Layout();
+                  //  frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
