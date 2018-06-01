@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dad6e76c-2b0d-4a65-b9ce-0623d3102971" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/company/GestorClientes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Farmacia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Farmacia.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Layout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Layout.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -41,10 +38,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GestorClientes.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GestorClientes.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/GestorClientes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
+            <state relative-caret-position="306">
               <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
               <folding>
                 <element signature="e#170#171#0" expanded="true" />
@@ -69,55 +66,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Layout.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Layout.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Layout.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="116" selection-start-line="116" selection-end-line="116" />
+            <state relative-caret-position="-1618">
+              <caret line="119" selection-start-line="119" selection-end-line="119" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5189#5521#0" expanded="true" />
-                <element signature="e#5520#5521#0" expanded="true" />
-                <element signature="e#5689#6018#0" expanded="true" />
-                <element signature="e#6017#6018#0" expanded="true" />
-                <element signature="e#6204#6533#0" expanded="true" />
-                <element signature="e#6532#6533#0" expanded="true" />
-                <element signature="e#6747#7076#0" expanded="true" />
-                <element signature="e#7075#7076#0" expanded="true" />
-                <element signature="e#7271#7600#0" expanded="true" />
-                <element signature="e#7599#7600#0" expanded="true" />
-                <element signature="e#7768#8097#0" expanded="true" />
-                <element signature="e#8096#8097#0" expanded="true" />
-                <element signature="e#8578#8962#0" expanded="true" />
-                <element signature="e#8961#8962#0" expanded="true" />
-                <element signature="e#11752#12081#0" expanded="true" />
-                <element signature="e#12080#12081#0" expanded="true" />
-                <element signature="e#12276#12605#0" expanded="true" />
-                <element signature="e#12604#12605#0" expanded="true" />
-                <element signature="e#12890#13219#0" expanded="true" />
-                <element signature="e#13218#13219#0" expanded="true" />
-                <element signature="e#13389#13718#0" expanded="true" />
-                <element signature="e#13717#13718#0" expanded="true" />
-                <element signature="e#17644#17973#0" expanded="true" />
-                <element signature="e#17972#17973#0" expanded="true" />
-                <element signature="e#18131#18460#0" expanded="true" />
-                <element signature="e#18459#18460#0" expanded="true" />
-                <element signature="e#18626#18955#0" expanded="true" />
-                <element signature="e#18954#18955#0" expanded="true" />
-                <element signature="e#19117#19446#0" expanded="true" />
-                <element signature="e#19445#19446#0" expanded="true" />
-                <element signature="e#19606#19935#0" expanded="true" />
-                <element signature="e#19934#19935#0" expanded="true" />
-                <element signature="e#26644#26973#0" expanded="true" />
-                <element signature="e#26972#26973#0" expanded="true" />
-                <element signature="e#27159#27488#0" expanded="true" />
-                <element signature="e#27487#27488#0" expanded="true" />
-                <element signature="e#27698#28028#0" expanded="true" />
-                <element signature="e#28027#28028#0" expanded="true" />
-                <element signature="e#28232#28561#0" expanded="true" />
-                <element signature="e#28560#28561#0" expanded="true" />
-                <element signature="e#28755#29084#0" expanded="true" />
-                <element signature="e#29083#29084#0" expanded="true" />
                 <element signature="e#30968#31297#0" expanded="true" />
                 <element signature="e#31296#31297#0" expanded="true" />
                 <element signature="e#31478#31807#0" expanded="true" />
@@ -168,7 +123,7 @@
       <file leaf-file-name="Dialog.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Dialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
+            <state relative-caret-position="64">
               <caret line="23" column="56" selection-start-line="23" selection-start-column="56" selection-end-line="23" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -181,7 +136,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/company/Variaveis.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
@@ -238,11 +193,11 @@
         <option value="$PROJECT_DIR$/src/com/company/App.java" />
         <option value="$PROJECT_DIR$/src/com/company/Main.java" />
         <option value="$PROJECT_DIR$/src/com/company/Dialog.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Variaveis.java" />
         <option value="$PROJECT_DIR$/src/com/company/Login.java" />
         <option value="$PROJECT_DIR$/src/com/company/Farmacia.java" />
         <option value="$PROJECT_DIR$/src/com/company/GestorClientes.java" />
         <option value="$PROJECT_DIR$/src/com/company/Layout.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Variaveis.java" />
       </list>
     </option>
   </component>
@@ -257,9 +212,9 @@
   </component>
   <component name="PhpDebugGeneral" listening_started="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-28" />
-    <option name="width" value="996" />
-    <option name="height" value="1053" />
+    <option name="x" value="-26" />
+    <option name="width" value="994" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -819,7 +774,21 @@
       <option name="project" value="LOCAL" />
       <updated>1527794365401</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Nova Class &quot;Gestor de Clientes&quot;&#10;* vai ser usada na jpanel gerir clientes">
+      <created>1527840904702</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1527840904703</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Variaveis em final*">
+      <created>1527841455917</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1527841455917</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -910,7 +879,9 @@
     <MESSAGE value="Login &#10;* Login separado da layout com Jdialog&#10;* nao precisa de parametros para entrar, basta &quot;OK&quot;" />
     <MESSAGE value="Farmacia Class&#10;* Falta alguns promenores&#10;* Tens de executar com o login e nao layout agora&#10;* Troquei o nome de CatVia para &quot;Variaveis&quot;" />
     <MESSAGE value="Troquei o nome da array farmacia e objecto farmacia1 para farmacia" />
-    <option name="LAST_COMMIT_MESSAGE" value="Troquei o nome da array farmacia e objecto farmacia1 para farmacia" />
+    <MESSAGE value="Nova Class &quot;Gestor de Clientes&quot;&#10;* vai ser usada na jpanel gerir clientes" />
+    <MESSAGE value="Variaveis em final*" />
+    <option name="LAST_COMMIT_MESSAGE" value="Variaveis em final*" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1124,13 +1095,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Variaveis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Login.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1003">
@@ -1147,16 +1111,6 @@
             <element signature="e#520#521#0" expanded="true" />
             <element signature="e#569#570#0" expanded="true" />
             <element signature="e#606#607#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Dialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="23" column="56" selection-start-line="23" selection-start-column="56" selection-end-line="23" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1193,23 +1147,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/GestorClientes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
-          <folding>
-            <element signature="e#170#171#0" expanded="true" />
-            <element signature="e#210#211#0" expanded="true" />
-            <element signature="e#240#241#0" expanded="true" />
-            <element signature="e#296#297#0" expanded="true" />
-            <element signature="e#257#258#0" expanded="true" />
-            <element signature="e#288#289#0" expanded="true" />
-            <element signature="e#434#435#0" expanded="true" />
-            <element signature="e#474#475#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Medicamento.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -1226,52 +1163,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Layout.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="116" selection-start-line="116" selection-end-line="116" />
+        <state relative-caret-position="-1618">
+          <caret line="119" selection-start-line="119" selection-end-line="119" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5189#5521#0" expanded="true" />
-            <element signature="e#5520#5521#0" expanded="true" />
-            <element signature="e#5689#6018#0" expanded="true" />
-            <element signature="e#6017#6018#0" expanded="true" />
-            <element signature="e#6204#6533#0" expanded="true" />
-            <element signature="e#6532#6533#0" expanded="true" />
-            <element signature="e#6747#7076#0" expanded="true" />
-            <element signature="e#7075#7076#0" expanded="true" />
-            <element signature="e#7271#7600#0" expanded="true" />
-            <element signature="e#7599#7600#0" expanded="true" />
-            <element signature="e#7768#8097#0" expanded="true" />
-            <element signature="e#8096#8097#0" expanded="true" />
-            <element signature="e#8578#8962#0" expanded="true" />
-            <element signature="e#8961#8962#0" expanded="true" />
-            <element signature="e#11752#12081#0" expanded="true" />
-            <element signature="e#12080#12081#0" expanded="true" />
-            <element signature="e#12276#12605#0" expanded="true" />
-            <element signature="e#12604#12605#0" expanded="true" />
-            <element signature="e#12890#13219#0" expanded="true" />
-            <element signature="e#13218#13219#0" expanded="true" />
-            <element signature="e#13389#13718#0" expanded="true" />
-            <element signature="e#13717#13718#0" expanded="true" />
-            <element signature="e#17644#17973#0" expanded="true" />
-            <element signature="e#17972#17973#0" expanded="true" />
-            <element signature="e#18131#18460#0" expanded="true" />
-            <element signature="e#18459#18460#0" expanded="true" />
-            <element signature="e#18626#18955#0" expanded="true" />
-            <element signature="e#18954#18955#0" expanded="true" />
-            <element signature="e#19117#19446#0" expanded="true" />
-            <element signature="e#19445#19446#0" expanded="true" />
-            <element signature="e#19606#19935#0" expanded="true" />
-            <element signature="e#19934#19935#0" expanded="true" />
-            <element signature="e#26644#26973#0" expanded="true" />
-            <element signature="e#26972#26973#0" expanded="true" />
-            <element signature="e#27159#27488#0" expanded="true" />
-            <element signature="e#27487#27488#0" expanded="true" />
-            <element signature="e#27698#28028#0" expanded="true" />
-            <element signature="e#28027#28028#0" expanded="true" />
-            <element signature="e#28232#28561#0" expanded="true" />
-            <element signature="e#28560#28561#0" expanded="true" />
-            <element signature="e#28755#29084#0" expanded="true" />
-            <element signature="e#29083#29084#0" expanded="true" />
             <element signature="e#30968#31297#0" expanded="true" />
             <element signature="e#31296#31297#0" expanded="true" />
             <element signature="e#31478#31807#0" expanded="true" />
@@ -1290,6 +1185,40 @@
             <element signature="e#48073#48074#0" expanded="true" />
             <element signature="e#49410#50154#0" expanded="true" />
             <element signature="e#50153#50154#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Variaveis.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Dialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="23" column="56" selection-start-line="23" selection-start-column="56" selection-end-line="23" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/GestorClientes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+          <folding>
+            <element signature="e#170#171#0" expanded="true" />
+            <element signature="e#210#211#0" expanded="true" />
+            <element signature="e#240#241#0" expanded="true" />
+            <element signature="e#296#297#0" expanded="true" />
+            <element signature="e#257#258#0" expanded="true" />
+            <element signature="e#288#289#0" expanded="true" />
+            <element signature="e#434#435#0" expanded="true" />
+            <element signature="e#474#475#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -24,7 +24,7 @@ public class Layout extends JFrame implements Variaveis {
     private JPanel venda;
     private JPanel cliente;
     private JTextField txtNome;
-    private JTextField textProcurarCliente;
+    private JTextField textProcurarClienteNome;
     private JTextField textPesquisarStock;
     private JTextField textNome;
     private JTextField textQuantidade;
@@ -39,6 +39,9 @@ public class Layout extends JFrame implements Variaveis {
     private JTextField textDesconto;
     private JTextField textTotal;
     private JTable table_1;
+    private JTextField textProcurarClienteBI;
+    private JTextField textField;
+    private JTextField textField_1;
 
     
 
@@ -241,7 +244,7 @@ public class Layout extends JFrame implements Variaveis {
         relatorio.add(lblUltimosRelatrios);
 
         JLabel lblAlertas = new JLabel("Relatorios da Semana");
-        lblAlertas.setBounds(617, 100, 108, 16);
+        lblAlertas.setBounds(338, 100, 108, 16);
         relatorio.add(lblAlertas);
 
         JList list_3 = new JList();
@@ -259,7 +262,7 @@ public class Layout extends JFrame implements Variaveis {
         });
 
         list_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-        list_3.setBounds(31, 123, 560, 185);
+        list_3.setBounds(31, 123, 291, 185);
         relatorio.add(list_3);
 
         try {
@@ -267,7 +270,7 @@ public class Layout extends JFrame implements Variaveis {
             
             JList list = new JList();
             list.setBorder(new LineBorder(new Color(0, 0, 0)));
-            list.setBounds(617, 123, 475, 185);
+            list.setBounds(338, 123, 300, 185);
             relatorio.add(list);
             
             JPanel panel = new JPanel();
@@ -548,73 +551,101 @@ public class Layout extends JFrame implements Variaveis {
         });
         button_4.setBounds(31, 42, 99, 39);
         venda.add(button_4);
+        
+        JPanel panel_9 = new JPanel();
+        panel_9.setBorder(new TitledBorder(null, "Detalhes Cliente", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+        panel_9.setBounds(555, 205, 211, 188);
+        venda.add(panel_9);
+        panel_9.setLayout(null);
 
         JLabel lblNome = new JLabel("Nome");
-        lblNome.setBounds(737, 179, 46, 14);
-        venda.add(lblNome);
+        lblNome.setBounds(6, 22, 46, 14);
+        panel_9.add(lblNome);
 
         txtNome = new JTextField();
-        txtNome.setBounds(737, 203, 199, 30);
-        venda.add(txtNome);
+        txtNome.setBounds(6, 40, 199, 20);
+        panel_9.add(txtNome);
         txtNome.setColumns(10);
 
-        JLabel lblCliente = new JLabel("Cliente:");
-        lblCliente.setBounds(737, 253, 70, 14);
-        venda.add(lblCliente);
-
-        JLabel lblNome_1 = new JLabel("Nome:");
-        lblNome_1.setBounds(737, 278, 46, 14);
-        venda.add(lblNome_1);
-
-        JLabel lblBi = new JLabel("BI:");
-        lblBi.setBounds(747, 299, 46, 14);
-        venda.add(lblBi);
-
-        JButton btnAdicionar = new JButton("Adicionar");
-        btnAdicionar.setBounds(761, 361, 95, 30);
-        venda.add(btnAdicionar);
+        JLabel lblBi = new JLabel("Nrº Contribuinte");
+        lblBi.setBounds(6, 71, 199, 14);
+        panel_9.add(lblBi);
+        
+        textField = new JTextField();
+        textField.setBounds(6, 98, 199, 20);
+        panel_9.add(textField);
+        textField.setColumns(10);
+        
+        JLabel lblNewLabel_4 = new JLabel("Data Criacao Conta");
+        lblNewLabel_4.setBounds(6, 129, 199, 14);
+        panel_9.add(lblNewLabel_4);
+        
+        textField_1 = new JTextField();
+        textField_1.setBounds(6, 154, 195, 20);
+        panel_9.add(textField_1);
+        textField_1.setColumns(10);
 
         JPanel panel_5 = new JPanel();
         panel_5.setBorder(new TitledBorder(null, "Detalhes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        panel_5.setBounds(17, 447, 714, 190);
+        panel_5.setBounds(17, 447, 525, 190);
         venda.add(panel_5);
         panel_5.setLayout(null);
 
         JScrollPane scrollPane_2 = new JScrollPane();
-        scrollPane_2.setBounds(10, 20, 694, 153);
+        scrollPane_2.setBounds(10, 20, 505, 153);
         panel_5.add(scrollPane_2);
-
-
-
-        JLabel lblEstadoCompra = new JLabel("Estado Compra");
-        lblEstadoCompra.setBounds(737, 466, 113, 16);
-        venda.add(lblEstadoCompra);
+        
+        JPanel panel_10 = new JPanel();
+        panel_10.setBorder(new TitledBorder(null, "Estado Compra", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+        panel_10.setBounds(562, 447, 204, 187);
+        venda.add(panel_10);
+        panel_10.setLayout(null);
 
         JLabel lblSubtotal = new JLabel("Sub-Total:");
-        lblSubtotal.setBounds(757, 494, 55, 16);
-        venda.add(lblSubtotal);
+        lblSubtotal.setBounds(6, 18, 55, 16);
+        panel_10.add(lblSubtotal);
 
         JLabel lblIva = new JLabel("IVA:");
-        lblIva.setBounds(757, 519, 55, 16);
-        venda.add(lblIva);
+        lblIva.setBounds(6, 43, 55, 16);
+        panel_10.add(lblIva);
 
         JLabel lblDesconto = new JLabel("Desconto:");
-        lblDesconto.setBounds(757, 547, 55, 16);
-        venda.add(lblDesconto);
+        lblDesconto.setBounds(6, 71, 55, 16);
+        panel_10.add(lblDesconto);
 
         JLabel lblTotal = new JLabel("Total:");
-        lblTotal.setBounds(757, 575, 55, 16);
-        venda.add(lblTotal);
+        lblTotal.setBounds(6, 99, 55, 16);
+        panel_10.add(lblTotal);
+        
+        textSub_total = new JTextField();
+        textSub_total.setBounds(71, 16, 86, 20);
+        panel_10.add(textSub_total);
+        textSub_total.setColumns(10);
+        
+        textIVA = new JTextField();
+        textIVA.setBounds(71, 41, 86, 20);
+        panel_10.add(textIVA);
+        textIVA.setColumns(10);
+        
+        textDesconto = new JTextField();
+        textDesconto.setBounds(71, 69, 86, 20);
+        panel_10.add(textDesconto);
+        textDesconto.setColumns(10);
+        
+        textTotal = new JTextField();
+        textTotal.setBounds(71, 97, 86, 20);
+        panel_10.add(textTotal);
+        textTotal.setColumns(10);
 
 
         JPanel panel_4 = new JPanel();
         panel_4.setBorder(new TitledBorder(null, "Vendas", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        panel_4.setBounds(17, 205, 708, 188);
+        panel_4.setBounds(17, 205, 525, 188);
         venda.add(panel_4);
         panel_4.setLayout(null);
 
         JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(14, 18, 680, 156);
+        scrollPane.setBounds(14, 18, 500, 156);
         panel_4.add(scrollPane);
         //Define qual a Model vai estar a representar na jList
         JList list_1 = new JList(farmacia.gestorvendas.getVendas().toArray());
@@ -649,26 +680,6 @@ public class Layout extends JFrame implements Variaveis {
             }
         });
         scrollPane.setViewportView(list_1);
-        
-        textSub_total = new JTextField();
-        textSub_total.setBounds(822, 492, 86, 20);
-        venda.add(textSub_total);
-        textSub_total.setColumns(10);
-        
-        textIVA = new JTextField();
-        textIVA.setBounds(822, 517, 86, 20);
-        venda.add(textIVA);
-        textIVA.setColumns(10);
-        
-        textDesconto = new JTextField();
-        textDesconto.setBounds(822, 545, 86, 20);
-        venda.add(textDesconto);
-        textDesconto.setColumns(10);
-        
-        textTotal = new JTextField();
-        textTotal.setBounds(822, 573, 86, 20);
-        venda.add(textTotal);
-        textTotal.setColumns(10);
         //Criar evento caso a Categoria seja Alterada!
         comboBoxCategoria.addActionListener(e -> {
             try {
@@ -768,51 +779,71 @@ public class Layout extends JFrame implements Variaveis {
         });
         btnHomeClientes.setBounds(31, 37, 99, 39);
         clientes.add(btnHomeClientes);
+        
+        JPanel panel_6 = new JPanel();
+        panel_6.setBorder(new TitledBorder(null, "Formulário Procurar Cliente", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+        panel_6.setBounds(31, 174, 468, 87);
+        clientes.add(panel_6);
+        panel_6.setLayout(null);
 
-        JLabel lblProcurarCliente = new JLabel("Procurar Cliente:");
-        lblProcurarCliente.setBounds(31, 96, 108, 16);
-        clientes.add(lblProcurarCliente);
+        textProcurarClienteNome = new JTextField();
+        textProcurarClienteNome.setBounds(26, 53, 124, 20);
+        panel_6.add(textProcurarClienteNome);
+        textProcurarClienteNome.setColumns(10);
 
-        textProcurarCliente = new JTextField();
-        textProcurarCliente.setBounds(140, 94, 161, 20);
-        clientes.add(textProcurarCliente);
-        textProcurarCliente.setColumns(10);
+        JButton btnAdicionarCliente = new JButton("Procurar");
+        btnAdicionarCliente.setBounds(304, 50, 120, 26);
+        panel_6.add(btnAdicionarCliente);
+        
+        JLabel lblNewLabel_2 = new JLabel("Nome");
+        lblNewLabel_2.setBounds(26, 28, 46, 14);
+        panel_6.add(lblNewLabel_2);
+        
+        JLabel lblBi_1 = new JLabel("Nº Contribuinte");
+        lblBi_1.setBounds(170, 28, 120, 14);
+        panel_6.add(lblBi_1);
+        
+        textProcurarClienteBI = new JTextField();
+        textProcurarClienteBI.setBounds(170, 53, 124, 20);
+        panel_6.add(textProcurarClienteBI);
+        textProcurarClienteBI.setColumns(10);
 
-        JButton btnAdicionarCliente = new JButton("Adicionar");
-        btnAdicionarCliente.setBounds(342, 91, 120, 26);
-        clientes.add(btnAdicionarCliente);
-
-        JButton btnAdicionar_2 = new JButton("Adicionar");
-        btnAdicionar_2.setBounds(517, 108, 120, 26);
+        JButton btnAdicionar_2 = new JButton("Adicionar Cliente");
+        btnAdicionar_2.setBounds(517, 100, 120, 26);
         clientes.add(btnAdicionar_2);
 
-        JButton btnEditar = new JButton("Editar");
-        btnEditar.setBounds(517, 162, 118, 26);
-        clientes.add(btnEditar);
-
-        JButton btnRemover = new JButton("Remover");
-        btnRemover.setBounds(517, 214, 120, 26);
+        JButton btnRemover = new JButton("Remover Cliente");
+        btnRemover.setBounds(517, 137, 120, 26);
         clientes.add(btnRemover);
-
-        JLabel lblTodosOsClientes = new JLabel("Todos os clientes");
-        lblTodosOsClientes.setBounds(10, 214, 148, 16);
-        clientes.add(lblTodosOsClientes);
-
-        JTextPane textTodosClientes = new JTextPane();
-        textTodosClientes.setBounds(10, 242, 527, 214);
-        clientes.add(textTodosClientes);
-
-        JLabel lblRegistos = new JLabel("Registos");
-        lblRegistos.setBounds(557, 266, 78, 16);
-        clientes.add(lblRegistos);
+        
+        JPanel panel_7 = new JPanel();
+        panel_7.setBorder(new TitledBorder(null, "Detalhes sobre Clientes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+        panel_7.setBounds(31, 89, 468, 67);
+        clientes.add(panel_7);
+        panel_7.setLayout(null);
 
         JLabel lblTotalClientes = new JLabel("Total Clientes: ");
-        lblTotalClientes.setBounds(580, 294, 99, 16);
-        clientes.add(lblTotalClientes);
+        lblTotalClientes.setBounds(271, 40, 78, 16);
+        panel_7.add(lblTotalClientes);
 
-        JLabel lblEsteMs = new JLabel("Este Mês:");
-        lblEsteMs.setBounds(580, 322, 78, 16);
-        clientes.add(lblEsteMs);
+        JLabel lblEsteMs = new JLabel("Nº Clientes este Mês:");
+        lblEsteMs.setBounds(10, 40, 141, 16);
+        panel_7.add(lblEsteMs);
+        
+        JLabel lblNewLabel_3 = new JLabel("Nº de Clientes esta semana:");
+        lblNewLabel_3.setBounds(10, 17, 141, 14);
+        panel_7.add(lblNewLabel_3);
+        
+        JPanel panel_8 = new JPanel();
+        panel_8.setBorder(new TitledBorder(null, "Lista de Clientes" , TitledBorder.LEADING, TitledBorder.TOP, null, null));
+        panel_8.setBounds(31, 283, 468, 215);
+        clientes.add(panel_8);
+        panel_8.setLayout(null);
+        
+        JList list = new JList();
+        list.setBorder(new LineBorder(new Color(0, 0, 0)));
+        list.setBounds(10, 16, 448, 188);
+        panel_8.add(list);
 
 
         JButton btnHomeStock = new JButton("Home");
@@ -909,7 +940,7 @@ public class Layout extends JFrame implements Variaveis {
 
         JPanel panel_1 = new JPanel();
         panel_1.setBorder(new TitledBorder(null, "Informação detalhada: ", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        panel_1.setBounds(523, 345, 429, 296);
+        panel_1.setBounds(477, 345, 358, 270);
         stock.add(panel_1);
 
         GridBagLayout gbl_panel_1 = new GridBagLayout();
@@ -1081,7 +1112,7 @@ public class Layout extends JFrame implements Variaveis {
         });
         scrollPane_1.setViewportView(list_2);
         scrollPane_1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPane_1.setBounds(31, 343, 472, 276);
+        scrollPane_1.setBounds(31, 343, 436, 276);
         //Adicona o scroll pane ao painel Stock
         stock.add(scrollPane_1);
 
@@ -1196,7 +1227,7 @@ public class Layout extends JFrame implements Variaveis {
         textPreco.setColumns(10);
 
         JCalendar dataValidade = new JCalendar();
-        dataValidade.setBounds(489, 16, 315, 188);
+        dataValidade.setBounds(446, 16, 358, 188);
         panel_3.add(dataValidade);
 
         //Botao Adicionar Medicamento
