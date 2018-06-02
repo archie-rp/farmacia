@@ -1,37 +1,18 @@
 package com.company;
 //import com.sun.beans.editors.IntegerEditor;
-
-import com.toedter.calendar.JCalendar;
-
-import javafx.scene.chart.PieChart.Data;
-
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-
-import org.omg.CORBA.PUBLIC_MEMBER;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.concurrent.ExecutionException;
 import javax.swing.border.LineBorder;
-
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import com.sun.org.apache.bcel.internal.generic.NEW;
 import com.toedter.calendar.JDateChooser;
 
 public class Layout extends JFrame implements Variaveis {
@@ -59,7 +40,6 @@ public class Layout extends JFrame implements Variaveis {
     private JTextField textField_1;
     private JTextField biCliente;
     private JTextField nomeCliente;
-    
 
 
     public static void main(String[] args) {
@@ -902,7 +882,7 @@ public class Layout extends JFrame implements Variaveis {
         JLabel lblNewLabel_3 = new JLabel("Nº de Clientes esta semana:");
         lblNewLabel_3.setBounds(10, 17, 141, 14);
         panel_7.add(lblNewLabel_3);
-        
+
         JPanel panel_8 = new JPanel();
         panel_8.setBorder(new TitledBorder(null, "Clientes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
         panel_8.setBounds(31, 368, 460, 211);
@@ -913,30 +893,29 @@ public class Layout extends JFrame implements Variaveis {
         listClientes.setBounds(6, 16, 448, 188);
         panel_8.add(listClientes);
         listClientes.setBorder(new LineBorder(new Color(0, 0, 0)));
-        
-                JButton btnRemover = new JButton("Remover Cliente");
-                btnRemover.setBounds(715, 524, 120, 26);
-                clientes.add(btnRemover);
-                
-                        JButton btnAdicionar_2 = new JButton("Adicionar Cliente");
-                        btnAdicionar_2.setBounds(196, 221, 162, 26);
-                        clientes.add(btnAdicionar_2);
-                        btnAdicionar_2.addActionListener(new ActionListener() {
-                        	public void actionPerformed(ActionEvent arg0) {
-                        	}
-                        });
-                        btnAdicionar_2.addMouseListener(new MouseAdapter() {
-                            @Override
-                            public void mouseClicked(MouseEvent arg0) {
-System.out.println(farmacia.gestorclientes.clientes.size());
-                                Cliente cliente = new Cliente(farmacia.gestorclientes.clientes.size()+1, nomeCliente.getText(),Integer.parseInt(biCliente.getText()), dateChooser.getDate());
-                                farmacia.gestorclientes.clientes.add(cliente);
-                                
-                                
 
-listClientes.setListData(farmacia.gestorclientes.getClientes().toArray());
-                            }
-                        });
+        JButton btnRemover = new JButton("Remover Cliente");
+        btnRemover.setBounds(715, 524, 120, 26);
+        clientes.add(btnRemover);
+
+        JButton btnAdicionar_2 = new JButton("Adicionar Cliente");
+        btnAdicionar_2.setBounds(196, 221, 162, 26);
+        clientes.add(btnAdicionar_2);
+        btnAdicionar_2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+            }
+        });
+        btnAdicionar_2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                System.out.println(farmacia.gestorclientes.clientes.size());
+                Cliente cliente = new Cliente(farmacia.gestorclientes.clientes.size() + 1, nomeCliente.getText(), Integer.parseInt(biCliente.getText()), dateChooser.getDate());
+                farmacia.gestorclientes.clientes.add(cliente);
+
+
+                listClientes.setListData(farmacia.gestorclientes.getClientes().toArray());
+            }
+        });
 
 
         JButton btnHomeStock = new JButton("Home");
