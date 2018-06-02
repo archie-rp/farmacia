@@ -2,6 +2,10 @@ package com.company;
 
 import java.util.ArrayList;
 
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 public class GestorClientes {
     ArrayList<Cliente> clientes;
 
@@ -27,18 +31,26 @@ public class GestorClientes {
                 '}';
     }
     public Dialog procurarCliente(String nomeCliente,Farmacia farmacia){
+boolean encontrou=false;
         if (nomeCliente != null){
             for (Cliente cliente:clientes){
                 if (cliente.getNome().equalsIgnoreCase(nomeCliente)){
-                    System.out.println(nomeCliente);
+                  //  System.out.println(nomeCliente);
                     Relatorio relat = new Relatorio(farmacia.gestorvendas.comprasCliente(cliente), "Costa-Prozelo");
                     Dialog dialog = new Dialog(relat);
                     dialog.setVisible(true);
+                    encontrou=true;
                     return dialog;
                 }
             }
+
         }
+        if(encontrou==false){
+            JOptionPane.showMessageDialog(null, "Cliente não encontrado na base de dados");
+        }
+
         return null;
+               
     }
 }
 

@@ -221,6 +221,7 @@ public class Layout extends JFrame implements Variaveis {
         relatorio.add(btnStockRelatorio);
 
         JButton btnRelatorioRelatorio = new JButton("Relatório");
+        btnRelatorioRelatorio.setEnabled(false);
         btnRelatorioRelatorio.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -345,6 +346,7 @@ public class Layout extends JFrame implements Variaveis {
 
         //Botao home
         JButton btnHome = new JButton("Home");
+        btnHome.setEnabled(false);
         btnHome.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -549,6 +551,7 @@ public class Layout extends JFrame implements Variaveis {
         venda.add(button_2);
 
         JButton button_3 = new JButton("Vendas");
+        button_3.setEnabled(false);
         button_3.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -734,6 +737,7 @@ public class Layout extends JFrame implements Variaveis {
         });
 
         JButton button_15 = new JButton("Clientes");
+        button_15.setEnabled(false);
         button_15.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -1005,6 +1009,7 @@ public class Layout extends JFrame implements Variaveis {
         stock.add(btnRelatorioStock);
 
         JButton btnStockStock = new JButton("Gerir");
+        btnStockStock.setEnabled(false);
         btnStockStock.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -1019,6 +1024,7 @@ public class Layout extends JFrame implements Variaveis {
         stock.add(btnStockStock);
 
         JButton btnClientesStock = new JButton("Clientes");
+     
         btnClientesStock.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

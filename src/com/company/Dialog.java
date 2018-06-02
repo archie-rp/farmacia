@@ -154,12 +154,12 @@ public class Dialog extends JDialog implements Variaveis {
             panel.setLayout(null);
             {
                 JScrollPane scrollPane = new JScrollPane();
-                scrollPane.setBounds(6, 16, 839, 231);
+                scrollPane.setBounds(6, 16, 865, 231);
                 panel.add(scrollPane);
                 {
                     if (relatorio.getVendas().size()<2){
                     table = new JTable();
-                    DefaultTableModel model_d = new DefaultTableModel(new Object[]{"Medicamento", "Categoria", "Via Administração", "Peço"}, 0);
+                    DefaultTableModel model_d = new DefaultTableModel(new Object[]{"Medicamento", "Categoria", "Via Administração", "Preço"}, 0);
                     ArrayList<Object> array = new ArrayList(relatorio.getVenda().getMedicamentos());
                         for (int i = 0; i < array.size(); i++) {
                             if (array.get(i) != null) {
