@@ -67,11 +67,8 @@ public class Dialog extends JDialog implements Variaveis {
         }
         {
             JLabel lblNewLabel = new JLabel("");
-            if (relatorio.getVenda().getFuncionario() != null) {
-                lblNewLabel.setText(relatorio.getVenda().getFuncionario().toString());
-            } else {
-                lblNewLabel.setText("");
-            }
+            lblNewLabel.setText(relatorio.getFuncionario());
+
 
             GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
             gbc_lblNewLabel.anchor = GridBagConstraints.WEST;
@@ -91,12 +88,7 @@ public class Dialog extends JDialog implements Variaveis {
         }
         {
             JLabel lblNewLabel_1 = new JLabel();
-            System.out.println(relatorio.getVenda().getCliente().getNome());
-            if (relatorio.getVenda().getCliente() != null) {
-                lblNewLabel_1.setText(relatorio.getVenda().getCliente().getNome());
-            } else {
-                lblNewLabel_1.setText("");
-            }
+            lblNewLabel_1.setText(relatorio.getCliente());
 
             GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
             gbc_lblNewLabel_1.anchor = GridBagConstraints.WEST;
@@ -113,13 +105,16 @@ public class Dialog extends JDialog implements Variaveis {
             gbc_lblDataCompra.gridx = 2;
             gbc_lblDataCompra.gridy = 3;
             contentPanel.add(lblDataCompra, gbc_lblDataCompra);
-        }
-        {
-            JLabel lblNewLabel_2 = new JLabel(relatorio.getVenda().getDataCompra().toString());
-            GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
-            gbc_lblNewLabel_2.gridx = 3;
-            gbc_lblNewLabel_2.gridy = 3;
-            contentPanel.add(lblNewLabel_2, gbc_lblNewLabel_2);
+            if (relatorio.getVendas().size() < 2){
+                JLabel lblNewLabel_2 = new JLabel("Muitas Datas");
+            }else{
+                JLabel lblNewLabel_2 = new JLabel(relatorio.getVenda().getData_compra().toString());
+                GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
+                gbc_lblNewLabel_2.gridx = 3;
+                gbc_lblNewLabel_2.gridy = 3;
+                contentPanel.add(lblNewLabel_2, gbc_lblNewLabel_2);
+            }
+
         }
         {
             JPanel buttonPane = new JPanel();
@@ -162,25 +157,33 @@ public class Dialog extends JDialog implements Variaveis {
                 scrollPane.setBounds(6, 16, 839, 231);
                 panel.add(scrollPane);
                 {
+                    if (relatorio.getVendas().size()<2){
                     table = new JTable();
                     DefaultTableModel model_d = new DefaultTableModel(new Object[]{"Medicamento", "Categoria", "Via Administração", "Peço"}, 0);
                     ArrayList<Object> array = new ArrayList(relatorio.getVenda().getMedicamentos());
-
-
-                    for (int i = 0; i < array.size(); i++) {
-                        if (array.get(i) != null) {
-                            Medicamento m = new Medicamento();
-                            m = (Medicamento) array.get(i);
-                            model_d.addRow(new Object[]{m.getNome(), categorias[m.getCategoria()], vias[m.getViaAdmin()], m.getPreco()});
-                            // System.out.println(array.get(i));
+                        for (int i = 0; i < array.size(); i++) {
+                            if (array.get(i) != null) {
+                                Medicamento m = new Medicamento();
+                                m = (Medicamento) array.get(i);
+                                model_d.addRow(new Object[]{m.getNome(), categorias[m.getCategoria()], vias[m.getViaAdmin()], m.getPreco()});
+                                table.setModel(model_d);
+                            }
                         }
                     }
-                    //
-                    // model_d.addRow(new Object[]{array});
+                    else{
+                        table = new JTable();
+                        DefaultTableModel model_d = new DefaultTableModel(new Object[]{"Venda ", "Data", "Funcionario", "Preço"}, 0);
+                        ArrayList<Object> array = new ArrayList(relatorio.getVendas());
+                        for (int i = 0; i < array.size(); i++) {
+                            if (array.get(i) != null) {
+                                Venda m = new Venda();
+                                m = (Venda) array.get(i);
+                                model_d.addRow(new Object[]{m.getCod_venda(), m.getDataCompra(), m.getFuncionario().getNome(), m.getPreco_total()});
+                                table.setModel(model_d);
+                            }
+                        }
+                    }
 
-
-                    // System.out.println(array.get(1));
-                    table.setModel(model_d);
                     scrollPane.setViewportView(table);
                 }
             }

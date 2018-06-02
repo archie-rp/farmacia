@@ -33,6 +33,15 @@ public class GestorVendas {
     public ArrayList<Venda> getVendas() {
         return vendas;
     }
+    public ArrayList<Venda> getVendas(Cliente cliente) {
+        ArrayList<Venda> vendas_=new ArrayList<>();
+        for (Venda venda:vendas){
+            if (venda.getCliente() == cliente){
+                vendas_.add(venda);
+            }
+        }
+        return vendas_;
+    }
 
     public void setVendas(ArrayList<Venda> vendas) {
         this.vendas = vendas;
@@ -49,5 +58,14 @@ public class GestorVendas {
         this.vendas.add(venda);
         this.quantidade_vendas++;
         return true;
+    }
+    public ArrayList<Venda> comprasCliente(Cliente cliente){
+        ArrayList<Venda> vendas_cliente = new ArrayList<>();
+        for (Venda venda:vendas){
+            if (venda.getCliente().getNome() == cliente.getNome()){
+                vendas_cliente.add(venda);
+            }
+        }
+        return vendas_cliente;
     }
 }

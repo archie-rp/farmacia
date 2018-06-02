@@ -70,11 +70,15 @@ public class Layout extends JFrame implements Variaveis {
         //Gestor de Clientes
         GestorClientes gestorClientes = new GestorClientes();
         //Criar uma venda
-        Venda venda1 = new Venda("José");
-        Venda venda2 = new Venda("António");
+        Venda venda1 = new Venda("Tánia");
+        Venda venda2 = new Venda("Jéssica");
+        Venda venda3 = new Venda("Cátia");
+        Venda venda4 = new Venda("Tánia");
         //Criar uma compra que é uma arraylist de Medicamentos
         ArrayList<Medicamento> compra1 = new ArrayList<>();
         ArrayList<Medicamento> compra2 = new ArrayList<>();
+        ArrayList<Medicamento> compra3 = new ArrayList<>();
+        ArrayList<Medicamento> compra4 = new ArrayList<>();
         //Criar Medicamento para inserir na compra
         Medicamento medicamento1 = new Medicamento();
         Medicamento medicamento2 = new Medicamento();
@@ -90,31 +94,55 @@ public class Layout extends JFrame implements Variaveis {
         medicamento2.setViaAdmin(0);
         medicamento2.setPreco(15.0f);
         medicamento2.setDataValidade(new Date());
+        //Adicionar clientes ao Gestor de Clientes
+        Cliente cliente1 = new Cliente(1, "Paulo", 121222, new Date());
+        Cliente cliente2 = new Cliente(2, "José", 1212322, new Date());
+        Cliente cliente3 = new Cliente(3, "Manel", 1344562, new Date());
+
         //Defenir a venda
         venda1.setCod_venda(102);
         venda1.setData_compra(new Date());
-        venda1.setCliente(new Cliente(2, "António", 1222, new Date()));
+        venda1.setCliente(cliente1);
         venda2.setCod_venda(103);
         venda2.setData_compra(new Date());
-        venda2.setCliente(new Cliente(3, "José", 1222, new Date()));
+        venda2.setCliente(cliente2);
+        venda3.setCod_venda(104);
+        venda3.setData_compra(new Date());
+        venda3.setCliente(cliente3);
+        venda4.setCod_venda(105);
+        venda4.setData_compra(new Date());
+        venda4.setCliente(cliente3);
         //Adicionar medicamento na compra
         compra1.add(medicamento1);
         compra1.add(medicamento2);
         compra2.add(medicamento1);
         compra2.add(medicamento1);
+        compra3.add(medicamento1);
+        compra3.add(medicamento2);
+        compra3.add(medicamento2);
+        compra3.add(medicamento1);
+        compra4.add(medicamento1);
+        compra4.add(medicamento1);
+        compra4.add(medicamento1);
+        compra4.add(medicamento1);
+
         //Adicionar o arraylist dos medicamentos
         venda1.setMedicamentos(compra1);
-        venda2.setMedicamentos(compra1);
         venda2.setMedicamentos(compra2);
+        venda3.setMedicamentos(compra3);
+        venda4.setMedicamentos(compra4);
         //Adicionar Vendas ao gestor de vendas
         gestorvendas.adicionarVenda(venda1);
         gestorvendas.adicionarVenda(venda2);
+        gestorvendas.adicionarVenda(venda3);
+        gestorvendas.adicionarVenda(venda4);
         //System.out.println(gestorvendas.getVendas());
         armario.adicionarMedicamento(medicamento1, 1);
         armario.adicionarMedicamento(medicamento2, 1);
-        //Adicionar clientes ao Gestor de Clientes
-        Cliente cliente1 = new Cliente(12, "Paulo", 12341222, new Date());
+        //Adicionar clientes
         gestorClientes.setCliente(cliente1);
+        gestorClientes.setCliente(cliente2);
+        gestorClientes.setCliente(cliente3);
         //Defenir farmacia
         Farmacia farmacia = new Farmacia(farmacias[nrloja], gestorvendas, armario, gestorClientes);
 
@@ -788,6 +816,12 @@ public class Layout extends JFrame implements Variaveis {
         textProcurarClienteNome.setColumns(10);
 
         JButton btnAdicionarCliente = new JButton("Procurar");
+        btnAdicionarCliente.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent arg0) {
+        		farmacia.gestorclientes.procurarCliente(textProcurarClienteNome.getText(), farmacia);
+        	}
+        });
         btnAdicionarCliente.setBounds(304, 50, 120, 26);
         panel_6.add(btnAdicionarCliente);
 
@@ -890,6 +924,16 @@ public class Layout extends JFrame implements Variaveis {
         panel_8.setLayout(null);
 
         JList listClientes = new JList(farmacia.gestorclientes.getClientes().toArray());
+        listClientes.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		if (e.getClickCount() == 2) {
+                    Relatorio relat = new Relatorio(farmacia.gestorvendas.getVendas(gestorClientes.getClientes().get(listClientes.getSelectedIndex())), "Costa-Prozelo");
+                    Dialog dialog = new Dialog(relat);
+                    dialog.setVisible(true);
+                }
+        	}
+        });
         listClientes.setBounds(6, 16, 448, 188);
         panel_8.add(listClientes);
         listClientes.setBorder(new LineBorder(new Color(0, 0, 0)));

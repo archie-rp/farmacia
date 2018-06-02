@@ -26,5 +26,19 @@ public class GestorClientes {
                 "clientes=" + clientes +
                 '}';
     }
+    public Dialog procurarCliente(String nomeCliente,Farmacia farmacia){
+        if (nomeCliente != null){
+            for (Cliente cliente:clientes){
+                if (cliente.getNome().equalsIgnoreCase(nomeCliente)){
+                    System.out.println(nomeCliente);
+                    Relatorio relat = new Relatorio(farmacia.gestorvendas.comprasCliente(cliente), "Costa-Prozelo");
+                    Dialog dialog = new Dialog(relat);
+                    dialog.setVisible(true);
+                    return dialog;
+                }
+            }
+        }
+        return null;
+    }
 }
 
