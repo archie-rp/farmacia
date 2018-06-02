@@ -2,6 +2,7 @@ package com.company;
 
 import java.util.Date;
 
+
 public class Cliente {
     int id;
     String nome;
@@ -14,6 +15,7 @@ public class Cliente {
         this.bi = bi;
         this.dataInscricao = dataInscricao;
     }
+
 
     public Cliente() {
         this.id = 0;
@@ -57,10 +59,10 @@ public class Cliente {
     @Override
     public String toString() {
         StringBuilder string = new StringBuilder();
-
-        string.append(getNome()+" ");
-        string.append(getBi()+" ");
-        string.append( getDataInscricao()+" ");
+        string.append(getId() + " ");
+        string.append(getNome() + " ");
+        string.append(getBi() + " ");
+        string.append(getDataInscricao() + " ");
 
         return string.toString();
     }
