@@ -75,7 +75,7 @@ public class Login extends JDialog implements Variaveis {
 		contentPanel.add(comboLoja);
 		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon("C:\\Users\\Archierp\\Pictures\\phamacy.png"));
+		label.setIcon(new ImageIcon("phamacy.png"));
 		label.setBounds(266, 22, 99, 182);
 		contentPanel.add(label);
 		
