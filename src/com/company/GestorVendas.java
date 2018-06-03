@@ -63,6 +63,7 @@ public class GestorVendas implements Serializable {
     public ArrayList<Venda> comprasCliente(Cliente cliente){
         ArrayList<Venda> vendas_cliente = new ArrayList<>();
         for (Venda venda:vendas){
+            System.out.println(venda.getCliente().getNome()+ cliente.getNome());
             if (venda.getCliente().getNome() == cliente.getNome()){
                 vendas_cliente.add(venda);
             }

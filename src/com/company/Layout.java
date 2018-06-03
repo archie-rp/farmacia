@@ -1,4 +1,5 @@
 package com.company;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionEvent;
@@ -13,7 +14,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.border.LineBorder;
+
+
 import com.toedter.calendar.JDateChooser;
+
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -43,7 +47,7 @@ public class Layout extends JFrame implements Variaveis {
     private JTextField biCliente;
     private JTextField nomeCliente;
 
-    
+
     //Criar Armario
     Armario armario = new Armario();
     //Defenir farmacia
@@ -147,9 +151,9 @@ public class Layout extends JFrame implements Variaveis {
 
 
         // Serializaçao
-       if (farmacia_serializada.getNome().isEmpty() ){
+        if (farmacia_serializada.getNome().isEmpty()) {
             try {
-                farmacia = new Farmacia("Médis",gestorvendas,new Armario[3],gestorClientes);
+                farmacia = new Farmacia("Médis", gestorvendas, new Armario[3], gestorClientes);
                 farmacia.armarios[0] = new Armario();
                 farmacia.armarios[1] = new Armario();
                 farmacia.armarios[2] = new Armario();
@@ -162,15 +166,15 @@ public class Layout extends JFrame implements Variaveis {
             } catch (IOException i) {
                 i.printStackTrace();
             }
-       }else{
-            farmacia =farmacia_serializada;
+        } else {
+            farmacia = farmacia_serializada;
             System.out.println("a carregar Armario existente em ficheiro...");
-       }
+        }
 
         //Gravar farmacia ao fechar programa
         addWindowListener(new WindowAdapter() {
-    		@Override
-    		public void windowClosing(WindowEvent arg0) {
+            @Override
+            public void windowClosing(WindowEvent arg0) {
 
                 try {
                     FileOutputStream fileOut = new FileOutputStream("Farmacia.ser");
@@ -184,8 +188,8 @@ public class Layout extends JFrame implements Variaveis {
                     farmacia = farmacia_serializada;
                 }
             }
-    		
-    	});
+
+        });
 
         getContentPane().setLayout(new CardLayout(0, 0));
         setBounds(100, 100, 1138, 684);
@@ -367,7 +371,7 @@ public class Layout extends JFrame implements Variaveis {
                     model_d.addRow(new Object[]{categorias[i], farmacia.armarios[nrloja].getQuantidadGaveta(i, 0), farmacia.armarios[nrloja].getPrecoGaveta(i, 0)});
                 }
                 table_1.setModel(model_d);
-            }catch (IndexOutOfBoundsException e){
+            } catch (IndexOutOfBoundsException e) {
                 System.out.println("Sem medicamentos..");
             }
             comboBox_1.addActionListener(new ActionListener() {
@@ -493,6 +497,7 @@ public class Layout extends JFrame implements Variaveis {
             main.add(list);
 
         } catch (Exception e) {
+
         }
 
         JPanel panel = new JPanel();
@@ -865,10 +870,10 @@ public class Layout extends JFrame implements Variaveis {
 
         JButton btnAdicionarCliente = new JButton("Procurar");
         btnAdicionarCliente.addMouseListener(new MouseAdapter() {
-        	@Override
-        	public void mouseClicked(MouseEvent arg0) {
-        		farmacia.gestorclientes.procurarCliente(textProcurarClienteNome.getText(), farmacia);
-        	}
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                farmacia.gestorclientes.procurarCliente(textProcurarClienteNome.getText(), farmacia);
+            }
         });
         btnAdicionarCliente.setBounds(304, 50, 120, 26);
         panel_6.add(btnAdicionarCliente);
@@ -973,14 +978,21 @@ public class Layout extends JFrame implements Variaveis {
 
         JList listClientes = new JList(farmacia.gestorclientes.getClientes().toArray());
         listClientes.addMouseListener(new MouseAdapter() {
-        	@Override
-        	public void mouseClicked(MouseEvent e) {
-        		if (e.getClickCount() == 2) {
-                    Relatorio relat = new Relatorio(farmacia.gestorvendas.getVendas(gestorClientes.getClientes().get(listClientes.getSelectedIndex())), "Costa-Prozelo");
-                    Dialog dialog = new Dialog(relat);
-                    dialog.setVisible(true);
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    Cliente cliente = new Cliente();
+                    cliente = (Cliente) listClientes.getSelectedValue();
+                    if (farmacia.gestorvendas.getVendas(cliente).size()>0) {
+                        Relatorio relat = new Relatorio(farmacia.gestorvendas.getVendas(cliente), "Costa-Prozelo");
+                        Dialog dialog = new Dialog(relat);
+                        dialog.setVisible(true);
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "O cliente: "+ cliente.getNome()+" ainda não efectuou compras!");
+                    }
                 }
-        	}
+            }
         });
         listClientes.setBounds(6, 16, 448, 188);
         panel_8.add(listClientes);
@@ -1068,7 +1080,7 @@ public class Layout extends JFrame implements Variaveis {
         stock.add(btnStockStock);
 
         JButton btnClientesStock = new JButton("Clientes");
-     
+
         btnClientesStock.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -1203,7 +1215,7 @@ public class Layout extends JFrame implements Variaveis {
         try {
             list_2.setListData(farmacia.armarios[nrloja].getTodos().toArray());
 
-        } catch (IndexOutOfBoundsException e){
+        } catch (IndexOutOfBoundsException e) {
             System.out.println("Sem medicamentos1");
         }
 
