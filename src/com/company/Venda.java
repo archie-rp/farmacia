@@ -1,11 +1,12 @@
 package com.company;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
-public class Venda  implements Variaveis{
+public class Venda  implements Variaveis,Serializable {
     private int cod_venda;
     private Cliente cliente;
     private Date data_compra;

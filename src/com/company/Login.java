@@ -93,18 +93,18 @@ public class Login extends JDialog implements Variaveis {
 					public void mouseClicked(MouseEvent arg0) {
 						Funcionario funcionario = new Funcionario(textUtilizador.getText());
 						int nrloja = comboLoja.getSelectedIndex();
-						Armario armario_serializado = new Armario();
+						Farmacia farmacia_serializada = new Farmacia();
 						try {
-							File f = new File("Armario.ser");
+							File f = new File("Farmacia.ser");
 							if (f.exists()){
 								FileInputStream fileIn = new FileInputStream(f);
 								ObjectInputStream in = new ObjectInputStream(fileIn);
-								armario_serializado = (Armario) in.readObject();
+								farmacia_serializada = (Farmacia) in.readObject();
 								in.close();
 								fileIn.close();
 								System.out.println("Armario existe.. a carregar..");
 							}else {
-								armario_serializado = new Armario();
+								farmacia_serializada = new Farmacia();
 								System.out.println("Armario nao existe a criar um novo");
 							}
 						} catch (IOException i) {
@@ -112,11 +112,11 @@ public class Login extends JDialog implements Variaveis {
 							return;
 						} catch (ClassNotFoundException c) {
 							System.out.println("Armario class nao encontrado!");
-							armario_serializado = new Armario();
+							farmacia_serializada = new Farmacia();
 							c.printStackTrace();
 							return;
 						}
-						Layout frame = new Layout(funcionario, nrloja,armario_serializado);
+						Layout frame = new Layout(funcionario, nrloja,farmacia_serializada);
 						dispose();
 						frame.setVisible(true);
 					}

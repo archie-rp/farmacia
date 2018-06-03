@@ -1,6 +1,8 @@
 package com.company;
 
-public class Funcionario {
+import java.io.Serializable;
+
+public class Funcionario implements Serializable {
     private String nome;
     private String password;
 

@@ -46,6 +46,8 @@ public class Layout extends JFrame implements Variaveis {
     
     //Criar Armario
     Armario armario = new Armario();
+    //Defenir farmacia
+    Farmacia farmacia = new Farmacia();
 
     public static void main(String[] args) {
 
@@ -67,7 +69,7 @@ public class Layout extends JFrame implements Variaveis {
         });
     }
 
-    public Layout(Funcionario funcionario, int nrloja, Armario armario_serializado) {
+    public Layout(Funcionario funcionario, int nrloja, Farmacia farmacia_serializada) {
     	
        
         //Gestor de Vendas
@@ -151,24 +153,23 @@ public class Layout extends JFrame implements Variaveis {
 
 
         // Serializaçao
-        if (armario_serializado.getTodos().size()<1){
+       if (farmacia_serializada ==null){
             try {
-                FileOutputStream fileOut = new FileOutputStream("Armario.ser");
+                FileOutputStream fileOut = new FileOutputStream("Farmacia.ser");
                 ObjectOutputStream out = new ObjectOutputStream(fileOut);
-                out.writeObject(armario);
+                out.writeObject(farmacia);
                 out.close();
                 fileOut.close();
-                System.out.printf("Serialized data foi guardada em Armario.ser");
+                System.out.printf("Serialized data foi guardada em Farmacia.ser");
             } catch (IOException i) {
                 i.printStackTrace();
-                armario = armario_serializado;
+                farmacia = farmacia_serializada;
             }
-        }else{
-            armario =armario_serializado;
+       }else{
+            farmacia =farmacia_serializada;
             System.out.println("a carregar Armario existente em ficheiro...");
-        }
-        //Defenir farmacia
-        Farmacia farmacia = new Farmacia(farmacias[nrloja], gestorvendas, armario, gestorClientes);
+       }
+
 
         //Gravar farmacia ao fechar programa
         addWindowListener(new WindowAdapter() {
@@ -176,15 +177,15 @@ public class Layout extends JFrame implements Variaveis {
     		public void windowClosing(WindowEvent arg0) {
 
                 try {
-                    FileOutputStream fileOut = new FileOutputStream("Armario.ser");
+                    FileOutputStream fileOut = new FileOutputStream("Farmacia.ser");
                     ObjectOutputStream out = new ObjectOutputStream(fileOut);
-                    out.writeObject(armario);
+                    out.writeObject(farmacia);
                     out.close();
                     fileOut.close();
-                    System.out.printf("Serialized data foi guardada em Armario.ser");
+                    System.out.printf("Serialized data foi guardada em Farmacia.ser");
                 } catch (IOException i) {
                     i.printStackTrace();
-                    armario = armario_serializado;
+                    farmacia = farmacia_serializada;
                 }
             }
     		

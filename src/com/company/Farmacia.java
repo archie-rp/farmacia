@@ -2,7 +2,7 @@ package com.company;
 
 import java.io.Serializable;
 
-public class Farmacia {
+public class Farmacia implements Serializable{
     private String nome;
     public GestorVendas gestorvendas;
     public Armario armario;

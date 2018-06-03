@@ -1,9 +1,10 @@
 package com.company;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Relatorio {
+public class Relatorio implements Serializable {
     private ArrayList<Venda> vendas= new ArrayList<>();
     private String nomeFarmacia;
     private String morada;

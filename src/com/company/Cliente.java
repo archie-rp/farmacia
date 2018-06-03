@@ -1,9 +1,10 @@
 package com.company;
 
+import java.io.Serializable;
 import java.util.Date;
 
 
-public class Cliente {
+public class Cliente implements Serializable {
     int id;
     String nome;
     int bi;
