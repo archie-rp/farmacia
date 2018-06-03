@@ -13,6 +13,7 @@ import javax.swing.JComboBox;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.*;
 
 public class Login extends JDialog implements Variaveis {
 
@@ -92,7 +93,30 @@ public class Login extends JDialog implements Variaveis {
 					public void mouseClicked(MouseEvent arg0) {
 						Funcionario funcionario = new Funcionario(textUtilizador.getText());
 						int nrloja = comboLoja.getSelectedIndex();
-						Layout frame = new Layout(funcionario,nrloja);
+						Armario armario_serializado = new Armario();
+						try {
+							File f = new File("Armario.ser");
+							if (f.exists()){
+								FileInputStream fileIn = new FileInputStream(f);
+								ObjectInputStream in = new ObjectInputStream(fileIn);
+								armario_serializado = (Armario) in.readObject();
+								in.close();
+								fileIn.close();
+								System.out.println("Armario existe.. a carregar..");
+							}else {
+								armario_serializado = new Armario();
+								System.out.println("Armario nao existe a criar um novo");
+							}
+						} catch (IOException i) {
+							System.out.println(i);
+							return;
+						} catch (ClassNotFoundException c) {
+							System.out.println("Armario class nao encontrado!");
+							armario_serializado = new Armario();
+							c.printStackTrace();
+							return;
+						}
+						Layout frame = new Layout(funcionario, nrloja,armario_serializado);
 						dispose();
 						frame.setVisible(true);
 					}

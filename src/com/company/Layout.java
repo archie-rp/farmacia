@@ -1,5 +1,4 @@
 package com.company;
-//import com.sun.beans.editors.IntegerEditor;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionEvent;
@@ -10,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.border.LineBorder;
@@ -62,7 +62,7 @@ public class Layout extends JFrame implements Variaveis {
         });
     }
 
-    public Layout(Funcionario funcionario, int nrloja) {
+    public Layout(Funcionario funcionario, int nrloja, Armario armario_serializado) {
         //Criar Armario
         Armario armario = new Armario();
         //Gestor de Vendas
@@ -144,6 +144,23 @@ public class Layout extends JFrame implements Variaveis {
         gestorClientes.setCliente(cliente2);
         gestorClientes.setCliente(cliente3);
         //Defenir farmacia
+        // Serializaçao
+        if (armario_serializado.getTodos().size()<1){
+            try {
+                FileOutputStream fileOut = new FileOutputStream("Armario.ser");
+                ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                out.writeObject(armario);
+                out.close();
+                fileOut.close();
+                System.out.printf("Serialized data foi guardada em Armario.ser");
+            } catch (IOException i) {
+                i.printStackTrace();
+                armario = armario_serializado;
+            }
+        }else{
+            armario =armario_serializado;
+            System.out.println("a carregar Armario existente em ficheiro...");
+        }
         Farmacia farmacia = new Farmacia(farmacias[nrloja], gestorvendas, armario, gestorClientes);
 
 

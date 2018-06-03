@@ -1,12 +1,13 @@
 package com.company;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-public class GestorClientes {
+public class GestorClientes implements Serializable {
     ArrayList<Cliente> clientes;
 
     public GestorClientes(ArrayList<Cliente> clientes) {

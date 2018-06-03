@@ -1,8 +1,9 @@
 package com.company;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class GestorVendas {
+public class GestorVendas implements Serializable {
     private String nome;
     ArrayList<Venda> vendas;
     private int quantidade_vendas;

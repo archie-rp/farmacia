@@ -1,5 +1,7 @@
 package com.company;
 
+import java.io.Serializable;
+
 public class Farmacia {
     private String nome;
     public GestorVendas gestorvendas;
@@ -11,6 +13,12 @@ public class Farmacia {
         this.gestorvendas = gestorvendas;
         this.armario = armario;
         this.gestorclientes = gestorclientes;
+    }
+    public Farmacia() {
+        this.nome = "";
+        this.gestorvendas = new GestorVendas();
+        this.armario = new Armario();
+        this.gestorclientes = new GestorClientes();
     }
 
     public GestorVendas getGestorvendas() {
