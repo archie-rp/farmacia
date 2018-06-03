@@ -46,14 +46,11 @@ public class GestorClientes implements Serializable {
                     return dialog;
                 }
             }
-
         }
         if (encontrou == false) {
             JOptionPane.showMessageDialog(null, "Cliente não encontrado na base de dados");
         }
-
         return null;
-
     }
 }
 
