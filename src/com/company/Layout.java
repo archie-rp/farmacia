@@ -70,8 +70,6 @@ public class Layout extends JFrame implements Variaveis {
     }
 
     public Layout(Funcionario funcionario, int nrloja, Farmacia farmacia_serializada) {
-    	
-       
         //Gestor de Vendas
         GestorVendas gestorvendas = new GestorVendas();
         //Gestor de Clientes
@@ -367,7 +365,7 @@ public class Layout extends JFrame implements Variaveis {
             DefaultTableModel model_d = new DefaultTableModel(new Object[]{"Nome Categoria", "Quantidade", "Preço Total"}, 0);
             //Adiciona os medicamentos na tablela
             for (int i = 0; i < 20; i++) {
-                model_d.addRow(new Object[]{categorias[i], farmacia.armario.getQuantidadGaveta(i, 0), farmacia.armario.getPrecoGaveta(i, 0)});
+                model_d.addRow(new Object[]{categorias[i], farmacia.armarios.get(nrloja).getQuantidadGaveta(i, 0), farmacia.armarios.get(nrloja).getPrecoGaveta(i, 0)});
             }
             table_1.setModel(model_d);
             comboBox_1.addActionListener(new ActionListener() {
@@ -375,7 +373,7 @@ public class Layout extends JFrame implements Variaveis {
                     DefaultTableModel model = new DefaultTableModel(new Object[]{"Nome Categoria", "Quantidade", "Preço Total"}, 0);
                     //Adiciona os medicamentos na tablela
                     for (int i = 0; i < 20; i++) {
-                        model.addRow(new Object[]{categorias[i], farmacia.armario.getQuantidadGaveta(i, comboBox_1.getSelectedIndex()), farmacia.armario.getPrecoGaveta(i, comboBox_1.getSelectedIndex())});
+                        model.addRow(new Object[]{categorias[i], farmacia.armarios.get(nrloja).getQuantidadGaveta(i, comboBox_1.getSelectedIndex()), farmacia.armarios.get(nrloja).getPrecoGaveta(i, comboBox_1.getSelectedIndex())});
                     }
                     table_1.setModel(model);
                 }
@@ -488,7 +486,7 @@ public class Layout extends JFrame implements Variaveis {
         main.add(textProdutosRecentes);
 
         try {
-            JList list = new JList(farmacia.armario.getArmarioGaveta(0, 0).getMedicamentos().toArray());
+            JList list = new JList(farmacia.armarios.get(nrloja).getArmarioGaveta(0, 0).getMedicamentos().toArray());
             list.setBounds(31, 261, 386, 244);
             main.add(list);
 
@@ -754,7 +752,7 @@ public class Layout extends JFrame implements Variaveis {
         //Criar evento caso a Categoria seja Alterada!
         comboBoxCategoria.addActionListener(e -> {
             try {
-                ArrayList<Medicamento> med = farmacia.armario.getArmarioGaveta(comboBoxCategoria.getSelectedIndex(), comboBoxViaAdmin.getSelectedIndex()).getMedicamentos();
+                ArrayList<Medicamento> med = farmacia.armarios.get(nrloja).getArmarioGaveta(comboBoxCategoria.getSelectedIndex(), comboBoxViaAdmin.getSelectedIndex()).getMedicamentos();
                 DefaultListModel model1 = (DefaultListModel) list_1.getModel();
                 model1.removeAllElements();
                 for (Medicamento medicamento : med) {
@@ -768,7 +766,7 @@ public class Layout extends JFrame implements Variaveis {
         comboBoxViaAdmin.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
-                    ArrayList<Medicamento> med = farmacia.armario.getArmarioGaveta(comboBoxCategoria.getSelectedIndex(), comboBoxViaAdmin.getSelectedIndex()).getMedicamentos();
+                    ArrayList<Medicamento> med = farmacia.armarios.get(nrloja).getArmarioGaveta(comboBoxCategoria.getSelectedIndex(), comboBoxViaAdmin.getSelectedIndex()).getMedicamentos();
                     DefaultListModel model = (DefaultListModel) list_1.getModel();
                     model.removeAllElements();
                     for (Medicamento medicamento : med) {
@@ -1096,7 +1094,7 @@ public class Layout extends JFrame implements Variaveis {
             @Override
             public void mouseClicked(MouseEvent arg0) {
                 System.out.print(textPesquisarStock.getText());
-                Medicamento m = new Medicamento(farmacia.armario.procurarMedicamento(textPesquisarStock.getText()));
+                Medicamento m = new Medicamento(farmacia.armarios.get(nrloja).procurarMedicamento(textPesquisarStock.getText()));
                 System.out.print(m.getNome());
 
             }
@@ -1198,7 +1196,7 @@ public class Layout extends JFrame implements Variaveis {
         gbc_lblPreo_1.gridy = 5;
         panel_1.add(lblPreo_1, gbc_lblPreo_1);
 
-        JList list_2 = new JList(farmacia.armario.getTodos().toArray());
+        JList list_2 = new JList(farmacia.armarios.get(nrloja).getTodos().toArray());
 
         JButton btnNewButton = new JButton("Editar");
 
@@ -1256,7 +1254,7 @@ public class Layout extends JFrame implements Variaveis {
                     medic.setCategoria(comboBox.getSelectedIndex());
                     medic.setViaAdmin(comboBox_1.getSelectedIndex());
 
-                    farmacia.armario.atualizarMedicamento(medic);
+                    farmacia.armarios.get(nrloja).atualizarMedicamento(medic);
 
                     nomeStock.setEditable(false);
                     comboBox.setEnabled(false);
@@ -1410,8 +1408,8 @@ public class Layout extends JFrame implements Variaveis {
                 if (textNome.getText() != null && textQuantidade.getText() != null) {
                     try {
                         Medicamento medic = new Medicamento(textNome.getText(), Integer.valueOf(textPreco.getText()), comboCat.getSelectedIndex(), comboVia.getSelectedIndex(), dateChooser_1.getDate());
-                        farmacia.armario.adicionarMedicamento(medic, Integer.valueOf(textQuantidade.getText()));
-                        Object[] modelMedic = farmacia.armario.getTodos().toArray();
+                        farmacia.armarios.get(nrloja).adicionarMedicamento(medic, Integer.valueOf(textQuantidade.getText()));
+                        Object[] modelMedic = farmacia.armarios.get(nrloja).getTodos().toArray();
 
                         list_2.setListData(modelMedic);
 
@@ -1451,13 +1449,13 @@ public class Layout extends JFrame implements Variaveis {
             public void mouseClicked(MouseEvent arg0) {
                 try {
                     Medicamento s = (Medicamento) list_2.getSelectedValue();
-                    farmacia.armario.removerMedicamento(s);
+                    farmacia.armarios.get(nrloja).removerMedicamento(s);
                 } catch (Exception e) {
 
                     JOptionPane.showMessageDialog(null, e);
                 }
                 try {
-                    list_2.setListData(farmacia.armario.getTodos().toArray());
+                    list_2.setListData(farmacia.armarios.get(nrloja).getTodos().toArray());
                     scrollPane_1.revalidate();
                     scrollPane_1.repaint();
                 } catch (NullPointerException e) {

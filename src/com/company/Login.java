@@ -102,16 +102,16 @@ public class Login extends JDialog implements Variaveis {
 								farmacia_serializada = (Farmacia) in.readObject();
 								in.close();
 								fileIn.close();
-								System.out.println("Armario existe.. a carregar..");
+								System.out.println("Farmacia existe.. a carregar..");
 							}else {
 								farmacia_serializada = new Farmacia();
-								System.out.println("Armario nao existe a criar um novo");
+								System.out.println("Farmacia nao existe a criar um novo");
 							}
 						} catch (IOException i) {
 							System.out.println(i);
 							return;
 						} catch (ClassNotFoundException c) {
-							System.out.println("Armario class nao encontrado!");
+							System.out.println("Farmacia.ser nao encontrado!");
 							farmacia_serializada = new Farmacia();
 							c.printStackTrace();
 							return;
