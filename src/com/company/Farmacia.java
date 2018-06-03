@@ -1,24 +1,23 @@
 package com.company;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class Farmacia implements Serializable{
     private String nome;
     public GestorVendas gestorvendas;
-    public ArrayList<Armario> armarios;
+    public Armario[] armarios;
     public GestorClientes gestorclientes;
 
-    public Farmacia(String nome, GestorVendas gestorvendas, ArrayList<Armario> armario, GestorClientes gestorclientes) {
+    public Farmacia(String nome, GestorVendas gestorvendas, Armario[] armarios, GestorClientes gestorclientes) {
         this.nome = nome;
         this.gestorvendas = gestorvendas;
-        this.armarios = armario;
+         this.armarios = new Armario[3];
         this.gestorclientes = gestorclientes;
     }
     public Farmacia() {
         this.nome = "";
         this.gestorvendas = new GestorVendas();
-        this.armarios = new ArrayList<Armario>();
+        this.armarios = new Armario[3];
         this.gestorclientes = new GestorClientes();
     }
 
@@ -38,7 +37,7 @@ public class Farmacia implements Serializable{
         return gestorvendas;
     }
 
-    public ArrayList<Armario> getArmarios() {
+    public Armario[] getArmarios() {
         return armarios;
     }
 }
