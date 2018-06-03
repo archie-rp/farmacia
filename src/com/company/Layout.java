@@ -20,6 +20,10 @@ import com.toedter.calendar.JDateChooser;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
+import com.jgoodies.forms.layout.FormSpecs;
 
 public class Layout extends JFrame implements Variaveis {
     private JPanel main;
@@ -52,6 +56,8 @@ public class Layout extends JFrame implements Variaveis {
     Armario armario = new Armario();
     //Defenir farmacia
     Farmacia farmacia = new Farmacia();
+    private JTable table_2;
+    private JTable table_3;
 
     public static void main(String[] args) {
 
@@ -247,7 +253,7 @@ public class Layout extends JFrame implements Variaveis {
                 stock.setVisible(false);
             }
         });
-        button_10.setBounds(517, 37, 120, 39);
+        button_10.setBounds(517, 35, 120, 39);
         relatorio.add(button_10);
 
         JButton btnStockRelatorio = new JButton("Gerir");
@@ -261,7 +267,7 @@ public class Layout extends JFrame implements Variaveis {
                 stock.setVisible(true);
             }
         });
-        btnStockRelatorio.setBounds(391, 37, 108, 39);
+        btnStockRelatorio.setBounds(391, 35, 108, 39);
         relatorio.add(btnStockRelatorio);
 
         JButton btnRelatorioRelatorio = new JButton("Relatório");
@@ -277,7 +283,7 @@ public class Layout extends JFrame implements Variaveis {
             }
         });
 
-        btnRelatorioRelatorio.setBounds(272, 37, 99, 39);
+        btnRelatorioRelatorio.setBounds(272, 35, 99, 39);
         relatorio.add(btnRelatorioRelatorio);
 
         JButton button_13 = new JButton("Vendas");
@@ -291,7 +297,7 @@ public class Layout extends JFrame implements Variaveis {
                 stock.setVisible(false);
             }
         });
-        button_13.setBounds(152, 37, 99, 39);
+        button_13.setBounds(152, 35, 99, 39);
         relatorio.add(button_13);
 
         JButton button_14 = new JButton("Home");
@@ -305,7 +311,7 @@ public class Layout extends JFrame implements Variaveis {
                 stock.setVisible(false);
             }
         });
-        button_14.setBounds(31, 37, 99, 39);
+        button_14.setBounds(31, 35, 99, 39);
         relatorio.add(button_14);
 
         JLabel lblUltimosRelatrios = new JLabel("Relatórios do Dia");
@@ -454,45 +460,84 @@ public class Layout extends JFrame implements Variaveis {
         });
         btnClientes.setBounds(517, 35, 120, 39);
         main.add(btnClientes);
-
-        JLabel lblVendasMes = new JLabel("Vendas este mês:");
-        lblVendasMes.setBounds(31, 96, 133, 14);
-        main.add(lblVendasMes);
-
-        JLabel lblQuantidade = new JLabel("Quantidade:");
-        lblQuantidade.setBounds(57, 130, 107, 14);
-        main.add(lblQuantidade);
-
-        JLabel lblNovosClientes = new JLabel("Novos Clientes");
-        lblNovosClientes.setBounds(57, 155, 127, 14);
-        main.add(lblNovosClientes);
-
-        JLabel lblProdutoMaisVendido = new JLabel("Produto mais vendido:");
-        lblProdutoMaisVendido.setBounds(57, 183, 149, 14);
-        main.add(lblProdutoMaisVendido);
-
-        JLabel lblProdutosEmCaminho = new JLabel("Produtos em caminho:");
-        lblProdutosEmCaminho.setBounds(31, 197, 153, 14);
-        main.add(lblProdutosEmCaminho);
-
-        JLabel lblArmazem = new JLabel("Armazem:");
-        lblArmazem.setBounds(425, 107, 85, 14);
-        main.add(lblArmazem);
-
-        JTextPane textProdutosForaStock = new JTextPane();
-        textProdutosForaStock.setBounds(448, 155, 353, 147);
-        main.add(textProdutosForaStock);
-
-        JLabel lblProdutosAdicionadosRecentemente = new JLabel("Produtos adicionados recentemente:");
-        lblProdutosAdicionadosRecentemente.setBounds(438, 313, 250, 14);
-        main.add(lblProdutosAdicionadosRecentemente);
-
-        JTextPane textProdutosRecentes = new JTextPane();
-        textProdutosRecentes.setBounds(448, 338, 353, 147);
-        main.add(textProdutosRecentes);
+        
+        JPanel panel_12 = new JPanel();
+        panel_12.setBorder(new TitledBorder(null, "Detalhes Farmacia", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+        panel_12.setBounds(20, 89, 408, 129);
+        main.add(panel_12);
+        panel_12.setLayout(new FormLayout(new ColumnSpec[] {
+        		FormSpecs.RELATED_GAP_COLSPEC,
+        		FormSpecs.DEFAULT_COLSPEC,
+        		FormSpecs.RELATED_GAP_COLSPEC,
+        		FormSpecs.DEFAULT_COLSPEC,
+        		FormSpecs.RELATED_GAP_COLSPEC,
+        		FormSpecs.DEFAULT_COLSPEC,
+        		FormSpecs.RELATED_GAP_COLSPEC,
+        		FormSpecs.DEFAULT_COLSPEC,
+        		FormSpecs.RELATED_GAP_COLSPEC,
+        		FormSpecs.DEFAULT_COLSPEC,},
+        	new RowSpec[] {
+        		FormSpecs.RELATED_GAP_ROWSPEC,
+        		FormSpecs.DEFAULT_ROWSPEC,
+        		FormSpecs.RELATED_GAP_ROWSPEC,
+        		FormSpecs.DEFAULT_ROWSPEC,
+        		FormSpecs.RELATED_GAP_ROWSPEC,
+        		FormSpecs.DEFAULT_ROWSPEC,
+        		FormSpecs.RELATED_GAP_ROWSPEC,
+        		FormSpecs.DEFAULT_ROWSPEC,}));
+        
+                JLabel lblVendasMes = new JLabel("Total de Vendas:");
+                panel_12.add(lblVendasMes, "2, 2, fill, default");
+                        
+                        JLabel label_t_vendas = new JLabel("" + farmacia.gestorvendas.getVendas().size());
+                        panel_12.add(label_t_vendas, "4, 2");
+                        
+                                JLabel lblProdutoMaisVendido = new JLabel("Produto mais vendido:");
+                                panel_12.add(lblProdutoMaisVendido, "8, 2");
+                        
+                        JLabel label_p_m_vendido = new JLabel("Benuron");
+                        panel_12.add(label_p_m_vendido, "10, 2");
+                
+                        JLabel lblQuantidade = new JLabel("Total de Medicamentos:");
+                        panel_12.add(lblQuantidade, "2, 4, fill, default");
+                                
+                                JLabel label_t_meds = new JLabel("" + farmacia.armarios[nrloja].getTodos().size());
+                                panel_12.add(label_t_meds, "4, 4");
+                        
+                                JLabel lblNovosClientes = new JLabel("Total de Clientes:");
+                                panel_12.add(lblNovosClientes, "2, 6, fill, default");
+                                        
+                                        JLabel label_t_clientes = new JLabel("" + farmacia.gestorclientes.getClientes().size());
+                                        panel_12.add(label_t_clientes, "4, 6");
+                                
+                                        JLabel lblProdutosEmCaminho = new JLabel("Produtos em caminho:");
+                                        panel_12.add(lblProdutosEmCaminho, "2, 8, fill, default");
+        
+        JPanel panel_13 = new JPanel();
+        panel_13.setBorder(new TitledBorder(null, "Vendas mais recentes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+        panel_13.setBounds(438, 89, 365, 170);
+        main.add(panel_13);
+        panel_13.setLayout(null);
+        
+        table_3 = new JTable();
+        table_3.setBorder(new LineBorder(new Color(0, 0, 0)));
+        table_3.setBounds(10, 22, 345, 137);
+        panel_13.add(table_3);
+        
+        JPanel panel_14 = new JPanel();
+        panel_14.setBorder(new TitledBorder(null, "Produtos a caminho", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+        panel_14.setBounds(438, 270, 365, 244);
+        main.add(panel_14);
+        panel_14.setLayout(null);
+        
+        table_2 = new JTable();
+        table_2.setBorder(new LineBorder(new Color(0, 0, 0)));
+        table_2.setBounds(10, 23, 345, 210);
+        panel_14.add(table_2);
 
         try {
             JList list = new JList(farmacia.armarios[nrloja].getArmarioGaveta(0, 0).getMedicamentos().toArray());
+            list.setBorder(new LineBorder(new Color(0, 0, 0)));
             list.setBounds(31, 261, 386, 244);
             main.add(list);
 
@@ -568,7 +613,7 @@ public class Layout extends JFrame implements Variaveis {
                 stock.setVisible(false);
             }
         });
-        button.setBounds(517, 42, 120, 39);
+        button.setBounds(517, 35, 120, 39);
         venda.add(button);
 
         JButton btnGerir = new JButton("Gerir");
@@ -582,7 +627,7 @@ public class Layout extends JFrame implements Variaveis {
                 stock.setVisible(true);
             }
         });
-        btnGerir.setBounds(391, 42, 108, 39);
+        btnGerir.setBounds(391, 35, 108, 39);
         venda.add(btnGerir);
 
         JButton button_2 = new JButton("Relatório");
@@ -596,7 +641,7 @@ public class Layout extends JFrame implements Variaveis {
                 stock.setVisible(false);
             }
         });
-        button_2.setBounds(272, 42, 99, 39);
+        button_2.setBounds(272, 35, 99, 39);
         venda.add(button_2);
 
         JButton button_3 = new JButton("Vendas");
@@ -611,7 +656,7 @@ public class Layout extends JFrame implements Variaveis {
                 stock.setVisible(false);
             }
         });
-        button_3.setBounds(152, 42, 99, 39);
+        button_3.setBounds(152, 35, 99, 39);
         venda.add(button_3);
 
         JButton button_4 = new JButton("Home");
@@ -625,7 +670,7 @@ public class Layout extends JFrame implements Variaveis {
                 stock.setVisible(false);
             }
         });
-        button_4.setBounds(31, 42, 99, 39);
+        button_4.setBounds(31, 35, 99, 39);
         venda.add(button_4);
 
         JPanel panel_9 = new JPanel();
@@ -797,7 +842,7 @@ public class Layout extends JFrame implements Variaveis {
                 stock.setVisible(false);
             }
         });
-        button_15.setBounds(517, 37, 120, 39);
+        button_15.setBounds(517, 35, 120, 39);
         clientes.add(button_15);
 
         JButton btnVendasClientes = new JButton("Vendas");
@@ -811,7 +856,7 @@ public class Layout extends JFrame implements Variaveis {
                 stock.setVisible(false);
             }
         });
-        btnVendasClientes.setBounds(152, 37, 99, 39);
+        btnVendasClientes.setBounds(152, 35, 99, 39);
         clientes.add(btnVendasClientes);
 
         JButton btnRelatorioClientes = new JButton("Relatório");
@@ -826,7 +871,7 @@ public class Layout extends JFrame implements Variaveis {
 
             }
         });
-        btnRelatorioClientes.setBounds(272, 37, 99, 39);
+        btnRelatorioClientes.setBounds(272, 35, 99, 39);
         clientes.add(btnRelatorioClientes);
 
         JButton btnStockClientes = new JButton("Gerir");
@@ -840,7 +885,7 @@ public class Layout extends JFrame implements Variaveis {
                 stock.setVisible(true);
             }
         });
-        btnStockClientes.setBounds(391, 37, 108, 39);
+        btnStockClientes.setBounds(391, 35, 108, 39);
         clientes.add(btnStockClientes);
 
         JButton btnHomeClientes = new JButton("Home");
@@ -854,7 +899,7 @@ public class Layout extends JFrame implements Variaveis {
                 stock.setVisible(false);
             }
         });
-        btnHomeClientes.setBounds(31, 37, 99, 39);
+        btnHomeClientes.setBounds(31, 35, 99, 39);
         clientes.add(btnHomeClientes);
 
         JPanel panel_6 = new JPanel();
@@ -1033,7 +1078,7 @@ public class Layout extends JFrame implements Variaveis {
                 stock.setVisible(false);
             }
         });
-        btnHomeStock.setBounds(31, 36, 99, 39);
+        btnHomeStock.setBounds(31, 35, 99, 39);
         stock.add(btnHomeStock);
 
         JButton btnVendasStock = new JButton("Vendas");
@@ -1047,7 +1092,7 @@ public class Layout extends JFrame implements Variaveis {
                 stock.setVisible(false);
             }
         });
-        btnVendasStock.setBounds(152, 36, 99, 39);
+        btnVendasStock.setBounds(152, 35, 99, 39);
         stock.add(btnVendasStock);
 
         JButton btnRelatorioStock = new JButton("Relatório");
@@ -1061,7 +1106,7 @@ public class Layout extends JFrame implements Variaveis {
                 stock.setVisible(false);
             }
         });
-        btnRelatorioStock.setBounds(272, 36, 99, 39);
+        btnRelatorioStock.setBounds(272, 35, 99, 39);
         stock.add(btnRelatorioStock);
 
         JButton btnStockStock = new JButton("Gerir");
@@ -1076,7 +1121,7 @@ public class Layout extends JFrame implements Variaveis {
                 stock.setVisible(true);
             }
         });
-        btnStockStock.setBounds(391, 36, 108, 39);
+        btnStockStock.setBounds(391, 35, 108, 39);
         stock.add(btnStockStock);
 
         JButton btnClientesStock = new JButton("Clientes");
@@ -1091,7 +1136,7 @@ public class Layout extends JFrame implements Variaveis {
                 stock.setVisible(false);
             }
         });
-        btnClientesStock.setBounds(517, 36, 120, 39);
+        btnClientesStock.setBounds(517, 35, 120, 39);
         stock.add(btnClientesStock);
 
         JLabel lblProcurarProduto = new JLabel("Procurar Produto:");
