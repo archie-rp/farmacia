@@ -1,11 +1,10 @@
 ﻿### Farmacia Tarefas
 
 
-
 ##### Separador Relatorios
 
 - [x] Criar Classe Relatorio | Rafael
-    - [ ] Ver todas as compras 
+    - [x] Ver todas as compras | Rafael
     - [ ] Ver todos os medicamentos do mes inseridos
     - [ ] Ver produtos fora de stock
 - [ ] Remover Relatório
