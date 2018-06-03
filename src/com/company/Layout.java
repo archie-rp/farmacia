@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.border.LineBorder;
 import com.toedter.calendar.JDateChooser;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class Layout extends JFrame implements Variaveis {
     private JPanel main;
@@ -41,6 +43,9 @@ public class Layout extends JFrame implements Variaveis {
     private JTextField biCliente;
     private JTextField nomeCliente;
 
+    
+    //Criar Armario
+    Armario armario = new Armario();
 
     public static void main(String[] args) {
 
@@ -63,8 +68,8 @@ public class Layout extends JFrame implements Variaveis {
     }
 
     public Layout(Funcionario funcionario, int nrloja, Armario armario_serializado) {
-        //Criar Armario
-        Armario armario = new Armario();
+    	
+       
         //Gestor de Vendas
         GestorVendas gestorvendas = new GestorVendas();
         //Gestor de Clientes
@@ -143,7 +148,8 @@ public class Layout extends JFrame implements Variaveis {
         gestorClientes.setCliente(cliente1);
         gestorClientes.setCliente(cliente2);
         gestorClientes.setCliente(cliente3);
-        //Defenir farmacia
+
+
         // Serializaçao
         if (armario_serializado.getTodos().size()<1){
             try {
@@ -161,8 +167,28 @@ public class Layout extends JFrame implements Variaveis {
             armario =armario_serializado;
             System.out.println("a carregar Armario existente em ficheiro...");
         }
+        //Defenir farmacia
         Farmacia farmacia = new Farmacia(farmacias[nrloja], gestorvendas, armario, gestorClientes);
 
+        //Gravar farmacia ao fechar programa
+        addWindowListener(new WindowAdapter() {
+    		@Override
+    		public void windowClosing(WindowEvent arg0) {
+
+                try {
+                    FileOutputStream fileOut = new FileOutputStream("Armario.ser");
+                    ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                    out.writeObject(armario);
+                    out.close();
+                    fileOut.close();
+                    System.out.printf("Serialized data foi guardada em Armario.ser");
+                } catch (IOException i) {
+                    i.printStackTrace();
+                    armario = armario_serializado;
+                }
+            }
+    		
+    	});
 
         getContentPane().setLayout(new CardLayout(0, 0));
         setBounds(100, 100, 1138, 684);
