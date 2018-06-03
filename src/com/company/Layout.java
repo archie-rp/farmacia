@@ -581,27 +581,6 @@ public class Layout extends JFrame implements Variaveis {
         textLoja.setText(farmacias[nrloja]);
         main.add(textLoja);
 
-
-        JLabel lblEscolhaProduto = new JLabel("Escolha produto:");
-        lblEscolhaProduto.setBounds(31, 92, 113, 25);
-        venda.add(lblEscolhaProduto);
-
-        JLabel lblCategoria = new JLabel("Categoria:");
-        lblCategoria.setBounds(31, 128, 85, 20);
-        venda.add(lblCategoria);
-
-        JLabel lblViaAdmin = new JLabel("Via Administração:");
-        lblViaAdmin.setBounds(212, 130, 124, 17);
-        venda.add(lblViaAdmin);
-
-        JComboBox comboBoxCategoria = new JComboBox(categorias);
-        comboBoxCategoria.setBounds(31, 155, 172, 20);
-        venda.add(comboBoxCategoria);
-
-        JComboBox comboBoxViaAdmin = new JComboBox(vias);
-        comboBoxViaAdmin.setBounds(212, 155, 158, 20);
-        venda.add(comboBoxViaAdmin);
-
         JButton button = new JButton("Clientes");
         button.addMouseListener(new MouseAdapter() {
             @Override
@@ -675,7 +654,7 @@ public class Layout extends JFrame implements Variaveis {
 
         JPanel panel_9 = new JPanel();
         panel_9.setBorder(new TitledBorder(null, "Detalhes Cliente", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        panel_9.setBounds(555, 205, 211, 188);
+        panel_9.setBounds(558, 126, 211, 188);
         venda.add(panel_9);
         panel_9.setLayout(null);
 
@@ -708,7 +687,7 @@ public class Layout extends JFrame implements Variaveis {
 
         JPanel panel_5 = new JPanel();
         panel_5.setBorder(new TitledBorder(null, "Detalhes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        panel_5.setBounds(17, 447, 525, 190);
+        panel_5.setBounds(20, 325, 525, 190);
         venda.add(panel_5);
         panel_5.setLayout(null);
 
@@ -718,7 +697,7 @@ public class Layout extends JFrame implements Variaveis {
 
         JPanel panel_10 = new JPanel();
         panel_10.setBorder(new TitledBorder(null, "Estado Compra", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        panel_10.setBounds(562, 447, 204, 187);
+        panel_10.setBounds(558, 325, 204, 187);
         venda.add(panel_10);
         panel_10.setLayout(null);
 
@@ -761,7 +740,7 @@ public class Layout extends JFrame implements Variaveis {
 
         JPanel panel_4 = new JPanel();
         panel_4.setBorder(new TitledBorder(null, "Vendas", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        panel_4.setBounds(17, 205, 525, 188);
+        panel_4.setBounds(20, 126, 525, 188);
         venda.add(panel_4);
         panel_4.setLayout(null);
 
@@ -801,34 +780,20 @@ public class Layout extends JFrame implements Variaveis {
             }
         });
         scrollPane.setViewportView(list_1);
-        //Criar evento caso a Categoria seja Alterada!
-        comboBoxCategoria.addActionListener(e -> {
-            try {
-                ArrayList<Medicamento> med = farmacia.armarios[nrloja].getArmarioGaveta(comboBoxCategoria.getSelectedIndex(), comboBoxViaAdmin.getSelectedIndex()).getMedicamentos();
-                DefaultListModel model1 = (DefaultListModel) list_1.getModel();
-                model1.removeAllElements();
-                for (Medicamento medicamento : med) {
-                    model1.addElement(medicamento.toString());
-                }
-            } catch (Exception e1) {
-                //model1.removeAllElements();
-            }
+        
+        JButton btnNewButton_1 = new JButton("Executar Compra");
+        btnNewButton_1.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent arg0) {
+        		criarVenda venda = new criarVenda();
+                venda.setVisible(true);	
+        	}
         });
-        //Criar evento caso a Via de Administraçao seja Alterada!
-        comboBoxViaAdmin.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    ArrayList<Medicamento> med = farmacia.armarios[nrloja].getArmarioGaveta(comboBoxCategoria.getSelectedIndex(), comboBoxViaAdmin.getSelectedIndex()).getMedicamentos();
-                    DefaultListModel model = (DefaultListModel) list_1.getModel();
-                    model.removeAllElements();
-                    for (Medicamento medicamento : med) {
-                        model.addElement(medicamento.toString());
-                    }
-                } catch (Exception e1) {
-                    //model.removeAllElements();
-                }
-            }
-        });
+        btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 12));
+        btnNewButton_1.setForeground(Color.WHITE);
+        btnNewButton_1.setBackground(Color.GRAY);
+        btnNewButton_1.setBounds(31, 85, 156, 30);
+        venda.add(btnNewButton_1);
 
         JButton button_15 = new JButton("Clientes");
         button_15.setEnabled(false);
