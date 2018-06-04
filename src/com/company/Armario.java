@@ -84,22 +84,14 @@ public class Armario implements Serializable {
                 // Aumentar quantidade
                 this.quantidade++;
             }
-            JOptionPane optionPane = new JOptionPane("Produto adicionado com sucesso!",JOptionPane.WARNING_MESSAGE);
-            JDialog dialog = optionPane.createDialog("Informação!");
-            dialog.setAlwaysOnTop(true);
-            dialog.setVisible(true);
-            return dialog;
+           //Removi notificacao de adicionado com sucesso
+
         } else {
             if ((armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.size() + quantidade) <= 10){
                 for (int i=0; i<quantidade;i++ ) {
                     armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.add(medicamento);
                     this.quantidade++;
                 }
-                    JOptionPane optionPane = new JOptionPane("Produto adicionado com sucesso!", JOptionPane.WARNING_MESSAGE);
-                    JDialog dialog = optionPane.createDialog("Informação!");
-                    dialog.setAlwaysOnTop(true);
-                    dialog.setVisible(true);
-                    return dialog;
             }else{
                 JOptionPane optionPane = new JOptionPane("Não é permitido adicionar o medicamento! Quantidade máxima:" + (10 - armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.size()),JOptionPane.WARNING_MESSAGE);
                 JDialog dialog = optionPane.createDialog("Alerta!");
@@ -108,6 +100,7 @@ public class Armario implements Serializable {
                 return dialog;
             }
         }
+        return null;
     }
 
     public void adicionarMedicamentos(Medicamento[] medicamentos) {
