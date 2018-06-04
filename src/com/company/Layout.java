@@ -320,10 +320,15 @@ public class Layout extends JFrame implements Variaveis {
         relatorio.add(lblUltimosRelatrios);
 
         JLabel lblAlertas = new JLabel("Relatorios da Semana");
-        lblAlertas.setBounds(338, 100, 108, 16);
+        lblAlertas.setBounds(572, 100, 108, 16);
         relatorio.add(lblAlertas);
 
+        JScrollPane scrollPane_3 = new JScrollPane();
+        scrollPane_3.setBounds(30, 123, 530, 185);
+        relatorio.add(scrollPane_3);
+
         JList list_3 = new JList();
+        scrollPane_3.setViewportView(list_3);
 
         list_3.addMouseListener(new MouseAdapter() {
             @Override
@@ -338,15 +343,14 @@ public class Layout extends JFrame implements Variaveis {
         });
 
         list_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-        list_3.setBounds(31, 123, 291, 185);
-        relatorio.add(list_3);
+        list_3.setListData(farmacia.gestorvendas.getVendas().toArray());
+
 
         try {
-            list_3.setListData(farmacia.gestorvendas.getVendas().toArray());
 
             JList list = new JList();
             list.setBorder(new LineBorder(new Color(0, 0, 0)));
-            list.setBounds(338, 123, 300, 185);
+            list.setBounds(572, 123, 527, 185);
             relatorio.add(list);
 
             JPanel panel = new JPanel();
@@ -360,7 +364,6 @@ public class Layout extends JFrame implements Variaveis {
             panel.add(lblViaDeAdministrao_1);
 
             JComboBox comboBox_1 = new JComboBox(vias);
-
             comboBox_1.setBounds(10, 52, 159, 20);
             panel.add(comboBox_1);
 
@@ -394,6 +397,7 @@ public class Layout extends JFrame implements Variaveis {
             //Cria a tabela
             //Cria a estrutura e campos representados em cada celula
             scrollPane_Estatisticas.setViewportView(table_1);
+
 
         } catch (NullPointerException e) {
             //se o objecto for nulo não fazer nada :)
@@ -658,8 +662,6 @@ public class Layout extends JFrame implements Variaveis {
         panel_9.setBounds(558, 126, 211, 188);
         venda.add(panel_9);
         panel_9.setLayout(null);
-
-
 
 
         JPanel panel_5 = new JPanel();
