@@ -785,7 +785,7 @@ public class Layout extends JFrame implements Variaveis {
         btnNewButton_1.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent arg0) {
-        		criarVenda venda = new criarVenda();
+        		criarVenda venda = new criarVenda(farmacia,nrloja);
                 venda.setVisible(true);	
         	}
         });
