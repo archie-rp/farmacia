@@ -47,8 +47,8 @@ public class Layout extends JFrame implements Variaveis {
     private JTextField textTotal;
     private JTable table_1;
     private JTextField textProcurarClienteBI;
-    private JTextField textField;
-    private JTextField textField_1;
+    private JTextField textNR;
+    private JTextField textData_c;
     private JTextField biCliente;
     private JTextField nomeCliente;
 
@@ -663,28 +663,7 @@ public class Layout extends JFrame implements Variaveis {
         lblNome.setBounds(6, 22, 46, 14);
         panel_9.add(lblNome);
 
-        txtNome = new JTextField();
-        txtNome.setBounds(6, 40, 199, 20);
-        panel_9.add(txtNome);
-        txtNome.setColumns(10);
 
-        JLabel lblBi = new JLabel("Nrº Contribuinte");
-        lblBi.setBounds(6, 71, 199, 14);
-        panel_9.add(lblBi);
-
-        textField = new JTextField();
-        textField.setBounds(6, 98, 199, 20);
-        panel_9.add(textField);
-        textField.setColumns(10);
-
-        JLabel lblNewLabel_4 = new JLabel("Data Criacao Conta");
-        lblNewLabel_4.setBounds(6, 129, 199, 14);
-        panel_9.add(lblNewLabel_4);
-
-        textField_1 = new JTextField();
-        textField_1.setBounds(6, 154, 195, 20);
-        panel_9.add(textField_1);
-        textField_1.setColumns(10);
 
         JPanel panel_5 = new JPanel();
         panel_5.setBorder(new TitledBorder(null, "Detalhes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -750,13 +729,35 @@ public class Layout extends JFrame implements Variaveis {
         panel_4.add(scrollPane);
         //Define qual a Model vai estar a representar na jList
         JList list_1 = new JList();
+
         try {
             list_1.setListData(farmacia.gestorvendas.getVendas().toArray());
 
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Sem vendas");
         }
+        txtNome = new JTextField();
+        txtNome.setBounds(6, 40, 199, 20);
+        panel_9.add(txtNome);
+        txtNome.setColumns(10);
 
+        JLabel lblBi = new JLabel("Nrº Contribuinte");
+        lblBi.setBounds(6, 71, 199, 14);
+        panel_9.add(lblBi);
+
+        textNR = new JTextField();
+        textNR.setBounds(6, 98, 199, 20);
+        panel_9.add(textNR);
+        textNR.setColumns(10);
+
+        JLabel lblNewLabel_4 = new JLabel("Data Criacao Conta");
+        lblNewLabel_4.setBounds(6, 129, 199, 14);
+        panel_9.add(lblNewLabel_4);
+
+        textData_c = new JTextField();
+        textData_c.setBounds(6, 154, 195, 20);
+        panel_9.add(textData_c);
+        textData_c.setColumns(10);
 
         list_1.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent arg0) {
@@ -777,6 +778,10 @@ public class Layout extends JFrame implements Variaveis {
                     table.setModel(model);
                     scrollPane_2.setViewportView(table);
                     //Alterar Valores de preco,desconto, etc.. de cada Venda
+                    textNome.setText("" + farmacia.gestorvendas.getVendas().get(list_1.getSelectedIndex()).getCliente().getNome());
+                    textNR.setText("" + farmacia.gestorvendas.getVendas().get(list_1.getSelectedIndex()).getCliente().getBi());
+                    textData_c.setText(""+ farmacia.gestorvendas.getVendas().get(list_1.getSelectedIndex()).getCliente().getDataInscricao());
+
                     textTotal.setText(String.valueOf(farmacia.gestorvendas.getVendas().get(list_1.getSelectedIndex()).getPreco_total()));
                     textIVA.setText(String.valueOf(farmacia.gestorvendas.getVendas().get(list_1.getSelectedIndex()).getIVA()));
                     textDesconto.setText(String.valueOf(farmacia.gestorvendas.getVendas().get(list_1.getSelectedIndex()).getDesconto()));
