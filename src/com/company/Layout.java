@@ -30,7 +30,7 @@ public class Layout extends JFrame implements Variaveis {
     private JPanel main;
     private JPanel venda;
     private JPanel cliente;
-    private JTextField txtNome;
+    private JTextField txtNome_;
     private JTextField textProcurarClienteNome;
     private JTextField textPesquisarStock;
     private JTextField textNome;
@@ -659,9 +659,7 @@ public class Layout extends JFrame implements Variaveis {
         venda.add(panel_9);
         panel_9.setLayout(null);
 
-        JLabel lblNome = new JLabel("Nome");
-        lblNome.setBounds(6, 22, 46, 14);
-        panel_9.add(lblNome);
+
 
 
 
@@ -736,10 +734,14 @@ public class Layout extends JFrame implements Variaveis {
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Sem vendas");
         }
-        txtNome = new JTextField();
-        txtNome.setBounds(6, 40, 199, 20);
-        panel_9.add(txtNome);
-        txtNome.setColumns(10);
+        JLabel lblNome = new JLabel("Nome");
+        lblNome.setBounds(6, 22, 46, 14);
+        panel_9.add(lblNome);
+
+        txtNome_ = new JTextField();
+        txtNome_.setBounds(6, 40, 199, 20);
+        panel_9.add(txtNome_);
+        txtNome_.setColumns(10);
 
         JLabel lblBi = new JLabel("Nrº Contribuinte");
         lblBi.setBounds(6, 71, 199, 14);
@@ -778,7 +780,7 @@ public class Layout extends JFrame implements Variaveis {
                     table.setModel(model);
                     scrollPane_2.setViewportView(table);
                     //Alterar Valores de preco,desconto, etc.. de cada Venda
-                    textNome.setText("" + farmacia.gestorvendas.getVendas().get(list_1.getSelectedIndex()).getCliente().getNome());
+                    txtNome_.setText("" + farmacia.gestorvendas.getVendas().get(list_1.getSelectedIndex()).getCliente().getNome());
                     textNR.setText("" + farmacia.gestorvendas.getVendas().get(list_1.getSelectedIndex()).getCliente().getBi());
                     textData_c.setText(""+ farmacia.gestorvendas.getVendas().get(list_1.getSelectedIndex()).getCliente().getDataInscricao());
 
