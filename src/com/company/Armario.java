@@ -174,15 +174,12 @@ public class Armario implements Serializable {
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
                 if (armario[i][j] != null) {
-
                     medic = armario[i][j].getMedicamento(nome);
-
                     return medic;
-
                 }
             }
         }
-        return medic;
+        return null;
     }
 
     public boolean atualizarMedicamento(Medicamento novo_med) {

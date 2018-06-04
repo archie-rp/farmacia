@@ -1125,8 +1125,14 @@ public class Layout extends JFrame implements Variaveis {
             @Override
             public void mouseClicked(MouseEvent arg0) {
                // System.out.print(textPesquisarStock.getText());
-                Medicamento m = new Medicamento(farmacia.armarios[nrloja].procurarMedicamento(textPesquisarStock.getText()));
-                System.out.print(m.toString());
+                Medicamento m = new Medicamento();
+                if(farmacia.armarios[nrloja].procurarMedicamento(textPesquisarStock.getText())!= null){
+                    m= farmacia.armarios[nrloja].procurarMedicamento(textPesquisarStock.getText());
+                    System.out.print(m.toString());
+                }else{
+                    System.out.print("Não existe!");
+                }
+
 
             }
         });
