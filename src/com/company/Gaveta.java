@@ -15,9 +15,9 @@ public class Gaveta implements Serializable {
     }
 
     public int getQuantidade() {
-        if (this.medicamentos.size()!= 0){
+        if (this.medicamentos.size() != 0) {
             return this.medicamentos.size();
-        }else{
+        } else {
             return 0;
         }
     }
@@ -37,10 +37,10 @@ public class Gaveta implements Serializable {
     }
 
     public Medicamento getMedicamento(String nome) {
-    	Medicamento medicamento =new Medicamento();
-    	for (Medicamento medicamento_ : medicamentos) {
-            if (medicamento_ != null && medicamento_.getNome() == nome) {
-            	medicamento=medicamento_;
+        Medicamento medicamento = new Medicamento();
+        for (Medicamento medicamento_ : medicamentos) {
+            if (medicamento_ != null && medicamento_.getNome().contains(nome)) {
+                    return medicamento_;
             }
         }
         return medicamento;
@@ -66,7 +66,7 @@ public class Gaveta implements Serializable {
         return false;
     }
 
-    public boolean updateMedicamento( Medicamento novo_med) {
+    public boolean updateMedicamento(Medicamento novo_med) {
         for (Medicamento medicamento : medicamentos) {
             if (medicamento != null && medicamento.getNome() == novo_med.getNome()) {
                 medicamento = novo_med;
