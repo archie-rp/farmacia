@@ -172,16 +172,18 @@ public class criarVenda extends JDialog implements Variaveis{
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				if(!text_nome_procurar.getText().isEmpty()){
-					if (farmacia.armarios[nrloja].procurarMedicamento(text_nome_procurar.getText()).getNome() != null) {
-						System.out.println(text_nome_procurar.getText());
-						Medicamento med_temp = farmacia.armarios[nrloja].procurarMedicamento(text_nome_procurar.getText());
-						comboBox_cat.setSelectedIndex(med_temp.getCategoria());
-						comboBox_via.setSelectedIndex(med_temp.getViaAdmin());
-						System.out.println(med_temp.toString());
+
+					Medicamento m = new Medicamento();
+					if(farmacia.armarios[nrloja].procurarMedicamento(text_nome_procurar.getText())!= null){
+						m= farmacia.armarios[nrloja].procurarMedicamento(text_nome_procurar.getText());
+						System.out.print(m.toString());
+						comboBox_cat.setSelectedIndex(m.getCategoria());
+						comboBox_via.setSelectedIndex(m.getViaAdmin());
+
 					}else{
-						System.out.println("nao encontrou");
+						System.out.print("Não existe!");
 					}
-					
+
 				}
 			}
 		});

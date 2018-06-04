@@ -168,18 +168,18 @@ public class Armario implements Serializable {
     }
 
     public Medicamento procurarMedicamento(String nome) {
-        Medicamento medic = new Medicamento();
-
-
+        Medicamento medic =new Medicamento();
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
-                if (armario[i][j] != null) {
+                if (armario[i][j].getMedicamentos().size() >0) {
                     medic = armario[i][j].getMedicamento(nome);
-                    return medic;
+                    if(medic!= null){
+                        return medic;
+                    }
                 }
             }
         }
-        return null;
+        return medic;
     }
 
     public boolean atualizarMedicamento(Medicamento novo_med) {
