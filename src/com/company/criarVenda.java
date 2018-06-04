@@ -197,13 +197,13 @@ public class criarVenda extends JDialog implements Variaveis{
 
 			//Adicionar Elementos caso exista medicamentos na gaveta, caso nao haja remove tudo
 			try {
-				DefaultTableModel model_d = new DefaultTableModel(new Object[]{"Nome", "Data", "Preço"}, 0);
+				DefaultTableModel model_d = new DefaultTableModel(new Object[]{"Nome", "Data", "Receita", "Preço"}, 0);
 
 				//Recebe medicamentos da venda selecionada
 				ArrayList<Medicamento> med = farmacia.armarios[nrloja].getMedicamentosGaveta(comboBox_cat.getSelectedIndex(), comboBox_via.getSelectedIndex());
 				//Adiciona os medicamentos na tablela
 				for (Medicamento meds : med) {
-					model_d.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.getPreco()});
+					model_d.addRow(new Object[]{meds.getNome(), meds.getDataValidade(),meds.isReceita(), meds.getPreco()});
 				}
 				scrollPane.setViewportView(table_1);
 				table_1.setModel(model_d);
@@ -395,6 +395,10 @@ public class criarVenda extends JDialog implements Variaveis{
 							venda_temporaria.setCliente(cliente1);
 							venda_temporaria.setCod_venda(farmacia.gestorvendas.vendas.size()+1);
 							venda_temporaria.setData_compra(new Date());
+							Funcionario func = new Funcionario("Paulo");
+							venda_temporaria.setFuncionario(func);
+							venda_temporaria.setFormaPagamento(comboBox_m_pagamento.getSelectedIndex());
+							venda_temporaria.setDesconto(comboBox_desconto.getSelectedIndex());
 							farmacia.gestorvendas.adicionarVenda(venda_temporaria);
 							farmacia.gestorclientes.setCliente(cliente1);
 							list_1.setListData(farmacia.gestorvendas.getVendas().toArray());

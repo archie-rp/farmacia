@@ -35,6 +35,14 @@ public class Medicamento implements Variaveis,Serializable {
         this.receita=receita;
     }
 
+    public boolean isReceita() {
+        return receita;
+    }
+
+    public void setReceita(boolean receita) {
+        this.receita = receita;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
