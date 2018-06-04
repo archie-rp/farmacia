@@ -7,4 +7,6 @@ public interface Variaveis {
     Float IVA = 23f;
     String modoPagamento[] = {"Multibanco", "Dinheiro", "Cheque"};
     String farmacias[] = {"Loja 1", "Loja 2", "Loja 3"};
+    String descontos[] = {"0%", "5%", "10%"};
+    
 }

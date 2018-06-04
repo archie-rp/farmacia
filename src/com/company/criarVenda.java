@@ -62,7 +62,7 @@ public class criarVenda extends JDialog implements Variaveis{
 				FormSpecs.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("max(59dlu;default)"),
 				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
+				ColumnSpec.decode("default:grow"),
 				FormSpecs.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("default:grow"),
 				ColumnSpec.decode("left:max(18dlu;default)"),
@@ -252,11 +252,27 @@ public class criarVenda extends JDialog implements Variaveis{
 				}
 			});
 		}
+
+				JLabel lblModoPagamento = new JLabel("Modo Pagamento");
+				contentPanel.add(lblModoPagamento, "6, 14, right, default");
+
+
+				JComboBox comboBox_m_pagamento = new JComboBox(modoPagamento);
+				contentPanel.add(comboBox_m_pagamento, "8, 14, fill, default");
+
 		
 			JLabel lblSubtotal = new JLabel("Sub-Total: ");
 			contentPanel.add(lblSubtotal, "10, 14, right, default");
 			JLabel lbl_valor_sub = new JLabel("");
 			contentPanel.add(lbl_valor_sub, "11, 14");
+			{
+				JLabel lblDesconto = new JLabel("Desconto");
+				contentPanel.add(lblDesconto, "6, 16, right, default");
+			}
+			
+				JComboBox comboBox_desconto = new JComboBox(descontos);
+				contentPanel.add(comboBox_desconto, "8, 16, fill, default");
+			
 			JLabel lblIva = new JLabel("Iva: ");
 			contentPanel.add(lblIva, "10, 16, right, default");
 			JLabel lbl_valor_iva = new JLabel("23");
@@ -392,6 +408,10 @@ public class criarVenda extends JDialog implements Variaveis{
 							venda_temporaria.setCliente(cliente1);
 							venda_temporaria.setCod_venda(farmacia.gestorvendas.vendas.size()+1);
 							venda_temporaria.setData_compra(new Date());
+							Funcionario func = new Funcionario("Paulo");
+							venda_temporaria.setFuncionario(func);
+							venda_temporaria.setFormaPagamento(comboBox_m_pagamento.getSelectedIndex());
+							venda_temporaria.setDesconto(comboBox_desconto.getSelectedIndex());
 							farmacia.gestorvendas.adicionarVenda(venda_temporaria);
 							list_1.setListData(farmacia.gestorvendas.getVendas().toArray());
 							list_3.setListData(farmacia.gestorvendas.getVendas().toArray());

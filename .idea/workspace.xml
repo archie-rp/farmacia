@@ -3,11 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="dad6e76c-2b0d-4a65-b9ce-0623d3102971" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Farmacia.ser" beforeDir="false" afterPath="$PROJECT_DIR$/Farmacia.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Farmacia.ser" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Armario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Armario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Gaveta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Gaveta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Layout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Layout.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Medicamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Medicamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Variaveis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Variaveis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Venda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Venda.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/criarVenda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/criarVenda.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -25,14 +26,59 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="criarVenda.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="criarVenda.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/criarVenda.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
-              <caret line="386" column="48" selection-start-line="386" selection-start-column="48" selection-end-line="386" selection-end-column="48" />
+            <state relative-caret-position="116">
+              <caret line="413" column="44" selection-start-line="413" selection-start-column="44" selection-end-line="413" selection-end-column="44" />
               <folding>
-                <element signature="e#5304#5870#0" expanded="true" />
-                <element signature="e#5869#5870#0" expanded="true" />
+                <element signature="e#5325#5896#0" expanded="true" />
+                <element signature="e#5895#5896#0" expanded="true" />
+                <element signature="e#9794#11289#0" expanded="true" />
+                <element signature="e#11288#11289#0" expanded="true" />
+                <element signature="e#11424#12916#0" expanded="true" />
+                <element signature="e#12915#12916#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Farmacia.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/Farmacia.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Layout.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/Layout.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-10916">
+              <caret line="796" column="39" selection-start-line="796" selection-start-column="39" selection-end-line="796" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Venda.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/company/Venda.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="71" column="20" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="20" />
+              <folding>
+                <element signature="e#1683#1684#0" expanded="true" />
+                <element signature="e#1729#1730#0" expanded="true" />
+                <element signature="e#1778#1779#0" expanded="true" />
+                <element signature="e#1820#1821#0" expanded="true" />
+                <element signature="e#1861#1862#0" expanded="true" />
+                <element signature="e#1901#1902#0" expanded="true" />
+                <element signature="e#1966#1967#0" expanded="true" />
+                <element signature="e#2012#2013#0" expanded="true" />
+                <element signature="e#2062#2063#0" expanded="true" />
+                <element signature="e#2106#2107#0" expanded="true" />
+                <element signature="e#2163#2164#0" expanded="true" />
+                <element signature="e#2215#2216#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -62,6 +108,7 @@
       <find>armarios.get(nrloja).</find>
       <find>armarios[nr</find>
       <find>list_3</find>
+      <find>Modo</find>
     </findStrings>
     <replaceStrings>
       <replace>farmacia.armario</replace>
@@ -87,7 +134,6 @@
         <option value="$PROJECT_DIR$/src/com/company/GestorRelatorio.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/com/company/CatVia.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Venda.java" />
         <option value="$PROJECT_DIR$/src/com/company/App.java" />
         <option value="$PROJECT_DIR$/src/com/company/Variaveis.java" />
         <option value="$PROJECT_DIR$/src/com/company/Cliente.java" />
@@ -103,7 +149,9 @@
         <option value="$PROJECT_DIR$/src/com/company/Layout.java" />
         <option value="$PROJECT_DIR$/src/com/company/Gaveta.java" />
         <option value="$PROJECT_DIR$/src/com/company/Armario.java" />
+        <option value="$PROJECT_DIR$/Farmacia.ser" />
         <option value="$PROJECT_DIR$/src/com/company/criarVenda.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Venda.java" />
       </list>
     </option>
   </component>
@@ -639,7 +687,14 @@
       <option name="project" value="LOCAL" />
       <updated>1528138811748</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Update as jlists, depois de adicionar venda">
+      <created>1528140296143</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1528140296143</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -651,14 +706,14 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32591414" />
+      <window_info active="true" anchor="bottom" id="Messages" order="7" visible="true" weight="0.32591414" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32918552" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32114467" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32114467" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32903227" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
@@ -690,7 +745,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="readme atualizado" />
     <MESSAGE value="Layout atualizado, linhas com erro removidas" />
     <MESSAGE value="Layout atualizado, Stock passou a Gerir, Jlist com os dados dos medicamentos, selecionando um medicamento aparece informação adiconal" />
     <MESSAGE value="Atualizações&#10;* Readme atualizado&#10;* Gerir com scroll Bars e com stock real dos medicamentos&#10;* Metodo para retornar Quantidade de Medicamentos adicionado ao Gaveta e Armario" />
@@ -715,7 +769,8 @@
     <MESSAGE value="Relatórios já apresenta os medicamentos por compra se cliente tiver mais que uma compra" />
     <MESSAGE value="Pesquisa por medicamentos já retorna medicamento certo" />
     <MESSAGE value="Ja Procura Medicamentos (Fix) por {Hugo}!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ja Procura Medicamentos (Fix) por {Hugo}!" />
+    <MESSAGE value="Update as jlists, depois de adicionar venda" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update as jlists, depois de adicionar venda" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -723,7 +778,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md" />
     <entry file="file://$PROJECT_DIR$/src/com/company/Armario.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -903,24 +957,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Data.ser" />
-    <entry file="file://$PROJECT_DIR$/src/com/company/Funcionario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="991">
           <caret line="75" column="77" lean-forward="true" selection-start-line="75" selection-start-column="77" selection-end-line="75" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Farmacia.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -1008,13 +1048,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Venda.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Gaveta.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="158">
@@ -1022,20 +1055,62 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Farmacia.ser">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Funcionario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Farmacia.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Layout.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
+        <state relative-caret-position="-10916">
           <caret line="796" column="39" selection-start-line="796" selection-start-column="39" selection-end-line="796" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/criarVenda.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="386" column="48" selection-start-line="386" selection-start-column="48" selection-end-line="386" selection-end-column="48" />
+        <state relative-caret-position="116">
+          <caret line="413" column="44" selection-start-line="413" selection-start-column="44" selection-end-line="413" selection-end-column="44" />
           <folding>
-            <element signature="e#5304#5870#0" expanded="true" />
-            <element signature="e#5869#5870#0" expanded="true" />
+            <element signature="e#5325#5896#0" expanded="true" />
+            <element signature="e#5895#5896#0" expanded="true" />
+            <element signature="e#9794#11289#0" expanded="true" />
+            <element signature="e#11288#11289#0" expanded="true" />
+            <element signature="e#11424#12916#0" expanded="true" />
+            <element signature="e#12915#12916#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Venda.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="71" column="20" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="20" />
+          <folding>
+            <element signature="e#1683#1684#0" expanded="true" />
+            <element signature="e#1729#1730#0" expanded="true" />
+            <element signature="e#1778#1779#0" expanded="true" />
+            <element signature="e#1820#1821#0" expanded="true" />
+            <element signature="e#1861#1862#0" expanded="true" />
+            <element signature="e#1901#1902#0" expanded="true" />
+            <element signature="e#1966#1967#0" expanded="true" />
+            <element signature="e#2012#2013#0" expanded="true" />
+            <element signature="e#2062#2063#0" expanded="true" />
+            <element signature="e#2106#2107#0" expanded="true" />
+            <element signature="e#2163#2164#0" expanded="true" />
+            <element signature="e#2215#2216#0" expanded="true" />
           </folding>
         </state>
       </provider>

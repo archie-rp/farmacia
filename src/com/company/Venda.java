@@ -13,7 +13,7 @@ public class Venda  implements Variaveis,Serializable {
     ArrayList<Medicamento> medicamentos;
     private float preco_total;
     private float preco_sub;
-    private float desconto;
+    private int desconto;
     private Funcionario funcionario;
     private Date dataCompra;
     private int formaPagamento;
@@ -50,7 +50,7 @@ public class Venda  implements Variaveis,Serializable {
         this.data_compra = data_compra;
         this.medicamentos = medicamentos;
         this.funcionario = new Funcionario();
-        this.desconto = 0f;
+        this.desconto = 0;
     }
 
     public Venda(Venda venda){
@@ -58,7 +58,31 @@ public class Venda  implements Variaveis,Serializable {
         this.cliente = venda.cliente;
         this.data_compra = venda.data_compra;
         this.medicamentos = venda.medicamentos;
-        this.desconto = 0f;
+        this.desconto = 0;
+    }
+
+    public void setPreco_total(float preco_total) {
+        this.preco_total = preco_total;
+    }
+
+    public void setPreco_sub(float preco_sub) {
+        this.preco_sub = preco_sub;
+    }
+
+    public void setDesconto(int desconto) {
+        this.desconto = desconto;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public void setDataCompra(Date dataCompra) {
+        this.dataCompra = dataCompra;
+    }
+
+    public void setFormaPagamento(int formaPagamento) {
+        this.formaPagamento = formaPagamento;
     }
 
     public int getCod_venda() {
