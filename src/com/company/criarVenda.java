@@ -3,40 +3,33 @@ package com.company;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.layout.FormSpecs;
-import javax.swing.JLabel;
-import javax.swing.JTextArea;
+
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JTable;
-import javax.swing.JComboBox;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
-import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.JScrollPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Date;
 
 public class criarVenda extends JDialog implements Variaveis{
 
 	private final JPanel contentPanel = new JPanel();
 	private JTable table;
 	private JTable table_1;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField text_nome;
+	private JTextField text_nr_contr;
 
 	/**
 	 * Launch the application.
@@ -56,7 +49,7 @@ public class criarVenda extends JDialog implements Variaveis{
 	/**
 	 * Create the dialog.
 	 */
-	public criarVenda(Farmacia farmacia,int nrloja)  {
+	public criarVenda(Farmacia farmacia, int nrloja,JList list_1)  {
 		setBounds(100, 100, 761, 507);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -334,9 +327,9 @@ public class criarVenda extends JDialog implements Variaveis{
 			contentPanel.add(lblNome_1, "2, 14, right, default");
 		}
 		{
-			textField = new JTextField();
-			contentPanel.add(textField, "4, 14, fill, default");
-			textField.setColumns(10);
+			text_nome = new JTextField();
+			contentPanel.add(text_nome, "4, 14, fill, default");
+			text_nome.setColumns(10);
 		}
 		
 		{
@@ -344,9 +337,9 @@ public class criarVenda extends JDialog implements Variaveis{
 			contentPanel.add(lblNrContribuinte, "2, 16, right, default");
 		}
 		{
-			textField_1 = new JTextField();
-			contentPanel.add(textField_1, "4, 16, fill, default");
-			textField_1.setColumns(10);
+			text_nr_contr = new JTextField();
+			contentPanel.add(text_nr_contr, "4, 16, fill, default");
+			text_nr_contr.setColumns(10);
 		}
 		{
 			JPanel buttonPane = new JPanel();
@@ -357,7 +350,33 @@ public class criarVenda extends JDialog implements Variaveis{
 				okButton.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent arg0) {
-						
+						if (venda_temporaria.medicamentos.size() > 0 && !text_nome.getText().isEmpty()&& !text_nr_contr.getText().isEmpty()){
+								System.out.println("encomenda concluida!");
+								//int bi =  text_nr_contr.getText();
+							Cliente cliente1 = new Cliente(farmacia.gestorclientes.clientes.size() + 1, text_nome.getText(), Integer.parseInt(text_nr_contr.getText()), new Date());
+							venda_temporaria.setCliente(cliente1);
+							venda_temporaria.setCod_venda(farmacia.gestorvendas.vendas.size()+1);
+							venda_temporaria.setData_compra(new Date());
+							farmacia.gestorvendas.adicionarVenda(venda_temporaria);
+							dispose();
+						}else if (venda_temporaria.medicamentos.size() > 0 && !text_nome.getText().isEmpty()){
+							System.out.println("encomenda concluida!");
+							Cliente cliente1 = new Cliente(farmacia.gestorclientes.clientes.size() + 1, text_nome.getText(), 999999999, new Date());
+							venda_temporaria.setCliente(cliente1);
+							venda_temporaria.setCod_venda(farmacia.gestorvendas.vendas.size()+1);
+							venda_temporaria.setData_compra(new Date());
+							farmacia.gestorvendas.adicionarVenda(venda_temporaria);
+							list_1.setListData(farmacia.gestorvendas.getVendas().toArray());
+							dispose();
+						}else{
+							if (venda_temporaria.medicamentos.size() == 0){
+								System.out.println("Sem medicamentos na compra");
+							}
+							if (text_nome.getText().isEmpty()){
+								System.out.println("Sem Cliente!");
+							}
+						}
+
 					}
 				});
 				okButton.setActionCommand("OK");

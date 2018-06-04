@@ -748,7 +748,14 @@ public class Layout extends JFrame implements Variaveis {
         scrollPane.setBounds(14, 18, 500, 156);
         panel_4.add(scrollPane);
         //Define qual a Model vai estar a representar na jList
-        JList list_1 = new JList(farmacia.gestorvendas.getVendas().toArray());
+        JList list_1 = new JList();
+        try {
+            list_1.setListData(farmacia.gestorvendas.getVendas().toArray());
+
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Sem vendas");
+        }
+        
 
         list_1.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent arg0) {
@@ -785,7 +792,7 @@ public class Layout extends JFrame implements Variaveis {
         btnNewButton_1.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent arg0) {
-        		criarVenda venda = new criarVenda(farmacia,nrloja);
+        		criarVenda venda = new criarVenda(farmacia,nrloja,list_1);
                 venda.setVisible(true);	
         	}
         });
