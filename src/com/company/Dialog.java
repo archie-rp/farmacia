@@ -146,6 +146,11 @@ public class Dialog extends JDialog implements Variaveis {
                 buttonPane.add(cancelButton);
             }
         }
+        
+        JButton btnNewButton = new JButton("Detalhes");
+        btnNewButton.setVisible(false);
+        btnNewButton.setBounds(36, 418, 89, 23);
+        getContentPane().add(btnNewButton);
         {
             JPanel panel = new JPanel();
             panel.setBorder(new TitledBorder(null, "Medicamentos Adquiridos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -153,7 +158,7 @@ public class Dialog extends JDialog implements Variaveis {
             getContentPane().add(panel);
             panel.setLayout(null);
             {
-                JScrollPane scrollPane = new JScrollPane();
+            	  JScrollPane scrollPane = new JScrollPane();
                 scrollPane.setBounds(6, 16, 865, 231);
                 panel.add(scrollPane);
                 {
@@ -180,15 +185,29 @@ public class Dialog extends JDialog implements Variaveis {
                                 m = (Venda) array.get(i);
                                 model_d.addRow(new Object[]{m.getCod_venda(), m.getDataCompra(), m.getFuncionario().getNome(), m.getPreco_total()});
                                 table.setModel(model_d);
+                                btnNewButton.setVisible(true);
                             }
                         }
                     }
-
+                    
+                  
+                   
                     scrollPane.setViewportView(table);
                 }
             }
         }
+        
+      
+        
+        btnNewButton.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		Relatorio relat = new Relatorio(relatorio.getVendas().get(table.getSelectedRow()), "Costa-Prozelo");
+
+                Dialog dialog = new Dialog(relat);
+                dialog.setVisible(true);
+        	}
+        });
+       
     }
-
-
 }
