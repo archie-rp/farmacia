@@ -20,6 +20,7 @@ import com.toedter.calendar.JDateChooser;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
@@ -198,7 +199,7 @@ public class Layout extends JFrame implements Variaveis {
         });
 
         getContentPane().setLayout(new CardLayout(0, 0));
-        setBounds(100, 100, 1138, 684);
+        setBounds(100, 100, 1138, 725);
 
         JPanel main = new JPanel();
         getContentPane().add(main, "name_2347007504240");
@@ -460,76 +461,76 @@ public class Layout extends JFrame implements Variaveis {
         });
         btnClientes.setBounds(517, 35, 120, 39);
         main.add(btnClientes);
-        
+
         JPanel panel_12 = new JPanel();
         panel_12.setBorder(new TitledBorder(null, "Detalhes Farmacia", TitledBorder.LEADING, TitledBorder.TOP, null, null));
         panel_12.setBounds(20, 89, 408, 129);
         main.add(panel_12);
-        panel_12.setLayout(new FormLayout(new ColumnSpec[] {
-        		FormSpecs.RELATED_GAP_COLSPEC,
-        		FormSpecs.DEFAULT_COLSPEC,
-        		FormSpecs.RELATED_GAP_COLSPEC,
-        		FormSpecs.DEFAULT_COLSPEC,
-        		FormSpecs.RELATED_GAP_COLSPEC,
-        		FormSpecs.DEFAULT_COLSPEC,
-        		FormSpecs.RELATED_GAP_COLSPEC,
-        		FormSpecs.DEFAULT_COLSPEC,
-        		FormSpecs.RELATED_GAP_COLSPEC,
-        		FormSpecs.DEFAULT_COLSPEC,},
-        	new RowSpec[] {
-        		FormSpecs.RELATED_GAP_ROWSPEC,
-        		FormSpecs.DEFAULT_ROWSPEC,
-        		FormSpecs.RELATED_GAP_ROWSPEC,
-        		FormSpecs.DEFAULT_ROWSPEC,
-        		FormSpecs.RELATED_GAP_ROWSPEC,
-        		FormSpecs.DEFAULT_ROWSPEC,
-        		FormSpecs.RELATED_GAP_ROWSPEC,
-        		FormSpecs.DEFAULT_ROWSPEC,}));
-        
-                JLabel lblVendasMes = new JLabel("Total de Vendas:");
-                panel_12.add(lblVendasMes, "2, 2, fill, default");
-                        
-                        JLabel label_t_vendas = new JLabel("" + farmacia.gestorvendas.getVendas().size());
-                        panel_12.add(label_t_vendas, "4, 2");
-                        
-                                JLabel lblProdutoMaisVendido = new JLabel("Produto mais vendido:");
-                                panel_12.add(lblProdutoMaisVendido, "8, 2");
-                        
-                        JLabel label_p_m_vendido = new JLabel("Benuron");
-                        panel_12.add(label_p_m_vendido, "10, 2");
-                
-                        JLabel lblQuantidade = new JLabel("Total de Medicamentos:");
-                        panel_12.add(lblQuantidade, "2, 4, fill, default");
-                                
-                                JLabel label_t_meds = new JLabel("" + farmacia.armarios[nrloja].getTodos().size());
-                                panel_12.add(label_t_meds, "4, 4");
-                        
-                                JLabel lblNovosClientes = new JLabel("Total de Clientes:");
-                                panel_12.add(lblNovosClientes, "2, 6, fill, default");
-                                        
-                                        JLabel label_t_clientes = new JLabel("" + farmacia.gestorclientes.getClientes().size());
-                                        panel_12.add(label_t_clientes, "4, 6");
-                                
-                                        JLabel lblProdutosEmCaminho = new JLabel("Produtos em caminho:");
-                                        panel_12.add(lblProdutosEmCaminho, "2, 8, fill, default");
-        
+        panel_12.setLayout(new FormLayout(new ColumnSpec[]{
+                FormSpecs.RELATED_GAP_COLSPEC,
+                FormSpecs.DEFAULT_COLSPEC,
+                FormSpecs.RELATED_GAP_COLSPEC,
+                FormSpecs.DEFAULT_COLSPEC,
+                FormSpecs.RELATED_GAP_COLSPEC,
+                FormSpecs.DEFAULT_COLSPEC,
+                FormSpecs.RELATED_GAP_COLSPEC,
+                FormSpecs.DEFAULT_COLSPEC,
+                FormSpecs.RELATED_GAP_COLSPEC,
+                FormSpecs.DEFAULT_COLSPEC,},
+                new RowSpec[]{
+                        FormSpecs.RELATED_GAP_ROWSPEC,
+                        FormSpecs.DEFAULT_ROWSPEC,
+                        FormSpecs.RELATED_GAP_ROWSPEC,
+                        FormSpecs.DEFAULT_ROWSPEC,
+                        FormSpecs.RELATED_GAP_ROWSPEC,
+                        FormSpecs.DEFAULT_ROWSPEC,
+                        FormSpecs.RELATED_GAP_ROWSPEC,
+                        FormSpecs.DEFAULT_ROWSPEC,}));
+
+        JLabel lblVendasMes = new JLabel("Total de Vendas:");
+        panel_12.add(lblVendasMes, "2, 2, fill, default");
+
+        JLabel label_t_vendas = new JLabel("" + farmacia.gestorvendas.getVendas().size());
+        panel_12.add(label_t_vendas, "4, 2");
+
+        JLabel lblProdutoMaisVendido = new JLabel("Produto mais vendido:");
+        panel_12.add(lblProdutoMaisVendido, "8, 2");
+
+        JLabel label_p_m_vendido = new JLabel("Benuron");
+        panel_12.add(label_p_m_vendido, "10, 2");
+
+        JLabel lblQuantidade = new JLabel("Total de Medicamentos:");
+        panel_12.add(lblQuantidade, "2, 4, fill, default");
+
+        JLabel label_t_meds = new JLabel("" + farmacia.armarios[nrloja].getTodos().size());
+        panel_12.add(label_t_meds, "4, 4");
+
+        JLabel lblNovosClientes = new JLabel("Total de Clientes:");
+        panel_12.add(lblNovosClientes, "2, 6, fill, default");
+
+        JLabel label_t_clientes = new JLabel("" + farmacia.gestorclientes.getClientes().size());
+        panel_12.add(label_t_clientes, "4, 6");
+
+        JLabel lblProdutosEmCaminho = new JLabel("Produtos em caminho:");
+        panel_12.add(lblProdutosEmCaminho, "2, 8, fill, default");
+
         JPanel panel_13 = new JPanel();
         panel_13.setBorder(new TitledBorder(null, "Vendas mais recentes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
         panel_13.setBounds(438, 89, 365, 170);
         main.add(panel_13);
         panel_13.setLayout(null);
-        
+
         table_3 = new JTable();
         table_3.setBorder(new LineBorder(new Color(0, 0, 0)));
         table_3.setBounds(10, 22, 345, 137);
         panel_13.add(table_3);
-        
+
         JPanel panel_14 = new JPanel();
         panel_14.setBorder(new TitledBorder(null, "Produtos a caminho", TitledBorder.LEADING, TitledBorder.TOP, null, null));
         panel_14.setBounds(438, 270, 365, 244);
         main.add(panel_14);
         panel_14.setLayout(null);
-        
+
         table_2 = new JTable();
         table_2.setBorder(new LineBorder(new Color(0, 0, 0)));
         table_2.setBounds(10, 23, 345, 210);
@@ -755,7 +756,7 @@ public class Layout extends JFrame implements Variaveis {
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Sem vendas");
         }
-        
+
 
         list_1.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent arg0) {
@@ -787,14 +788,14 @@ public class Layout extends JFrame implements Variaveis {
             }
         });
         scrollPane.setViewportView(list_1);
-        
+
         JButton btnNewButton_1 = new JButton("Executar Compra");
         btnNewButton_1.addMouseListener(new MouseAdapter() {
-        	@Override
-        	public void mouseClicked(MouseEvent arg0) {
-        		criarVenda venda = new criarVenda(farmacia,nrloja,list_1);
-                venda.setVisible(true);	
-        	}
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                criarVenda venda = new criarVenda(farmacia, nrloja, list_1);
+                venda.setVisible(true);
+            }
         });
         btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 12));
         btnNewButton_1.setForeground(Color.WHITE);
@@ -1000,13 +1001,12 @@ public class Layout extends JFrame implements Variaveis {
                 if (e.getClickCount() == 2) {
                     Cliente cliente = new Cliente();
                     cliente = (Cliente) listClientes.getSelectedValue();
-                    if (farmacia.gestorvendas.getVendas(cliente).size()>0) {
+                    if (farmacia.gestorvendas.getVendas(cliente).size() > 0) {
                         Relatorio relat = new Relatorio(farmacia.gestorvendas.getVendas(cliente), "Costa-Prozelo");
                         Dialog dialog = new Dialog(relat);
                         dialog.setVisible(true);
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(null, "O cliente: "+ cliente.getNome()+" ainda não efectuou compras!");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "O cliente: " + cliente.getNome() + " ainda não efectuou compras!");
                     }
                 }
             }
@@ -1112,11 +1112,11 @@ public class Layout extends JFrame implements Variaveis {
         stock.add(btnClientesStock);
 
         JLabel lblProcurarProduto = new JLabel("Procurar Produto:");
-        lblProcurarProduto.setBounds(31, 311, 141, 16);
+        lblProcurarProduto.setBounds(32, 341, 141, 16);
         stock.add(lblProcurarProduto);
 
         textPesquisarStock = new JTextField();
-        textPesquisarStock.setBounds(142, 309, 192, 20);
+        textPesquisarStock.setBounds(143, 339, 192, 20);
         stock.add(textPesquisarStock);
         textPesquisarStock.setColumns(10);
 
@@ -1124,18 +1124,18 @@ public class Layout extends JFrame implements Variaveis {
         btnPesquisar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
-                System.out.print(textPesquisarStock.getText());
+               // System.out.print(textPesquisarStock.getText());
                 Medicamento m = new Medicamento(farmacia.armarios[nrloja].procurarMedicamento(textPesquisarStock.getText()));
-                System.out.print(m.getNome());
+                System.out.print(m.toString());
 
             }
         });
-        btnPesquisar.setBounds(346, 306, 98, 26);
+        btnPesquisar.setBounds(347, 336, 98, 26);
         stock.add(btnPesquisar);
 
         JPanel panel_1 = new JPanel();
         panel_1.setBorder(new TitledBorder(null, "Informação detalhada: ", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        panel_1.setBounds(477, 345, 358, 270);
+        panel_1.setBounds(641, 355, 358, 270);
         stock.add(panel_1);
 
         GridBagLayout gbl_panel_1 = new GridBagLayout();
@@ -1312,24 +1312,24 @@ public class Layout extends JFrame implements Variaveis {
         });
         scrollPane_1.setViewportView(list_2);
         scrollPane_1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPane_1.setBounds(31, 343, 436, 276);
+        scrollPane_1.setBounds(32, 373, 588, 276);
         //Adicona o scroll pane ao painel Stock
         stock.add(scrollPane_1);
 
         JPanel panel_3 = new JPanel();
         panel_3.setBorder(new TitledBorder(null, "Adicionar Medicamento", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        panel_3.setBounds(25, 87, 998, 212);
+        panel_3.setBounds(25, 87, 998, 243);
         stock.add(panel_3);
         panel_3.setLayout(null);
 
         Panel panel_2 = new Panel();
-        panel_2.setBounds(6, 16, 441, 188);
+        panel_2.setBounds(6, 16, 491, 217);
         panel_3.add(panel_2);
         GridBagLayout gbl_panel_2 = new GridBagLayout();
         gbl_panel_2.columnWidths = new int[]{19, 176, 225, 0};
-        gbl_panel_2.rowHeights = new int[]{20, -2, 0, 0, 0, 0, 0, 0};
+        gbl_panel_2.rowHeights = new int[]{20, -2, 0, 0, 0, 0, 27, 0, 0};
         gbl_panel_2.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
-        gbl_panel_2.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+        gbl_panel_2.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         panel_2.setLayout(gbl_panel_2);
 
         JLabel label_2 = new JLabel("Categoria:");
@@ -1434,18 +1434,36 @@ public class Layout extends JFrame implements Variaveis {
         gbc_dateChooser_1.gridy = 5;
         panel_2.add(dateChooser_1, gbc_dateChooser_1);
 
+        JLabel lblNewLabel_5 = new JLabel("Necessita Receita:");
+        GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
+        gbc_lblNewLabel_5.anchor = GridBagConstraints.WEST;
+        gbc_lblNewLabel_5.insets = new Insets(0, 0, 5, 5);
+        gbc_lblNewLabel_5.gridx = 1;
+        gbc_lblNewLabel_5.gridy = 6;
+        panel_2.add(lblNewLabel_5, gbc_lblNewLabel_5);
+
+        JRadioButton rdbtnNewRadioButton = new JRadioButton("");
+        GridBagConstraints gbc_rdbtnNewRadioButton = new GridBagConstraints();
+        gbc_rdbtnNewRadioButton.anchor = GridBagConstraints.WEST;
+        gbc_rdbtnNewRadioButton.insets = new Insets(0, 0, 5, 0);
+        gbc_rdbtnNewRadioButton.gridx = 2;
+        gbc_rdbtnNewRadioButton.gridy = 6;
+        panel_2.add(rdbtnNewRadioButton, gbc_rdbtnNewRadioButton);
+
         //Botao Adicionar Medicamento
         JButton btnAdicionarGerir = new JButton("Adicionar");
         GridBagConstraints gbc_btnAdicionarGerir = new GridBagConstraints();
         gbc_btnAdicionarGerir.gridx = 2;
-        gbc_btnAdicionarGerir.gridy = 6;
+        gbc_btnAdicionarGerir.gridy = 7;
         panel_2.add(btnAdicionarGerir, gbc_btnAdicionarGerir);
         btnAdicionarGerir.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
                 if (textNome.getText() != null && textQuantidade.getText() != null) {
+                    boolean receita = rdbtnNewRadioButton.isSelected();
+
                     try {
-                        Medicamento medic = new Medicamento(textNome.getText(), Integer.valueOf(textPreco.getText()), comboCat.getSelectedIndex(), comboVia.getSelectedIndex(), dateChooser_1.getDate());
+                        Medicamento medic = new Medicamento(textNome.getText(), Integer.valueOf(textPreco.getText()), comboCat.getSelectedIndex(), comboVia.getSelectedIndex(), dateChooser_1.getDate(), receita);
                         farmacia.armarios[nrloja].adicionarMedicamento(medic, Integer.valueOf(textQuantidade.getText()));
                         Object[] modelMedic = farmacia.armarios[nrloja].getTodos().toArray();
 

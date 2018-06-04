@@ -40,6 +40,7 @@ public class Armario implements Serializable {
     public Gaveta getArmarioGaveta(int cat, int via) {
         return armario[cat][via];
     }
+
     public ArrayList<Medicamento> getMedicamentosGaveta(int cat, int via) {
         return armario[cat][via].getMedicamentos();
     }
@@ -73,27 +74,27 @@ public class Armario implements Serializable {
         this.nome = nome;
     }
 
-//
+    //
     public JDialog adicionarMedicamento(Medicamento medicamento, int quantidade) {
         if (armario[medicamento.getCategoria()][medicamento.getViaAdmin()] == null) {
             //Criar gaveta
             armario[medicamento.getCategoria()][medicamento.getViaAdmin()] = new Gaveta();
             //Adicionar medicamento na gaveta
-            for (int i=0; i<quantidade;i++ ){
+            for (int i = 0; i < quantidade; i++) {
                 armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.add(medicamento);
                 // Aumentar quantidade
                 this.quantidade++;
             }
-           //Removi notificacao de adicionado com sucesso
+            //Removi notificacao de adicionado com sucesso
 
         } else {
-            if ((armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.size() + quantidade) <= 10){
-                for (int i=0; i<quantidade;i++ ) {
+            if ((armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.size() + quantidade) <= 10) {
+                for (int i = 0; i < quantidade; i++) {
                     armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.add(medicamento);
                     this.quantidade++;
                 }
-            }else{
-                JOptionPane optionPane = new JOptionPane("Não é permitido adicionar o medicamento! Quantidade máxima:" + (10 - armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.size()),JOptionPane.WARNING_MESSAGE);
+            } else {
+                JOptionPane optionPane = new JOptionPane("Não é permitido adicionar o medicamento! Quantidade máxima:" + (10 - armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.size()), JOptionPane.WARNING_MESSAGE);
                 JDialog dialog = optionPane.createDialog("Alerta!");
                 dialog.setAlwaysOnTop(true);
                 dialog.setVisible(true);
@@ -132,18 +133,19 @@ public class Armario implements Serializable {
     public int getQuantidadGaveta(int cat, int via) {
         try {
             return armario[cat][via].getMedicamentos().size();
-        }catch (Exception e){
+        } catch (Exception e) {
             return 0;
         }
     }
+
     public float getPrecoGaveta(int cat, int via) {
-        float preco_gaveta=0;
-        try{
-        for(Medicamento med:this.getMedicamentosGaveta(cat,via)){
-            preco_gaveta+=med.getPreco();
-        }
-        return preco_gaveta;
-        }catch (Exception e){
+        float preco_gaveta = 0;
+        try {
+            for (Medicamento med : this.getMedicamentosGaveta(cat, via)) {
+                preco_gaveta += med.getPreco();
+            }
+            return preco_gaveta;
+        } catch (Exception e) {
             return 0f;
         }
     }
@@ -167,20 +169,26 @@ public class Armario implements Serializable {
 
     public Medicamento procurarMedicamento(String nome) {
         Medicamento medic = new Medicamento();
+
+
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
-                if (armario[i][j] != null && armario[i][j].contains(nome)) {
+                if (armario[i][j] != null) {
+
                     medic = armario[i][j].getMedicamento(nome);
+
+                    return medic;
+
                 }
             }
         }
         return medic;
     }
 
-    public boolean atualizarMedicamento( Medicamento novo_med) {
-                if (armario[novo_med.getCategoria()][novo_med.getViaAdmin()] != null && armario[novo_med.getCategoria()][novo_med.getViaAdmin()].updateMedicamento( novo_med)) {
-                    return true;
-                }
+    public boolean atualizarMedicamento(Medicamento novo_med) {
+        if (armario[novo_med.getCategoria()][novo_med.getViaAdmin()] != null && armario[novo_med.getCategoria()][novo_med.getViaAdmin()].updateMedicamento(novo_med)) {
+            return true;
+        }
         return false;
     }
 }

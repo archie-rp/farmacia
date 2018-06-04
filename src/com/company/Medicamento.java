@@ -12,24 +12,27 @@ public class Medicamento implements Variaveis,Serializable {
     private int Categoria;
     private int ViaAdmin;
     private Date dataValidade;
+    private boolean receita;
 
 
-    public Medicamento(int id, String nome, float preco, int cate, int via, Date dataValidade) {
+    public Medicamento(int id, String nome, float preco, int cate, int via, Date dataValidade ) {
         this.id = id;
         this.nome = nome;
         this.preco = preco;
         this.Categoria = cate;
         this.ViaAdmin = via;
         this.dataValidade = dataValidade;
+        this.receita=receita;
     }
     
-    public Medicamento( String nome, float preco, int cate, int via, Date dataValidade) {
+    public Medicamento( String nome, float preco, int cate, int via, Date dataValidade,boolean receita) {
         this.id = 0;
         this.nome = nome;
         this.preco = preco;
         this.Categoria = cate;
         this.ViaAdmin = via;
         this.dataValidade = dataValidade;
+        this.receita=receita;
     }
 
     public void setId(int id) {
@@ -68,7 +71,7 @@ public class Medicamento implements Variaveis,Serializable {
 
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public void setNome(String nome) {
@@ -109,7 +112,13 @@ public class Medicamento implements Variaveis,Serializable {
         DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.getDefault());
         String formattedDate = df.format(this.getDataValidade());
         string.append(formattedDate + " ");
-        string.append(this.preco+ "  \n");
+        string.append(this.preco+ " ");
+        if(this.receita!=false) {
+        	  string.append(" Necessita receita\n");
+        }else {
+        	  string.append(" \n");
+        }
+      
         return string.toString();
     }
 
