@@ -89,34 +89,6 @@ public class criarVenda extends JDialog implements Variaveis{
 				FormSpecs.RELATED_GAP_ROWSPEC,
 				FormSpecs.DEFAULT_ROWSPEC,}));
 		{
-			JPanel panel = new JPanel();
-			panel.setBorder(new TitledBorder(null, "Procurar Medicamento", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-			contentPanel.add(panel, "2, 2, 8, 1, fill, top");
-			panel.setLayout(new FormLayout(new ColumnSpec[] {
-					FormSpecs.DEFAULT_COLSPEC,
-					FormSpecs.RELATED_GAP_COLSPEC,
-					ColumnSpec.decode("default:grow"),
-					FormSpecs.RELATED_GAP_COLSPEC,
-					FormSpecs.DEFAULT_COLSPEC,
-					FormSpecs.RELATED_GAP_COLSPEC,
-					FormSpecs.DEFAULT_COLSPEC,},
-				new RowSpec[] {
-					RowSpec.decode("default:grow"),}));
-			{
-				JLabel lblNome = new JLabel("Nome:");
-				panel.add(lblNome, "1, 1");
-			}
-			{
-				JTextArea textArea = new JTextArea();
-				textArea.setTabSize(5);
-				panel.add(textArea, "3, 1, 3, 1, fill, default");
-			}
-			{
-				JButton btnProcurar = new JButton("Procurar");
-				panel.add(btnProcurar, "7, 1");
-			}
-		}
-		{
 			JLabel lblCategoria = new JLabel("Categoria");
 			lblCategoria.setFont(new Font("Tahoma", Font.BOLD, 11));
 			contentPanel.add(lblCategoria, "2, 4");
@@ -161,10 +133,58 @@ public class criarVenda extends JDialog implements Variaveis{
 				table.setBorder(new LineBorder(new Color(0, 0, 0)));
 			}
 		}
+
+			JPanel panel = new JPanel();
+			panel.setBorder(new TitledBorder(null, "Procurar Medicamento", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			contentPanel.add(panel, "2, 2, 8, 1, fill, top");
+			panel.setLayout(new FormLayout(new ColumnSpec[] {
+					FormSpecs.DEFAULT_COLSPEC,
+					FormSpecs.RELATED_GAP_COLSPEC,
+					ColumnSpec.decode("default:grow"),
+					FormSpecs.RELATED_GAP_COLSPEC,
+					FormSpecs.DEFAULT_COLSPEC,
+					FormSpecs.RELATED_GAP_COLSPEC,
+					FormSpecs.DEFAULT_COLSPEC,},
+					new RowSpec[] {
+							RowSpec.decode("default:grow"),}));
+			{
+				JLabel lblNome = new JLabel("Nome:");
+				panel.add(lblNome, "1, 1");
+			}
+
+			JTextArea text_nome_procurar = new JTextArea();
+			text_nome_procurar.setTabSize(5);
+			panel.add(text_nome_procurar, "3, 1, 3, 1, fill, default");
+
+
+
+
+
+
 		JComboBox comboBox_cat = new JComboBox(categorias);
 		
 		JComboBox comboBox_via = new JComboBox(vias);
-		
+		JButton btnProcurar = new JButton("Procurar");
+
+		panel.add(btnProcurar, "7, 1");
+
+		btnProcurar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				if(!text_nome_procurar.getText().isEmpty()){
+					if (farmacia.armarios[nrloja].procurarMedicamento(text_nome_procurar.getText()).getNome() != null) {
+						System.out.println(text_nome_procurar.getText());
+						Medicamento med_temp = farmacia.armarios[nrloja].procurarMedicamento(text_nome_procurar.getText());
+						comboBox_cat.setSelectedIndex(med_temp.getCategoria());
+						comboBox_via.setSelectedIndex(med_temp.getViaAdmin());
+						System.out.println(med_temp.toString());
+					}else{
+						System.out.println("nao encontrou");
+					}
+					
+				}
+			}
+		});
 		contentPanel.add(comboBox_cat, "2, 6, fill, default");
 		contentPanel.add(comboBox_via, "4, 6, fill, default");
 		
