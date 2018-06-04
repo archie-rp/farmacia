@@ -1,11 +1,10 @@
-### Farmacia Tarefas
-
+﻿### Farmacia Tarefas
 
 
 ##### Separador Relatorios
 
-- [ ] Criar Classe Relatorio
-    - [ ] Ver todas as compras 
+- [x] Criar Classe Relatorio | Rafael
+    - [x] Ver todas as compras | Rafael
     - [ ] Ver todos os medicamentos do mes inseridos
     - [ ] Ver produtos fora de stock
 - [ ] Remover Relatório
@@ -22,17 +21,17 @@
 ##### Painel Home
 - [ ] Calcular o valores para apresentar
     - [ ] Apresetar vendas mensais
-    - [ ] Apresentar Quantidade de vendas
-    - [ ] Apresentar Total de Novos Clientes
-    - [ ] Apresentar Produto mais Vendido
+    - [x] Apresentar Quantidade de vendas | Rafel
+    - [x] Apresentar Total de Novos Clientes | Rafael
+    - [x] Apresentar Produto mais Vendido | Rafael
 - [ ] Calcular os medicamentos certos para apresentar nos Produtos Recentes
 - [ ] Apresentar os medicamentos em armazem
 
 
 ##### Painel Vendas
-- [ ] Colocar botão para procurar clientes
+- [x] Colocar botão para procurar clientes | Rafael
 - [ ] Botão para criar um novo cliente -> pode ser um "link" para o form clientes
-- [ ] Calcular e apresentar dados de compra
+- [X] Calcular e apresentar dados de compra | Rafael
 - [ ] Apresentar os detalhes para os dados que forem selecionados na JList 
 
 
@@ -78,7 +77,7 @@
 - [ ] Criar Gestor de Clientes
 - [x] Criar Classe Clientes | Hugo
     - [x] id,nome,bi,data_inscriçao | Hugo
-- [ ] Registar Clientes
+- [x] Registar Clientes Hugo
 - [ ] Remover Clientes
 - [ ] Adicionar Exceptions
 - etc..
@@ -88,10 +87,10 @@
     - [x] nome,ArrayList<Vendas>,quantidade_vendas,quantidade_maxima | Rafael
 - [x] Criar Classe Vendas | Rafael
     - [x] cod_venda,Cliente,ArrayList<Medicamentos>,data_venda | Rafael
-- [x] Adicionar Venda
+- [x] Adicionar Venda Rafael
 - [ ] Remover Venda 
-- [ ] Guardar em ficheiro todas as compras
-- [ ] Criar Secçao de relatorios para Vendas
+- [x] Guardar em ficheiro todas as compras Rafael|Hugo
+- [x] Criar Secçao de relatorios para Vendas Rafael|Hugo
 - [ ] Adicionar Exceptions
 - etc..
 
@@ -109,11 +108,8 @@
 
 
 ##### Save Data
-- [ ] Criar Serializaçao para (armario)
-- [ ] Criar Serializaçao para (Gestor de clientes)
-    - [ ] Criar pasta dedicada
-- [ ] Fazer Carregamento de ficheiros ao arrancar o programa
-- etc.. 
+- [x] Criar Serializaçao para (Farmacia) Rafael|Hugo
+    - [x] Todos os dados são gravado ao fechar o programa e são lidos ao abrir o programa Rafael|Hugo
 
 #####
 
