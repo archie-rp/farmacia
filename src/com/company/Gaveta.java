@@ -39,11 +39,11 @@ public class Gaveta implements Serializable {
     public Medicamento getMedicamento(String nome) {
         Medicamento medicamento = new Medicamento();
         for (Medicamento medicamento_ : medicamentos) {
-            if (medicamento_ != null && medicamento_.getNome().contains(nome)) {
+            if (medicamento_ != null && medicamento_.getNome().toLowerCase().contains(nome.toLowerCase())) {
                     return medicamento_;
             }
         }
-        return medicamento;
+        return null;
     }
 
 
