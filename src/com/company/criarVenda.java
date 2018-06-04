@@ -49,7 +49,7 @@ public class criarVenda extends JDialog implements Variaveis{
 	/**
 	 * Create the dialog.
 	 */
-	public criarVenda(Farmacia farmacia, int nrloja,JList list_1)  {
+	public criarVenda(Farmacia farmacia, int nrloja,JList list_1,JList list_3)  {
 		setBounds(100, 100, 761, 507);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -380,6 +380,11 @@ public class criarVenda extends JDialog implements Variaveis{
 							venda_temporaria.setCod_venda(farmacia.gestorvendas.vendas.size()+1);
 							venda_temporaria.setData_compra(new Date());
 							farmacia.gestorvendas.adicionarVenda(venda_temporaria);
+							farmacia.gestorclientes.setCliente(cliente1);
+							list_1.setListData(farmacia.gestorvendas.getVendas().toArray());
+							list_3.setListData(farmacia.gestorvendas.getVendas().toArray());
+							list_3.repaint();
+							list_3.revalidate();
 							dispose();
 						}else if (venda_temporaria.medicamentos.size() > 0 && !text_nome.getText().isEmpty()){
 							System.out.println("encomenda concluida!");
@@ -389,6 +394,9 @@ public class criarVenda extends JDialog implements Variaveis{
 							venda_temporaria.setData_compra(new Date());
 							farmacia.gestorvendas.adicionarVenda(venda_temporaria);
 							list_1.setListData(farmacia.gestorvendas.getVendas().toArray());
+							list_3.setListData(farmacia.gestorvendas.getVendas().toArray());
+							list_3.repaint();
+							list_3.revalidate();
 							dispose();
 						}else{
 							if (venda_temporaria.medicamentos.size() == 0){
