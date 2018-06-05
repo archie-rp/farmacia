@@ -112,11 +112,11 @@ public class criarVenda extends JDialog implements Variaveis{
 				table = new JTable();
 
 				try {
-					DefaultTableModel model_d = new DefaultTableModel(new Object[]{"Nome", "Quantidade", "Preço"}, 0);
+					DefaultTableModel model_d = new DefaultTableModel(new Object[]{"Nome", "Quantidade", "Preço", "Estado"}, 0);
 					ArrayList<Medicamento> med = venda_temporaria.getMedicamentos();
 					//Adiciona os medicamentos na tablela
 					for (Medicamento meds : med) {
-						model_d.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.getPreco()});
+						model_d.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.getPreco(),estados[meds.getEstado()]});
 					}
 					scrollPane1.setViewportView(table);
 					table.setModel(model_d);
@@ -125,7 +125,7 @@ public class criarVenda extends JDialog implements Variaveis{
 
 				} catch (NullPointerException x) {
 					System.out.println("tasdsa");
-					DefaultTableModel ad = new DefaultTableModel(new Object[]{"Nome", "Quantidade", "Preço"}, 0);
+					DefaultTableModel ad = new DefaultTableModel(new Object[]{"Nome", "Quantidade", "Preço", "Estado"}, 0);
 					scrollPane1.setViewportView(table);
 					table.setModel(ad);
 				}
@@ -182,12 +182,13 @@ public class criarVenda extends JDialog implements Variaveis{
 
 					}else if(nrloja !=1 ){
 						m= farmacia.armarios[nrloja+1].procurarMedicamento(text_nome_procurar.getText());
-						Importar importar = new Importar(farmacia, nrloja+1,m);
+						Importar importar = new Importar(farmacia, nrloja+1,m,venda_temporaria);
 		                importar.setVisible(true);
 						System.out.print("Medicamento encontrado noutra loja da mesma farmacia!" + 2 + m.toString());
+
 					}else if(nrloja !=2 && nrloja !=1){
 						m= farmacia.armarios[nrloja+1].procurarMedicamento(text_nome_procurar.getText());
-						Importar importar = new Importar(farmacia, nrloja+2,m);
+						Importar importar = new Importar(farmacia, nrloja+2,m,venda_temporaria);
 		                importar.setVisible(true);
 						System.out.print("Medicamento encontrado noutra loja da mesma farmacia!"+ 3 + m.toString());
 					}else {
@@ -226,17 +227,17 @@ public class criarVenda extends JDialog implements Variaveis{
 			comboBox_cat.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					try {
-						DefaultTableModel model_cat = new DefaultTableModel(new Object[]{"Nome", "Data", "Preço"}, 0);
+						DefaultTableModel model_cat = new DefaultTableModel(new Object[]{"Nome", "Data","Receita", "Preço"}, 0);
 
 						ArrayList<Medicamento> meds = farmacia.armarios[nrloja].getMedicamentosGaveta(comboBox_cat.getSelectedIndex(), comboBox_via.getSelectedIndex());
 						//Adiciona os medicamentos na tablela
 						for (Medicamento med : meds) {
-							model_cat.addRow(new Object[]{med.getNome(), med.getDataValidade(), med.getPreco()});
+							model_cat.addRow(new Object[]{med.getNome(), med.getDataValidade(),med.isReceita(), med.getPreco()});
 						}
 						scrollPane.setViewportView(table_1);
 						table_1.setModel(model_cat);
 					}catch (NullPointerException e){
-						DefaultTableModel ad = new DefaultTableModel(new Object[]{"Nome", "Data", "Preço"}, 0);
+						DefaultTableModel ad = new DefaultTableModel(new Object[]{"Nome", "Data","Receita", "Preço"}, 0);
 						scrollPane.setViewportView(table_1);
 						table_1.setModel(ad);
 					}
@@ -245,17 +246,17 @@ public class criarVenda extends JDialog implements Variaveis{
 			comboBox_via.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					try {
-						DefaultTableModel model_cat = new DefaultTableModel(new Object[]{"Nome", "Data", "Preço"}, 0);
+						DefaultTableModel model_cat = new DefaultTableModel(new Object[]{"Nome", "Data" ,"Receita", "Preço"}, 0);
 
 						ArrayList<Medicamento> meds = farmacia.armarios[nrloja].getMedicamentosGaveta(comboBox_cat.getSelectedIndex(), comboBox_via.getSelectedIndex());
 						//Adiciona os medicamentos na tablela
 						for (Medicamento med : meds) {
-							model_cat.addRow(new Object[]{med.getNome(), med.getDataValidade(), med.getPreco()});
+							model_cat.addRow(new Object[]{med.getNome(), med.getDataValidade(),med.isReceita(), med.getPreco()});
 						}
 						scrollPane.setViewportView(table_1);
 						table_1.setModel(model_cat);
 					}catch (NullPointerException x){
-						DefaultTableModel ad = new DefaultTableModel(new Object[]{"Nome", "Data", "Preço"}, 0);
+						DefaultTableModel ad = new DefaultTableModel(new Object[]{"Nome", "Data","Receita", "Preço"}, 0);
 						scrollPane.setViewportView(table_1);
 						table_1.setModel(ad);
 					}
@@ -303,11 +304,11 @@ public class criarVenda extends JDialog implements Variaveis{
 							//remover do armario
 							farmacia.armarios[nrloja].getMedicamentosGaveta(comboBox_cat.getSelectedIndex(),comboBox_via.getSelectedIndex()).remove(table_1.getSelectedRow());
 							comboBox_cat.setSelectedIndex(0);
-							DefaultTableModel cesto = new DefaultTableModel(new Object[]{"Nome", "Quantidade", "Preço"}, 0);
+							DefaultTableModel cesto = new DefaultTableModel(new Object[]{"Nome", "Quantidade", "Preço","Estado"}, 0);
 							ArrayList<Medicamento> venda_medicamentos = venda_temporaria.getMedicamentos();
 							//Adiciona os medicamentos na tablela
 							for (Medicamento med : venda_medicamentos) {
-								cesto.addRow(new Object[]{med.getNome(), med.getDataValidade(), med.getPreco()});
+								cesto.addRow(new Object[]{med.getNome(), med.getDataValidade(), med.getPreco(),estados[med.getEstado()]});
 							}
 							scrollPane1.setViewportView(table);
 							table.setModel(cesto);
@@ -338,11 +339,11 @@ public class criarVenda extends JDialog implements Variaveis{
 							//remover do armario
 							//farmacia.armarios[nrloja].getMedicamentosGaveta(comboBox_cat.getSelectedIndex(),comboBox_via.getSelectedIndex()).remove(table_1.getSelectedRow());
 							comboBox_cat.setSelectedIndex(0);
-							DefaultTableModel cesto = new DefaultTableModel(new Object[]{"Nome", "Quantidade", "Preço"}, 0);
+							DefaultTableModel cesto = new DefaultTableModel(new Object[]{"Nome", "Quantidade", "Preço","Estado"}, 0);
 							ArrayList<Medicamento> venda_medicamentos = venda_temporaria.getMedicamentos();
 							//Adiciona os medicamentos na tablela
 							for (Medicamento med : venda_medicamentos) {
-								cesto.addRow(new Object[]{med.getNome(), med.getDataValidade(), med.getPreco()});
+								cesto.addRow(new Object[]{med.getNome(), med.getDataValidade(), med.getPreco(),estados[med.getEstado()]});
 							}
 							scrollPane1.setViewportView(table);
 							table.setModel(cesto);
@@ -462,6 +463,7 @@ public class criarVenda extends JDialog implements Variaveis{
 					public void mouseClicked(MouseEvent arg0) {
 						if (venda_temporaria.medicamentos.size() > 0){
 							for (Medicamento med:venda_temporaria.medicamentos){
+								med.setEstado(1);
 								farmacia.armarios[nrloja].adicionarMedicamento(med,1);
 							}
 						}

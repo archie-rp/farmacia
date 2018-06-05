@@ -13,6 +13,7 @@ public class Medicamento implements Variaveis,Serializable {
     private int ViaAdmin;
     private Date dataValidade;
     private boolean receita;
+    private int estado;
 
 
     public Medicamento(int id, String nome, float preco, int cate, int via, Date dataValidade ) {
@@ -23,6 +24,7 @@ public class Medicamento implements Variaveis,Serializable {
         this.ViaAdmin = via;
         this.dataValidade = dataValidade;
         this.receita=receita;
+        this.estado=1;
     }
     
     public Medicamento( String nome, float preco, int cate, int via, Date dataValidade,boolean receita) {
@@ -33,10 +35,20 @@ public class Medicamento implements Variaveis,Serializable {
         this.ViaAdmin = via;
         this.dataValidade = dataValidade;
         this.receita=receita;
+        this.estado=1;
+
     }
 
     public boolean isReceita() {
         return receita;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
+    public int getEstado() {
+        return estado;
     }
 
     public void setReceita(boolean receita) {
@@ -66,6 +78,7 @@ public class Medicamento implements Variaveis,Serializable {
         this.Categoria = medicamento.getCategoria();
         this.ViaAdmin = medicamento.getViaAdmin();
         this.dataValidade = medicamento.getDataValidade();
+        this.estado=1;
     }
 
     public Medicamento() {
@@ -75,6 +88,7 @@ public class Medicamento implements Variaveis,Serializable {
         this.Categoria = 0;
         this.ViaAdmin = 0;
         this.dataValidade = new Date();
+        this.estado=1;
     }
 
 

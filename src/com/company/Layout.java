@@ -545,11 +545,31 @@ public class Layout extends JFrame implements Variaveis {
         panel_14.setBounds(438, 270, 365, 244);
         main.add(panel_14);
         panel_14.setLayout(null);
-
+        
+        JScrollPane scrollPane_4 = new JScrollPane();
         table_2 = new JTable();
+        scrollPane_4.setViewportView(table_2);
+        try {
+			DefaultTableModel model_dependentes = new DefaultTableModel(new Object[]{"Nome", "Data", "Receita", "Preço","Estado"}, 0);
+
+			//Recebe medicamentos da venda selecionada
+			ArrayList<Medicamento> med = farmacia.getMedicamentos_pendentes();
+			//Adiciona os medicamentos na tablela
+			for (Medicamento meds : med) {
+				model_dependentes.addRow(new Object[]{meds.getNome(), meds.getDataValidade(),meds.isReceita(), meds.getPreco(),estados[meds.getEstado()]});
+			}
+			scrollPane_4.setViewportView(table_2);
+			table_2.setModel(model_dependentes);
+			table_2.setBorder(new LineBorder(new Color(0, 0, 0)));
+
+		} catch (Exception e1) {
+			//model_d;
+		}
+        scrollPane_4.setBounds(10, 23, 345, 210);
+        panel_14.add(scrollPane_4);
+
+        
         table_2.setBorder(new LineBorder(new Color(0, 0, 0)));
-        table_2.setBounds(10, 23, 345, 210);
-        panel_14.add(table_2);
 
         try {
             JList list = new JList(farmacia.armarios[nrloja].getArmarioGaveta(0, 0).getMedicamentos().toArray());

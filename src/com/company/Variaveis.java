@@ -8,5 +8,6 @@ public interface Variaveis {
     String modoPagamento[] = {"Multibanco", "Dinheiro", "Cheque"};
     String farmacias[] = {"Loja 1", "Loja 2", "Loja 3"};
     String descontos[] = {"0%", "5%", "10%"};
+    String estados[] = {"Pendente","OK" };
     
 }

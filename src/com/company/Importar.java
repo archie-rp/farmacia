@@ -41,7 +41,7 @@ public class Importar extends JDialog implements Variaveis {
 	/**
 	 * Create the dialog.
 	 */
-	public Importar(Farmacia farmacia,int nrloja,Medicamento m) {
+	public Importar(Farmacia farmacia,int nrloja,Medicamento m, Venda venda_temporaria) {
 		setBounds(100, 100, 495, 325);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -168,6 +168,12 @@ public class Importar extends JDialog implements Variaveis {
                         int nr_quantidade = Integer.parseInt(textField_quantidade.getText());
 						if(nr_quantidade < farmacia.armarios[nrloja].getMedicamentoQuantidade(m)){
 						    System.out.println("Encomenda Realizada com sucesso!!");
+						    for(int i =0;i <nr_quantidade;i++){
+						        m.setEstado(0);
+						        farmacia.medicamentos_pendentes.add(m);
+                                venda_temporaria.medicamentos.add(m);
+						        farmacia.armarios[nrloja].removerMedicamento(m);
+						    }
 						    dispose();
                         }
 					}
