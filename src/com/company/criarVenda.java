@@ -176,12 +176,22 @@ public class criarVenda extends JDialog implements Variaveis{
 					Medicamento m = new Medicamento();
 					if(farmacia.armarios[nrloja].procurarMedicamento(text_nome_procurar.getText())!= null){
 						m= farmacia.armarios[nrloja].procurarMedicamento(text_nome_procurar.getText());
-						System.out.print(m.toString());
+						System.out.print( nrloja + m.toString());
 						comboBox_cat.setSelectedIndex(m.getCategoria());
 						comboBox_via.setSelectedIndex(m.getViaAdmin());
 
-					}else{
-						System.out.print("Não existe!");
+					}else if(nrloja !=1 ){
+						m= farmacia.armarios[nrloja+1].procurarMedicamento(text_nome_procurar.getText());
+						Importar importar = new Importar(farmacia, nrloja+1,m);
+		                importar.setVisible(true);
+						System.out.print("Medicamento encontrado noutra loja da mesma farmacia!" + 2 + m.toString());
+					}else if(nrloja !=2 && nrloja !=1){
+						m= farmacia.armarios[nrloja+1].procurarMedicamento(text_nome_procurar.getText());
+						Importar importar = new Importar(farmacia, nrloja+2,m);
+		                importar.setVisible(true);
+						System.out.print("Medicamento encontrado noutra loja da mesma farmacia!"+ 3 + m.toString());
+					}else {
+						System.out.println("Medicamento nao existe");
 					}
 
 				}
@@ -307,7 +317,7 @@ public class criarVenda extends JDialog implements Variaveis{
 							lbl_valor_sub.setText("" + venda_temporaria.getPreco_sub());
 							lbl_valor_total.setText(""+ venda_temporaria.getPreco_total());
 						}catch (NullPointerException x){
-							System.out.println("Erro a adicionar medicamento");
+
 						}
 					}
 

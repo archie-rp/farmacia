@@ -70,4 +70,6 @@ public class GestorVendas implements Serializable {
         }
         return vendas_cliente;
     }
+
+
 }

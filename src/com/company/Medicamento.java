@@ -5,7 +5,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class Medicamento implements Variaveis, Serializable {
+public class Medicamento implements Variaveis,Serializable {
     private int id;
     private String nome;
     private float preco;
@@ -15,31 +15,29 @@ public class Medicamento implements Variaveis, Serializable {
     private boolean receita;
 
 
-    public Medicamento(int id, String nome, float preco, int cate, int via, Date dataValidade) {
+    public Medicamento(int id, String nome, float preco, int cate, int via, Date dataValidade ) {
         this.id = id;
         this.nome = nome;
         this.preco = preco;
         this.Categoria = cate;
         this.ViaAdmin = via;
         this.dataValidade = dataValidade;
-        this.receita = receita;
+        this.receita=receita;
     }
-
-    public Medicamento(String nome, float preco, int cate, int via, Date dataValidade, boolean receita) {
+    
+    public Medicamento( String nome, float preco, int cate, int via, Date dataValidade,boolean receita) {
         this.id = 0;
         this.nome = nome;
         this.preco = preco;
         this.Categoria = cate;
         this.ViaAdmin = via;
         this.dataValidade = dataValidade;
-        this.receita = receita;
+        this.receita=receita;
     }
 
     public boolean isReceita() {
         return receita;
     }
-
-
 
     public void setReceita(boolean receita) {
         this.receita = receita;
@@ -92,7 +90,6 @@ public class Medicamento implements Variaveis, Serializable {
         return preco;
     }
 
-
     public void setPreco(float preco) {
         this.preco = preco;
     }
@@ -118,23 +115,23 @@ public class Medicamento implements Variaveis, Serializable {
         StringBuilder string = new StringBuilder();
         //string.append("\n" + "ID = " + this.id);
         string.append(this.getNome() + " ");
-        string.append(this.categorias[this.getCategoria()] + " ");
-        string.append(this.vias[this.getViaAdmin()] + " ");
+        string.append(this.categorias[this.getCategoria()]+ " ");
+        string.append(this.vias[this.getViaAdmin()]+ " ");
         DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.getDefault());
         String formattedDate = df.format(this.getDataValidade());
         string.append(formattedDate + " ");
-        string.append(this.preco + " ");
-        if (this.receita != false) {
-            string.append(" Necessita receita\n");
-        } else {
-            string.append(" \n");
+        string.append(this.preco+ " ");
+        if(this.receita!=false) {
+        	  string.append(" Necessita receita\n");
+        }else {
+        	  string.append(" \n");
         }
-
+      
         return string.toString();
     }
 
     public boolean verificarValidade(Date data) {
-        if (this.getDataValidade().compareTo(data) > 0) {
+        if (this.getDataValidade().compareTo(data)>0) {
             return false;
         } else {
             return true;
