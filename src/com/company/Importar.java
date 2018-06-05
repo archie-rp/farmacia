@@ -29,19 +29,7 @@ public class Importar extends JDialog implements Variaveis {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField_quantidade;
-	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			//Importar dialog = new Importar();
-			//dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			//dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+
 
 	/**
 	 * Create the dialog.

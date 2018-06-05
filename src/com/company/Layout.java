@@ -847,8 +847,8 @@ public class Layout extends JFrame implements Variaveis {
             }
         });
         btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 12));
-        btnNewButton_1.setForeground(Color.WHITE);
-        btnNewButton_1.setBackground(Color.GRAY);
+        btnNewButton_1.setForeground(Color.BLACK);
+        btnNewButton_1.setBackground(Color.WHITE);
         btnNewButton_1.setBounds(31, 85, 156, 30);
         venda.add(btnNewButton_1);
 

@@ -35,20 +35,6 @@ public class criarVenda extends JDialog implements Variaveis{
 	private JTextField text_nome;
 	private JTextField text_nr_contr;
 	public int nrloja_pendente;
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			//criarVenda dialog = new criarVenda();
-			//dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			//dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-
 
 	/**
 	 * Create the dialog.
