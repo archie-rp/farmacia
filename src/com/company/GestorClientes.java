@@ -29,6 +29,14 @@ public class GestorClientes implements Serializable {
     public void removerCliente(Cliente cliente) {
         this.clientes.remove(cliente);
     }
+    
+  public int  totalClientes() {
+
+
+
+
+	  return clientes.size();
+}
 
     @Override
     public String toString() {

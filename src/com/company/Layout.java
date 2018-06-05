@@ -372,7 +372,7 @@ public class Layout extends JFrame implements Variaveis {
             panel.setLayout(null);
 
             JLabel lblViaDeAdministrao_1 = new JLabel("Via de Administração");
-            lblViaDeAdministrao_1.setBounds(10, 27, 104, 14);
+            lblViaDeAdministrao_1.setBounds(10, 27, 142, 16);
             panel.add(lblViaDeAdministrao_1);
 
             JComboBox comboBox_1 = new JComboBox(vias);
@@ -617,6 +617,15 @@ public class Layout extends JFrame implements Variaveis {
         textLoja.setBounds(57, 15, 46, 14);
         textLoja.setText(farmacias[nrloja]);
         main.add(textLoja);
+        
+        JLabel lblFuncionrio = new JLabel("Funcionário:");
+        lblFuncionrio.setBounds(170, 14, 81, 16);
+        main.add(lblFuncionrio);
+        
+        JLabel lblNewLabel_7 = new JLabel("");
+        lblNewLabel_7.setText(funcionario.toString());
+        lblNewLabel_7.setBounds(263, 14, 55, 16);
+        main.add(lblNewLabel_7);
 
         JButton button = new JButton("Clientes");
         button.addMouseListener(new MouseAdapter() {
@@ -708,12 +717,12 @@ public class Layout extends JFrame implements Variaveis {
 
         JPanel panel_10 = new JPanel();
         panel_10.setBorder(new TitledBorder(null, "Estado Compra", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        panel_10.setBounds(558, 325, 204, 187);
+        panel_10.setBounds(558, 325, 211, 187);
         venda.add(panel_10);
         panel_10.setLayout(null);
 
         JLabel lblSubtotal = new JLabel("Sub-Total:");
-        lblSubtotal.setBounds(6, 18, 55, 16);
+        lblSubtotal.setBounds(6, 18, 86, 16);
         panel_10.add(lblSubtotal);
 
         JLabel lblIva = new JLabel("IVA:");
@@ -721,7 +730,7 @@ public class Layout extends JFrame implements Variaveis {
         panel_10.add(lblIva);
 
         JLabel lblDesconto = new JLabel("Desconto:");
-        lblDesconto.setBounds(6, 71, 55, 16);
+        lblDesconto.setBounds(6, 71, 86, 16);
         panel_10.add(lblDesconto);
 
         JLabel lblTotal = new JLabel("Total:");
@@ -729,22 +738,22 @@ public class Layout extends JFrame implements Variaveis {
         panel_10.add(lblTotal);
 
         textSub_total = new JTextField();
-        textSub_total.setBounds(71, 16, 86, 20);
+        textSub_total.setBounds(84, 16, 114, 20);
         panel_10.add(textSub_total);
         textSub_total.setColumns(10);
 
         textIVA = new JTextField();
-        textIVA.setBounds(71, 41, 86, 20);
+        textIVA.setBounds(84, 41, 114, 20);
         panel_10.add(textIVA);
         textIVA.setColumns(10);
 
         textDesconto = new JTextField();
-        textDesconto.setBounds(71, 69, 86, 20);
+        textDesconto.setBounds(84, 69, 114, 20);
         panel_10.add(textDesconto);
         textDesconto.setColumns(10);
 
         textTotal = new JTextField();
-        textTotal.setBounds(71, 97, 86, 20);
+        textTotal.setBounds(84, 99, 114, 20);
         panel_10.add(textTotal);
         textTotal.setColumns(10);
 
@@ -984,6 +993,8 @@ public class Layout extends JFrame implements Variaveis {
         gbc_lblBi_2.gridx = 1;
         gbc_lblBi_2.gridy = 1;
         panel_11.add(lblBi_2, gbc_lblBi_2);
+        
+        JList listClientes = new JList(farmacia.gestorclientes.getClientes().toArray());
 
         biCliente = new JTextField();
         GridBagConstraints gbc_biCliente = new GridBagConstraints();
@@ -993,6 +1004,25 @@ public class Layout extends JFrame implements Variaveis {
         gbc_biCliente.gridy = 1;
         panel_11.add(biCliente, gbc_biCliente);
         biCliente.setColumns(10);
+        
+                JButton btnAdicionar_2 = new JButton("Adicionar Cliente");
+                GridBagConstraints gbc_btnAdicionar_2 = new GridBagConstraints();
+                gbc_btnAdicionar_2.insets = new Insets(0, 0, 0, 5);
+                gbc_btnAdicionar_2.gridx = 2;
+                gbc_btnAdicionar_2.gridy = 2;
+                panel_11.add(btnAdicionar_2, gbc_btnAdicionar_2);
+                
+                        btnAdicionar_2.addMouseListener(new MouseAdapter() {
+                            @Override
+                            public void mouseClicked(MouseEvent arg0) {
+                                System.out.println(farmacia.gestorclientes.clientes.size());
+                
+                                Cliente cliente = new Cliente(farmacia.gestorclientes.clientes.size() + 1, nomeCliente.getText(), Integer.parseInt(biCliente.getText()), Calendar.getInstance().getTime());
+                                farmacia.gestorclientes.clientes.add(cliente);
+                
+                                listClientes.setListData(farmacia.gestorclientes.getClientes().toArray());
+                            }
+                        });
 
         JPanel panel_7 = new JPanel();
         panel_7.setBorder(new TitledBorder(null, "Detalhes sobre Clientes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -1001,7 +1031,7 @@ public class Layout extends JFrame implements Variaveis {
         panel_7.setLayout(null);
 
         JLabel lblTotalClientes = new JLabel("Total Clientes: ");
-        lblTotalClientes.setBounds(271, 40, 78, 16);
+        lblTotalClientes.setBounds(271, 40, 92, 16);
         panel_7.add(lblTotalClientes);
 
         JLabel lblEsteMs = new JLabel("Nº Clientes este Mês:");
@@ -1009,8 +1039,14 @@ public class Layout extends JFrame implements Variaveis {
         panel_7.add(lblEsteMs);
 
         JLabel lblNewLabel_3 = new JLabel("Nº de Clientes esta semana:");
-        lblNewLabel_3.setBounds(10, 17, 141, 14);
+        lblNewLabel_3.setBounds(10, 17, 158, 16);
         panel_7.add(lblNewLabel_3);
+        
+        JLabel lblNewLabel_8 = new JLabel("");
+        lblNewLabel_8.setText(String.valueOf(farmacia.gestorclientes.totalClientes()));
+        
+        lblNewLabel_8.setBounds(365, 40, 55, 16);
+        panel_7.add(lblNewLabel_8);
 
         JPanel panel_8 = new JPanel();
         panel_8.setBorder(new TitledBorder(null, "Clientes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -1022,7 +1058,7 @@ public class Layout extends JFrame implements Variaveis {
         scrollPane_5.setBounds(6, 19, 448, 186);
         panel_8.add(scrollPane_5);
 
-        JList listClientes = new JList(farmacia.gestorclientes.getClientes().toArray());
+      
         listClientes.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent arg0) {
             	
@@ -1054,10 +1090,6 @@ public class Layout extends JFrame implements Variaveis {
             }
         });
         listClientes.setBorder(new LineBorder(new Color(0, 0, 0)));
-
-        JButton btnAdicionar_2 = new JButton("Adicionar Cliente");
-        btnAdicionar_2.setBounds(196, 221, 162, 26);
-        clientes.add(btnAdicionar_2);
 
         JLabel lblInformao = new JLabel("Editar");
         lblInformao.setBounds(553, 368, 72, 14);
@@ -1182,18 +1214,6 @@ public class Layout extends JFrame implements Variaveis {
         gbc_btnRemover.gridx = 3;
         gbc_btnRemover.gridy = 4;
         panel_2.add(btnRemover, gbc_btnRemover);
-
-        btnAdicionar_2.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent arg0) {
-                System.out.println(farmacia.gestorclientes.clientes.size());
-
-                Cliente cliente = new Cliente(farmacia.gestorclientes.clientes.size() + 1, nomeCliente.getText(), Integer.parseInt(biCliente.getText()), Calendar.getInstance().getTime());
-                farmacia.gestorclientes.clientes.add(cliente);
-
-                listClientes.setListData(farmacia.gestorclientes.getClientes().toArray());
-            }
-        });
 
 
         JButton btnHomeStock = new JButton("Home");
@@ -1506,11 +1526,11 @@ public class Layout extends JFrame implements Variaveis {
         stock.add(scrollPane_1);
 
         JLabel label_2 = new JLabel("Categoria:");
-        label_2.setBounds(31, 116, 51, 14);
+        label_2.setBounds(31, 116, 77, 16);
         stock.add(label_2);
 
         JLabel label_1 = new JLabel("Via Administração:");
-        label_1.setBounds(207, 116, 88, 14);
+        label_1.setBounds(207, 116, 141, 16);
         stock.add(label_1);
 
 
@@ -1576,6 +1596,17 @@ public class Layout extends JFrame implements Variaveis {
         lblAdicionarMedicamento.setFont(new Font("Tahoma", Font.BOLD, 12));
         lblAdicionarMedicamento.setBounds(31, 88, 158, 16);
         stock.add(lblAdicionarMedicamento);
+        
+        JButton btnNewButton_3 = new JButton("Mostrar Todos");
+        btnNewButton_3.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		list_2.setListData(farmacia.armarios[nrloja].getTodos().toArray());
+        		
+        	}
+        });
+        btnNewButton_3.setBounds(465, 335, 120, 28);
+        stock.add(btnNewButton_3);
         btnAdicionarGerir.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
