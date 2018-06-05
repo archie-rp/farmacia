@@ -2,6 +2,7 @@ package com.company;
 
 import java.io.Serializable;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -78,12 +79,11 @@ public class GestorVendas implements Serializable {
     public ArrayList<Venda> getVendasDia() {
         ArrayList<Venda> vendas1 = new ArrayList<>();
         Date data =  Calendar.getInstance().getTime();
-    	for (Venda v_:this.vendas) {
-    	    System.out.println(data +" "+ v_.getDataCompra());
-
+        SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
+  	for (Venda v_:this.vendas) {
     		try {
-                if (v_.getDataCompra().compareTo(data) == 0 ) {
-                    System.out.print(v_.getDataCompra().compareTo(data));
+                if (sdf.format(v_.getDataCompra()).equals(sdf.format(data)) ) {
+                    System.out.print("Entrou");
                     vendas1.add(v_);
                 }
             }catch (Exception e){
@@ -96,7 +96,7 @@ public class GestorVendas implements Serializable {
     public ArrayList<Venda> getVendasSemana() {
         ArrayList<Venda> vendas1 = new ArrayList<>();
         Date data =  Calendar.getInstance().getTime();
-        data-7;
+       // data-7;
         for (Venda v_:this.vendas) {
             System.out.println(data +" "+ v_.getDataCompra());
 
@@ -111,5 +111,5 @@ public class GestorVendas implements Serializable {
         }
         return vendas1;
     }
-    
+
 }

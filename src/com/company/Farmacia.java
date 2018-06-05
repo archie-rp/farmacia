@@ -8,7 +8,7 @@ public class Farmacia implements Serializable{
     public GestorVendas gestorvendas;
     public Armario[] armarios;
     public GestorClientes gestorclientes;
-    public ArrayList<Medicamento> medicamentos_
+    //public ArrayList<Medicamento> medicamentos_
 
     public Farmacia(String nome, GestorVendas gestorvendas, Armario[] armarios, GestorClientes gestorclientes) {
         this.nome = nome;

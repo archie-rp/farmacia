@@ -98,6 +98,7 @@ public class Venda  implements Variaveis,Serializable {
     }
 
     public Date getDataCompra() {
+
         return dataCompra;
     }
 
@@ -134,7 +135,7 @@ public class Venda  implements Variaveis,Serializable {
     	StringBuilder string =new StringBuilder();
     	string.append(cod_venda+" ");
     	string.append(cliente+" ");
-       DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
+        DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
         String formattedDate = df.format(this.data_compra);
     	string.append(formattedDate);
     	return string.toString();

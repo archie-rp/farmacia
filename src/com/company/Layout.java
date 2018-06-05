@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Calendar;
 
 import javax.swing.border.LineBorder;
 
@@ -352,6 +353,8 @@ public class Layout extends JFrame implements Variaveis {
 
         list_3.setBorder(new LineBorder(new Color(0, 0, 0)));
         list_3.setListData(farmacia.gestorvendas.getVendasDia().toArray());
+
+
 
 
         try {
@@ -1424,6 +1427,7 @@ public class Layout extends JFrame implements Variaveis {
                                                                                                                 stock.add(comboVia);
                                                                                                                 
                                                                                                                         JDateChooser dateChooser_1 = new JDateChooser();
+                                                                                                                        dateChooser_1.setDateFormatString("dd-MM-yyyy");
                                                                                                                         dateChooser_1.setBounds(207, 236, 225, 20);
                                                                                                                         stock.add(dateChooser_1);
                                                                                                                         
@@ -1441,9 +1445,13 @@ public class Layout extends JFrame implements Variaveis {
             public void mouseClicked(MouseEvent arg0) {
                 if (textNome.getText() != null && textQuantidade.getText() != null) {
                     boolean receita = rdbtnNewRadioButton.isSelected();
-
+                    
                     try {
+                    	SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+                    	
+                    	
                         Medicamento medic = new Medicamento(textNome.getText(), Integer.valueOf(textPreco.getText()), comboCat.getSelectedIndex(), comboVia.getSelectedIndex(), dateChooser_1.getDate(), receita);
+                        System.out.println(sdf.format(dateChooser_1.getDate()));
                         farmacia.armarios[nrloja].adicionarMedicamento(medic, Integer.valueOf(textQuantidade.getText()));
                         Object[] modelMedic = farmacia.armarios[nrloja].getTodos().toArray();
 

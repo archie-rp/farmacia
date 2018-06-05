@@ -105,6 +105,17 @@ public class Dialog extends JDialog implements Variaveis {
             gbc_lblDataCompra.gridx = 2;
             gbc_lblDataCompra.gridy = 3;
             contentPanel.add(lblDataCompra, gbc_lblDataCompra);
+            
+            JLabel lblNewLabel_3 = new JLabel("");
+            lblNewLabel_3.setText(relatorio.getVenda().getDataCompra().toString());
+            
+            GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
+            gbc_lblNewLabel_3.anchor = GridBagConstraints.WEST;
+            gbc_lblNewLabel_3.gridx = 3;
+            gbc_lblNewLabel_3.gridy = 3;
+            contentPanel.add(lblNewLabel_3, gbc_lblNewLabel_3);
+            
+            
             if (relatorio.getVendas().size() < 2){
                 JLabel lblNewLabel_2 = new JLabel("Muitas Datas");
             }else{
