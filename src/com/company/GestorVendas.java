@@ -88,7 +88,6 @@ public class GestorVendas implements Serializable {
         for (Venda v_ : this.vendas) {
             try {
                 if (sdf.format(v_.getDataCompra()).equals(sdf.format(data))) {
-                    System.out.print("Entrou");
                     vendas1.add(v_);
                 }
             } catch (Exception e) {
