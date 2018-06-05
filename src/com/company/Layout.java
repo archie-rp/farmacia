@@ -68,6 +68,7 @@ public class Layout extends JFrame implements Variaveis {
     private JTable table_3;
     private JTextField textField;
     private JTextField textField_1;
+    private JTable table_4;
 
     public static void main(String[] args) {
 
@@ -319,66 +320,6 @@ public class Layout extends JFrame implements Variaveis {
         button_10.setBounds(517, 35, 120, 39);
         relatorio.add(button_10);
 
-        JButton btnStockRelatorio = new JButton("Gerir");
-        btnStockRelatorio.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                venda.setVisible(false);
-                main.setVisible(false);
-                relatorio.setVisible(false);
-                clientes.setVisible(false);
-                stock.setVisible(true);
-            }
-        });
-        btnStockRelatorio.setBounds(391, 35, 108, 39);
-        relatorio.add(btnStockRelatorio);
-
-        JButton btnRelatorioRelatorio = new JButton("Relatório");
-        btnRelatorioRelatorio.setEnabled(false);
-        btnRelatorioRelatorio.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                venda.setVisible(false);
-                main.setVisible(false);
-                relatorio.setVisible(true);
-                clientes.setVisible(false);
-                stock.setVisible(false);
-            }
-        });
-
-        btnRelatorioRelatorio.setBounds(272, 35, 99, 39);
-        relatorio.add(btnRelatorioRelatorio);
-
-        JButton button_13 = new JButton("Vendas");
-        button_13.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                venda.setVisible(true);
-                main.setVisible(false);
-                relatorio.setVisible(false);
-                clientes.setVisible(false);
-                stock.setVisible(false);
-            }
-        });
-        button_13.setBounds(152, 35, 99, 39);
-        relatorio.add(button_13);
-        
-       
-        
-
-        JButton button_14 = new JButton("Home");
-        button_14.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                venda.setVisible(false);
-                main.setVisible(true);
-                relatorio.setVisible(false);
-                clientes.setVisible(false);
-                stock.setVisible(false);
-            }
-        });
-        button_14.setBounds(31, 35, 99, 39);
-        relatorio.add(button_14);
 
         JLabel lblUltimosRelatrios = new JLabel("Relatórios do Dia");
         lblUltimosRelatrios.setFont(new Font("SansSerif", Font.BOLD, 14));
@@ -621,30 +562,35 @@ public class Layout extends JFrame implements Variaveis {
                         FormSpecs.DEFAULT_ROWSPEC,}));
 
         JLabel lblVendasMes = new JLabel("Total de Vendas:");
+        lblVendasMes.setFont(new Font("Segoe UI", Font.BOLD, 12));
         panel_12.add(lblVendasMes, "2, 2, fill, default");
 
         JLabel label_t_vendas = new JLabel("" + farmacia.gestorvendas.getVendas().size());
         panel_12.add(label_t_vendas, "4, 2");
 
         JLabel lblProdutoMaisVendido = new JLabel("Produto mais vendido:");
+        lblProdutoMaisVendido.setFont(new Font("Segoe UI", Font.BOLD, 12));
         panel_12.add(lblProdutoMaisVendido, "8, 2");
 
         JLabel label_p_m_vendido = new JLabel("Benuron");
         panel_12.add(label_p_m_vendido, "10, 2");
 
         JLabel lblQuantidade = new JLabel("Total de Medicamentos:");
+        lblQuantidade.setFont(new Font("Segoe UI", Font.BOLD, 12));
         panel_12.add(lblQuantidade, "2, 4, fill, default");
 
         JLabel label_t_meds = new JLabel("" + farmacia.armarios[nrloja].getTodos().size());
         panel_12.add(label_t_meds, "4, 4");
 
         JLabel lblNovosClientes = new JLabel("Total de Clientes:");
+        lblNovosClientes.setFont(new Font("Segoe UI", Font.BOLD, 12));
         panel_12.add(lblNovosClientes, "2, 6, fill, default");
 
         JLabel label_t_clientes = new JLabel("" + farmacia.gestorclientes.getClientes().size());
         panel_12.add(label_t_clientes, "4, 6");
 
         JLabel lblProdutosEmCaminho = new JLabel("Produtos em caminho:");
+        lblProdutosEmCaminho.setFont(new Font("Segoe UI", Font.BOLD, 12));
         panel_12.add(lblProdutosEmCaminho, "2, 8, fill, default");
 
         JPanel panel_13 = new JPanel();
@@ -690,10 +636,6 @@ public class Layout extends JFrame implements Variaveis {
         table_2.setBorder(new LineBorder(new Color(0, 0, 0)));
 
         try {
-            JList list = new JList(farmacia.armarios[nrloja].getArmarioGaveta(0, 0).getMedicamentos().toArray());
-            list.setBorder(new LineBorder(new Color(0, 0, 0)));
-            list.setBounds(31, 261, 386, 244);
-            main.add(list);
 
         } catch (Exception e) {
 
@@ -705,27 +647,25 @@ public class Layout extends JFrame implements Variaveis {
         panel.setBounds(20, 222, 408, 292);
         main.add(panel);
         panel.setLayout(null);
+        
+        JScrollPane scrollPane_6 = new JScrollPane();
+        scrollPane_6.setEnabled(false);
+        scrollPane_6.setBounds(10, 24, 386, 255);
+        panel.add(scrollPane_6);
+        
+        table_4 = new JTable();
+        DefaultTableModel model_meds = new DefaultTableModel(new Object[]{"Nome", "Data", "Receita", "Preço"}, 0);
 
-        JLabel lblNome_2 = new JLabel("Nome");
-        lblNome_2.setBounds(6, 16, 46, 14);
-        panel.add(lblNome_2);
+        //Recebe medicamentos da venda selecionada
+        ArrayList<Medicamento> medds = farmacia.armarios[nrloja].getTodos();
+        //Adiciona os medicamentos na tablela
+        for (Medicamento meds : medds) {
+            model_meds.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.isReceita(), meds.getPreco()});
+        }
 
-        JLabel lblCategoria_1 = new JLabel("Categoria");
-        lblCategoria_1.setBounds(76, 16, 64, 14);
-        panel.add(lblCategoria_1);
-
-        JLabel lblViaDeAdm = new JLabel("Via de Admin");
-        lblViaDeAdm.setBounds(149, 16, 77, 14);
-        panel.add(lblViaDeAdm);
-
-        JLabel lblDataValidade = new JLabel("Data Validade");
-        lblDataValidade.setBounds(247, 16, 77, 14);
-        panel.add(lblDataValidade);
-
-        JLabel lblPreo = new JLabel("Preço");
-        lblPreo.setBounds(334, 16, 46, 14);
-        panel.add(lblPreo);
-
+        table_4.setModel(model_meds);
+        table_4.setBorder(new LineBorder(new Color(0, 0, 0)));
+        scrollPane_6.setViewportView(table_4);
         JButton button = new JButton("Clientes");
         button.addMouseListener(new MouseAdapter() {
             @Override
@@ -1931,6 +1871,63 @@ public class Layout extends JFrame implements Variaveis {
                 }
             }
         });
+        JButton btnStockRelatorio = new JButton("Gerir");
+        btnStockRelatorio.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                venda.setVisible(false);
+                main.setVisible(false);
+                relatorio.setVisible(false);
+                clientes.setVisible(false);
+                stock.setVisible(true);
+            }
+        });
+        btnStockRelatorio.setBounds(391, 35, 108, 39);
+        relatorio.add(btnStockRelatorio);
+
+        JButton btnRelatorioRelatorio = new JButton("Relatório");
+        btnRelatorioRelatorio.setEnabled(false);
+        btnRelatorioRelatorio.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                venda.setVisible(false);
+                main.setVisible(false);
+                relatorio.setVisible(true);
+                clientes.setVisible(false);
+                stock.setVisible(false);
+            }
+        });
+
+        btnRelatorioRelatorio.setBounds(272, 35, 99, 39);
+        relatorio.add(btnRelatorioRelatorio);
+
+        JButton button_13 = new JButton("Vendas");
+        button_13.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                venda.setVisible(true);
+                main.setVisible(false);
+                relatorio.setVisible(false);
+                clientes.setVisible(false);
+                stock.setVisible(false);
+            }
+        });
+        button_13.setBounds(152, 35, 99, 39);
+        relatorio.add(button_13);
+
+        JButton button_14 = new JButton("Home");
+        button_14.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                venda.setVisible(false);
+                main.setVisible(true);
+                relatorio.setVisible(false);
+                clientes.setVisible(false);
+                stock.setVisible(false);
+            }
+        });
+        button_14.setBounds(31, 35, 99, 39);
+        relatorio.add(button_14);
 
     }
 }
