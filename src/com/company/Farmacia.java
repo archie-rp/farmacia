@@ -3,12 +3,15 @@ package com.company;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Farmacia implements Serializable{
+public class Farmacia implements Serializable,Variaveis{
     private String nome;
     public GestorVendas gestorvendas;
     public Armario[] armarios;
     public GestorClientes gestorclientes;
     public ArrayList<Medicamento> medicamentos_pendentes;
+    public Funcionario[] funcionarios;
+    public int numero_funcionario;
+
 
     public ArrayList<Medicamento> getMedicamentos_pendentes() {
         return medicamentos_pendentes;
@@ -19,12 +22,20 @@ public class Farmacia implements Serializable{
         this.gestorvendas = gestorvendas;
          this.armarios = new Armario[3];
         this.gestorclientes = gestorclientes;
+        this.funcionarios = Variaveis.funcionarios;
     }
+
+    public int getNumero_funcionario() {
+        return numero_funcionario;
+    }
+
     public Farmacia() {
         this.nome = "";
         this.gestorvendas = new GestorVendas();
         this.armarios = new Armario[3];
         this.gestorclientes = new GestorClientes();
+        this.funcionarios = Variaveis.funcionarios;
+
     }
 
     public GestorVendas getGestorvendas() {
@@ -47,6 +58,7 @@ public class Farmacia implements Serializable{
         return armarios;
     }
 
+
     public void setMedicamento_pendente(Medicamento medicamento_pendente) {
         if (medicamentos_pendentes ==null) {
             this.medicamentos_pendentes = new ArrayList<Medicamento>();
@@ -54,5 +66,12 @@ public class Farmacia implements Serializable{
         }else{
             this.medicamentos_pendentes.add(medicamento_pendente);
         }
+    }
+    public String getFuncionarioNome(){
+        return this.funcionarios[getNumero_funcionario()].getNome();
+    }
+
+    public void setNumero_funcionario(int numero_funcionario) {
+        this.numero_funcionario = numero_funcionario;
     }
 }

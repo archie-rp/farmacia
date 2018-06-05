@@ -12,7 +12,6 @@ import java.io.*;
 public class Login extends JDialog implements Variaveis {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textUtilizador;
 	private JTextField textPassword;
 
 	/**
@@ -47,11 +46,6 @@ public class Login extends JDialog implements Variaveis {
 		lblUtilizador.setBounds(10, 47, 60, 14);
 		contentPanel.add(lblUtilizador);
 		
-		textUtilizador = new JTextField();
-		textUtilizador.setBounds(10, 66, 110, 20);
-		contentPanel.add(textUtilizador);
-		textUtilizador.setColumns(10);
-		
 		JLabel lblPalavrapasse = new JLabel("Palavra-passe");
 		lblPalavrapasse.setBounds(10, 97, 99, 14);
 		contentPanel.add(lblPalavrapasse);
@@ -77,6 +71,10 @@ public class Login extends JDialog implements Variaveis {
 		JLabel lblFeitoPorRafael = new JLabel("Feito por: Rafael e Hugo");
 		lblFeitoPorRafael.setBounds(276, 203, 148, 14);
 		contentPanel.add(lblFeitoPorRafael);
+		
+		JComboBox comboBox = new JComboBox(funcionarios);
+		comboBox.setBounds(10, 73, 153, 22);
+		contentPanel.add(comboBox);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -86,7 +84,7 @@ public class Login extends JDialog implements Variaveis {
 				okButton.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent arg0) {
-						Funcionario funcionario = new Funcionario(textUtilizador.getText());
+						Funcionario funcionario = new Funcionario(funcionarios[comboBox.getSelectedIndex()].getNome());
 						int nrloja = comboLoja.getSelectedIndex();
 						Farmacia farmacia_serializada = new Farmacia();
 						try {
@@ -95,6 +93,7 @@ public class Login extends JDialog implements Variaveis {
 								FileInputStream fileIn = new FileInputStream(f);
 								ObjectInputStream in = new ObjectInputStream(fileIn);
 								farmacia_serializada = (Farmacia) in.readObject();
+								farmacia_serializada.setNumero_funcionario(comboBox.getSelectedIndex());
 								in.close();
 								fileIn.close();
 								System.out.println("Farmacia existe.. a carregar..");
@@ -111,7 +110,7 @@ public class Login extends JDialog implements Variaveis {
 							c.printStackTrace();
 							return;
 						}
-						Layout frame = new Layout(funcionario, nrloja,farmacia_serializada);
+						Layout frame = new Layout(nrloja,farmacia_serializada);
 						dispose();
 						frame.setVisible(true);
 					}

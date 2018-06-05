@@ -89,7 +89,7 @@ public class Layout extends JFrame implements Variaveis {
         });
     }
 
-    public Layout(Funcionario funcionario, int nrloja, Farmacia farmacia_serializada) {
+    public Layout( int nrloja, Farmacia farmacia_serializada) {
         //Gestor de Vendas
         GestorVendas gestorvendas = new GestorVendas();
         //Gestor de Clientes
@@ -266,6 +266,56 @@ public class Layout extends JFrame implements Variaveis {
                 stock.setVisible(false);
             }
         });
+        
+        JPanel panel_16 = new JPanel();
+        panel_16.setBounds(0, 0, 764, 23);
+        relatorio.add(panel_16);
+        GridBagLayout gbl_panel_16 = new GridBagLayout();
+        gbl_panel_16.columnWidths = new int[]{87, 46, 143, 113, 234, 206, 0};
+        gbl_panel_16.rowHeights = new int[]{23, 0};
+        gbl_panel_16.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+        gbl_panel_16.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+        panel_16.setLayout(gbl_panel_16);
+        
+        JLabel label_13 = new JLabel("Loja:");
+        GridBagConstraints gbc_label_13 = new GridBagConstraints();
+        gbc_label_13.anchor = GridBagConstraints.EAST;
+        gbc_label_13.insets = new Insets(0, 0, 0, 5);
+        gbc_label_13.gridx = 0;
+        gbc_label_13.gridy = 0;
+        panel_16.add(label_13, gbc_label_13);
+        
+        JLabel label_14 = new JLabel();
+        label_14.setText("Loja 1");
+        GridBagConstraints gbc_label_14 = new GridBagConstraints();
+        gbc_label_14.fill = GridBagConstraints.HORIZONTAL;
+        gbc_label_14.insets = new Insets(0, 0, 0, 5);
+        gbc_label_14.gridx = 1;
+        gbc_label_14.gridy = 0;
+        panel_16.add(label_14, gbc_label_14);
+        
+        JLabel label_15 = new JLabel("Funcionário:");
+        GridBagConstraints gbc_label_15 = new GridBagConstraints();
+        gbc_label_15.anchor = GridBagConstraints.EAST;
+        gbc_label_15.insets = new Insets(0, 0, 0, 5);
+        gbc_label_15.gridx = 2;
+        gbc_label_15.gridy = 0;
+        panel_16.add(label_15, gbc_label_15);
+        
+        JLabel label_16 = new JLabel(farmacia.getFuncionarioNome());
+        GridBagConstraints gbc_label_16 = new GridBagConstraints();
+        gbc_label_16.fill = GridBagConstraints.HORIZONTAL;
+        gbc_label_16.insets = new Insets(0, 0, 0, 5);
+        gbc_label_16.gridx = 3;
+        gbc_label_16.gridy = 0;
+        panel_16.add(label_16, gbc_label_16);
+        
+        JLabel label_17 = new JLabel("Tue Jun 05 19:49:43 BST 2018");
+        GridBagConstraints gbc_label_17 = new GridBagConstraints();
+        gbc_label_17.fill = GridBagConstraints.BOTH;
+        gbc_label_17.gridx = 5;
+        gbc_label_17.gridy = 0;
+        panel_16.add(label_17, gbc_label_17);
         button_10.setBounds(517, 35, 120, 39);
         relatorio.add(button_10);
 
@@ -445,10 +495,57 @@ public class Layout extends JFrame implements Variaveis {
         });
         btnRelatorio.setBounds(272, 35, 99, 39);
         main.add(btnRelatorio);
-
-        JLabel label = new JLabel("09/05/2018");
-        label.setBounds(675, 11, 99, 23);
-        main.add(label);
+        
+        JPanel informacao_geral = new JPanel();
+        informacao_geral.setBounds(0, 0, 764, 23);
+        main.add(informacao_geral);
+        GridBagLayout gbl_informacao_geral = new GridBagLayout();
+        gbl_informacao_geral.columnWidths = new int[]{87, 46, 143, 113, 234, 206, 0};
+        gbl_informacao_geral.rowHeights = new int[]{23, 0};
+        gbl_informacao_geral.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+        gbl_informacao_geral.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+        informacao_geral.setLayout(gbl_informacao_geral);
+                
+                        JLabel lblNewLabel_1 = new JLabel("Loja:");
+                        GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+                        gbc_lblNewLabel_1.anchor = GridBagConstraints.EAST;
+                        gbc_lblNewLabel_1.insets = new Insets(0, 0, 0, 5);
+                        gbc_lblNewLabel_1.gridx = 0;
+                        gbc_lblNewLabel_1.gridy = 0;
+                        informacao_geral.add(lblNewLabel_1, gbc_lblNewLabel_1);
+        
+                JLabel textLoja = new JLabel();
+                GridBagConstraints gbc_textLoja = new GridBagConstraints();
+                gbc_textLoja.fill = GridBagConstraints.HORIZONTAL;
+                gbc_textLoja.insets = new Insets(0, 0, 0, 5);
+                gbc_textLoja.gridx = 1;
+                gbc_textLoja.gridy = 0;
+                informacao_geral.add(textLoja, gbc_textLoja);
+                textLoja.setText(farmacias[nrloja]);
+        
+        JLabel lblFuncionrio = new JLabel("Funcionário:");
+        GridBagConstraints gbc_lblFuncionrio = new GridBagConstraints();
+        gbc_lblFuncionrio.anchor = GridBagConstraints.EAST;
+        gbc_lblFuncionrio.insets = new Insets(0, 0, 0, 5);
+        gbc_lblFuncionrio.gridx = 2;
+        gbc_lblFuncionrio.gridy = 0;
+        informacao_geral.add(lblFuncionrio, gbc_lblFuncionrio);
+        
+        JLabel lblNewLabel_7 = new JLabel("");
+        GridBagConstraints gbc_lblNewLabel_7 = new GridBagConstraints();
+        gbc_lblNewLabel_7.fill = GridBagConstraints.HORIZONTAL;
+        gbc_lblNewLabel_7.insets = new Insets(0, 0, 0, 5);
+        gbc_lblNewLabel_7.gridx = 3;
+        gbc_lblNewLabel_7.gridy = 0;
+        informacao_geral.add(lblNewLabel_7, gbc_lblNewLabel_7);
+        lblNewLabel_7.setText(farmacia.getFuncionarioNome());
+                
+                        JLabel label = new JLabel("" + new Date());
+                        GridBagConstraints gbc_label = new GridBagConstraints();
+                        gbc_label.fill = GridBagConstraints.BOTH;
+                        gbc_label.gridx = 5;
+                        gbc_label.gridy = 0;
+                        informacao_geral.add(label, gbc_label);
 
         JButton btnStock = new JButton("Gerir");
         btnStock.addMouseListener(new MouseAdapter() {
@@ -609,24 +706,6 @@ public class Layout extends JFrame implements Variaveis {
         lblPreo.setBounds(334, 16, 46, 14);
         panel.add(lblPreo);
 
-        JLabel lblNewLabel_1 = new JLabel("Loja:");
-        lblNewLabel_1.setBounds(10, 15, 46, 14);
-        main.add(lblNewLabel_1);
-
-        JLabel textLoja = new JLabel();
-        textLoja.setBounds(57, 15, 46, 14);
-        textLoja.setText(farmacias[nrloja]);
-        main.add(textLoja);
-        
-        JLabel lblFuncionrio = new JLabel("Funcionário:");
-        lblFuncionrio.setBounds(170, 14, 81, 16);
-        main.add(lblFuncionrio);
-        
-        JLabel lblNewLabel_7 = new JLabel("");
-        lblNewLabel_7.setText(funcionario.toString());
-        lblNewLabel_7.setBounds(263, 14, 55, 16);
-        main.add(lblNewLabel_7);
-
         JButton button = new JButton("Clientes");
         button.addMouseListener(new MouseAdapter() {
             @Override
@@ -638,6 +717,56 @@ public class Layout extends JFrame implements Variaveis {
                 stock.setVisible(false);
             }
         });
+        
+        JPanel panel_15 = new JPanel();
+        panel_15.setBounds(0, 0, 764, 23);
+        venda.add(panel_15);
+        GridBagLayout gbl_panel_15 = new GridBagLayout();
+        gbl_panel_15.columnWidths = new int[]{87, 46, 143, 113, 234, 206, 0};
+        gbl_panel_15.rowHeights = new int[]{23, 0};
+        gbl_panel_15.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+        gbl_panel_15.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+        panel_15.setLayout(gbl_panel_15);
+        
+        JLabel label_8 = new JLabel("Loja:");
+        GridBagConstraints gbc_label_8 = new GridBagConstraints();
+        gbc_label_8.anchor = GridBagConstraints.EAST;
+        gbc_label_8.insets = new Insets(0, 0, 0, 5);
+        gbc_label_8.gridx = 0;
+        gbc_label_8.gridy = 0;
+        panel_15.add(label_8, gbc_label_8);
+        
+        JLabel label_9 = new JLabel();
+        label_9.setText("Loja 1");
+        GridBagConstraints gbc_label_9 = new GridBagConstraints();
+        gbc_label_9.fill = GridBagConstraints.HORIZONTAL;
+        gbc_label_9.insets = new Insets(0, 0, 0, 5);
+        gbc_label_9.gridx = 1;
+        gbc_label_9.gridy = 0;
+        panel_15.add(label_9, gbc_label_9);
+        
+        JLabel label_10 = new JLabel("Funcionário:");
+        GridBagConstraints gbc_label_10 = new GridBagConstraints();
+        gbc_label_10.anchor = GridBagConstraints.EAST;
+        gbc_label_10.insets = new Insets(0, 0, 0, 5);
+        gbc_label_10.gridx = 2;
+        gbc_label_10.gridy = 0;
+        panel_15.add(label_10, gbc_label_10);
+        
+        JLabel label_11 = new JLabel(farmacia.getFuncionarioNome());
+        GridBagConstraints gbc_label_11 = new GridBagConstraints();
+        gbc_label_11.fill = GridBagConstraints.HORIZONTAL;
+        gbc_label_11.insets = new Insets(0, 0, 0, 5);
+        gbc_label_11.gridx = 3;
+        gbc_label_11.gridy = 0;
+        panel_15.add(label_11, gbc_label_11);
+        
+        JLabel label_12 = new JLabel("Tue Jun 05 19:49:43 BST 2018");
+        GridBagConstraints gbc_label_12 = new GridBagConstraints();
+        gbc_label_12.fill = GridBagConstraints.BOTH;
+        gbc_label_12.gridx = 5;
+        gbc_label_12.gridy = 0;
+        panel_15.add(label_12, gbc_label_12);
         button.setBounds(517, 35, 120, 39);
         venda.add(button);
 
@@ -864,6 +993,56 @@ public class Layout extends JFrame implements Variaveis {
                 stock.setVisible(false);
             }
         });
+        
+        JPanel panel_17 = new JPanel();
+        panel_17.setBounds(0, 0, 764, 23);
+        clientes.add(panel_17);
+        GridBagLayout gbl_panel_17 = new GridBagLayout();
+        gbl_panel_17.columnWidths = new int[]{87, 46, 143, 113, 234, 206, 0};
+        gbl_panel_17.rowHeights = new int[]{23, 0};
+        gbl_panel_17.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+        gbl_panel_17.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+        panel_17.setLayout(gbl_panel_17);
+        
+        JLabel label_18 = new JLabel("Loja:");
+        GridBagConstraints gbc_label_18 = new GridBagConstraints();
+        gbc_label_18.anchor = GridBagConstraints.EAST;
+        gbc_label_18.insets = new Insets(0, 0, 0, 5);
+        gbc_label_18.gridx = 0;
+        gbc_label_18.gridy = 0;
+        panel_17.add(label_18, gbc_label_18);
+        
+        JLabel label_19 = new JLabel();
+        label_19.setText("Loja 1");
+        GridBagConstraints gbc_label_19 = new GridBagConstraints();
+        gbc_label_19.fill = GridBagConstraints.HORIZONTAL;
+        gbc_label_19.insets = new Insets(0, 0, 0, 5);
+        gbc_label_19.gridx = 1;
+        gbc_label_19.gridy = 0;
+        panel_17.add(label_19, gbc_label_19);
+        
+        JLabel label_20 = new JLabel("Funcionário:");
+        GridBagConstraints gbc_label_20 = new GridBagConstraints();
+        gbc_label_20.anchor = GridBagConstraints.EAST;
+        gbc_label_20.insets = new Insets(0, 0, 0, 5);
+        gbc_label_20.gridx = 2;
+        gbc_label_20.gridy = 0;
+        panel_17.add(label_20, gbc_label_20);
+        
+        JLabel label_21 = new JLabel(farmacia.getFuncionarioNome());
+        GridBagConstraints gbc_label_21 = new GridBagConstraints();
+        gbc_label_21.fill = GridBagConstraints.HORIZONTAL;
+        gbc_label_21.insets = new Insets(0, 0, 0, 5);
+        gbc_label_21.gridx = 3;
+        gbc_label_21.gridy = 0;
+        panel_17.add(label_21, gbc_label_21);
+        
+        JLabel label_22 = new JLabel("Tue Jun 05 19:49:43 BST 2018");
+        GridBagConstraints gbc_label_22 = new GridBagConstraints();
+        gbc_label_22.fill = GridBagConstraints.BOTH;
+        gbc_label_22.gridx = 5;
+        gbc_label_22.gridy = 0;
+        panel_17.add(label_22, gbc_label_22);
         button_15.setBounds(517, 35, 120, 39);
         clientes.add(button_15);
 
@@ -1227,6 +1406,56 @@ public class Layout extends JFrame implements Variaveis {
                 stock.setVisible(false);
             }
         });
+        
+        JPanel panel_3 = new JPanel();
+        panel_3.setBounds(0, 0, 764, 23);
+        stock.add(panel_3);
+        GridBagLayout gbl_panel_3 = new GridBagLayout();
+        gbl_panel_3.columnWidths = new int[]{87, 46, 143, 113, 234, 206, 0};
+        gbl_panel_3.rowHeights = new int[]{23, 0};
+        gbl_panel_3.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+        gbl_panel_3.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+        panel_3.setLayout(gbl_panel_3);
+        
+        JLabel label_3 = new JLabel("Loja:");
+        GridBagConstraints gbc_label_3 = new GridBagConstraints();
+        gbc_label_3.anchor = GridBagConstraints.EAST;
+        gbc_label_3.insets = new Insets(0, 0, 0, 5);
+        gbc_label_3.gridx = 0;
+        gbc_label_3.gridy = 0;
+        panel_3.add(label_3, gbc_label_3);
+        
+        JLabel label_4 = new JLabel();
+        label_4.setText("Loja 1");
+        GridBagConstraints gbc_label_4 = new GridBagConstraints();
+        gbc_label_4.fill = GridBagConstraints.HORIZONTAL;
+        gbc_label_4.insets = new Insets(0, 0, 0, 5);
+        gbc_label_4.gridx = 1;
+        gbc_label_4.gridy = 0;
+        panel_3.add(label_4, gbc_label_4);
+        
+        JLabel label_5 = new JLabel("Funcionário:");
+        GridBagConstraints gbc_label_5 = new GridBagConstraints();
+        gbc_label_5.anchor = GridBagConstraints.EAST;
+        gbc_label_5.insets = new Insets(0, 0, 0, 5);
+        gbc_label_5.gridx = 2;
+        gbc_label_5.gridy = 0;
+        panel_3.add(label_5, gbc_label_5);
+        
+        JLabel label_6 = new JLabel(farmacia.getFuncionarioNome());
+        GridBagConstraints gbc_label_6 = new GridBagConstraints();
+        gbc_label_6.fill = GridBagConstraints.HORIZONTAL;
+        gbc_label_6.insets = new Insets(0, 0, 0, 5);
+        gbc_label_6.gridx = 3;
+        gbc_label_6.gridy = 0;
+        panel_3.add(label_6, gbc_label_6);
+        
+        JLabel label_7 = new JLabel("Tue Jun 05 19:49:43 BST 2018");
+        GridBagConstraints gbc_label_7 = new GridBagConstraints();
+        gbc_label_7.fill = GridBagConstraints.BOTH;
+        gbc_label_7.gridx = 5;
+        gbc_label_7.gridy = 0;
+        panel_3.add(label_7, gbc_label_7);
         btnHomeStock.setBounds(31, 35, 99, 39);
         stock.add(btnHomeStock);
 
