@@ -312,6 +312,9 @@ public class Layout extends JFrame implements Variaveis {
         });
         button_13.setBounds(152, 35, 99, 39);
         relatorio.add(button_13);
+        
+       
+        
 
         JButton button_14 = new JButton("Home");
         button_14.addMouseListener(new MouseAdapter() {
@@ -376,6 +379,8 @@ public class Layout extends JFrame implements Variaveis {
             panel.add(lblViaDeAdministrao_1);
 
             JComboBox comboBox_1 = new JComboBox(vias);
+            
+            
             comboBox_1.setBounds(10, 52, 159, 20);
             panel.add(comboBox_1);
 

@@ -175,13 +175,21 @@ public class Dialog extends JDialog implements Variaveis {
                 {
                     if (relatorio.getVendas().size()<2){
                     table = new JTable();
-                    DefaultTableModel model_d = new DefaultTableModel(new Object[]{"Medicamento", "Categoria", "Via Administração", "Preço"}, 0);
+                    DefaultTableModel model_d = new DefaultTableModel(new Object[]{"Medicamento", "Categoria", "Via Administração", "Preço","Estado","Receita","Data Validade"}, 0);
                     ArrayList<Object> array = new ArrayList(relatorio.getVenda().getMedicamentos());
                         for (int i = 0; i < array.size(); i++) {
                             if (array.get(i) != null) {
                                 Medicamento m = new Medicamento();
                                 m = (Medicamento) array.get(i);
-                                model_d.addRow(new Object[]{m.getNome(), categorias[m.getCategoria()], vias[m.getViaAdmin()], m.getPreco()});
+                                String receita;
+                                String estado[]= {"Pendente","Disponivel"};
+                                if(m.isReceita()) {
+                                	receita="Necessita Receita";
+                                }else {
+                                	receita="Sem necessidade de receita";
+                                }
+                                
+                                model_d.addRow(new Object[]{m.getNome(), categorias[m.getCategoria()], vias[m.getViaAdmin()], m.getPreco(),estado[m.getEstado()],receita,m.getDataValidade()});
                                 table.setModel(model_d);
                             }
                         }
@@ -199,9 +207,7 @@ public class Dialog extends JDialog implements Variaveis {
                                 btnNewButton.setVisible(true);
                             }
                         }
-                    }
-                    
-                  
+                    }                                     
                    
                     scrollPane.setViewportView(table);
                 }
