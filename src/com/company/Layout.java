@@ -381,10 +381,12 @@ public class Layout extends JFrame implements Variaveis {
         relatorio.add(button_14);
 
         JLabel lblUltimosRelatrios = new JLabel("Relatórios do Dia");
+        lblUltimosRelatrios.setFont(new Font("SansSerif", Font.BOLD, 14));
         lblUltimosRelatrios.setBounds(31, 100, 135, 16);
         relatorio.add(lblUltimosRelatrios);
 
-        JLabel lblAlertas = new JLabel("Relatorios da Semana");
+        JLabel lblAlertas = new JLabel("Relatórios da Semana");
+        lblAlertas.setFont(new Font("SansSerif", Font.BOLD, 14));
         lblAlertas.setBounds(572, 100, 167, 16);
         relatorio.add(lblAlertas);
 
@@ -406,6 +408,7 @@ public class Layout extends JFrame implements Variaveis {
                 }
             }
         });
+    
 
         list_3.setBorder(new LineBorder(new Color(0, 0, 0)));
         list_3.setListData(farmacia.gestorvendas.getVendasDia().toArray());
@@ -464,6 +467,18 @@ public class Layout extends JFrame implements Variaveis {
             //Cria a tabela
             //Cria a estrutura e campos representados em cada celula
             scrollPane_Estatisticas.setViewportView(table_1);
+            
+            JScrollPane scrollPane = new JScrollPane();
+            scrollPane.setBounds(572, 363, 530, 278);
+            relatorio.add(scrollPane);
+            
+            JList list_1 = new JList(farmacia.gestorvendas.getVendas().toArray());
+            scrollPane.setViewportView(list_1);
+            
+            JLabel lblRelatoriosDoMs = new JLabel("Relatórios total");
+            lblRelatoriosDoMs.setFont(new Font("SansSerif", Font.BOLD, 14));
+            lblRelatoriosDoMs.setBounds(582, 344, 182, 16);
+            relatorio.add(lblRelatoriosDoMs);
 
 
         } catch (NullPointerException e) {

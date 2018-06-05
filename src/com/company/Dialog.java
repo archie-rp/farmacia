@@ -29,15 +29,15 @@ public class Dialog extends JDialog implements Variaveis {
     public Dialog(Relatorio relatorio) {
 
 
-        setBounds(100, 100, 948, 602);
+        setBounds(100, 100, 948, 482);
         getContentPane().setLayout(null);
         contentPanel.setBounds(0, 0, 932, 92);
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         getContentPane().add(contentPanel);
         GridBagLayout gbl_contentPanel = new GridBagLayout();
-        gbl_contentPanel.columnWidths = new int[]{0, 0, 111, 130, 0};
+        gbl_contentPanel.columnWidths = new int[]{0, 0, 111, 130, 0, 0, 81, 141, 0, 76, 139, 0, 0};
         gbl_contentPanel.rowHeights = new int[]{0, 0, 0, 0, 0};
-        gbl_contentPanel.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+        gbl_contentPanel.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         gbl_contentPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         contentPanel.setLayout(gbl_contentPanel);
         {
@@ -56,11 +56,28 @@ public class Dialog extends JDialog implements Variaveis {
 
             GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
             gbc_lblNewLabel.anchor = GridBagConstraints.WEST;
-            gbc_lblNewLabel.insets = new Insets(0, 0, 5, 0);
+            gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
             gbc_lblNewLabel.gridx = 3;
             gbc_lblNewLabel.gridy = 1;
             contentPanel.add(lblNewLabel, gbc_lblNewLabel);
         }
+        
+        JLabel lblLoja = new JLabel("Loja:");
+        GridBagConstraints gbc_lblLoja = new GridBagConstraints();
+        gbc_lblLoja.anchor = GridBagConstraints.WEST;
+        gbc_lblLoja.insets = new Insets(0, 0, 5, 5);
+        gbc_lblLoja.gridx = 6;
+        gbc_lblLoja.gridy = 1;
+        contentPanel.add(lblLoja, gbc_lblLoja);
+        
+        JLabel lblNewLabel_4 = new JLabel("");
+        lblNewLabel_4.setText(relatorio.getNomeFarmacia());
+        GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
+        gbc_lblNewLabel_4.anchor = GridBagConstraints.WEST;
+        gbc_lblNewLabel_4.insets = new Insets(0, 0, 5, 5);
+        gbc_lblNewLabel_4.gridx = 7;
+        gbc_lblNewLabel_4.gridy = 1;
+        contentPanel.add(lblNewLabel_4, gbc_lblNewLabel_4);
         {
             JLabel lblNCliente = new JLabel("Nome Cliente:");
             GridBagConstraints gbc_lblNCliente = new GridBagConstraints();
@@ -76,7 +93,7 @@ public class Dialog extends JDialog implements Variaveis {
 
             GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
             gbc_lblNewLabel_1.anchor = GridBagConstraints.WEST;
-            gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 0);
+            gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
             gbc_lblNewLabel_1.gridx = 3;
             gbc_lblNewLabel_1.gridy = 2;
             contentPanel.add(lblNewLabel_1, gbc_lblNewLabel_1);
@@ -94,6 +111,7 @@ public class Dialog extends JDialog implements Variaveis {
             lblNewLabel_3.setText(relatorio.getVenda().getDataCompra().toString());
             
             GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
+            gbc_lblNewLabel_3.insets = new Insets(0, 0, 0, 5);
             gbc_lblNewLabel_3.anchor = GridBagConstraints.WEST;
             gbc_lblNewLabel_3.gridx = 3;
             gbc_lblNewLabel_3.gridy = 3;
@@ -113,7 +131,7 @@ public class Dialog extends JDialog implements Variaveis {
         }
         {
             JPanel buttonPane = new JPanel();
-            buttonPane.setBounds(0, 529, 932, 33);
+            buttonPane.setBounds(0, 409, 932, 33);
             buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
             getContentPane().add(buttonPane);
             {
@@ -144,12 +162,12 @@ public class Dialog extends JDialog implements Variaveis {
         
         JButton btnNewButton = new JButton("Detalhes");
         btnNewButton.setVisible(false);
-        btnNewButton.setBounds(36, 418, 89, 23);
+        btnNewButton.setBounds(49, 373, 89, 23);
         getContentPane().add(btnNewButton);
         {
             JPanel panel = new JPanel();
             panel.setBorder(new TitledBorder(null, "Medicamentos Adquiridos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-            panel.setBounds(26, 152, 881, 255);
+            panel.setBounds(39, 105, 881, 255);
             getContentPane().add(panel);
             panel.setLayout(null);
             {
@@ -166,14 +184,14 @@ public class Dialog extends JDialog implements Variaveis {
                                 Medicamento m = new Medicamento();
                                 m = (Medicamento) array.get(i);
                                 String receita;
-                                String estado[]= {"Pendente","Disponivel"};
+                               
                                 if(m.isReceita()) {
                                 	receita="Necessita Receita";
                                 }else {
                                 	receita="Sem necessidade de receita";
                                 }
                                 
-                                model_d.addRow(new Object[]{m.getNome(), categorias[m.getCategoria()], vias[m.getViaAdmin()], m.getPreco(),estado[m.getEstado()],receita,m.getDataValidade()});
+                                model_d.addRow(new Object[]{m.getNome(), categorias[m.getCategoria()], vias[m.getViaAdmin()], m.getPreco(),estados[m.getEstado()],receita,m.getDataValidade()});
                                 table.setModel(model_d);
                             }
                         }
