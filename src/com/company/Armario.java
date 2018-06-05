@@ -184,6 +184,7 @@ public class Armario implements Serializable {
         return medic;
     }
 
+
     public boolean atualizarMedicamento(Medicamento novo_med) {
         if (armario[novo_med.getCategoria()][novo_med.getViaAdmin()] != null && armario[novo_med.getCategoria()][novo_med.getViaAdmin()].updateMedicamento(novo_med)) {
             return true;
