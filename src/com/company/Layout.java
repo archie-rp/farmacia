@@ -45,7 +45,8 @@ public class Layout extends JFrame implements Variaveis {
     private JTextField nomeStock;
     private JTextField validadeStock;
     private JTextField precoStock;
-    private boolean editar = false;
+    private boolean editarMedic = false;
+    private boolean editarCli = false;
     private JTable table;
     private JTextField textSub_total;
     private JTextField textIVA;
@@ -65,6 +66,8 @@ public class Layout extends JFrame implements Variaveis {
     Farmacia farmacia = new Farmacia();
     private JTable table_2;
     private JTable table_3;
+    private JTextField textField;
+    private JTextField textField_1;
 
     public static void main(String[] args) {
 
@@ -232,9 +235,9 @@ public class Layout extends JFrame implements Variaveis {
         getContentPane().add(clientes, "name_14223925552743");
         clientes.setLayout(null);
         clientes.setVisible(false);
-        
-      
-     //   System.out.println(formattedDate);
+
+
+        //   System.out.println(formattedDate);
 
         //Botao Vendas
         JButton btnVendas = new JButton("Vendas");
@@ -353,8 +356,6 @@ public class Layout extends JFrame implements Variaveis {
 
         list_3.setBorder(new LineBorder(new Color(0, 0, 0)));
         list_3.setListData(farmacia.gestorvendas.getVendasDia().toArray());
-
-
 
 
         try {
@@ -545,30 +546,30 @@ public class Layout extends JFrame implements Variaveis {
         panel_14.setBounds(438, 270, 365, 244);
         main.add(panel_14);
         panel_14.setLayout(null);
-        
+
         JScrollPane scrollPane_4 = new JScrollPane();
         table_2 = new JTable();
         scrollPane_4.setViewportView(table_2);
         try {
-			DefaultTableModel model_dependentes = new DefaultTableModel(new Object[]{"Nome", "Data", "Receita", "Preço","Estado"}, 0);
+            DefaultTableModel model_dependentes = new DefaultTableModel(new Object[]{"Nome", "Data", "Receita", "Preço", "Estado"}, 0);
 
-			//Recebe medicamentos da venda selecionada
-			ArrayList<Medicamento> med = farmacia.getMedicamentos_pendentes();
-			//Adiciona os medicamentos na tablela
-			for (Medicamento meds : med) {
-				model_dependentes.addRow(new Object[]{meds.getNome(), meds.getDataValidade(),meds.isReceita(), meds.getPreco(),estados[meds.getEstado()]});
-			}
-			scrollPane_4.setViewportView(table_2);
-			table_2.setModel(model_dependentes);
-			table_2.setBorder(new LineBorder(new Color(0, 0, 0)));
+            //Recebe medicamentos da venda selecionada
+            ArrayList<Medicamento> med = farmacia.getMedicamentos_pendentes();
+            //Adiciona os medicamentos na tablela
+            for (Medicamento meds : med) {
+                model_dependentes.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.isReceita(), meds.getPreco(), estados[meds.getEstado()]});
+            }
+            scrollPane_4.setViewportView(table_2);
+            table_2.setModel(model_dependentes);
+            table_2.setBorder(new LineBorder(new Color(0, 0, 0)));
 
-		} catch (Exception e1) {
-			//model_d;
-		}
+        } catch (Exception e1) {
+            //model_d;
+        }
         scrollPane_4.setBounds(10, 23, 345, 210);
         panel_14.add(scrollPane_4);
 
-        
+
         table_2.setBorder(new LineBorder(new Color(0, 0, 0)));
 
         try {
@@ -959,55 +960,39 @@ public class Layout extends JFrame implements Variaveis {
         gbl_panel_11.rowWeights = new double[]{0.0, 0.0, 0.0};
         panel_11.setLayout(gbl_panel_11);
 
-        JLabel lblBi_2 = new JLabel("BI:");
-        GridBagConstraints gbc_lblBi_2 = new GridBagConstraints();
-        gbc_lblBi_2.anchor = GridBagConstraints.WEST;
-        gbc_lblBi_2.insets = new Insets(0, 0, 5, 5);
-        gbc_lblBi_2.gridx = 1;
-        gbc_lblBi_2.gridy = 0;
-        panel_11.add(lblBi_2, gbc_lblBi_2);
-
-        biCliente = new JTextField();
-        GridBagConstraints gbc_biCliente = new GridBagConstraints();
-        gbc_biCliente.insets = new Insets(0, 0, 5, 5);
-        gbc_biCliente.fill = GridBagConstraints.HORIZONTAL;
-        gbc_biCliente.gridx = 2;
-        gbc_biCliente.gridy = 0;
-        panel_11.add(biCliente, gbc_biCliente);
-        biCliente.setColumns(10);
-
-        JLabel lblDatainscrio = new JLabel("DataInscrição");
-        GridBagConstraints gbc_lblDatainscrio = new GridBagConstraints();
-        gbc_lblDatainscrio.anchor = GridBagConstraints.WEST;
-        gbc_lblDatainscrio.insets = new Insets(0, 0, 5, 5);
-        gbc_lblDatainscrio.gridx = 1;
-        gbc_lblDatainscrio.gridy = 1;
-        panel_11.add(lblDatainscrio, gbc_lblDatainscrio);
-
-        JDateChooser dateChooser = new JDateChooser();
-        GridBagConstraints gbc_dateChooser = new GridBagConstraints();
-        gbc_dateChooser.insets = new Insets(0, 0, 5, 5);
-        gbc_dateChooser.fill = GridBagConstraints.HORIZONTAL;
-        gbc_dateChooser.gridx = 2;
-        gbc_dateChooser.gridy = 1;
-        panel_11.add(dateChooser, gbc_dateChooser);
-
         JLabel lblNome_1 = new JLabel("Nome:");
         GridBagConstraints gbc_lblNome_1 = new GridBagConstraints();
         gbc_lblNome_1.anchor = GridBagConstraints.WEST;
-        gbc_lblNome_1.insets = new Insets(0, 0, 0, 5);
+        gbc_lblNome_1.insets = new Insets(0, 0, 5, 5);
         gbc_lblNome_1.gridx = 1;
-        gbc_lblNome_1.gridy = 2;
+        gbc_lblNome_1.gridy = 0;
         panel_11.add(lblNome_1, gbc_lblNome_1);
 
         nomeCliente = new JTextField();
         GridBagConstraints gbc_nomeCliente = new GridBagConstraints();
-        gbc_nomeCliente.insets = new Insets(0, 0, 0, 5);
+        gbc_nomeCliente.insets = new Insets(0, 0, 5, 5);
         gbc_nomeCliente.fill = GridBagConstraints.HORIZONTAL;
         gbc_nomeCliente.gridx = 2;
-        gbc_nomeCliente.gridy = 2;
+        gbc_nomeCliente.gridy = 0;
         panel_11.add(nomeCliente, gbc_nomeCliente);
         nomeCliente.setColumns(10);
+
+        JLabel lblBi_2 = new JLabel("Contribuinte:");
+        GridBagConstraints gbc_lblBi_2 = new GridBagConstraints();
+        gbc_lblBi_2.anchor = GridBagConstraints.WEST;
+        gbc_lblBi_2.insets = new Insets(0, 0, 5, 5);
+        gbc_lblBi_2.gridx = 1;
+        gbc_lblBi_2.gridy = 1;
+        panel_11.add(lblBi_2, gbc_lblBi_2);
+
+        biCliente = new JTextField();
+        GridBagConstraints gbc_biCliente = new GridBagConstraints();
+        gbc_biCliente.fill = GridBagConstraints.HORIZONTAL;
+        gbc_biCliente.insets = new Insets(0, 0, 5, 5);
+        gbc_biCliente.gridx = 2;
+        gbc_biCliente.gridy = 1;
+        panel_11.add(biCliente, gbc_biCliente);
+        biCliente.setColumns(10);
 
         JPanel panel_7 = new JPanel();
         panel_7.setBorder(new TitledBorder(null, "Detalhes sobre Clientes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -1033,7 +1018,25 @@ public class Layout extends JFrame implements Variaveis {
         clientes.add(panel_8);
         panel_8.setLayout(null);
 
+        JScrollPane scrollPane_5 = new JScrollPane();
+        scrollPane_5.setBounds(6, 19, 448, 186);
+        panel_8.add(scrollPane_5);
+
         JList listClientes = new JList(farmacia.gestorclientes.getClientes().toArray());
+        listClientes.addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent arg0) {
+            	
+            	
+                Cliente cli = new Cliente();
+                if(listClientes.getSelectedValue()!=null) {
+                cli = (Cliente) listClientes.getSelectedValue();
+
+                textField.setText(cli.getNome());
+                textField_1.setText(String.valueOf(cli.getBi()));
+                }
+            }
+        });
+        scrollPane_5.setViewportView(listClientes);
         listClientes.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -1050,32 +1053,143 @@ public class Layout extends JFrame implements Variaveis {
                 }
             }
         });
-        listClientes.setBounds(6, 16, 448, 188);
-        panel_8.add(listClientes);
         listClientes.setBorder(new LineBorder(new Color(0, 0, 0)));
-
-        JButton btnRemover = new JButton("Remover Cliente");
-        btnRemover.setBounds(715, 524, 120, 26);
-        clientes.add(btnRemover);
 
         JButton btnAdicionar_2 = new JButton("Adicionar Cliente");
         btnAdicionar_2.setBounds(196, 221, 162, 26);
         clientes.add(btnAdicionar_2);
-        btnAdicionar_2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
+
+        JLabel lblInformao = new JLabel("Editar");
+        lblInformao.setBounds(553, 368, 72, 14);
+        clientes.add(lblInformao);
+
+        JPanel panel_2 = new JPanel();
+        panel_2.setBounds(545, 394, 498, 174);
+        clientes.add(panel_2);
+        GridBagLayout gbl_panel_2 = new GridBagLayout();
+        gbl_panel_2.columnWidths = new int[]{0, 61, 174, 0, 0};
+        gbl_panel_2.rowHeights = new int[]{5, 0, 0, 0, 0, 0, 0};
+        gbl_panel_2.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+        gbl_panel_2.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+        panel_2.setLayout(gbl_panel_2);
+
+        JLabel lblNome_5 = new JLabel("Nome:");
+        GridBagConstraints gbc_lblNome_5 = new GridBagConstraints();
+        gbc_lblNome_5.insets = new Insets(0, 0, 5, 5);
+        gbc_lblNome_5.anchor = GridBagConstraints.WEST;
+        gbc_lblNome_5.gridx = 1;
+        gbc_lblNome_5.gridy = 1;
+        panel_2.add(lblNome_5, gbc_lblNome_5);
+
+        textField = new JTextField();
+        textField.setEditable(false);
+        GridBagConstraints gbc_textField = new GridBagConstraints();
+        gbc_textField.insets = new Insets(0, 0, 5, 5);
+        gbc_textField.fill = GridBagConstraints.HORIZONTAL;
+        gbc_textField.gridx = 2;
+        gbc_textField.gridy = 1;
+        panel_2.add(textField, gbc_textField);
+        textField.setColumns(10);
+
+        JLabel lblNewLabel_6 = new JLabel("Contribuinte:");
+        GridBagConstraints gbc_lblNewLabel_6 = new GridBagConstraints();
+        gbc_lblNewLabel_6.anchor = GridBagConstraints.BELOW_BASELINE_LEADING;
+        gbc_lblNewLabel_6.insets = new Insets(0, 0, 5, 5);
+        gbc_lblNewLabel_6.gridx = 1;
+        gbc_lblNewLabel_6.gridy = 2;
+        panel_2.add(lblNewLabel_6, gbc_lblNewLabel_6);
+
+        textField_1 = new JTextField();
+        textField_1.setEditable(false);
+        GridBagConstraints gbc_textField_1 = new GridBagConstraints();
+        gbc_textField_1.insets = new Insets(0, 0, 5, 5);
+        gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
+        gbc_textField_1.gridx = 2;
+        gbc_textField_1.gridy = 2;
+        panel_2.add(textField_1, gbc_textField_1);
+        textField_1.setColumns(10);
+
+        JButton btnNewButton_2 = new JButton("Editar");
+        btnNewButton_2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+
+                if (!editarCli) {
+                    btnNewButton_2.setText("Gravar");
+                    Cliente cli = new Cliente();
+                    cli = (Cliente) listClientes.getSelectedValue();
+
+                    //Ativar os componentes para editar
+                    textField.setEditable(true);
+                    textField_1.setEditable(true);
+                    //variavel para controlar botao editar
+                    editarCli = !editarCli;
+
+
+                } else {
+
+                    Cliente cli = new Cliente();
+                    cli = (Cliente) listClientes.getSelectedValue();
+                    cli.setNome(textField.getText());
+                    cli.setBi(Integer.parseInt(textField_1.getText()));
+
+
+                    farmacia.gestorclientes.setCliente(cli);
+
+                    //Desativar os componentes de edição
+                    textField.setEditable(false);
+                    textField_1.setEditable(false);
+
+                    //scrollPane_5.revalidate();
+                   // scrollPane_5.repaint();
+
+                    //variavel para controlar botao editar
+                    editarCli = !editarCli;
+                    btnNewButton_2.setText("Editar");
+                }
+
             }
         });
+        GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();
+        gbc_btnNewButton_2.anchor = GridBagConstraints.WEST;
+        gbc_btnNewButton_2.insets = new Insets(0, 0, 5, 0);
+        gbc_btnNewButton_2.gridx = 2;
+        gbc_btnNewButton_2.gridy = 4;
+        panel_2.add(btnNewButton_2, gbc_btnNewButton_2);
+
+        JButton btnRemover = new JButton("Remover Cliente");
+        btnRemover.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            	try {
+                Cliente cliente = new Cliente();
+                cliente = (Cliente) listClientes.getSelectedValue();
+                
+                
+                farmacia.gestorclientes.removerCliente(cliente);
+
+               listClientes.setListData(farmacia.gestorclientes.getClientes().toArray());
+
+            	}catch (Exception e1) {
+					// TODO: handle exception
+				}
+            }
+        });
+        GridBagConstraints gbc_btnRemover = new GridBagConstraints();
+        gbc_btnRemover.anchor = GridBagConstraints.EAST;
+        gbc_btnRemover.insets = new Insets(0, 0, 5, 0);
+        gbc_btnRemover.gridx = 3;
+        gbc_btnRemover.gridy = 4;
+        panel_2.add(btnRemover, gbc_btnRemover);
+
         btnAdicionar_2.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
                 System.out.println(farmacia.gestorclientes.clientes.size());
-               
-                
-                
-                
-                Cliente cliente = new Cliente(farmacia.gestorclientes.clientes.size() + 1, nomeCliente.getText(), Integer.parseInt(biCliente.getText()), dateChooser.getDate());
-                farmacia.gestorclientes.clientes.add(cliente);
 
+                Cliente cliente = new Cliente(farmacia.gestorclientes.clientes.size() + 1, nomeCliente.getText(), Integer.parseInt(biCliente.getText()), Calendar.getInstance().getTime());
+                farmacia.gestorclientes.clientes.add(cliente);
 
                 listClientes.setListData(farmacia.gestorclientes.getClientes().toArray());
             }
@@ -1173,7 +1287,10 @@ public class Layout extends JFrame implements Variaveis {
                 if (farmacia.armarios[nrloja].procurarMedicamento(textPesquisarStock.getText()) != null) {
                     m = farmacia.armarios[nrloja].procurarMedicamento(textPesquisarStock.getText());
                     System.out.print(m.toString());
-                   // list_2.setListData((Object[]) m);
+                    DefaultListModel model=new DefaultListModel<>();
+                    model.addElement(m);
+                    
+                     list_2.setModel(model);
 
                 } else {
                     System.out.print("Não existe!");
@@ -1184,7 +1301,7 @@ public class Layout extends JFrame implements Variaveis {
         stock.add(btnPesquisar);
 
         JPanel panel_1 = new JPanel();
-        panel_1.setBorder(new TitledBorder(null, "Informação detalhada: ", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+        panel_1.setBorder(new TitledBorder(null, "Editar: ", TitledBorder.LEADING, TitledBorder.TOP, null, null));
         panel_1.setBounds(641, 355, 358, 270);
         stock.add(panel_1);
 
@@ -1277,7 +1394,6 @@ public class Layout extends JFrame implements Variaveis {
         gbc_lblPreo_1.gridy = 5;
         panel_1.add(lblPreo_1, gbc_lblPreo_1);
 
-        
 
         try {
             list_2.setListData(farmacia.armarios[nrloja].getTodos().toArray());
@@ -1336,7 +1452,7 @@ public class Layout extends JFrame implements Variaveis {
         btnNewButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
-                if (!editar) {
+                if (!editarMedic) {
                     btnNewButton.setText("Gravar");
                     Medicamento medic = new Medicamento();
                     medic = (Medicamento) list_2.getSelectedValue();
@@ -1350,7 +1466,7 @@ public class Layout extends JFrame implements Variaveis {
                     rdbtnNewRadioButton_1.setEnabled(true);
 
                     //variavel para controlar botao editar
-                    editar = !editar;
+                    editarMedic = !editarMedic;
 
 
                 } else {
@@ -1378,7 +1494,7 @@ public class Layout extends JFrame implements Variaveis {
                     scrollPane_1.repaint();
 
                     //variavel para controlar botao editar
-                    editar = !editar;
+                    editarMedic = !editarMedic;
                     btnNewButton.setText("Editar");
                 }
             }
@@ -1388,88 +1504,88 @@ public class Layout extends JFrame implements Variaveis {
         scrollPane_1.setBounds(32, 373, 588, 276);
         //Adicona o scroll pane ao painel Stock
         stock.add(scrollPane_1);
-        
-                JLabel label_2 = new JLabel("Categoria:");
-                label_2.setBounds(31, 116, 51, 14);
-                stock.add(label_2);
-                
-                        JLabel label_1 = new JLabel("Via Administração:");
-                        label_1.setBounds(207, 116, 88, 14);
-                        stock.add(label_1);
-                        
-                        
-                                JLabel lblNome_4 = new JLabel("Nome");
-                                lblNome_4.setBounds(31, 164, 158, 14);
-                                stock.add(lblNome_4);
-                                
-                                        textNome = new JTextField();
-                                        textNome.setBounds(207, 161, 225, 20);
-                                        stock.add(textNome);
-                                        textNome.setColumns(10);
-                                        
-                                                JLabel lblNewLabel = new JLabel("Quantidade");
-                                                lblNewLabel.setBounds(31, 189, 142, 14);
-                                                stock.add(lblNewLabel);
-                                                
-                                                        textQuantidade = new JTextField();
-                                                        textQuantidade.setBounds(207, 186, 225, 20);
-                                                        stock.add(textQuantidade);
-                                                        textQuantidade.setColumns(10);
-                                                        
-                                                                JLabel lblPreo_2 = new JLabel("Preço:");
-                                                                lblPreo_2.setBounds(31, 214, 142, 14);
-                                                                stock.add(lblPreo_2);
-                                                                
-                                                                        textPreco = new JTextField();
-                                                                        textPreco.setBounds(207, 211, 225, 20);
-                                                                        stock.add(textPreco);
-                                                                        textPreco.setColumns(10);
-                                                                        
-                                                                                JLabel lblDataValidade_2 = new JLabel("Data Validade");
-                                                                                lblDataValidade_2.setBounds(31, 239, 151, 14);
-                                                                                stock.add(lblDataValidade_2);
-                                                                                
-                                                                                
-                                                                                        JLabel lblNewLabel_5 = new JLabel("Necessita Receita:");
-                                                                                        lblNewLabel_5.setBounds(31, 265, 158, 14);
-                                                                                        stock.add(lblNewLabel_5);
-                                                                                        
-                                                                                                JRadioButton rdbtnNewRadioButton = new JRadioButton("");
-                                                                                                rdbtnNewRadioButton.setBounds(207, 261, 21, 21);
-                                                                                                stock.add(rdbtnNewRadioButton);
-                                                                                                
-                                                                                                        JComboBox comboCat = new JComboBox(categorias);
-                                                                                                        comboCat.setBounds(31, 136, 171, 20);
-                                                                                                        stock.add(comboCat);
-                                                                                                        
-                                                                                                                JComboBox comboVia = new JComboBox(vias);
-                                                                                                                comboVia.setBounds(207, 136, 225, 20);
-                                                                                                                stock.add(comboVia);
-                                                                                                                
-                                                                                                                        JDateChooser dateChooser_1 = new JDateChooser();
-                                                                                                                        dateChooser_1.setDateFormatString("dd-MM-yyyy");
-                                                                                                                        dateChooser_1.setBounds(207, 236, 225, 20);
-                                                                                                                        stock.add(dateChooser_1);
-                                                                                                                        
-                                                                                                                                //Botao Adicionar Medicamento
-                                                                                                                                JButton btnAdicionarGerir = new JButton("Adicionar");
-                                                                                                                                btnAdicionarGerir.setBounds(281, 288, 108, 23);
-                                                                                                                                stock.add(btnAdicionarGerir);
-                                                                                                                                
-                                                                                                                                JLabel lblAdicionarMedicamento = new JLabel("Adicionar Medicamento:");
-                                                                                                                                lblAdicionarMedicamento.setFont(new Font("Tahoma", Font.BOLD, 12));
-                                                                                                                                lblAdicionarMedicamento.setBounds(31, 88, 158, 16);
-                                                                                                                                stock.add(lblAdicionarMedicamento);
+
+        JLabel label_2 = new JLabel("Categoria:");
+        label_2.setBounds(31, 116, 51, 14);
+        stock.add(label_2);
+
+        JLabel label_1 = new JLabel("Via Administração:");
+        label_1.setBounds(207, 116, 88, 14);
+        stock.add(label_1);
+
+
+        JLabel lblNome_4 = new JLabel("Nome");
+        lblNome_4.setBounds(31, 164, 158, 14);
+        stock.add(lblNome_4);
+
+        textNome = new JTextField();
+        textNome.setBounds(207, 161, 225, 20);
+        stock.add(textNome);
+        textNome.setColumns(10);
+
+        JLabel lblNewLabel = new JLabel("Quantidade");
+        lblNewLabel.setBounds(31, 189, 142, 14);
+        stock.add(lblNewLabel);
+
+        textQuantidade = new JTextField();
+        textQuantidade.setBounds(207, 186, 225, 20);
+        stock.add(textQuantidade);
+        textQuantidade.setColumns(10);
+
+        JLabel lblPreo_2 = new JLabel("Preço:");
+        lblPreo_2.setBounds(31, 214, 142, 14);
+        stock.add(lblPreo_2);
+
+        textPreco = new JTextField();
+        textPreco.setBounds(207, 211, 225, 20);
+        stock.add(textPreco);
+        textPreco.setColumns(10);
+
+        JLabel lblDataValidade_2 = new JLabel("Data Validade");
+        lblDataValidade_2.setBounds(31, 239, 151, 14);
+        stock.add(lblDataValidade_2);
+
+
+        JLabel lblNewLabel_5 = new JLabel("Necessita Receita:");
+        lblNewLabel_5.setBounds(31, 265, 158, 14);
+        stock.add(lblNewLabel_5);
+
+        JRadioButton rdbtnNewRadioButton = new JRadioButton("");
+        rdbtnNewRadioButton.setBounds(207, 261, 21, 21);
+        stock.add(rdbtnNewRadioButton);
+
+        JComboBox comboCat = new JComboBox(categorias);
+        comboCat.setBounds(31, 136, 171, 20);
+        stock.add(comboCat);
+
+        JComboBox comboVia = new JComboBox(vias);
+        comboVia.setBounds(207, 136, 225, 20);
+        stock.add(comboVia);
+
+        JDateChooser dateChooser_1 = new JDateChooser();
+        dateChooser_1.setDateFormatString("dd-MM-yyyy");
+        dateChooser_1.setBounds(207, 236, 225, 20);
+        stock.add(dateChooser_1);
+
+        //Botao Adicionar Medicamento
+        JButton btnAdicionarGerir = new JButton("Adicionar");
+        btnAdicionarGerir.setBounds(281, 288, 108, 23);
+        stock.add(btnAdicionarGerir);
+
+        JLabel lblAdicionarMedicamento = new JLabel("Adicionar Medicamento:");
+        lblAdicionarMedicamento.setFont(new Font("Tahoma", Font.BOLD, 12));
+        lblAdicionarMedicamento.setBounds(31, 88, 158, 16);
+        stock.add(lblAdicionarMedicamento);
         btnAdicionarGerir.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
                 if (textNome.getText() != null && textQuantidade.getText() != null) {
                     boolean receita = rdbtnNewRadioButton.isSelected();
-                    
+
                     try {
-                    	SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
-                    	
-                    	
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+
+
                         Medicamento medic = new Medicamento(textNome.getText(), Integer.valueOf(textPreco.getText()), comboCat.getSelectedIndex(), comboVia.getSelectedIndex(), dateChooser_1.getDate(), receita);
                         System.out.println(sdf.format(dateChooser_1.getDate()));
                         farmacia.armarios[nrloja].adicionarMedicamento(medic, Integer.valueOf(textQuantidade.getText()));
@@ -1505,7 +1621,7 @@ public class Layout extends JFrame implements Variaveis {
                 validadeStock.setEditable(false);
                 precoStock.setEditable(false);
                 //variavel para controlar botao editar
-                editar = false;
+                editarMedic = false;
                 btnNewButton.setText("Editar");
             }
         });
