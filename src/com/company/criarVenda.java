@@ -405,6 +405,10 @@ public class criarVenda extends JDialog implements Variaveis{
 							list_3.setListData(farmacia.gestorvendas.getVendas().toArray());
 							list_3.repaint();
 							list_3.revalidate();
+							JOptionPane optionPane = new JOptionPane("Venda concluida com sucesso!", JOptionPane.WARNING_MESSAGE);
+							JDialog dialog = optionPane.createDialog("Progresso da Compra!");
+							dialog.setAlwaysOnTop(true);
+							dialog.setVisible(true);
 							dispose();
 						}else if (venda_temporaria.medicamentos.size() > 0 && !text_nome.getText().isEmpty()){
 							System.out.println("encomenda concluida!");
@@ -421,6 +425,10 @@ public class criarVenda extends JDialog implements Variaveis{
 							list_3.setListData(farmacia.gestorvendas.getVendas().toArray());
 							list_3.repaint();
 							list_3.revalidate();
+							JOptionPane optionPane = new JOptionPane("Venda concluida com sucesso(sem nr contribuinte)!", JOptionPane.WARNING_MESSAGE);
+							JDialog dialog = optionPane.createDialog("Progresso da Compra!");
+							dialog.setAlwaysOnTop(true);
+							dialog.setVisible(true);
 							dispose();
 						}else{
 							if (venda_temporaria.medicamentos.size() == 0){

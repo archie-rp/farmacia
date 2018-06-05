@@ -171,12 +171,14 @@ public class Armario implements Serializable {
         Medicamento medic =new Medicamento();
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
+               try {
                 if (armario[i][j].getMedicamentos().size() >0) {
                     medic = armario[i][j].getMedicamento(nome);
                     if(medic!= null){
                         return medic;
                     }
                 }
+               }catch (NullPointerException e){}
             }
         }
         return medic;
