@@ -63,7 +63,7 @@ public class Layout extends JFrame implements Variaveis {
     public static void main(String[] args) {
 
         try {
-            UIManager.setLookAndFeel("javax.swing.plaf.windows.Windows.LookAndFeel");
+            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
         } catch (Throwable e) {
             System.out.println(e.getMessage());
         }
@@ -71,8 +71,8 @@ public class Layout extends JFrame implements Variaveis {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    // Layout frame = new Layout();
-                    //  frame.setVisible(true);
+                    //Layout frame = new Layout();
+                    // frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -320,10 +320,15 @@ public class Layout extends JFrame implements Variaveis {
         relatorio.add(lblUltimosRelatrios);
 
         JLabel lblAlertas = new JLabel("Relatorios da Semana");
-        lblAlertas.setBounds(338, 100, 108, 16);
+        lblAlertas.setBounds(572, 100, 108, 16);
         relatorio.add(lblAlertas);
 
+        JScrollPane scrollPane_3 = new JScrollPane();
+        scrollPane_3.setBounds(30, 123, 530, 185);
+        relatorio.add(scrollPane_3);
+
         JList list_3 = new JList();
+        scrollPane_3.setViewportView(list_3);
 
         list_3.addMouseListener(new MouseAdapter() {
             @Override
@@ -338,15 +343,14 @@ public class Layout extends JFrame implements Variaveis {
         });
 
         list_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-        list_3.setBounds(31, 123, 291, 185);
-        relatorio.add(list_3);
+        list_3.setListData(farmacia.gestorvendas.getVendas().toArray());
+
 
         try {
-            list_3.setListData(farmacia.gestorvendas.getVendas().toArray());
 
             JList list = new JList();
             list.setBorder(new LineBorder(new Color(0, 0, 0)));
-            list.setBounds(338, 123, 300, 185);
+            list.setBounds(572, 123, 527, 185);
             relatorio.add(list);
 
             JPanel panel = new JPanel();
@@ -360,7 +364,6 @@ public class Layout extends JFrame implements Variaveis {
             panel.add(lblViaDeAdministrao_1);
 
             JComboBox comboBox_1 = new JComboBox(vias);
-
             comboBox_1.setBounds(10, 52, 159, 20);
             panel.add(comboBox_1);
 
@@ -394,6 +397,7 @@ public class Layout extends JFrame implements Variaveis {
             //Cria a tabela
             //Cria a estrutura e campos representados em cada celula
             scrollPane_Estatisticas.setViewportView(table_1);
+
 
         } catch (NullPointerException e) {
             //se o objecto for nulo não fazer nada :)
@@ -660,9 +664,6 @@ public class Layout extends JFrame implements Variaveis {
         panel_9.setLayout(null);
 
 
-
-
-
         JPanel panel_5 = new JPanel();
         panel_5.setBorder(new TitledBorder(null, "Detalhes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
         panel_5.setBounds(20, 325, 525, 190);
@@ -782,7 +783,7 @@ public class Layout extends JFrame implements Variaveis {
                     //Alterar Valores de preco,desconto, etc.. de cada Venda
                     txtNome_.setText("" + farmacia.gestorvendas.getVendas().get(list_1.getSelectedIndex()).getCliente().getNome());
                     textNR.setText("" + farmacia.gestorvendas.getVendas().get(list_1.getSelectedIndex()).getCliente().getBi());
-                    textData_c.setText(""+ farmacia.gestorvendas.getVendas().get(list_1.getSelectedIndex()).getCliente().getDataInscricao());
+                    textData_c.setText("" + farmacia.gestorvendas.getVendas().get(list_1.getSelectedIndex()).getCliente().getDataInscricao());
 
                     textTotal.setText(String.valueOf(farmacia.gestorvendas.getVendas().get(list_1.getSelectedIndex()).getPreco_total()));
                     textIVA.setText(String.valueOf(farmacia.gestorvendas.getVendas().get(list_1.getSelectedIndex()).getIVA()));
@@ -800,7 +801,7 @@ public class Layout extends JFrame implements Variaveis {
         btnNewButton_1.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
-                criarVenda venda = new criarVenda(farmacia, nrloja, list_1,list_3);
+                criarVenda venda = new criarVenda(farmacia, nrloja, list_1, list_3);
                 venda.setVisible(true);
             }
         });
@@ -1131,16 +1132,14 @@ public class Layout extends JFrame implements Variaveis {
         btnPesquisar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
-               // System.out.print(textPesquisarStock.getText());
+                // System.out.print(textPesquisarStock.getText());
                 Medicamento m = new Medicamento();
-                if(farmacia.armarios[nrloja].procurarMedicamento(textPesquisarStock.getText())!= null){
-                    m= farmacia.armarios[nrloja].procurarMedicamento(textPesquisarStock.getText());
+                if (farmacia.armarios[nrloja].procurarMedicamento(textPesquisarStock.getText()) != null) {
+                    m = farmacia.armarios[nrloja].procurarMedicamento(textPesquisarStock.getText());
                     System.out.print(m.toString());
-                }else{
+                } else {
                     System.out.print("Não existe!");
                 }
-
-
             }
         });
         btnPesquisar.setBounds(347, 336, 98, 26);
@@ -1153,9 +1152,9 @@ public class Layout extends JFrame implements Variaveis {
 
         GridBagLayout gbl_panel_1 = new GridBagLayout();
         gbl_panel_1.columnWidths = new int[]{8, 156, 210, 0};
-        gbl_panel_1.rowHeights = new int[]{0, 32, 30, 34, 22, 10, 65, 0};
+        gbl_panel_1.rowHeights = new int[]{0, 32, 30, 34, 22, 10, 0, 65, 0};
         gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
-        gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+        gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         panel_1.setLayout(gbl_panel_1);
 
         JLabel lblNome_3 = new JLabel("Nome:");
@@ -1261,17 +1260,34 @@ public class Layout extends JFrame implements Variaveis {
         gbc_precoStock.gridy = 5;
         panel_1.add(precoStock, gbc_precoStock);
         precoStock.setColumns(10);
+
+        JLabel lblNecessitaReceita = new JLabel("Necessita receita:");
+        GridBagConstraints gbc_lblNecessitaReceita = new GridBagConstraints();
+        gbc_lblNecessitaReceita.anchor = GridBagConstraints.WEST;
+        gbc_lblNecessitaReceita.insets = new Insets(0, 0, 5, 5);
+        gbc_lblNecessitaReceita.gridx = 1;
+        gbc_lblNecessitaReceita.gridy = 6;
+        panel_1.add(lblNecessitaReceita, gbc_lblNecessitaReceita);
+
+        JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("");
+        rdbtnNewRadioButton_1.setEnabled(false);
+        GridBagConstraints gbc_rdbtnNewRadioButton_1 = new GridBagConstraints();
+        gbc_rdbtnNewRadioButton_1.anchor = GridBagConstraints.WEST;
+        gbc_rdbtnNewRadioButton_1.insets = new Insets(0, 0, 5, 0);
+        gbc_rdbtnNewRadioButton_1.gridx = 2;
+        gbc_rdbtnNewRadioButton_1.gridy = 6;
+        panel_1.add(rdbtnNewRadioButton_1, gbc_rdbtnNewRadioButton_1);
         GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
         gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
         gbc_btnNewButton.gridx = 1;
-        gbc_btnNewButton.gridy = 6;
+        gbc_btnNewButton.gridy = 7;
         panel_1.add(btnNewButton, gbc_btnNewButton);
 
         JButton btnApagar = new JButton("Apagar");
 
         GridBagConstraints gbc_btnApagar = new GridBagConstraints();
         gbc_btnApagar.gridx = 2;
-        gbc_btnApagar.gridy = 6;
+        gbc_btnApagar.gridy = 7;
         panel_1.add(btnApagar, gbc_btnApagar);
 
 
@@ -1282,37 +1298,43 @@ public class Layout extends JFrame implements Variaveis {
         btnNewButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
-                if (editar == false) {
+                if (!editar) {
                     btnNewButton.setText("Gravar");
                     Medicamento medic = new Medicamento();
                     medic = (Medicamento) list_2.getSelectedValue();
 
+                    //Ativar os componentes para editar
                     nomeStock.setEditable(true);
                     comboBox.setEnabled(true);
                     comboBox_1.setEnabled(true);
-
                     validadeStock.setEditable(true);
                     precoStock.setEditable(true);
+                    rdbtnNewRadioButton_1.setEnabled(true);
 
+                    //variavel para controlar botao editar
                     editar = !editar;
 
 
                 } else {
+                    boolean receita = rdbtnNewRadioButton_1.isSelected();
+
                     Medicamento medic = new Medicamento();
                     medic = (Medicamento) list_2.getSelectedValue();
                     medic.setNome(nomeStock.getText());
                     medic.setPreco(Float.parseFloat(precoStock.getText()));
                     medic.setCategoria(comboBox.getSelectedIndex());
                     medic.setViaAdmin(comboBox_1.getSelectedIndex());
+                    medic.setReceita(receita);
 
                     farmacia.armarios[nrloja].atualizarMedicamento(medic);
 
+                    //Desativar os componentes de edição
                     nomeStock.setEditable(false);
                     comboBox.setEnabled(false);
                     comboBox_1.setEnabled(false);
-
                     validadeStock.setEditable(false);
                     precoStock.setEditable(false);
+                    rdbtnNewRadioButton_1.setEnabled(false);
 
                     scrollPane_1.revalidate();
                     scrollPane_1.repaint();
@@ -1361,24 +1383,6 @@ public class Layout extends JFrame implements Variaveis {
         gbc_label_1.gridy = 0;
         panel_2.add(label_1, gbc_label_1);
 
-        JComboBox comboCat = new JComboBox(categorias);
-
-        GridBagConstraints gbc_comboCat = new GridBagConstraints();
-        gbc_comboCat.fill = GridBagConstraints.HORIZONTAL;
-        gbc_comboCat.anchor = GridBagConstraints.NORTH;
-        gbc_comboCat.insets = new Insets(0, 0, 5, 5);
-        gbc_comboCat.gridx = 1;
-        gbc_comboCat.gridy = 1;
-        panel_2.add(comboCat, gbc_comboCat);
-
-        JComboBox comboVia = new JComboBox(vias);
-        GridBagConstraints gbc_comboVia = new GridBagConstraints();
-        gbc_comboVia.fill = GridBagConstraints.HORIZONTAL;
-        gbc_comboVia.anchor = GridBagConstraints.NORTH;
-        gbc_comboVia.insets = new Insets(0, 0, 5, 0);
-        gbc_comboVia.gridx = 2;
-        gbc_comboVia.gridy = 1;
-        panel_2.add(comboVia, gbc_comboVia);
 
         JLabel lblNome_4 = new JLabel("Nome");
         GridBagConstraints gbc_lblNome_4 = new GridBagConstraints();
@@ -1439,13 +1443,6 @@ public class Layout extends JFrame implements Variaveis {
         gbc_lblDataValidade_2.gridy = 5;
         panel_2.add(lblDataValidade_2, gbc_lblDataValidade_2);
 
-        JDateChooser dateChooser_1 = new JDateChooser();
-        GridBagConstraints gbc_dateChooser_1 = new GridBagConstraints();
-        gbc_dateChooser_1.insets = new Insets(0, 0, 5, 0);
-        gbc_dateChooser_1.fill = GridBagConstraints.BOTH;
-        gbc_dateChooser_1.gridx = 2;
-        gbc_dateChooser_1.gridy = 5;
-        panel_2.add(dateChooser_1, gbc_dateChooser_1);
 
         JLabel lblNewLabel_5 = new JLabel("Necessita Receita:");
         GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
@@ -1462,6 +1459,33 @@ public class Layout extends JFrame implements Variaveis {
         gbc_rdbtnNewRadioButton.gridx = 2;
         gbc_rdbtnNewRadioButton.gridy = 6;
         panel_2.add(rdbtnNewRadioButton, gbc_rdbtnNewRadioButton);
+
+        JComboBox comboCat = new JComboBox(categorias);
+
+        GridBagConstraints gbc_comboCat = new GridBagConstraints();
+        gbc_comboCat.fill = GridBagConstraints.HORIZONTAL;
+        gbc_comboCat.anchor = GridBagConstraints.NORTH;
+        gbc_comboCat.insets = new Insets(0, 0, 5, 5);
+        gbc_comboCat.gridx = 1;
+        gbc_comboCat.gridy = 1;
+        panel_2.add(comboCat, gbc_comboCat);
+
+        JComboBox comboVia = new JComboBox(vias);
+        GridBagConstraints gbc_comboVia = new GridBagConstraints();
+        gbc_comboVia.fill = GridBagConstraints.HORIZONTAL;
+        gbc_comboVia.anchor = GridBagConstraints.NORTH;
+        gbc_comboVia.insets = new Insets(0, 0, 5, 0);
+        gbc_comboVia.gridx = 2;
+        gbc_comboVia.gridy = 1;
+        panel_2.add(comboVia, gbc_comboVia);
+
+        JDateChooser dateChooser_1 = new JDateChooser();
+        GridBagConstraints gbc_dateChooser_1 = new GridBagConstraints();
+        gbc_dateChooser_1.insets = new Insets(0, 0, 5, 0);
+        gbc_dateChooser_1.fill = GridBagConstraints.BOTH;
+        gbc_dateChooser_1.gridx = 2;
+        gbc_dateChooser_1.gridy = 5;
+        panel_2.add(dateChooser_1, gbc_dateChooser_1);
 
         //Botao Adicionar Medicamento
         JButton btnAdicionarGerir = new JButton("Adicionar");
@@ -1496,6 +1520,8 @@ public class Layout extends JFrame implements Variaveis {
                 nomeStock.setText(s.getNome());
                 comboBox.setSelectedIndex(s.getCategoria());
                 comboBox_1.setSelectedIndex(s.getViaAdmin());
+                rdbtnNewRadioButton_1.setSelected(s.isReceita());
+
 
                 validadeStock.setText(s.getDataValidade().toString());
                 precoStock.setText(String.valueOf(s.getPreco()));
