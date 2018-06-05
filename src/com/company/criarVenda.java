@@ -22,6 +22,10 @@ import java.util.ArrayList;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Date;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
 
 public class criarVenda extends JDialog implements Variaveis{
 
@@ -30,7 +34,7 @@ public class criarVenda extends JDialog implements Variaveis{
 	private JTable table_1;
 	private JTextField text_nome;
 	private JTextField text_nr_contr;
-
+	public int nrloja_pendente;
 	/**
 	 * Launch the application.
 	 */
@@ -52,6 +56,7 @@ public class criarVenda extends JDialog implements Variaveis{
 	public criarVenda(Farmacia farmacia, int nrloja,JList list_1,JList list_3)  {
 		setBounds(100, 100, 761, 507);
 		getContentPane().setLayout(new BorderLayout());
+		
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new FormLayout(new ColumnSpec[] {
@@ -105,12 +110,12 @@ public class criarVenda extends JDialog implements Variaveis{
 		}
 		Venda venda_temporaria = new Venda();
 		JScrollPane scrollPane1 = new JScrollPane();
+		
 		{
 
 			
 			{
 				table = new JTable();
-
 				try {
 					DefaultTableModel model_d = new DefaultTableModel(new Object[]{"Nome", "Quantidade", "Preço", "Estado"}, 0);
 					ArrayList<Medicamento> med = venda_temporaria.getMedicamentos();
@@ -124,7 +129,6 @@ public class criarVenda extends JDialog implements Variaveis{
 					contentPanel.add(scrollPane1, "8, 6, 5, 5, fill, fill");
 
 				} catch (NullPointerException x) {
-					System.out.println("tasdsa");
 					DefaultTableModel ad = new DefaultTableModel(new Object[]{"Nome", "Quantidade", "Preço", "Estado"}, 0);
 					scrollPane1.setViewportView(table);
 					table.setModel(ad);
@@ -160,12 +164,11 @@ public class criarVenda extends JDialog implements Variaveis{
 
 
 
-
 		JComboBox comboBox_cat = new JComboBox(categorias);
 		
 		JComboBox comboBox_via = new JComboBox(vias);
 		JButton btnProcurar = new JButton("Procurar");
-
+	
 		panel.add(btnProcurar, "7, 1");
 
 		btnProcurar.addMouseListener(new MouseAdapter() {
@@ -180,24 +183,20 @@ public class criarVenda extends JDialog implements Variaveis{
 						comboBox_cat.setSelectedIndex(m.getCategoria());
 						comboBox_via.setSelectedIndex(m.getViaAdmin());
 
-					}else if(nrloja !=1 ){
-						m= farmacia.armarios[nrloja+1].procurarMedicamento(text_nome_procurar.getText());
-						Importar importar = new Importar(farmacia, nrloja+1,m,venda_temporaria);
-		                importar.setVisible(true);
-						System.out.print("Medicamento encontrado noutra loja da mesma farmacia!" + 2 + m.toString());
-
-					}else if(nrloja !=2 && nrloja !=1){
-						m= farmacia.armarios[nrloja+1].procurarMedicamento(text_nome_procurar.getText());
-						Importar importar = new Importar(farmacia, nrloja+2,m,venda_temporaria);
-		                importar.setVisible(true);
-						System.out.print("Medicamento encontrado noutra loja da mesma farmacia!"+ 3 + m.toString());
 					}else {
-						System.out.println("Medicamento nao existe");
+						for (int i = 0; i < 2; i++) {
+							m = farmacia.armarios[selecao[nrloja][i]].procurarMedicamento(text_nome_procurar.getText());
+							Importar importar = new Importar(farmacia, nrloja, m, venda_temporaria, selecao[nrloja][i],table,scrollPane1);
+							importar.setVisible(true);
+							System.out.print("Medicamento encontrado noutra loja da mesma farmacia!" + 2 + m.toString());
+							nrloja_pendente=selecao[nrloja][i];
+							break;
+						}
 					}
-
 				}
 			}
 		});
+	
 		contentPanel.add(comboBox_cat, "2, 6, fill, default");
 		contentPanel.add(comboBox_via, "4, 6, fill, default");
 		
@@ -401,7 +400,7 @@ public class criarVenda extends JDialog implements Variaveis{
 					public void mouseClicked(MouseEvent arg0) {
 						if (venda_temporaria.medicamentos.size() > 0 && !text_nome.getText().isEmpty()&& !text_nr_contr.getText().isEmpty()){
 								System.out.println("encomenda concluida!");
-								//int bi =  text_nr_contr.getText();
+
 							Cliente cliente1 = new Cliente(farmacia.gestorclientes.clientes.size() + 1, text_nome.getText(), Integer.parseInt(text_nr_contr.getText()), new Date());
 							venda_temporaria.setCliente(cliente1);
 							venda_temporaria.setCod_venda(farmacia.gestorvendas.vendas.size()+1);
@@ -463,8 +462,11 @@ public class criarVenda extends JDialog implements Variaveis{
 					public void mouseClicked(MouseEvent arg0) {
 						if (venda_temporaria.medicamentos.size() > 0){
 							for (Medicamento med:venda_temporaria.medicamentos){
-								med.setEstado(1);
-								farmacia.armarios[nrloja].adicionarMedicamento(med,1);
+								if (med.getEstado() != 0){
+									farmacia.armarios[nrloja].adicionarMedicamento(med,1);
+								}else{
+									farmacia.armarios[nrloja_pendente].adicionarMedicamento(med,1);
+								}
 							}
 						}
 						dispose();

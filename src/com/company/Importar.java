@@ -6,7 +6,11 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
@@ -19,12 +23,13 @@ import java.lang.reflect.Array;
 import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 public class Importar extends JDialog implements Variaveis {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField_quantidade;
-
+	
 	/**
 	 * Launch the application.
 	 */
@@ -41,7 +46,7 @@ public class Importar extends JDialog implements Variaveis {
 	/**
 	 * Create the dialog.
 	 */
-	public Importar(Farmacia farmacia,int nrloja,Medicamento m, Venda venda_temporaria) {
+	public Importar(Farmacia farmacia,int nrloja,Medicamento m, Venda venda_temporaria, int loja_m,JTable table,JScrollPane scrollPane1) {
 		setBounds(100, 100, 495, 325);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -89,7 +94,7 @@ public class Importar extends JDialog implements Variaveis {
 			contentPanel.add(lblLoja, "4, 2");
 		}
 
-			JLabel label_nr_loja = new JLabel("" + nrloja);
+			JLabel label_nr_loja = new JLabel(farmacias[loja_m]);
 			contentPanel.add(label_nr_loja, "6, 2");
 
 		{
@@ -131,7 +136,7 @@ public class Importar extends JDialog implements Variaveis {
 			contentPanel.add(lblQuantidade, "4, 12");
 		}
 
-			JLabel lblNewLabel_quantidade = new JLabel( "" + farmacia.armarios[nrloja].getMedicamentoQuantidade(m));
+			JLabel lblNewLabel_quantidade = new JLabel( "" + farmacia.armarios[loja_m].getMedicamentoQuantidade(m));
 			contentPanel.add(lblNewLabel_quantidade, "6, 12");
 
 		{
@@ -166,14 +171,30 @@ public class Importar extends JDialog implements Variaveis {
 					@Override
 					public void mouseClicked(MouseEvent arg0) {
                         int nr_quantidade = Integer.parseInt(textField_quantidade.getText());
-						if(nr_quantidade < farmacia.armarios[nrloja].getMedicamentoQuantidade(m)){
+						if(nr_quantidade < farmacia.armarios[loja_m].getMedicamentoQuantidade(m)){
 						    System.out.println("Encomenda Realizada com sucesso!!");
 							m.setEstado(0);
 						    for(int i =0;i <nr_quantidade;i++){
-						        farmacia.setMedicamento_pendente(m);
-                                venda_temporaria.setMedicamento(m);
-						        farmacia.armarios[nrloja].removerMedicamento(m);
+						        if (m.getEstado() !=0) {
+									farmacia.setMedicamento_pendente(m);
+									venda_temporaria.setMedicamento(m);
+									farmacia.armarios[nrloja].removerMedicamento(m);
+								}else{
+									farmacia.armarios[loja_m].removerMedicamento(m);
+									farmacia.setMedicamento_pendente(m);
+									venda_temporaria.setMedicamento(m);
+								}
 						    }
+							DefaultTableModel model_d = new DefaultTableModel(new Object[]{"Nome", "Quantidade", "Preço", "Estado"}, 0);
+							ArrayList<Medicamento> med = venda_temporaria.getMedicamentos();
+							//Adiciona os medicamentos na tablela
+							for (Medicamento meds : med) {
+								model_d.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.getPreco(),estados[meds.getEstado()]});
+							}
+							scrollPane1.setViewportView(table);
+							table.setModel(model_d);
+						    DefaultTableModel dm = (DefaultTableModel)table.getModel();
+						    dm.fireTableDataChanged();
 						    dispose();
                         }
 					}
@@ -184,6 +205,12 @@ public class Importar extends JDialog implements Variaveis {
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
+				cancelButton.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent arg0) {
+					dispose();
+					}
+				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}

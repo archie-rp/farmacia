@@ -814,10 +814,10 @@ public class Layout extends JFrame implements Variaveis {
                     //Cria a tabela
                     table = new JTable();
                     //Cria a estrutura e campos representados em cada celula
-                    DefaultTableModel model = new DefaultTableModel(new Object[]{"Nome", "Categoria", "Via de Administração", "Data Validade", "Preço"}, 0);
+                    DefaultTableModel model = new DefaultTableModel(new Object[]{"Nome", "Categoria", "Via de Administração", "Data Validade", "Preço", "Estado"}, 0);
                     //Adiciona os medicamentos na tablela
                     for (Medicamento meds : med) {
-                        model.addRow(new Object[]{meds.getNome(), categorias[meds.getCategoria()], vias[meds.getViaAdmin()], meds.getDataValidade(), meds.getPreco()});
+                        model.addRow(new Object[]{meds.getNome(), categorias[meds.getCategoria()], vias[meds.getViaAdmin()], meds.getDataValidade(), meds.getPreco(),estados[meds.getEstado()] });
                     }
                     table.setModel(model);
                     scrollPane_2.setViewportView(table);
