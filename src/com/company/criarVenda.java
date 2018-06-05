@@ -385,14 +385,11 @@ public class criarVenda extends JDialog implements Variaveis{
 					@Override
 					public void mouseClicked(MouseEvent arg0) {
 						if (venda_temporaria.medicamentos.size() > 0 && !text_nome.getText().isEmpty()&& !text_nr_contr.getText().isEmpty()){
-								System.out.println("encomenda concluida!");
-
 							Cliente cliente1 = new Cliente(farmacia.gestorclientes.clientes.size() + 1, text_nome.getText(), Integer.parseInt(text_nr_contr.getText()), new Date());
 							venda_temporaria.setCliente(cliente1);
 							venda_temporaria.setCod_venda(farmacia.gestorvendas.vendas.size()+1);
 							venda_temporaria.setData_compra(new Date());
-							Funcionario func = new Funcionario("Paulo");
-							venda_temporaria.setFuncionario(func);
+							venda_temporaria.setFuncionario(new Funcionario(farmacia.getFuncionarioNome()));
 							venda_temporaria.setFormaPagamento(comboBox_m_pagamento.getSelectedIndex());
 							venda_temporaria.setDesconto(comboBox_desconto.getSelectedIndex());
 							farmacia.gestorvendas.adicionarVenda(venda_temporaria);
@@ -407,13 +404,11 @@ public class criarVenda extends JDialog implements Variaveis{
 							dialog.setVisible(true);
 							dispose();
 						}else if (venda_temporaria.medicamentos.size() > 0 && !text_nome.getText().isEmpty()){
-							System.out.println("encomenda concluida!");
 							Cliente cliente1 = new Cliente(farmacia.gestorclientes.clientes.size() + 1, text_nome.getText(), 999999999, new Date());
 							venda_temporaria.setCliente(cliente1);
 							venda_temporaria.setCod_venda(farmacia.gestorvendas.vendas.size()+1);
 							venda_temporaria.setData_compra(new Date());
-							Funcionario func = new Funcionario("Paulo");
-							venda_temporaria.setFuncionario(func);
+							venda_temporaria.setFuncionario(new Funcionario(farmacia.getFuncionarioNome()));
 							venda_temporaria.setFormaPagamento(comboBox_m_pagamento.getSelectedIndex());
 							venda_temporaria.setDesconto(comboBox_desconto.getSelectedIndex());
 							farmacia.gestorvendas.adicionarVenda(venda_temporaria);

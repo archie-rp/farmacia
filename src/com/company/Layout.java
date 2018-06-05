@@ -840,7 +840,7 @@ public class Layout extends JFrame implements Variaveis {
 
 
         JPanel panel_5 = new JPanel();
-        panel_5.setBorder(new TitledBorder(null, "Detalhes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+        panel_5.setBorder(new TitledBorder(null, "Detalhes da compra selecionada na lista em cima", TitledBorder.LEADING, TitledBorder.TOP, null, null));
         panel_5.setBounds(20, 325, 525, 190);
         venda.add(panel_5);
         panel_5.setLayout(null);
@@ -893,7 +893,7 @@ public class Layout extends JFrame implements Variaveis {
 
 
         JPanel panel_4 = new JPanel();
-        panel_4.setBorder(new TitledBorder(null, "Vendas", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+        panel_4.setBorder(new TitledBorder(null, "Todas as Vendas Elaboradas", TitledBorder.LEADING, TitledBorder.TOP, null, null));
         panel_4.setBounds(20, 126, 525, 188);
         venda.add(panel_4);
         panel_4.setLayout(null);
@@ -902,14 +902,19 @@ public class Layout extends JFrame implements Variaveis {
         scrollPane.setBounds(14, 18, 500, 156);
         panel_4.add(scrollPane);
         //Define qual a Model vai estar a representar na jList
+
         JList list_1 = new JList();
 
         try {
-            list_1.setListData(farmacia.gestorvendas.getVendas().toArray());
-
+            DefaultListModel listModels = new DefaultListModel();
+            for (Venda vend:farmacia.gestorvendas.getVendas()) {
+            	listModels.addElement(vend.getCliente());
+            }
+            list_1.setModel(listModels);
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Sem vendas");
         }
+
         JLabel lblNome = new JLabel("Nome");
         lblNome.setBounds(6, 22, 46, 14);
         panel_9.add(lblNome);
