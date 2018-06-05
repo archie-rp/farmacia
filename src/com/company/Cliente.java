@@ -63,7 +63,7 @@ public class Cliente implements Serializable {
         string.append(getId() + " ");
         string.append(getNome() + " ");
         string.append(getBi() + " ");
-        string.append(getDataInscricao() + " ");
+       // string.append(getDataInscricao() + " ");
 
         return string.toString();
     }

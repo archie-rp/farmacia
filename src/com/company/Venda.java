@@ -134,7 +134,7 @@ public class Venda  implements Variaveis,Serializable {
     	StringBuilder string =new StringBuilder();
     	string.append(cod_venda+" ");
     	string.append(cliente+" ");
-        DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.getDefault());
+       DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
         String formattedDate = df.format(this.data_compra);
     	string.append(formattedDate);
     	return string.toString();
