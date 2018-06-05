@@ -25,6 +25,10 @@ public class GestorClientes implements Serializable {
     public void setCliente(Cliente cliente) {
         this.clientes.add(cliente);
     }
+    
+    public void removerCliente(Cliente cliente) {
+        this.clientes.remove(cliente);
+    }
 
     @Override
     public String toString() {
