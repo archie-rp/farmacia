@@ -1,12 +1,14 @@
 package com.company;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Farmacia implements Serializable{
     private String nome;
     public GestorVendas gestorvendas;
     public Armario[] armarios;
     public GestorClientes gestorclientes;
+    public ArrayList<Medicamento> medicamentos_
 
     public Farmacia(String nome, GestorVendas gestorvendas, Armario[] armarios, GestorClientes gestorclientes) {
         this.nome = nome;
