@@ -373,6 +373,8 @@ public class Layout extends JFrame implements Variaveis {
         try {
 
             JList list = new JList();
+            
+            list.setListData(farmacia.gestorvendas.getVendasSemana().toArray());
             list.setBorder(new LineBorder(new Color(0, 0, 0)));
             list.setBounds(572, 123, 527, 185);
             relatorio.add(list);

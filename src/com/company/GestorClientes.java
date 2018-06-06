@@ -73,8 +73,6 @@ public class GestorClientes implements Serializable {
 
         //
         for (Cliente c : clientes) {
-
-            
             Date max = new Date();
             Date min = Calendar.getInstance().getTime();
             Date d = c.getDataInscricao();            
@@ -88,8 +86,7 @@ public class GestorClientes implements Serializable {
             cal1.setTime(Calendar.getInstance().getTime()); 
             cal1.add(Calendar.DATE, -1);
             min = cal1.getTime();
-           
-            System.out.println("Minimo"+d.compareTo(min) + " maximo" + d.compareTo(max));
+
             if (d.compareTo(min) > 0 && d.compareTo(max) < 0) {
                 total++;
             }
