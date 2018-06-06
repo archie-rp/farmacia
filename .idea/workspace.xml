@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dad6e76c-2b0d-4a65-b9ce-0623d3102971" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/GestorClientes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/GestorClientes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/GestorVendas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/GestorVendas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Layout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Layout.java" afterDir="false" />
-    </list>
+    <list default="true" id="dad6e76c-2b0d-4a65-b9ce-0623d3102971" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -88,10 +83,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GestorClientes.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GestorClientes.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/GestorClientes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
+            <state relative-caret-position="839">
               <caret line="74" column="36" selection-start-line="74" selection-start-column="36" selection-end-line="74" selection-end-column="36" />
               <folding>
                 <element signature="e#400#401#0" expanded="true" />
@@ -111,11 +106,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GestorVendas.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GestorVendas.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/GestorVendas.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="162" column="34" lean-forward="true" selection-start-line="162" selection-start-column="34" selection-end-line="162" selection-end-column="34" />
+            <state relative-caret-position="612">
+              <caret line="126" column="47" lean-forward="true" selection-start-line="126" selection-start-column="47" selection-end-line="126" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -345,9 +340,10 @@
   </component>
   <component name="PhpDebugGeneral" listening_started="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-15" />
-    <option name="width" value="1597" />
-    <option name="height" value="715" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1003" />
+    <option name="height" value="795" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -591,14 +587,7 @@
       <workItem from="1528240394958" duration="631000" />
       <workItem from="1528243946145" duration="25000" />
       <workItem from="1528283870116" duration="7366000" />
-      <workItem from="1528294671494" duration="4733000" />
-    </task>
-    <task id="LOCAL-00008" summary="Layout atualizado, linhas com erro removidas">
-      <created>1526302054869</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1526302054869</updated>
+      <workItem from="1528294671494" duration="5023000" />
     </task>
     <task id="LOCAL-00009" summary="Layout atualizado, Stock passou a Gerir, Jlist com os dados dos medicamentos, selecionando um medicamento aparece informação adiconal">
       <created>1526336906508</created>
@@ -936,11 +925,18 @@
       <option name="project" value="LOCAL" />
       <updated>1528301716839</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Relatórios do dia&#10;Relatórios da semana&#10;Relatórios do mes">
+      <created>1528302570807</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1528302570807</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97028000" />
+    <option name="totallyTimeSpent" value="97318000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1840" height="1002" extended-state="6" />
@@ -956,11 +952,11 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32918552" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3205575" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3205575" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32903227" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20978628" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20978628" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="UML design tool window" order="4" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -987,7 +983,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Farmacia Class&#10;* Falta alguns promenores&#10;* Tens de executar com o login e nao layout agora&#10;* Troquei o nome de CatVia para &quot;Variaveis&quot;" />
     <MESSAGE value="Troquei o nome da array farmacia e objecto farmacia1 para farmacia" />
     <MESSAGE value="Nova Class &quot;Gestor de Clientes&quot;&#10;* vai ser usada na jpanel gerir clientes" />
     <MESSAGE value="Variaveis em final*" />
@@ -1012,7 +1007,8 @@
     <MESSAGE value="Função para verificar medicamentos fora de validade&#10;Função para remover todos os medicamentos fora de validade" />
     <MESSAGE value="&#10;Remover Medicamentos e atualizar as lists Done" />
     <MESSAGE value="Já apresenta total de clientes&#10;total de clientes por semana&#10;total de clientes por mes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Já apresenta total de clientes&#10;total de clientes por semana&#10;total de clientes por mes" />
+    <MESSAGE value="Relatórios do dia&#10;Relatórios da semana&#10;Relatórios do mes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Relatórios do dia&#10;Relatórios da semana&#10;Relatórios do mes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1374,13 +1370,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/GestorVendas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="162" column="34" lean-forward="true" selection-start-line="162" selection-start-column="34" selection-end-line="162" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Layout.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="366">
@@ -1471,7 +1460,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/GestorClientes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
+        <state relative-caret-position="839">
           <caret line="74" column="36" selection-start-line="74" selection-start-column="36" selection-end-line="74" selection-end-column="36" />
           <folding>
             <element signature="e#400#401#0" expanded="true" />
@@ -1487,6 +1476,13 @@
             <element signature="e#841#842#0" expanded="true" />
             <element signature="e#870#871#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/GestorVendas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="126" column="47" lean-forward="true" selection-start-line="126" selection-start-column="47" selection-end-line="126" selection-end-column="47" />
         </state>
       </provider>
     </entry>
