@@ -162,6 +162,7 @@ public class Importar extends JDialog implements Variaveis {
 						if(nr_quantidade < farmacia.armarios[loja_m].getMedicamentoQuantidade(m)){
 						    System.out.println("Encomenda Realizada com sucesso!!");
 							m.setEstado(0);
+							m.setCod_compra(farmacia.gestorvendas.vendas.size()+1);
 						    for(int i =0;i <nr_quantidade;i++){
 						        if (m.getEstado() !=0) {
 									farmacia.setMedicamento_pendente(m);

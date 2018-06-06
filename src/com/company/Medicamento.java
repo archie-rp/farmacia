@@ -14,6 +14,7 @@ public class Medicamento implements Variaveis,Serializable {
     private Date dataValidade;
     private boolean receita;
     private int estado;
+    private int cod_compra;
 
 
     public Medicamento(int id, String nome, float preco, int cate, int via, Date dataValidade ) {
@@ -41,6 +42,14 @@ public class Medicamento implements Variaveis,Serializable {
 
     public boolean isReceita() {
         return receita;
+    }
+
+    public void setCod_compra(int cod_compra) {
+        this.cod_compra = cod_compra;
+    }
+
+    public int getCod_compra() {
+        return cod_compra;
     }
 
     public void setEstado(int estado) {

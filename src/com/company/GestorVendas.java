@@ -80,6 +80,17 @@ public class GestorVendas implements Serializable {
         return vendas_cliente;
     }
 
+    public Venda procurarCod_venda(int codigo_venda) {
+        Venda vendas_ = new Venda();
+        for (Venda venda : vendas) {
+            System.out.println(venda.getCod_venda());
+            if (venda.getCod_venda() == codigo_venda){
+                vendas_ = venda;
+            }
+        }
+        return vendas_;
+    }
+
     public ArrayList<Venda> getVendasDia() {
         ArrayList<Venda> vendas1 = new ArrayList<>();
         Date data = Calendar.getInstance().getTime();
