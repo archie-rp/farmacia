@@ -1339,17 +1339,6 @@ public class Layout extends JFrame implements Variaveis {
         gbc_btnAdicionar_2.gridy = 2;
         panel_11.add(btnAdicionar_2, gbc_btnAdicionar_2);
 
-        btnAdicionar_2.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent arg0) {
-                System.out.println(farmacia.gestorclientes.clientes.size());
-
-                Cliente cliente = new Cliente(farmacia.gestorclientes.clientes.size() + 1, nomeCliente.getText(), Integer.parseInt(biCliente.getText()), Calendar.getInstance().getTime());
-                farmacia.gestorclientes.clientes.add(cliente);
-
-                listClientes.setListData(farmacia.gestorclientes.getClientes().toArray());
-            }
-        });
 
         JPanel panel_7 = new JPanel();
         panel_7.setBorder(new TitledBorder(null, "Detalhes sobre Clientes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -1419,6 +1408,24 @@ public class Layout extends JFrame implements Variaveis {
         panel_8.setBounds(31, 323, 460, 211);
         clientes.add(panel_8);
         panel_8.setLayout(null);
+        
+        
+
+        btnAdicionar_2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                System.out.println(farmacia.gestorclientes.clientes.size());
+
+                Cliente cliente = new Cliente(farmacia.gestorclientes.clientes.size() + 1, nomeCliente.getText(), Integer.parseInt(biCliente.getText()), Calendar.getInstance().getTime());
+                farmacia.gestorclientes.clientes.add(cliente);
+
+                listClientes.setListData(farmacia.gestorclientes.getClientes().toArray());
+                
+                lblNewLabel_10.setText(String.valueOf(farmacia.gestorclientes.totalClientesSemana()));
+                lblNewLabel_11.setText(String.valueOf(farmacia.gestorclientes.totalClientesMes()));
+                lblNewLabel_8.setText(String.valueOf(farmacia.gestorclientes.totalClientes()));
+            }
+        });
 
         JScrollPane scrollPane_5 = new JScrollPane();
         scrollPane_5.setBounds(6, 19, 448, 186);
@@ -1773,7 +1780,7 @@ public class Layout extends JFrame implements Variaveis {
 
         JPanel panel_1 = new JPanel();
         panel_1.setBorder(new TitledBorder(null, "Editar: ", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        panel_1.setBounds(471, 342, 303, 212);
+        panel_1.setBounds(471, 342, 303, 236);
         stock.add(panel_1);
 
         GridBagLayout gbl_panel_1 = new GridBagLayout();

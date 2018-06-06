@@ -110,7 +110,6 @@ public class GestorVendas implements Serializable {
             cal1.add(Calendar.DATE, -1);
             min = cal1.getTime();
 
-
             if (d.compareTo(min) > 0 && d.compareTo(max) < 0) {
                 try {
                     vendas1.add(v_);
@@ -142,8 +141,7 @@ public class GestorVendas implements Serializable {
             cal1.setTime(Calendar.getInstance().getTime());
             cal1.add(Calendar.DATE, -1);
             min = cal1.getTime();
-            System.out.println(min + " " + max);
-            System.out.println("Minimo" + d.compareTo(min) + " maximo" + d.compareTo(max));
+
             if (d.compareTo(min) > 0 && d.compareTo(max) < 0) {
                 try {
                     vendas1.add(v_);
@@ -154,7 +152,6 @@ public class GestorVendas implements Serializable {
         }
         return vendas1;
     }
-
 
 
 }
