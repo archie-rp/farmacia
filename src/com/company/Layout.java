@@ -333,6 +333,17 @@ public class Layout extends JFrame implements Variaveis {
         button_6.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
+        		try {
+                    FileOutputStream fileOut = new FileOutputStream("Farmacia.ser");
+                    ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                    out.writeObject(farmacia);
+                    out.close();
+                    fileOut.close();
+                    System.out.printf("Serialized data foi guardada em Farmacia.ser");
+                } catch (IOException i) {
+                    i.printStackTrace();
+                    farmacia = farmacia_serializada;
+                }
         		Login login = new Login();
         		dispose();
         		login.setVisible(true);
@@ -539,6 +550,17 @@ public class Layout extends JFrame implements Variaveis {
         btnNewButton_5.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
+        		try {
+                    FileOutputStream fileOut = new FileOutputStream("Farmacia.ser");
+                    ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                    out.writeObject(farmacia);
+                    out.close();
+                    fileOut.close();
+                    System.out.printf("Serialized data foi guardada em Farmacia.ser");
+                } catch (IOException i) {
+                    i.printStackTrace();
+                    farmacia = farmacia_serializada;
+                }
         		Login login = new Login();
         		dispose();
         		login.setVisible(true);
@@ -790,6 +812,17 @@ public class Layout extends JFrame implements Variaveis {
         button_5.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
+        		try {
+                    FileOutputStream fileOut = new FileOutputStream("Farmacia.ser");
+                    ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                    out.writeObject(farmacia);
+                    out.close();
+                    fileOut.close();
+                    System.out.printf("Serialized data foi guardada em Farmacia.ser");
+                } catch (IOException i) {
+                    i.printStackTrace();
+                    farmacia = farmacia_serializada;
+                }
         		Login login = new Login();
         		dispose();
         		login.setVisible(true);
@@ -1125,6 +1158,17 @@ public class Layout extends JFrame implements Variaveis {
         button_7.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
+        		try {
+                    FileOutputStream fileOut = new FileOutputStream("Farmacia.ser");
+                    ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                    out.writeObject(farmacia);
+                    out.close();
+                    fileOut.close();
+                    System.out.printf("Serialized data foi guardada em Farmacia.ser");
+                } catch (IOException i) {
+                    i.printStackTrace();
+                    farmacia = farmacia_serializada;
+                }
         		Login login = new Login();
         		dispose();
         		login.setVisible(true);
@@ -1603,6 +1647,17 @@ public class Layout extends JFrame implements Variaveis {
         button_1.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
+        		try {
+                    FileOutputStream fileOut = new FileOutputStream("Farmacia.ser");
+                    ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                    out.writeObject(farmacia);
+                    out.close();
+                    fileOut.close();
+                    System.out.printf("Serialized data foi guardada em Farmacia.ser");
+                } catch (IOException i) {
+                    i.printStackTrace();
+                    farmacia = farmacia_serializada;
+                }
         		Login login = new Login();
         		dispose();
         		login.setVisible(true);
