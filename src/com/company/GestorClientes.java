@@ -47,21 +47,33 @@ public class GestorClientes implements Serializable {
 
     public Dialog procurarCliente(String nomeCliente, Farmacia farmacia) {
         boolean encontrou = false;
-        if (nomeCliente != null) {
-            for (Cliente cliente : clientes) {
-                if (cliente.getNome().equalsIgnoreCase(nomeCliente)) {
-                    //  System.out.println(nomeCliente);
-                    Relatorio relat = new Relatorio(farmacia.gestorvendas.comprasCliente(cliente), "Costa-Prozelo");
-                    Dialog dialog = new Dialog(relat);
-                    dialog.setVisible(true);
-                    encontrou = true;
-                    return dialog;
-                }
-            }
-        }
-        if (encontrou == false) {
-            JOptionPane.showMessageDialog(null, "Cliente não encontrado na base de dados");
-        }
+        try {
+        	 if (nomeCliente != null) {
+                 for (Cliente cliente : clientes) {
+                     if (cliente.getNome().toLowerCase().equals(nomeCliente.toLowerCase())) {
+                         if(farmacia.gestorvendas.comprasCliente(cliente).size()>0) {
+                         Relatorio relat = new Relatorio(farmacia.gestorvendas.comprasCliente(cliente), "Costa-Prozelo");
+                         Dialog dialog = new Dialog(relat);
+                         dialog.setVisible(true);
+                         encontrou = true;
+                         return dialog;
+                         }
+                         else {
+                        	 JOptionPane.showMessageDialog(null, "O Cliente: "+ cliente.getNome()+", ainda não efectuou compras!");
+                        	 encontrou=true;
+                        	 break;
+                         }
+                     }
+                 }
+             }
+             if (encontrou == false) {
+                 JOptionPane.showMessageDialog(null, "Cliente não encontrado na base de dados");
+             }
+			
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e);
+		}
+       
         return null;
     }
 }

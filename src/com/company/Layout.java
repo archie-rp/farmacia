@@ -43,7 +43,6 @@ public class Layout extends JFrame implements Variaveis {
     private JTextField textQuantidade;
     private JTextField textPreco;
     private JTextField nomeStock;
-    private JTextField validadeStock;
     private JTextField precoStock;
     private boolean editarMedic = false;
     private boolean editarCli = false;
@@ -58,7 +57,7 @@ public class Layout extends JFrame implements Variaveis {
     private JTextField textData_c;
     private JTextField biCliente;
     private JTextField nomeCliente;
-
+    DefaultListModel model = new DefaultListModel<>();
 
     //Criar Armario
     Armario armario = new Armario();
@@ -69,6 +68,23 @@ public class Layout extends JFrame implements Variaveis {
     private JTextField textField;
     private JTextField textField_1;
     private JTable table_4;
+    
+    
+    public DefaultListModel verificarMedicamentos(int nrloja) {
+    
+   
+    for (Medicamento m_ : farmacia.armarios[nrloja].getTodos()) {
+        if (m_.getDataValidade().compareTo(Calendar.getInstance().getTime()) < 0) {
+           
+                model.addElement(m_);
+            
+        }
+
+    }
+	return model;
+    
+    }
+    
 
     public static void main(String[] args) {
 
@@ -90,7 +106,7 @@ public class Layout extends JFrame implements Variaveis {
         });
     }
 
-    public Layout( int nrloja, Farmacia farmacia_serializada) {
+    public Layout(int nrloja, Farmacia farmacia_serializada) {
         //Gestor de Vendas
         GestorVendas gestorvendas = new GestorVendas();
         //Gestor de Clientes
@@ -267,7 +283,7 @@ public class Layout extends JFrame implements Variaveis {
                 stock.setVisible(false);
             }
         });
-        
+
         JPanel panel_16 = new JPanel();
         panel_16.setBounds(0, 0, 764, 23);
         relatorio.add(panel_16);
@@ -277,7 +293,7 @@ public class Layout extends JFrame implements Variaveis {
         gbl_panel_16.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         gbl_panel_16.rowWeights = new double[]{0.0, Double.MIN_VALUE};
         panel_16.setLayout(gbl_panel_16);
-        
+
         JLabel label_13 = new JLabel("Loja:");
         GridBagConstraints gbc_label_13 = new GridBagConstraints();
         gbc_label_13.anchor = GridBagConstraints.EAST;
@@ -285,7 +301,7 @@ public class Layout extends JFrame implements Variaveis {
         gbc_label_13.gridx = 0;
         gbc_label_13.gridy = 0;
         panel_16.add(label_13, gbc_label_13);
-        
+
         JLabel label_14 = new JLabel();
         label_14.setText("Loja 1");
         GridBagConstraints gbc_label_14 = new GridBagConstraints();
@@ -294,7 +310,7 @@ public class Layout extends JFrame implements Variaveis {
         gbc_label_14.gridx = 1;
         gbc_label_14.gridy = 0;
         panel_16.add(label_14, gbc_label_14);
-        
+
         JLabel label_15 = new JLabel("Funcionário:");
         GridBagConstraints gbc_label_15 = new GridBagConstraints();
         gbc_label_15.anchor = GridBagConstraints.EAST;
@@ -302,7 +318,7 @@ public class Layout extends JFrame implements Variaveis {
         gbc_label_15.gridx = 2;
         gbc_label_15.gridy = 0;
         panel_16.add(label_15, gbc_label_15);
-        
+
         JLabel label_16 = new JLabel(farmacia.getFuncionarioNome());
         GridBagConstraints gbc_label_16 = new GridBagConstraints();
         gbc_label_16.fill = GridBagConstraints.HORIZONTAL;
@@ -310,7 +326,7 @@ public class Layout extends JFrame implements Variaveis {
         gbc_label_16.gridx = 3;
         gbc_label_16.gridy = 0;
         panel_16.add(label_16, gbc_label_16);
-        
+
         JLabel label_17 = new JLabel("Tue Jun 05 19:49:43 BST 2018");
         GridBagConstraints gbc_label_17 = new GridBagConstraints();
         gbc_label_17.fill = GridBagConstraints.BOTH;
@@ -342,14 +358,14 @@ public class Layout extends JFrame implements Variaveis {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2) {
-                    Relatorio relat = new Relatorio(farmacia.gestorvendas.getVendas().get(list_3.getSelectedIndex()), "Costa-Prozelo");
+                    Relatorio relat = new Relatorio(farmacia.gestorvendas.getVendas().get(list_3.getSelectedIndex()), farmacias[nrloja], "Costa-Prozelo");
 
                     Dialog dialog = new Dialog(relat);
                     dialog.setVisible(true);
                 }
             }
         });
-    
+
 
         list_3.setBorder(new LineBorder(new Color(0, 0, 0)));
         list_3.setListData(farmacia.gestorvendas.getVendasDia().toArray());
@@ -373,8 +389,8 @@ public class Layout extends JFrame implements Variaveis {
             panel.add(lblViaDeAdministrao_1);
 
             JComboBox comboBox_1 = new JComboBox(vias);
-            
-            
+
+
             comboBox_1.setBounds(10, 52, 159, 20);
             panel.add(comboBox_1);
 
@@ -408,14 +424,14 @@ public class Layout extends JFrame implements Variaveis {
             //Cria a tabela
             //Cria a estrutura e campos representados em cada celula
             scrollPane_Estatisticas.setViewportView(table_1);
-            
+
             JScrollPane scrollPane = new JScrollPane();
             scrollPane.setBounds(572, 363, 530, 278);
             relatorio.add(scrollPane);
-            
+
             JList list_1 = new JList(farmacia.gestorvendas.getVendas().toArray());
             scrollPane.setViewportView(list_1);
-            
+
             JLabel lblRelatoriosDoMs = new JLabel("Relatórios total");
             lblRelatoriosDoMs.setFont(new Font("SansSerif", Font.BOLD, 14));
             lblRelatoriosDoMs.setBounds(582, 344, 182, 16);
@@ -456,7 +472,7 @@ public class Layout extends JFrame implements Variaveis {
         });
         btnRelatorio.setBounds(272, 35, 99, 39);
         main.add(btnRelatorio);
-        
+
         JPanel informacao_geral = new JPanel();
         informacao_geral.setBounds(0, 0, 764, 23);
         main.add(informacao_geral);
@@ -466,24 +482,24 @@ public class Layout extends JFrame implements Variaveis {
         gbl_informacao_geral.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         gbl_informacao_geral.rowWeights = new double[]{0.0, Double.MIN_VALUE};
         informacao_geral.setLayout(gbl_informacao_geral);
-                
-                        JLabel lblNewLabel_1 = new JLabel("Loja:");
-                        GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
-                        gbc_lblNewLabel_1.anchor = GridBagConstraints.EAST;
-                        gbc_lblNewLabel_1.insets = new Insets(0, 0, 0, 5);
-                        gbc_lblNewLabel_1.gridx = 0;
-                        gbc_lblNewLabel_1.gridy = 0;
-                        informacao_geral.add(lblNewLabel_1, gbc_lblNewLabel_1);
-        
-                JLabel textLoja = new JLabel();
-                GridBagConstraints gbc_textLoja = new GridBagConstraints();
-                gbc_textLoja.fill = GridBagConstraints.HORIZONTAL;
-                gbc_textLoja.insets = new Insets(0, 0, 0, 5);
-                gbc_textLoja.gridx = 1;
-                gbc_textLoja.gridy = 0;
-                informacao_geral.add(textLoja, gbc_textLoja);
-                textLoja.setText(farmacias[nrloja]);
-        
+
+        JLabel lblNewLabel_1 = new JLabel("Loja:");
+        GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+        gbc_lblNewLabel_1.anchor = GridBagConstraints.EAST;
+        gbc_lblNewLabel_1.insets = new Insets(0, 0, 0, 5);
+        gbc_lblNewLabel_1.gridx = 0;
+        gbc_lblNewLabel_1.gridy = 0;
+        informacao_geral.add(lblNewLabel_1, gbc_lblNewLabel_1);
+
+        JLabel textLoja = new JLabel();
+        GridBagConstraints gbc_textLoja = new GridBagConstraints();
+        gbc_textLoja.fill = GridBagConstraints.HORIZONTAL;
+        gbc_textLoja.insets = new Insets(0, 0, 0, 5);
+        gbc_textLoja.gridx = 1;
+        gbc_textLoja.gridy = 0;
+        informacao_geral.add(textLoja, gbc_textLoja);
+        textLoja.setText(farmacias[nrloja]);
+
         JLabel lblFuncionrio = new JLabel("Funcionário:");
         GridBagConstraints gbc_lblFuncionrio = new GridBagConstraints();
         gbc_lblFuncionrio.anchor = GridBagConstraints.EAST;
@@ -491,7 +507,7 @@ public class Layout extends JFrame implements Variaveis {
         gbc_lblFuncionrio.gridx = 2;
         gbc_lblFuncionrio.gridy = 0;
         informacao_geral.add(lblFuncionrio, gbc_lblFuncionrio);
-        
+
         JLabel lblNewLabel_7 = new JLabel("");
         GridBagConstraints gbc_lblNewLabel_7 = new GridBagConstraints();
         gbc_lblNewLabel_7.fill = GridBagConstraints.HORIZONTAL;
@@ -500,13 +516,13 @@ public class Layout extends JFrame implements Variaveis {
         gbc_lblNewLabel_7.gridy = 0;
         informacao_geral.add(lblNewLabel_7, gbc_lblNewLabel_7);
         lblNewLabel_7.setText(farmacia.getFuncionarioNome());
-                
-                        JLabel label = new JLabel("" + new Date());
-                        GridBagConstraints gbc_label = new GridBagConstraints();
-                        gbc_label.fill = GridBagConstraints.BOTH;
-                        gbc_label.gridx = 5;
-                        gbc_label.gridy = 0;
-                        informacao_geral.add(label, gbc_label);
+
+        JLabel label = new JLabel("" + new Date());
+        GridBagConstraints gbc_label = new GridBagConstraints();
+        gbc_label.fill = GridBagConstraints.BOTH;
+        gbc_label.gridx = 5;
+        gbc_label.gridy = 0;
+        informacao_geral.add(label, gbc_label);
 
         JButton btnStock = new JButton("Gerir");
         btnStock.addMouseListener(new MouseAdapter() {
@@ -647,12 +663,12 @@ public class Layout extends JFrame implements Variaveis {
         panel.setBounds(20, 222, 408, 292);
         main.add(panel);
         panel.setLayout(null);
-        
+
         JScrollPane scrollPane_6 = new JScrollPane();
         scrollPane_6.setEnabled(false);
         scrollPane_6.setBounds(10, 24, 386, 255);
         panel.add(scrollPane_6);
-        
+
         table_4 = new JTable();
         DefaultTableModel model_meds = new DefaultTableModel(new Object[]{"Nome", "Data", "Receita", "Preço"}, 0);
 
@@ -677,7 +693,7 @@ public class Layout extends JFrame implements Variaveis {
                 stock.setVisible(false);
             }
         });
-        
+
         JPanel panel_15 = new JPanel();
         panel_15.setBounds(0, 0, 764, 23);
         venda.add(panel_15);
@@ -687,7 +703,7 @@ public class Layout extends JFrame implements Variaveis {
         gbl_panel_15.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         gbl_panel_15.rowWeights = new double[]{0.0, Double.MIN_VALUE};
         panel_15.setLayout(gbl_panel_15);
-        
+
         JLabel label_8 = new JLabel("Loja:");
         GridBagConstraints gbc_label_8 = new GridBagConstraints();
         gbc_label_8.anchor = GridBagConstraints.EAST;
@@ -695,7 +711,7 @@ public class Layout extends JFrame implements Variaveis {
         gbc_label_8.gridx = 0;
         gbc_label_8.gridy = 0;
         panel_15.add(label_8, gbc_label_8);
-        
+
         JLabel label_9 = new JLabel();
         label_9.setText("Loja 1");
         GridBagConstraints gbc_label_9 = new GridBagConstraints();
@@ -704,7 +720,7 @@ public class Layout extends JFrame implements Variaveis {
         gbc_label_9.gridx = 1;
         gbc_label_9.gridy = 0;
         panel_15.add(label_9, gbc_label_9);
-        
+
         JLabel label_10 = new JLabel("Funcionário:");
         GridBagConstraints gbc_label_10 = new GridBagConstraints();
         gbc_label_10.anchor = GridBagConstraints.EAST;
@@ -712,7 +728,7 @@ public class Layout extends JFrame implements Variaveis {
         gbc_label_10.gridx = 2;
         gbc_label_10.gridy = 0;
         panel_15.add(label_10, gbc_label_10);
-        
+
         JLabel label_11 = new JLabel(farmacia.getFuncionarioNome());
         GridBagConstraints gbc_label_11 = new GridBagConstraints();
         gbc_label_11.fill = GridBagConstraints.HORIZONTAL;
@@ -720,7 +736,7 @@ public class Layout extends JFrame implements Variaveis {
         gbc_label_11.gridx = 3;
         gbc_label_11.gridy = 0;
         panel_15.add(label_11, gbc_label_11);
-        
+
         JLabel label_12 = new JLabel("Tue Jun 05 19:49:43 BST 2018");
         GridBagConstraints gbc_label_12 = new GridBagConstraints();
         gbc_label_12.fill = GridBagConstraints.BOTH;
@@ -862,8 +878,8 @@ public class Layout extends JFrame implements Variaveis {
 
         try {
             DefaultListModel listModels = new DefaultListModel();
-            for (Venda vend:farmacia.gestorvendas.getVendas()) {
-            	listModels.addElement(vend.getCliente());
+            for (Venda vend : farmacia.gestorvendas.getVendas()) {
+                listModels.addElement(vend.getCliente());
             }
             list_1.setModel(listModels);
         } catch (IndexOutOfBoundsException e) {
@@ -911,7 +927,7 @@ public class Layout extends JFrame implements Variaveis {
                     DefaultTableModel model = new DefaultTableModel(new Object[]{"Nome", "Categoria", "Via de Administração", "Data Validade", "Preço", "Estado"}, 0);
                     //Adiciona os medicamentos na tablela
                     for (Medicamento meds : med) {
-                        model.addRow(new Object[]{meds.getNome(), categorias[meds.getCategoria()], vias[meds.getViaAdmin()], meds.getDataValidade(), meds.getPreco(),estados[meds.getEstado()] });
+                        model.addRow(new Object[]{meds.getNome(), categorias[meds.getCategoria()], vias[meds.getViaAdmin()], meds.getDataValidade(), meds.getPreco(), estados[meds.getEstado()]});
                     }
                     table.setModel(model);
                     scrollPane_2.setViewportView(table);
@@ -958,7 +974,7 @@ public class Layout extends JFrame implements Variaveis {
                 stock.setVisible(false);
             }
         });
-        
+
         JPanel panel_17 = new JPanel();
         panel_17.setBounds(0, 0, 764, 23);
         clientes.add(panel_17);
@@ -968,7 +984,7 @@ public class Layout extends JFrame implements Variaveis {
         gbl_panel_17.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         gbl_panel_17.rowWeights = new double[]{0.0, Double.MIN_VALUE};
         panel_17.setLayout(gbl_panel_17);
-        
+
         JLabel label_18 = new JLabel("Loja:");
         GridBagConstraints gbc_label_18 = new GridBagConstraints();
         gbc_label_18.anchor = GridBagConstraints.EAST;
@@ -976,7 +992,7 @@ public class Layout extends JFrame implements Variaveis {
         gbc_label_18.gridx = 0;
         gbc_label_18.gridy = 0;
         panel_17.add(label_18, gbc_label_18);
-        
+
         JLabel label_19 = new JLabel();
         label_19.setText("Loja 1");
         GridBagConstraints gbc_label_19 = new GridBagConstraints();
@@ -985,7 +1001,7 @@ public class Layout extends JFrame implements Variaveis {
         gbc_label_19.gridx = 1;
         gbc_label_19.gridy = 0;
         panel_17.add(label_19, gbc_label_19);
-        
+
         JLabel label_20 = new JLabel("Funcionário:");
         GridBagConstraints gbc_label_20 = new GridBagConstraints();
         gbc_label_20.anchor = GridBagConstraints.EAST;
@@ -993,7 +1009,7 @@ public class Layout extends JFrame implements Variaveis {
         gbc_label_20.gridx = 2;
         gbc_label_20.gridy = 0;
         panel_17.add(label_20, gbc_label_20);
-        
+
         JLabel label_21 = new JLabel(farmacia.getFuncionarioNome());
         GridBagConstraints gbc_label_21 = new GridBagConstraints();
         gbc_label_21.fill = GridBagConstraints.HORIZONTAL;
@@ -1001,7 +1017,7 @@ public class Layout extends JFrame implements Variaveis {
         gbc_label_21.gridx = 3;
         gbc_label_21.gridy = 0;
         panel_17.add(label_21, gbc_label_21);
-        
+
         JLabel label_22 = new JLabel("Tue Jun 05 19:49:43 BST 2018");
         GridBagConstraints gbc_label_22 = new GridBagConstraints();
         gbc_label_22.fill = GridBagConstraints.BOTH;
@@ -1137,7 +1153,7 @@ public class Layout extends JFrame implements Variaveis {
         gbc_lblBi_2.gridx = 1;
         gbc_lblBi_2.gridy = 1;
         panel_11.add(lblBi_2, gbc_lblBi_2);
-        
+
         JList listClientes = new JList(farmacia.gestorclientes.getClientes().toArray());
 
         biCliente = new JTextField();
@@ -1148,25 +1164,25 @@ public class Layout extends JFrame implements Variaveis {
         gbc_biCliente.gridy = 1;
         panel_11.add(biCliente, gbc_biCliente);
         biCliente.setColumns(10);
-        
-                JButton btnAdicionar_2 = new JButton("Adicionar Cliente");
-                GridBagConstraints gbc_btnAdicionar_2 = new GridBagConstraints();
-                gbc_btnAdicionar_2.insets = new Insets(0, 0, 0, 5);
-                gbc_btnAdicionar_2.gridx = 2;
-                gbc_btnAdicionar_2.gridy = 2;
-                panel_11.add(btnAdicionar_2, gbc_btnAdicionar_2);
-                
-                        btnAdicionar_2.addMouseListener(new MouseAdapter() {
-                            @Override
-                            public void mouseClicked(MouseEvent arg0) {
-                                System.out.println(farmacia.gestorclientes.clientes.size());
-                
-                                Cliente cliente = new Cliente(farmacia.gestorclientes.clientes.size() + 1, nomeCliente.getText(), Integer.parseInt(biCliente.getText()), Calendar.getInstance().getTime());
-                                farmacia.gestorclientes.clientes.add(cliente);
-                
-                                listClientes.setListData(farmacia.gestorclientes.getClientes().toArray());
-                            }
-                        });
+
+        JButton btnAdicionar_2 = new JButton("Adicionar Cliente");
+        GridBagConstraints gbc_btnAdicionar_2 = new GridBagConstraints();
+        gbc_btnAdicionar_2.insets = new Insets(0, 0, 0, 5);
+        gbc_btnAdicionar_2.gridx = 2;
+        gbc_btnAdicionar_2.gridy = 2;
+        panel_11.add(btnAdicionar_2, gbc_btnAdicionar_2);
+
+        btnAdicionar_2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                System.out.println(farmacia.gestorclientes.clientes.size());
+
+                Cliente cliente = new Cliente(farmacia.gestorclientes.clientes.size() + 1, nomeCliente.getText(), Integer.parseInt(biCliente.getText()), Calendar.getInstance().getTime());
+                farmacia.gestorclientes.clientes.add(cliente);
+
+                listClientes.setListData(farmacia.gestorclientes.getClientes().toArray());
+            }
+        });
 
         JPanel panel_7 = new JPanel();
         panel_7.setBorder(new TitledBorder(null, "Detalhes sobre Clientes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -1185,10 +1201,10 @@ public class Layout extends JFrame implements Variaveis {
         JLabel lblNewLabel_3 = new JLabel("Nº de Clientes esta semana:");
         lblNewLabel_3.setBounds(10, 17, 158, 16);
         panel_7.add(lblNewLabel_3);
-        
+
         JLabel lblNewLabel_8 = new JLabel("");
         lblNewLabel_8.setText(String.valueOf(farmacia.gestorclientes.totalClientes()));
-        
+
         lblNewLabel_8.setBounds(365, 40, 55, 16);
         panel_7.add(lblNewLabel_8);
 
@@ -1202,17 +1218,17 @@ public class Layout extends JFrame implements Variaveis {
         scrollPane_5.setBounds(6, 19, 448, 186);
         panel_8.add(scrollPane_5);
 
-      
+
         listClientes.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent arg0) {
-            	
-            	
-                Cliente cli = new Cliente();
-                if(listClientes.getSelectedValue()!=null) {
-                cli = (Cliente) listClientes.getSelectedValue();
 
-                textField.setText(cli.getNome());
-                textField_1.setText(String.valueOf(cli.getBi()));
+
+                Cliente cli = new Cliente();
+                if (listClientes.getSelectedValue() != null) {
+                    cli = (Cliente) listClientes.getSelectedValue();
+
+                    textField.setText(cli.getNome());
+                    textField_1.setText(String.valueOf(cli.getBi()));
                 }
             }
         });
@@ -1317,7 +1333,7 @@ public class Layout extends JFrame implements Variaveis {
                     textField_1.setEditable(false);
 
                     //scrollPane_5.revalidate();
-                   // scrollPane_5.repaint();
+                    // scrollPane_5.repaint();
 
                     //variavel para controlar botao editar
                     editarCli = !editarCli;
@@ -1338,18 +1354,18 @@ public class Layout extends JFrame implements Variaveis {
             @Override
             public void mouseClicked(MouseEvent e) {
 
-            	try {
-                Cliente cliente = new Cliente();
-                cliente = (Cliente) listClientes.getSelectedValue();
-                
-                
-                farmacia.gestorclientes.removerCliente(cliente);
+                try {
+                    Cliente cliente = new Cliente();
+                    cliente = (Cliente) listClientes.getSelectedValue();
 
-               listClientes.setListData(farmacia.gestorclientes.getClientes().toArray());
 
-            	}catch (Exception e1) {
-					// TODO: handle exception
-				}
+                    farmacia.gestorclientes.removerCliente(cliente);
+
+                    listClientes.setListData(farmacia.gestorclientes.getClientes().toArray());
+
+                } catch (Exception e1) {
+                    // TODO: handle exception
+                }
             }
         });
         GridBagConstraints gbc_btnRemover = new GridBagConstraints();
@@ -1371,7 +1387,7 @@ public class Layout extends JFrame implements Variaveis {
                 stock.setVisible(false);
             }
         });
-        
+
         JPanel panel_3 = new JPanel();
         panel_3.setBounds(0, 0, 764, 23);
         stock.add(panel_3);
@@ -1381,7 +1397,7 @@ public class Layout extends JFrame implements Variaveis {
         gbl_panel_3.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         gbl_panel_3.rowWeights = new double[]{0.0, Double.MIN_VALUE};
         panel_3.setLayout(gbl_panel_3);
-        
+
         JLabel label_3 = new JLabel("Loja:");
         GridBagConstraints gbc_label_3 = new GridBagConstraints();
         gbc_label_3.anchor = GridBagConstraints.EAST;
@@ -1389,7 +1405,7 @@ public class Layout extends JFrame implements Variaveis {
         gbc_label_3.gridx = 0;
         gbc_label_3.gridy = 0;
         panel_3.add(label_3, gbc_label_3);
-        
+
         JLabel label_4 = new JLabel();
         label_4.setText("Loja 1");
         GridBagConstraints gbc_label_4 = new GridBagConstraints();
@@ -1398,7 +1414,7 @@ public class Layout extends JFrame implements Variaveis {
         gbc_label_4.gridx = 1;
         gbc_label_4.gridy = 0;
         panel_3.add(label_4, gbc_label_4);
-        
+
         JLabel label_5 = new JLabel("Funcionário:");
         GridBagConstraints gbc_label_5 = new GridBagConstraints();
         gbc_label_5.anchor = GridBagConstraints.EAST;
@@ -1406,7 +1422,7 @@ public class Layout extends JFrame implements Variaveis {
         gbc_label_5.gridx = 2;
         gbc_label_5.gridy = 0;
         panel_3.add(label_5, gbc_label_5);
-        
+
         JLabel label_6 = new JLabel(farmacia.getFuncionarioNome());
         GridBagConstraints gbc_label_6 = new GridBagConstraints();
         gbc_label_6.fill = GridBagConstraints.HORIZONTAL;
@@ -1414,7 +1430,7 @@ public class Layout extends JFrame implements Variaveis {
         gbc_label_6.gridx = 3;
         gbc_label_6.gridy = 0;
         panel_3.add(label_6, gbc_label_6);
-        
+
         JLabel label_7 = new JLabel("Tue Jun 05 19:49:43 BST 2018");
         GridBagConstraints gbc_label_7 = new GridBagConstraints();
         gbc_label_7.fill = GridBagConstraints.BOTH;
@@ -1500,14 +1516,15 @@ public class Layout extends JFrame implements Variaveis {
                 Medicamento m = new Medicamento();
                 if (farmacia.armarios[nrloja].procurarMedicamento(textPesquisarStock.getText()) != null) {
                     m = farmacia.armarios[nrloja].procurarMedicamento(textPesquisarStock.getText());
-                    System.out.print(m.toString());
-                    DefaultListModel model=new DefaultListModel<>();
+                    DefaultListModel model = new DefaultListModel<>();
                     model.addElement(m);
-                    
-                     list_2.setModel(model);
+
+                    list_2.setModel(model);
 
                 } else {
-                    System.out.print("Não existe!");
+
+
+                    JOptionPane.showMessageDialog(null, "O Medicamento: " + textPesquisarStock.getText() + ", não existe na loja!");
                 }
             }
         });
@@ -1516,13 +1533,13 @@ public class Layout extends JFrame implements Variaveis {
 
         JPanel panel_1 = new JPanel();
         panel_1.setBorder(new TitledBorder(null, "Editar: ", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        panel_1.setBounds(641, 355, 358, 270);
+        panel_1.setBounds(641, 355, 398, 270);
         stock.add(panel_1);
 
         GridBagLayout gbl_panel_1 = new GridBagLayout();
-        gbl_panel_1.columnWidths = new int[]{8, 156, 210, 0};
-        gbl_panel_1.rowHeights = new int[]{0, 32, 30, 34, 22, 10, 0, 65, 0};
-        gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
+        gbl_panel_1.columnWidths = new int[]{8, 130, 210, 0};
+        gbl_panel_1.rowHeights = new int[]{0, 32, 30, 34, 22, 10, 34, 65, 0};
+        gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
         gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         panel_1.setLayout(gbl_panel_1);
 
@@ -1590,15 +1607,13 @@ public class Layout extends JFrame implements Variaveis {
         gbc_lblDataValidade_1.gridy = 4;
         panel_1.add(lblDataValidade_1, gbc_lblDataValidade_1);
 
-        validadeStock = new JTextField();
-        validadeStock.setEditable(false);
-        GridBagConstraints gbc_validadeStock = new GridBagConstraints();
-        gbc_validadeStock.insets = new Insets(0, 0, 5, 0);
-        gbc_validadeStock.fill = GridBagConstraints.HORIZONTAL;
-        gbc_validadeStock.gridx = 2;
-        gbc_validadeStock.gridy = 4;
-        panel_1.add(validadeStock, gbc_validadeStock);
-        validadeStock.setColumns(10);
+        JDateChooser dateChooser = new JDateChooser();
+        GridBagConstraints gbc_dateChooser = new GridBagConstraints();
+        gbc_dateChooser.fill = GridBagConstraints.HORIZONTAL;
+        gbc_dateChooser.insets = new Insets(0, 0, 5, 0);
+        gbc_dateChooser.gridx = 2;
+        gbc_dateChooser.gridy = 4;
+        panel_1.add(dateChooser, gbc_dateChooser);
 
         JLabel lblPreo_1 = new JLabel("Preço:");
         GridBagConstraints gbc_lblPreo_1 = new GridBagConstraints();
@@ -1646,6 +1661,7 @@ public class Layout extends JFrame implements Variaveis {
         gbc_rdbtnNewRadioButton_1.gridy = 6;
         panel_1.add(rdbtnNewRadioButton_1, gbc_rdbtnNewRadioButton_1);
         GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+        gbc_btnNewButton.anchor = GridBagConstraints.NORTH;
         gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
         gbc_btnNewButton.gridx = 1;
         gbc_btnNewButton.gridy = 7;
@@ -1654,6 +1670,7 @@ public class Layout extends JFrame implements Variaveis {
         JButton btnApagar = new JButton("Apagar");
 
         GridBagConstraints gbc_btnApagar = new GridBagConstraints();
+        gbc_btnApagar.anchor = GridBagConstraints.NORTH;
         gbc_btnApagar.gridx = 2;
         gbc_btnApagar.gridy = 7;
         panel_1.add(btnApagar, gbc_btnApagar);
@@ -1675,7 +1692,7 @@ public class Layout extends JFrame implements Variaveis {
                     nomeStock.setEditable(true);
                     comboBox.setEnabled(true);
                     comboBox_1.setEnabled(true);
-                    validadeStock.setEditable(true);
+                    dateChooser.setEnabled(true);
                     precoStock.setEditable(true);
                     rdbtnNewRadioButton_1.setEnabled(true);
 
@@ -1690,6 +1707,7 @@ public class Layout extends JFrame implements Variaveis {
                     medic = (Medicamento) list_2.getSelectedValue();
                     medic.setNome(nomeStock.getText());
                     medic.setPreco(Float.parseFloat(precoStock.getText()));
+                    medic.setDataValidade(dateChooser.getDate());
                     medic.setCategoria(comboBox.getSelectedIndex());
                     medic.setViaAdmin(comboBox_1.getSelectedIndex());
                     medic.setReceita(receita);
@@ -1700,7 +1718,7 @@ public class Layout extends JFrame implements Variaveis {
                     nomeStock.setEditable(false);
                     comboBox.setEnabled(false);
                     comboBox_1.setEnabled(false);
-                    validadeStock.setEditable(false);
+                    dateChooser.setEnabled(false);
                     precoStock.setEditable(false);
                     rdbtnNewRadioButton_1.setEnabled(false);
 
@@ -1713,6 +1731,8 @@ public class Layout extends JFrame implements Variaveis {
                 }
             }
         });
+
+
         scrollPane_1.setViewportView(list_2);
         scrollPane_1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane_1.setBounds(32, 373, 588, 276);
@@ -1787,20 +1807,51 @@ public class Layout extends JFrame implements Variaveis {
         stock.add(btnAdicionarGerir);
 
         JLabel lblAdicionarMedicamento = new JLabel("Adicionar Medicamento:");
-        lblAdicionarMedicamento.setFont(new Font("Tahoma", Font.BOLD, 12));
+        lblAdicionarMedicamento.setFont(new Font("SansSerif", Font.BOLD, 12));
         lblAdicionarMedicamento.setBounds(31, 88, 158, 16);
         stock.add(lblAdicionarMedicamento);
-        
+
         JButton btnNewButton_3 = new JButton("Mostrar Todos");
         btnNewButton_3.addMouseListener(new MouseAdapter() {
-        	@Override
-        	public void mouseClicked(MouseEvent e) {
-        		list_2.setListData(farmacia.armarios[nrloja].getTodos().toArray());
-        		
-        	}
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                list_2.setListData(farmacia.armarios[nrloja].getTodos().toArray());
+
+            }
         });
         btnNewButton_3.setBounds(465, 335, 120, 28);
         stock.add(btnNewButton_3);
+
+      
+
+        JLabel lblNewLabel_9 = new JLabel("Medicamentos fora de validade:");
+        lblNewLabel_9.setFont(new Font("SansSerif", Font.BOLD, 12));
+        lblNewLabel_9.setBounds(641, 88, 244, 16);
+        stock.add(lblNewLabel_9);
+
+        JButton btnNewButton_4 = new JButton("Remover todos");
+        btnNewButton_4.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent arg0) {
+        		try {
+        			Medicamento medic=new Medicamento();
+                    for (int i = 0; i < model.size(); i++) {
+                    	medic=(Medicamento) model.get(i);
+                    	farmacia.armarios[nrloja].getArmarioGaveta(medic.getCategoria(),medic.getViaAdmin()).removerTodosMedicamento(medic.getNome());
+                    	
+                               
+                    }
+                    model.removeAllElements();
+
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+        		
+        	}
+        });
+       
+        btnNewButton_4.setBounds(688, 310, 120, 28);
+        stock.add(btnNewButton_4);
         btnAdicionarGerir.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
@@ -1818,13 +1869,30 @@ public class Layout extends JFrame implements Variaveis {
 
                         list_2.setListData(modelMedic);
 
+                        DefaultListModel model = new DefaultListModel<>();
+                        for (Medicamento m_ : farmacia.armarios[nrloja].getTodos()) {
+                            if (m_.getDataValidade().compareTo(Calendar.getInstance().getTime()) < 0) {
+                                if (model.contains(m_)) {
+
+                                } else {
+                                    model.addElement(m_);
+                                }
+                            }
+                        }
+
                     } catch (Exception e) {
                         JOptionPane.showMessageDialog(null, "Erro ao introduzir medicamento");
                     }
                 }
             }
         });
+        JList list = new JList();
+        list.setBounds(641, 114, 456, 178);
+       
 
+
+        list.setModel(verificarMedicamentos(nrloja));
+        stock.add(list);
         //Evento Selection change e mostra os valores detalhados no form ao lado
         list_2.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent arg0) {
@@ -1835,7 +1903,9 @@ public class Layout extends JFrame implements Variaveis {
                 rdbtnNewRadioButton_1.setSelected(s.isReceita());
 
 
-                validadeStock.setText(s.getDataValidade().toString());
+                dateChooser.setDate(s.getDataValidade());
+
+
                 precoStock.setText(String.valueOf(s.getPreco()));
 
                 //Coloca as texbox BLOQUEADAS
@@ -1843,7 +1913,7 @@ public class Layout extends JFrame implements Variaveis {
                 comboBox.setEnabled(false);
                 comboBox_1.setEnabled(false);
 
-                validadeStock.setEditable(false);
+                dateChooser.setEnabled(false);
                 precoStock.setEditable(false);
                 //variavel para controlar botao editar
                 editarMedic = false;

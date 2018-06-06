@@ -65,6 +65,17 @@ public class Gaveta implements Serializable {
         }
         return false;
     }
+    
+    public boolean removerTodosMedicamento(String nome) {
+        for (Medicamento medicamento : medicamentos) {
+        
+            if (medicamento != null && medicamento.getNome() == nome) {
+                medicamentos.remove(medicamento);
+                return true;
+            }
+        }
+        return false;
+    }
 
     public boolean updateMedicamento(Medicamento novo_med) {
         for (Medicamento medicamento : medicamentos) {

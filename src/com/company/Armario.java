@@ -167,18 +167,42 @@ public class Armario implements Serializable {
         }
     }
 
-    public Medicamento procurarMedicamento(String nome) {
-        Medicamento medic =new Medicamento();
+
+    public boolean removerTodosMedicamento(Medicamento medic) {
+        int back_quantidade = this.quantidade;
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
-               try {
-                if (armario[i][j].getMedicamentos().size() >0) {
-                    medic = armario[i][j].getMedicamento(nome);
-                    if(medic!= null){
-                        return medic;
-                    }
+                if (armario[i][j] != null && armario[i][j].removerMedicamento(medic.getNome().toString())) {
+                	while(this.quantidade>0) {
+                    this.quantidade--;
+                	}
+                    //medic = null;
                 }
-               }catch (NullPointerException e){}
+            }
+        }
+        if (back_quantidade > this.quantidade) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+
+
+    public Medicamento procurarMedicamento(String nome) {
+        Medicamento medic = new Medicamento();
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 10; j++) {
+                try {
+                    if (armario[i][j].getMedicamentos().size() > 0) {
+                        medic = armario[i][j].getMedicamento(nome);
+                        if (medic != null) {
+                            return medic;
+                        }
+                    }
+                } catch (NullPointerException e) {
+                }
             }
         }
         return medic;
@@ -191,4 +215,6 @@ public class Armario implements Serializable {
         }
         return false;
     }
+
+
 }
