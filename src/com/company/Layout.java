@@ -1959,13 +1959,13 @@ public class Layout extends JFrame implements Variaveis {
             @Override
             public void mouseClicked(MouseEvent arg0) {
                 if (!editarMedic) {
-                    
-                        Medicamento medic = new Medicamento();
-                     
-                        medic = (Medicamento) list_2.getSelectedValue();                     
-                   
-                        if(medic!=null) {
-                        	   btnNewButton.setText("Gravar");
+
+                    Medicamento medic = new Medicamento();
+
+                    medic = (Medicamento) list_2.getSelectedValue();
+
+                    if (medic != null) {
+                        btnNewButton.setText("Gravar");
                         //Ativar os componentes para editar
                         nomeStock.setEditable(true);
                         comboBox.setEnabled(true);
@@ -1975,52 +1975,51 @@ public class Layout extends JFrame implements Variaveis {
                         rdbtnNewRadioButton_1.setEnabled(true);
 
 
-
                         //variavel para controlar botao editar
                         editarMedic = !editarMedic;
-                        }else {
-                        	JOptionPane.showMessageDialog(null, "Não selecionou um medicamento");
-                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Não selecionou um medicamento");
+                    }
 
                 } else {
-                	
+
                     boolean receita = rdbtnNewRadioButton_1.isSelected();
 
                     try {
-                       
+
 
                         Medicamento medic = new Medicamento();
                         medic = (Medicamento) list_2.getSelectedValue();
-                        if(medic!=null) {
-                        medic.setNome(nomeStock.getText());
-                        medic.setPreco(Float.parseFloat(precoStock.getText()));
-                        medic.setDataValidade(dateChooser.getDate());
-                        medic.setCategoria(comboBox.getSelectedIndex());
-                        medic.setViaAdmin(comboBox_1.getSelectedIndex());
-                        medic.setReceita(receita);
+                        if (medic != null) {
+                            medic.setNome(nomeStock.getText());
+                            medic.setPreco(Float.parseFloat(precoStock.getText()));
+                            medic.setDataValidade(dateChooser.getDate());
+                            medic.setCategoria(comboBox.getSelectedIndex());
+                            medic.setViaAdmin(comboBox_1.getSelectedIndex());
+                            medic.setReceita(receita);
 
-                        farmacia.armarios[nrloja].atualizarMedicamento(medic);
+                            farmacia.armarios[nrloja].atualizarMedicamento(medic);
 
-                        //Desativar os componentes de edição
-                        nomeStock.setEditable(false);
-                        comboBox.setEnabled(false);
-                        comboBox_1.setEnabled(false);
-                        dateChooser.setEnabled(false);
-                        precoStock.setEditable(false);
-                        rdbtnNewRadioButton_1.setEnabled(false);
+                            //Desativar os componentes de edição
+                            nomeStock.setEditable(false);
+                            comboBox.setEnabled(false);
+                            comboBox_1.setEnabled(false);
+                            dateChooser.setEnabled(false);
+                            precoStock.setEditable(false);
+                            rdbtnNewRadioButton_1.setEnabled(false);
 
-                        scrollPane_1.revalidate();
-                        scrollPane_1.repaint();
+                            scrollPane_1.revalidate();
+                            scrollPane_1.repaint();
 
-                        //variavel para controlar botao editar
-                        editarMedic = !editarMedic;
-                        btnNewButton.setText("Editar");
-                        }else {
-                        	JOptionPane.showMessageDialog(null, "Não selecionou um medicamento");
+                            //variavel para controlar botao editar
+                            editarMedic = !editarMedic;
+                            btnNewButton.setText("Editar");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Não selecionou um medicamento");
                         }
-                     
+
                     } catch (Exception e) {
-                    	System.out.println(e.getMessage());
+                        System.out.println(e.getMessage());
 
                     }
                     list_2.setListData(farmacia.armarios[nrloja].getTodos().toArray());
