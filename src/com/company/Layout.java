@@ -710,7 +710,10 @@ public class Layout extends JFrame implements Variaveis {
         	public void mouseClicked(MouseEvent arg0) {
         		try {
         	    Venda venda_ = farmacia.gestorvendas.procurarCod_venda(farmacia.medicamentos_pendentes.get(table_2.getSelectedRow()).getCod_compra());
-        	    venda_.darBaixa(farmacia.medicamentos_pendentes.get(table_2.getSelectedRow()));
+        	    System.out.println("cod:"+farmacia.medicamentos_pendentes.get(table_2.getSelectedRow()).getCod_compra()+"Venda" + venda_.toString());
+        	    System.out.println("MEd:"+ farmacia.medicamentos_pendentes.get(table_2.getSelectedRow()).toString());
+        	    //venda_.darBaixa(farmacia.medicamentos_pendentes.get(table_2.getSelectedRow()));
+
         	    System.out.println("Baixa de medicamentos com sucesso!");
                 }catch (NullPointerException a){
         		    System.out.println("Sem medicamentos selecionados!");

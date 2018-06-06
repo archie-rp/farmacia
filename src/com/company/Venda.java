@@ -36,6 +36,28 @@ public class Venda  implements Variaveis,Serializable {
         this.desconto = 0;
     }
 
+
+    public Venda(String funcionario){
+        this.cod_venda = 0;
+        this.cliente = new Cliente();
+        this.data_compra = new Date();
+        this.medicamentos = new ArrayList<Medicamento>();
+        this.formaPagamento=0;
+        this.funcionario=new Funcionario(funcionario);
+        this.dataCompra=new Date();
+    }
+
+    public Venda(){
+        this.cod_venda = 0;
+        this.cliente = new Cliente();
+        this.data_compra = new Date();
+        this.medicamentos = new ArrayList<Medicamento>();
+        this.formaPagamento=0;
+        this.funcionario=new Funcionario();
+        this.dataCompra=new Date();
+    }
+
+
     public void setCod_venda(int cod_venda) {
         this.cod_venda = cod_venda;
     }
@@ -53,7 +75,7 @@ public class Venda  implements Variaveis,Serializable {
     }
 
     public void setMedicamento(Medicamento medicamento){
-        this.medicamentos.add(medicamento);
+        this.medicamentos.add(new Medicamento(medicamento));
     }
 
     public Date getData_compra() {
@@ -109,26 +131,6 @@ public class Venda  implements Variaveis,Serializable {
 
     public int getFormaPagamento() {
         return formaPagamento;
-    }
-
-    public Venda(String funcionario){
-        this.cod_venda = 0;
-        this.cliente = new Cliente();
-        this.data_compra = new Date();
-        this.medicamentos = new ArrayList<Medicamento>();
-        this.formaPagamento=0;
-        this.funcionario=new Funcionario(funcionario);
-        this.dataCompra=new Date();
-    }
-
-    public Venda(){
-        this.cod_venda = 0;
-        this.cliente = new Cliente();
-        this.data_compra = new Date();
-        this.medicamentos = new ArrayList<Medicamento>();
-        this.formaPagamento=0;
-        this.funcionario=new Funcionario();
-        this.dataCompra=new Date();
     }
 
     public ArrayList<Medicamento> getMedicamentos() {

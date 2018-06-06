@@ -40,6 +40,27 @@ public class Medicamento implements Variaveis,Serializable {
 
     }
 
+    public Medicamento(Medicamento medicamento) {
+        this.id = medicamento.getId();
+        this.nome = medicamento.getNome();
+        this.preco = medicamento.getPreco();
+        this.Categoria = medicamento.getCategoria();
+        this.ViaAdmin = medicamento.getViaAdmin();
+        this.dataValidade = medicamento.getDataValidade();
+        this.estado=medicamento.getEstado();
+    }
+
+    public Medicamento() {
+        this.id = 0;
+        this.nome = "";
+        this.preco = 0;
+        this.Categoria = 0;
+        this.ViaAdmin = 0;
+        this.dataValidade = new Date();
+        this.estado=1;
+    }
+
+
     public boolean isReceita() {
         return receita;
     }
@@ -78,26 +99,6 @@ public class Medicamento implements Variaveis,Serializable {
 
     public void setDataValidade(Date dataValidade) {
         this.dataValidade = dataValidade;
-    }
-
-    public Medicamento(Medicamento medicamento) {
-        this.id = medicamento.getId();
-        this.nome = medicamento.getNome();
-        this.preco = medicamento.getPreco();
-        this.Categoria = medicamento.getCategoria();
-        this.ViaAdmin = medicamento.getViaAdmin();
-        this.dataValidade = medicamento.getDataValidade();
-        this.estado=1;
-    }
-
-    public Medicamento() {
-        this.id = 0;
-        this.nome = "";
-        this.preco = 0;
-        this.Categoria = 0;
-        this.ViaAdmin = 0;
-        this.dataValidade = new Date();
-        this.estado=1;
     }
 
 

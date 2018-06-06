@@ -165,12 +165,12 @@ public class Importar extends JDialog implements Variaveis {
 							m.setCod_compra(farmacia.gestorvendas.vendas.size()+1);
 						    for(int i =0;i <nr_quantidade;i++){
 						        if (m.getEstado() !=0) {
-									farmacia.setMedicamento_pendente(m);
+									farmacia.adicionarMedicamento_pendente(m);
 									venda_temporaria.setMedicamento(m);
 									farmacia.armarios[nrloja].removerMedicamento(m);
 								}else{
 									farmacia.armarios[loja_m].removerMedicamento(m);
-									farmacia.setMedicamento_pendente(m);
+									farmacia.adicionarMedicamento_pendente(m);
 									venda_temporaria.setMedicamento(m);
 								}
 						    }
