@@ -143,6 +143,8 @@ public class criarVenda extends JDialog implements Variaveis{
 			}
 
 			JTextArea text_nome_procurar = new JTextArea();
+			text_nome_procurar.setLineWrap(true);
+			text_nome_procurar.setWrapStyleWord(true);
 			text_nome_procurar.setTabSize(5);
 			panel.add(text_nome_procurar, "3, 1, 3, 1, fill, default");
 

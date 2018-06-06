@@ -138,11 +138,11 @@ public class Venda  implements Variaveis,Serializable {
     @Override
     public String toString() {
     	StringBuilder string =new StringBuilder();
-    	string.append(cod_venda+" ");
-    	string.append(cliente+" ");
+    	string.append("cod:" + cod_venda+" ");
+    	string.append("Cliente" + cliente+" ");
         DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
         String formattedDate = df.format(this.data_compra);
-    	string.append(formattedDate);
+    	string.append("Data:" + formattedDate);
     	return string.toString();
     }
 
@@ -165,4 +165,11 @@ public class Venda  implements Variaveis,Serializable {
         return IVA;
     }
 
+    public boolean darBaixa(Medicamento medicamento){
+        if (medicamentos.contains(medicamento)){
+            medicamentos.get(medicamentos.indexOf(medicamento)).setEstado(1);
+            return true;
+        }
+        else{return false;}
+    }
 }

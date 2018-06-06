@@ -279,6 +279,7 @@ public class Layout extends JFrame implements Variaveis {
         panel_16.setLayout(gbl_panel_16);
         
         JLabel label_13 = new JLabel("Loja:");
+        label_13.setFont(new Font("Tahoma", Font.BOLD, 11));
         GridBagConstraints gbc_label_13 = new GridBagConstraints();
         gbc_label_13.anchor = GridBagConstraints.EAST;
         gbc_label_13.insets = new Insets(0, 0, 0, 5);
@@ -287,7 +288,7 @@ public class Layout extends JFrame implements Variaveis {
         panel_16.add(label_13, gbc_label_13);
         
         JLabel label_14 = new JLabel();
-        label_14.setText("Loja 1");
+        label_14.setText(farmacias[nrloja]);
         GridBagConstraints gbc_label_14 = new GridBagConstraints();
         gbc_label_14.fill = GridBagConstraints.HORIZONTAL;
         gbc_label_14.insets = new Insets(0, 0, 0, 5);
@@ -296,6 +297,7 @@ public class Layout extends JFrame implements Variaveis {
         panel_16.add(label_14, gbc_label_14);
         
         JLabel label_15 = new JLabel("Funcionário:");
+        label_15.setFont(new Font("Tahoma", Font.BOLD, 11));
         GridBagConstraints gbc_label_15 = new GridBagConstraints();
         gbc_label_15.anchor = GridBagConstraints.EAST;
         gbc_label_15.insets = new Insets(0, 0, 0, 5);
@@ -311,7 +313,24 @@ public class Layout extends JFrame implements Variaveis {
         gbc_label_16.gridy = 0;
         panel_16.add(label_16, gbc_label_16);
         
+        JButton button_6 = new JButton("Terminar Sessão");
+        button_6.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		 dispose();
+         	    Login login = new Login();
+         	    login.setVisible(true);
+        	}
+        });
+        button_6.setForeground(Color.RED);
+        GridBagConstraints gbc_button_6 = new GridBagConstraints();
+        gbc_button_6.insets = new Insets(0, 0, 0, 5);
+        gbc_button_6.gridx = 4;
+        gbc_button_6.gridy = 0;
+        panel_16.add(button_6, gbc_button_6);
+        
         JLabel label_17 = new JLabel("Tue Jun 05 19:49:43 BST 2018");
+        label_17.setFont(new Font("Tahoma", Font.BOLD, 11));
         GridBagConstraints gbc_label_17 = new GridBagConstraints();
         gbc_label_17.fill = GridBagConstraints.BOTH;
         gbc_label_17.gridx = 5;
@@ -468,6 +487,7 @@ public class Layout extends JFrame implements Variaveis {
         informacao_geral.setLayout(gbl_informacao_geral);
                 
                         JLabel lblNewLabel_1 = new JLabel("Loja:");
+                        lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 11));
                         GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
                         gbc_lblNewLabel_1.anchor = GridBagConstraints.EAST;
                         gbc_lblNewLabel_1.insets = new Insets(0, 0, 0, 5);
@@ -485,6 +505,7 @@ public class Layout extends JFrame implements Variaveis {
                 textLoja.setText(farmacias[nrloja]);
         
         JLabel lblFuncionrio = new JLabel("Funcionário:");
+        lblFuncionrio.setFont(new Font("Tahoma", Font.BOLD, 11));
         GridBagConstraints gbc_lblFuncionrio = new GridBagConstraints();
         gbc_lblFuncionrio.anchor = GridBagConstraints.EAST;
         gbc_lblFuncionrio.insets = new Insets(0, 0, 0, 5);
@@ -500,8 +521,25 @@ public class Layout extends JFrame implements Variaveis {
         gbc_lblNewLabel_7.gridy = 0;
         informacao_geral.add(lblNewLabel_7, gbc_lblNewLabel_7);
         lblNewLabel_7.setText(farmacia.getFuncionarioNome());
+                        
+                        JButton btnNewButton_4 = new JButton("Terminar Sessão");
+                        GridBagConstraints gbc_btnNewButton_4 = new GridBagConstraints();
+                        gbc_btnNewButton_4.insets = new Insets(0, 0, 0, 5);
+                        gbc_btnNewButton_4.gridx = 4;
+                        gbc_btnNewButton_4.gridy = 0;
+                        informacao_geral.add(btnNewButton_4, gbc_btnNewButton_4);
+                        btnNewButton_4.addMouseListener(new MouseAdapter() {
+                        	@Override
+                        	public void mouseClicked(MouseEvent e) {
+                        	    dispose();
+                        	    Login login = new Login();
+                        	    login.setVisible(true);
+                        	}
+                        });
+                        btnNewButton_4.setForeground(Color.RED);
                 
                         JLabel label = new JLabel("" + new Date());
+                        label.setFont(new Font("Tahoma", Font.BOLD, 11));
                         GridBagConstraints gbc_label = new GridBagConstraints();
                         gbc_label.fill = GridBagConstraints.BOTH;
                         gbc_label.gridx = 5;
@@ -611,6 +649,7 @@ public class Layout extends JFrame implements Variaveis {
         panel_14.setLayout(null);
 
         JScrollPane scrollPane_4 = new JScrollPane();
+
         table_2 = new JTable();
         scrollPane_4.setViewportView(table_2);
         try {
@@ -629,17 +668,31 @@ public class Layout extends JFrame implements Variaveis {
         } catch (Exception e1) {
             //model_d;
         }
-        scrollPane_4.setBounds(10, 23, 345, 210);
+        scrollPane_4.setBounds(10, 23, 345, 183);
         panel_14.add(scrollPane_4);
-
-
         table_2.setBorder(new LineBorder(new Color(0, 0, 0)));
-
-        try {
-
-        } catch (Exception e) {
-
-        }
+        
+        JButton btnDarBaixa = new JButton("Dar Baixa");
+        btnDarBaixa.setBounds(266, 210, 89, 23);
+        panel_14.add(btnDarBaixa);
+        btnDarBaixa.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+                try{
+        	    Venda venda = farmacia.gestorvendas.procurarCod_venda(farmacia.medicamentos_pendentes.get(table_2.getSelectedRow()).getCod_compra());
+        	    System.out.println(venda.toString());
+        	    if (venda.darBaixa(farmacia.medicamentos_pendentes.get(table_2.getSelectedRow()))){
+        	     System.out.println("Baixa com sucesso!");
+        	     farmacia.medicamentos_pendentes.remove(table_2.getSelectedRow());
+                }else{
+        	        System.out.println("Erro a dar baixa!");
+                }
+                }catch (ArrayIndexOutOfBoundsException a) {
+                    System.out.println("Nenhuma opçao selecionada!");
+                }
+        	}
+        });
+      
 
         JPanel panel = new JPanel();
         panel.setToolTipText("");
@@ -689,6 +742,7 @@ public class Layout extends JFrame implements Variaveis {
         panel_15.setLayout(gbl_panel_15);
         
         JLabel label_8 = new JLabel("Loja:");
+        label_8.setFont(new Font("Tahoma", Font.BOLD, 11));
         GridBagConstraints gbc_label_8 = new GridBagConstraints();
         gbc_label_8.anchor = GridBagConstraints.EAST;
         gbc_label_8.insets = new Insets(0, 0, 0, 5);
@@ -697,7 +751,7 @@ public class Layout extends JFrame implements Variaveis {
         panel_15.add(label_8, gbc_label_8);
         
         JLabel label_9 = new JLabel();
-        label_9.setText("Loja 1");
+        label_9.setText(farmacias[nrloja]);
         GridBagConstraints gbc_label_9 = new GridBagConstraints();
         gbc_label_9.fill = GridBagConstraints.HORIZONTAL;
         gbc_label_9.insets = new Insets(0, 0, 0, 5);
@@ -706,6 +760,7 @@ public class Layout extends JFrame implements Variaveis {
         panel_15.add(label_9, gbc_label_9);
         
         JLabel label_10 = new JLabel("Funcionário:");
+        label_10.setFont(new Font("Tahoma", Font.BOLD, 11));
         GridBagConstraints gbc_label_10 = new GridBagConstraints();
         gbc_label_10.anchor = GridBagConstraints.EAST;
         gbc_label_10.insets = new Insets(0, 0, 0, 5);
@@ -721,7 +776,24 @@ public class Layout extends JFrame implements Variaveis {
         gbc_label_11.gridy = 0;
         panel_15.add(label_11, gbc_label_11);
         
+        JButton button_5 = new JButton("Terminar Sessão");
+        button_5.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		 dispose();
+         	    Login login = new Login();
+         	    login.setVisible(true);
+        	}
+        });
+        button_5.setForeground(Color.RED);
+        GridBagConstraints gbc_button_5 = new GridBagConstraints();
+        gbc_button_5.insets = new Insets(0, 0, 0, 5);
+        gbc_button_5.gridx = 4;
+        gbc_button_5.gridy = 0;
+        panel_15.add(button_5, gbc_button_5);
+        
         JLabel label_12 = new JLabel("Tue Jun 05 19:49:43 BST 2018");
+        label_12.setFont(new Font("Tahoma", Font.BOLD, 11));
         GridBagConstraints gbc_label_12 = new GridBagConstraints();
         gbc_label_12.fill = GridBagConstraints.BOTH;
         gbc_label_12.gridx = 5;
@@ -808,43 +880,56 @@ public class Layout extends JFrame implements Variaveis {
         panel_10.setBorder(new TitledBorder(null, "Estado Compra", TitledBorder.LEADING, TitledBorder.TOP, null, null));
         panel_10.setBounds(558, 325, 211, 187);
         venda.add(panel_10);
-        panel_10.setLayout(null);
-
-        JLabel lblSubtotal = new JLabel("Sub-Total:");
-        lblSubtotal.setBounds(6, 18, 86, 16);
-        panel_10.add(lblSubtotal);
-
-        JLabel lblIva = new JLabel("IVA:");
-        lblIva.setBounds(6, 43, 55, 16);
-        panel_10.add(lblIva);
-
-        JLabel lblDesconto = new JLabel("Desconto:");
-        lblDesconto.setBounds(6, 71, 86, 16);
-        panel_10.add(lblDesconto);
-
-        JLabel lblTotal = new JLabel("Total:");
-        lblTotal.setBounds(6, 99, 55, 16);
-        panel_10.add(lblTotal);
-
-        textSub_total = new JTextField();
-        textSub_total.setBounds(84, 16, 114, 20);
-        panel_10.add(textSub_total);
-        textSub_total.setColumns(10);
-
-        textIVA = new JTextField();
-        textIVA.setBounds(84, 41, 114, 20);
-        panel_10.add(textIVA);
-        textIVA.setColumns(10);
-
-        textDesconto = new JTextField();
-        textDesconto.setBounds(84, 69, 114, 20);
-        panel_10.add(textDesconto);
-        textDesconto.setColumns(10);
-
-        textTotal = new JTextField();
-        textTotal.setBounds(84, 99, 114, 20);
-        panel_10.add(textTotal);
-        textTotal.setColumns(10);
+        panel_10.setLayout(new FormLayout(new ColumnSpec[] {
+        		FormSpecs.RELATED_GAP_COLSPEC,
+        		FormSpecs.DEFAULT_COLSPEC,
+        		FormSpecs.RELATED_GAP_COLSPEC,
+        		ColumnSpec.decode("right:default:grow"),
+        		FormSpecs.RELATED_GAP_COLSPEC,
+        		FormSpecs.DEFAULT_COLSPEC,},
+        	new RowSpec[] {
+        		FormSpecs.RELATED_GAP_ROWSPEC,
+        		FormSpecs.DEFAULT_ROWSPEC,
+        		FormSpecs.RELATED_GAP_ROWSPEC,
+        		FormSpecs.DEFAULT_ROWSPEC,
+        		FormSpecs.RELATED_GAP_ROWSPEC,
+        		FormSpecs.DEFAULT_ROWSPEC,
+        		FormSpecs.RELATED_GAP_ROWSPEC,
+        		FormSpecs.DEFAULT_ROWSPEC,
+        		FormSpecs.RELATED_GAP_ROWSPEC,
+        		FormSpecs.DEFAULT_ROWSPEC,}));
+        
+                JLabel lblSubtotal = new JLabel("Sub-Total:");
+                lblSubtotal.setFont(new Font("Tahoma", Font.BOLD, 11));
+                panel_10.add(lblSubtotal, "4, 4");
+                        
+                                textSub_total = new JTextField();
+                                panel_10.add(textSub_total, "6, 4");
+                                textSub_total.setColumns(10);
+                
+                        JLabel lblIva = new JLabel("IVA:");
+                        lblIva.setFont(new Font("Tahoma", Font.BOLD, 11));
+                        panel_10.add(lblIva, "4, 6");
+                                
+                                        textIVA = new JTextField();
+                                        panel_10.add(textIVA, "6, 6");
+                                        textIVA.setColumns(10);
+                        
+                                JLabel lblDesconto = new JLabel("Desconto:");
+                                lblDesconto.setFont(new Font("Tahoma", Font.BOLD, 11));
+                                panel_10.add(lblDesconto, "4, 8");
+                                        
+                                                textDesconto = new JTextField();
+                                                panel_10.add(textDesconto, "6, 8");
+                                                textDesconto.setColumns(10);
+                                
+                                        JLabel lblTotal = new JLabel("Total:");
+                                        lblTotal.setFont(new Font("Tahoma", Font.BOLD, 11));
+                                        panel_10.add(lblTotal, "4, 10");
+                                        
+                                                textTotal = new JTextField();
+                                                panel_10.add(textTotal, "6, 10");
+                                                textTotal.setColumns(10);
 
 
         JPanel panel_4 = new JPanel();
@@ -871,6 +956,7 @@ public class Layout extends JFrame implements Variaveis {
         }
 
         JLabel lblNome = new JLabel("Nome");
+        lblNome.setFont(new Font("Tahoma", Font.BOLD, 11));
         lblNome.setBounds(6, 22, 46, 14);
         panel_9.add(lblNome);
 
@@ -880,6 +966,7 @@ public class Layout extends JFrame implements Variaveis {
         txtNome_.setColumns(10);
 
         JLabel lblBi = new JLabel("Nrº Contribuinte");
+        lblBi.setFont(new Font("Tahoma", Font.BOLD, 11));
         lblBi.setBounds(6, 71, 199, 14);
         panel_9.add(lblBi);
 
@@ -889,6 +976,7 @@ public class Layout extends JFrame implements Variaveis {
         textNR.setColumns(10);
 
         JLabel lblNewLabel_4 = new JLabel("Data Criacao Conta");
+        lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 11));
         lblNewLabel_4.setBounds(6, 129, 199, 14);
         panel_9.add(lblNewLabel_4);
 
@@ -970,6 +1058,7 @@ public class Layout extends JFrame implements Variaveis {
         panel_17.setLayout(gbl_panel_17);
         
         JLabel label_18 = new JLabel("Loja:");
+        label_18.setFont(new Font("Tahoma", Font.BOLD, 11));
         GridBagConstraints gbc_label_18 = new GridBagConstraints();
         gbc_label_18.anchor = GridBagConstraints.EAST;
         gbc_label_18.insets = new Insets(0, 0, 0, 5);
@@ -978,7 +1067,7 @@ public class Layout extends JFrame implements Variaveis {
         panel_17.add(label_18, gbc_label_18);
         
         JLabel label_19 = new JLabel();
-        label_19.setText("Loja 1");
+        label_19.setText(farmacias[nrloja]);
         GridBagConstraints gbc_label_19 = new GridBagConstraints();
         gbc_label_19.fill = GridBagConstraints.HORIZONTAL;
         gbc_label_19.insets = new Insets(0, 0, 0, 5);
@@ -987,6 +1076,7 @@ public class Layout extends JFrame implements Variaveis {
         panel_17.add(label_19, gbc_label_19);
         
         JLabel label_20 = new JLabel("Funcionário:");
+        label_20.setFont(new Font("Tahoma", Font.BOLD, 11));
         GridBagConstraints gbc_label_20 = new GridBagConstraints();
         gbc_label_20.anchor = GridBagConstraints.EAST;
         gbc_label_20.insets = new Insets(0, 0, 0, 5);
@@ -1002,7 +1092,24 @@ public class Layout extends JFrame implements Variaveis {
         gbc_label_21.gridy = 0;
         panel_17.add(label_21, gbc_label_21);
         
+        JButton button_7 = new JButton("Terminar Sessão");
+        button_7.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		 dispose();
+         	    Login login = new Login();
+         	    login.setVisible(true);
+        	}
+        });
+        button_7.setForeground(Color.RED);
+        GridBagConstraints gbc_button_7 = new GridBagConstraints();
+        gbc_button_7.insets = new Insets(0, 0, 0, 5);
+        gbc_button_7.gridx = 4;
+        gbc_button_7.gridy = 0;
+        panel_17.add(button_7, gbc_button_7);
+        
         JLabel label_22 = new JLabel("Tue Jun 05 19:49:43 BST 2018");
+        label_22.setFont(new Font("Tahoma", Font.BOLD, 11));
         GridBagConstraints gbc_label_22 = new GridBagConstraints();
         gbc_label_22.fill = GridBagConstraints.BOTH;
         gbc_label_22.gridx = 5;
@@ -1383,6 +1490,7 @@ public class Layout extends JFrame implements Variaveis {
         panel_3.setLayout(gbl_panel_3);
         
         JLabel label_3 = new JLabel("Loja:");
+        label_3.setFont(new Font("Tahoma", Font.BOLD, 11));
         GridBagConstraints gbc_label_3 = new GridBagConstraints();
         gbc_label_3.anchor = GridBagConstraints.EAST;
         gbc_label_3.insets = new Insets(0, 0, 0, 5);
@@ -1391,7 +1499,7 @@ public class Layout extends JFrame implements Variaveis {
         panel_3.add(label_3, gbc_label_3);
         
         JLabel label_4 = new JLabel();
-        label_4.setText("Loja 1");
+        label_4.setText(farmacias[nrloja]);
         GridBagConstraints gbc_label_4 = new GridBagConstraints();
         gbc_label_4.fill = GridBagConstraints.HORIZONTAL;
         gbc_label_4.insets = new Insets(0, 0, 0, 5);
@@ -1400,6 +1508,7 @@ public class Layout extends JFrame implements Variaveis {
         panel_3.add(label_4, gbc_label_4);
         
         JLabel label_5 = new JLabel("Funcionário:");
+        label_5.setFont(new Font("Tahoma", Font.BOLD, 11));
         GridBagConstraints gbc_label_5 = new GridBagConstraints();
         gbc_label_5.anchor = GridBagConstraints.EAST;
         gbc_label_5.insets = new Insets(0, 0, 0, 5);
@@ -1415,7 +1524,24 @@ public class Layout extends JFrame implements Variaveis {
         gbc_label_6.gridy = 0;
         panel_3.add(label_6, gbc_label_6);
         
+        JButton button_1 = new JButton("Terminar Sessão");
+        button_1.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		 dispose();
+         	    Login login = new Login();
+         	    login.setVisible(true);
+        	}
+        });
+        button_1.setForeground(Color.RED);
+        GridBagConstraints gbc_button_1 = new GridBagConstraints();
+        gbc_button_1.insets = new Insets(0, 0, 0, 5);
+        gbc_button_1.gridx = 4;
+        gbc_button_1.gridy = 0;
+        panel_3.add(button_1, gbc_button_1);
+        
         JLabel label_7 = new JLabel("Tue Jun 05 19:49:43 BST 2018");
+        label_7.setFont(new Font("Tahoma", Font.BOLD, 11));
         GridBagConstraints gbc_label_7 = new GridBagConstraints();
         gbc_label_7.fill = GridBagConstraints.BOTH;
         gbc_label_7.gridx = 5;
