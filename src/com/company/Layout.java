@@ -72,14 +72,13 @@ public class Layout extends JFrame implements Variaveis {
     
     public DefaultListModel verificarMedicamentos(int nrloja) {
     
-   
+    	model.removeAllElements();
     for (Medicamento m_ : farmacia.armarios[nrloja].getTodos()) {
+    	
         if (m_.getDataValidade().compareTo(Calendar.getInstance().getTime()) < 0) {
            
-                model.addElement(m_);
-            
+                model.addElement(m_);            
         }
-
     }
 	return model;
     
@@ -1841,6 +1840,7 @@ public class Layout extends JFrame implements Variaveis {
                     	
                                
                     }
+                    list_2.setListData(farmacia.armarios[nrloja].getTodos().toArray());
                     model.removeAllElements();
 
                 } catch (Exception e) {
@@ -1868,6 +1868,7 @@ public class Layout extends JFrame implements Variaveis {
                         Object[] modelMedic = farmacia.armarios[nrloja].getTodos().toArray();
 
                         list_2.setListData(modelMedic);
+                        verificarMedicamentos(nrloja);
 
                         DefaultListModel model = new DefaultListModel<>();
                         for (Medicamento m_ : farmacia.armarios[nrloja].getTodos()) {
