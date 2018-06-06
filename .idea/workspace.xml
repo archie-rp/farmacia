@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dad6e76c-2b0d-4a65-b9ce-0623d3102971" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/com/company/Armario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Armario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Layout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Layout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -98,8 +97,8 @@
       <file leaf-file-name="Layout.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/Layout.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="2019" column="78" lean-forward="true" selection-start-line="2019" selection-start-column="78" selection-end-line="2019" selection-end-column="78" />
+            <state relative-caret-position="359">
+              <caret line="2030" lean-forward="true" selection-start-line="2030" selection-end-line="2030" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#7337#8007#0" expanded="true" />
@@ -350,10 +349,10 @@
   </component>
   <component name="PhpDebugGeneral" listening_started="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1003" />
-    <option name="height" value="795" />
+    <option name="x" value="-10" />
+    <option name="y" value="-10" />
+    <option name="width" value="1004" />
+    <option name="height" value="796" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -707,21 +706,7 @@
       <workItem from="1528240394958" duration="631000" />
       <workItem from="1528243946145" duration="25000" />
       <workItem from="1528283870116" duration="7366000" />
-      <workItem from="1528294671494" duration="10165000" />
-    </task>
-    <task id="LOCAL-00015" summary="Atualizações&#10;* Readme atualizado&#10;* Formulário para introduzir medicamento">
-      <created>1526391050813</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1526391050813</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Atualizações&#10;* Gerir já remove medicamento, melhorei as Exception para tratar os NullExceptions na classe Layout e Armario">
-      <created>1526592202656</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1526592202656</updated>
+      <workItem from="1528294671494" duration="11015000" />
     </task>
     <task id="LOCAL-00017" summary="Readme Atualizado">
       <created>1526592424024</created>
@@ -1052,11 +1037,25 @@
       <option name="project" value="LOCAL" />
       <updated>1528305777638</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="Correções nas listagens e alertas">
+      <created>1528308037306</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1528308037306</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Correções nas listagens e alertas (2)">
+      <created>1528308078651</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1528308078652</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102460000" />
+    <option name="totallyTimeSpent" value="103310000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1840" height="1002" extended-state="6" />
@@ -1072,7 +1071,7 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32918552" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4983127" visible="true" weight="0.3205575" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4983127" weight="0.3205575" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32903227" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
@@ -1103,8 +1102,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Farmacia com 3 armarios (com erro)" />
-    <MESSAGE value="Farmacia com 3 armarios, a funcionar e com serializaçao!" />
     <MESSAGE value="Farmacia.ser" />
     <MESSAGE value="Farmacia.ser novo" />
     <MESSAGE value="Relatórios já apresenta os medicamentos por compra se cliente tiver mais que uma compra" />
@@ -1128,7 +1125,9 @@
     <MESSAGE value="Atualizar totais de cliente ao introduzir ou remover clientes" />
     <MESSAGE value="Duplo clique para todos os relatorios" />
     <MESSAGE value="Avisos no painel gerir a alertar que não foram selecionados medicamentos para editar ou remover (evita os nulls)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Avisos no painel gerir a alertar que não foram selecionados medicamentos para editar ou remover (evita os nulls)" />
+    <MESSAGE value="Correções nas listagens e alertas" />
+    <MESSAGE value="Correções nas listagens e alertas (2)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correções nas listagens e alertas (2)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1141,7 +1140,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/company/Layout.java</url>
-          <line>1984</line>
+          <line>1988</line>
           <properties />
           <option name="timeStamp" value="47" />
         </line-breakpoint>
@@ -1535,8 +1534,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Layout.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="2019" column="78" lean-forward="true" selection-start-line="2019" selection-start-column="78" selection-end-line="2019" selection-end-column="78" />
+        <state relative-caret-position="359">
+          <caret line="2030" lean-forward="true" selection-start-line="2030" selection-end-line="2030" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#7337#8007#0" expanded="true" />

@@ -33,6 +33,8 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 
 import com.jgoodies.forms.layout.FormSpecs;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
 
 public class Layout extends JFrame implements Variaveis {
     private JPanel main;
@@ -282,6 +284,9 @@ public class Layout extends JFrame implements Variaveis {
                 relatorio.setVisible(false);
                 clientes.setVisible(true);
                 stock.setVisible(false);
+                
+                //listClientes
+                
             }
         });
 
@@ -1020,16 +1025,9 @@ public class Layout extends JFrame implements Variaveis {
         //Define qual a Model vai estar a representar na jList
 
         JList list_1 = new JList();
+       
 
-        try {
-            DefaultListModel listModels = new DefaultListModel();
-            for (Venda vend : farmacia.gestorvendas.getVendas()) {
-                listModels.addElement(vend.getCliente());
-            }
-            list_1.setModel(listModels);
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("Sem vendas");
-        }
+        
 
         JLabel lblNome = new JLabel("Nome");
         lblNome.setBounds(6, 22, 46, 14);
@@ -2357,5 +2355,27 @@ public class Layout extends JFrame implements Variaveis {
         list_1_1.setBounds(457, 311, 307, 233);
         relatorio.add(list_1_1);
 
+        try {
+            DefaultListModel listModels = new DefaultListModel();
+            for (Venda vend : farmacia.gestorvendas.getVendas()) {
+                listModels.addElement(vend.getCliente());
+                listClientes.setListData(farmacia.gestorclientes.getClientes().toArray());
+            }
+            list_1.setModel(listModels);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Sem vendas");
+        }
+        
+        
+        list_1.addPropertyChangeListener(new PropertyChangeListener() {
+        	public void propertyChange(PropertyChangeEvent arg0) {
+        		   listClientes.setListData(farmacia.gestorclientes.getClientes().toArray());
+        	}
+        });
     }
+    
+    
+    
+    
+    
 }
