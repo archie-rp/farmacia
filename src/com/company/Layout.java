@@ -30,7 +30,7 @@ import java.awt.event.WindowEvent;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
-import com.sun.xml.internal.bind.v2.util.FatalAdapter;
+
 import com.jgoodies.forms.layout.FormSpecs;
 
 public class Layout extends JFrame implements Variaveis {
