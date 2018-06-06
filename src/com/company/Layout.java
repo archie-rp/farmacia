@@ -225,7 +225,7 @@ public class Layout extends JFrame implements Variaveis {
         });
 
         getContentPane().setLayout(new CardLayout(0, 0));
-        setBounds(100, 100, 830, 594);
+        setBounds(100, 100, 830, 624);
 
         JPanel main = new JPanel();
         getContentPane().add(main, "name_2347007504240");
@@ -1773,7 +1773,7 @@ public class Layout extends JFrame implements Variaveis {
 
         JPanel panel_1 = new JPanel();
         panel_1.setBorder(new TitledBorder(null, "Editar: ", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        panel_1.setBounds(471, 360, 303, 288);
+        panel_1.setBounds(471, 342, 303, 212);
         stock.add(panel_1);
 
         GridBagLayout gbl_panel_1 = new GridBagLayout();
