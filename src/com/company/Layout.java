@@ -30,6 +30,7 @@ import java.awt.event.WindowEvent;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
+import com.sun.xml.internal.bind.v2.util.FatalAdapter;
 import com.jgoodies.forms.layout.FormSpecs;
 
 public class Layout extends JFrame implements Variaveis {
@@ -391,6 +392,8 @@ public class Layout extends JFrame implements Variaveis {
         try {
 
             JList list = new JList();
+            
+            list.setListData(farmacia.gestorvendas.getVendasSemana().toArray());
             list.setBorder(new LineBorder(new Color(0, 0, 0)));
             list.setBounds(457, 123, 307, 150);
             relatorio.add(list);
@@ -1309,7 +1312,7 @@ public class Layout extends JFrame implements Variaveis {
         panel_7.setBounds(509, 91, 249, 144);
         clientes.add(panel_7);
         GridBagLayout gbl_panel_7 = new GridBagLayout();
-        gbl_panel_7.columnWidths = new int[]{0, 0, 0};
+        gbl_panel_7.columnWidths = new int[]{0, 47, 0};
         gbl_panel_7.rowHeights = new int[]{0, 0, 0, 0};
         gbl_panel_7.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
         gbl_panel_7.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
@@ -1322,6 +1325,16 @@ public class Layout extends JFrame implements Variaveis {
                 gbc_lblNewLabel_3.gridy = 0;
                 panel_7.add(lblNewLabel_3, gbc_lblNewLabel_3);
                 lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 11));
+                        
+                        JLabel lblNewLabel_10 = new JLabel("");
+                        GridBagConstraints gbc_lblNewLabel_10 = new GridBagConstraints();
+                        gbc_lblNewLabel_10.anchor = GridBagConstraints.WEST;
+                        gbc_lblNewLabel_10.insets = new Insets(0, 0, 5, 0);
+                        gbc_lblNewLabel_10.gridx = 1;
+                        gbc_lblNewLabel_10.gridy = 0;
+                        panel_7.add(lblNewLabel_10, gbc_lblNewLabel_10);
+                        
+                        lblNewLabel_10.setText(String.valueOf(farmacia.gestorclientes.totalClientesSemana()));
                 
                         JLabel lblEsteMs = new JLabel("Nº Clientes este Mês:");
                         GridBagConstraints gbc_lblEsteMs = new GridBagConstraints();
@@ -1330,6 +1343,16 @@ public class Layout extends JFrame implements Variaveis {
                         gbc_lblEsteMs.gridy = 1;
                         panel_7.add(lblEsteMs, gbc_lblEsteMs);
                         lblEsteMs.setFont(new Font("Tahoma", Font.BOLD, 11));
+                                
+                                JLabel lblNewLabel_11 = new JLabel("");
+                                GridBagConstraints gbc_lblNewLabel_11 = new GridBagConstraints();
+                                lblNewLabel_11.setText(String.valueOf(farmacia.gestorclientes.totalClientesMes()));
+                                
+                                gbc_lblNewLabel_11.anchor = GridBagConstraints.WEST;
+                                gbc_lblNewLabel_11.insets = new Insets(0, 0, 5, 0);
+                                gbc_lblNewLabel_11.gridx = 1;
+                                gbc_lblNewLabel_11.gridy = 1;
+                                panel_7.add(lblNewLabel_11, gbc_lblNewLabel_11);
                         
                                 JLabel lblTotalClientes = new JLabel("Total Clientes: ");
                                 GridBagConstraints gbc_lblTotalClientes = new GridBagConstraints();
@@ -1338,13 +1361,14 @@ public class Layout extends JFrame implements Variaveis {
                                 gbc_lblTotalClientes.gridy = 2;
                                 panel_7.add(lblTotalClientes, gbc_lblTotalClientes);
                                 lblTotalClientes.setFont(new Font("Tahoma", Font.BOLD, 11));
-                                
-                                        JLabel lblNewLabel_8 = new JLabel("");
-                                        GridBagConstraints gbc_lblNewLabel_8 = new GridBagConstraints();
-                                        gbc_lblNewLabel_8.gridx = 1;
-                                        gbc_lblNewLabel_8.gridy = 2;
-                                        panel_7.add(lblNewLabel_8, gbc_lblNewLabel_8);
-                                        lblNewLabel_8.setText(String.valueOf(farmacia.gestorclientes.totalClientes()));
+                                        
+                                                JLabel lblNewLabel_8 = new JLabel("");
+                                                GridBagConstraints gbc_lblNewLabel_8 = new GridBagConstraints();
+                                                gbc_lblNewLabel_8.anchor = GridBagConstraints.WEST;
+                                                gbc_lblNewLabel_8.gridx = 1;
+                                                gbc_lblNewLabel_8.gridy = 2;
+                                                panel_7.add(lblNewLabel_8, gbc_lblNewLabel_8);
+                                                lblNewLabel_8.setText(String.valueOf(farmacia.gestorclientes.totalClientes()));
 
         JPanel panel_8 = new JPanel();
         panel_8.setBorder(new TitledBorder(null, "Clientes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
