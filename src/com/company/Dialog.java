@@ -12,7 +12,9 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Dialog extends JDialog implements Variaveis {
 
@@ -99,9 +101,12 @@ public class Dialog extends JDialog implements Variaveis {
             gbc_lblDataCompra.gridx = 2;
             gbc_lblDataCompra.gridy = 3;
             contentPanel.add(lblDataCompra, gbc_lblDataCompra);
+            
+            DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
+            String formattedDate = df.format(relatorio.getVenda().getDataCompra());
 
-            JLabel lblNewLabel_3 = new JLabel(relatorio.getVenda().getDataCompra().toString());
-
+            JLabel lblNewLabel_3 = new JLabel();
+lblNewLabel_3.setText(formattedDate);
 
             GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
             gbc_lblNewLabel_3.insets = new Insets(0, 0, 0, 5);
@@ -111,16 +116,16 @@ public class Dialog extends JDialog implements Variaveis {
             contentPanel.add(lblNewLabel_3, gbc_lblNewLabel_3);
 
 
-            if (relatorio.getVendas().size() < 2) {
-                JLabel lblNewLabel_2 = new JLabel("Muitas Datas");
+          /*  if (relatorio.getVendas().size() < 2) {
+              //  JLabel lblNewLabel_2 = new JLabel("Muitas Datas");
             } else {
-                JLabel lblNewLabel_2 = new JLabel(relatorio.getVenda().getData_compra().toString());
-                GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
-                gbc_lblNewLabel_2.gridx = 3;
-                gbc_lblNewLabel_2.gridy = 3;
-                contentPanel.add(lblNewLabel_2, gbc_lblNewLabel_2);
+              //  JLabel lblNewLabel_2 = new JLabel(relatorio.getVenda().getData_compra().toString());
+             //   GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
+             //   gbc_lblNewLabel_2.gridx = 3;
+             //   gbc_lblNewLabel_2.gridy = 3;
+              //  contentPanel.add(lblNewLabel_2, gbc_lblNewLabel_2);
             }
-
+*/
         }
         {
             JPanel buttonPane = new JPanel();
@@ -184,7 +189,9 @@ public class Dialog extends JDialog implements Variaveis {
                                     receita = "Sem necessidade de receita";
                                 }
 
-                                model_d.addRow(new Object[]{m.getNome(), categorias[m.getCategoria()], vias[m.getViaAdmin()], m.getPreco(), estados[m.getEstado()], receita, m.getDataValidade()});
+                                DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
+                                String formattedDate = df.format(m.getDataValidade());
+                                model_d.addRow(new Object[]{m.getNome(), categorias[m.getCategoria()], vias[m.getViaAdmin()], m.getPreco(), estados[m.getEstado()], receita, formattedDate});
                                 table.setModel(model_d);
                             } else {
                                 JOptionPane.showMessageDialog(null, "O cliente ainda não efectuou compras!");
@@ -198,7 +205,9 @@ public class Dialog extends JDialog implements Variaveis {
                             if (array.get(i) != null) {
                                 Venda m = new Venda();
                                 m = (Venda) array.get(i);
-                                model_d.addRow(new Object[]{m.getCod_venda(), m.getDataCompra(), m.getFuncionario().getNome(), m.getPreco_total()});
+                                DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
+                                String formattedDate = df.format(m.getDataCompra());
+                                model_d.addRow(new Object[]{m.getCod_venda(), formattedDate, m.getFuncionario().getNome(), m.getPreco_total()});
                                 table.setModel(model_d);
                                 btnNewButton.setVisible(true);
                             }
