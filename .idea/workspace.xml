@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dad6e76c-2b0d-4a65-b9ce-0623d3102971" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Dialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Dialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/GestorClientes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/GestorClientes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Layout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Layout.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -73,15 +70,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Layout.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Layout.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Layout.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="1445" column="53" selection-start-line="1445" selection-start-column="53" selection-end-line="1445" selection-end-column="53" />
+            <state relative-caret-position="403">
+              <caret line="226" column="13" selection-start-line="226" selection-start-column="13" selection-end-line="226" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#7347#8017#0" expanded="true" />
-                <element signature="e#8016#8017#0" expanded="true" />
+                <element signature="e#7348#8045#0" expanded="true" />
+                <element signature="e#8044#8045#0" expanded="true" />
                 <element signature="e#9113#9445#0" expanded="true" />
                 <element signature="e#9444#9445#0" expanded="true" />
                 <element signature="e#9613#10007#0" expanded="true" />
@@ -179,20 +176,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Integer.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/lang/Integer.java">
+      <file leaf-file-name="Importar.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/Importar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="661" selection-start-line="661" selection-end-line="661" />
+            <state relative-caret-position="422">
+              <caret line="160" selection-start-line="160" selection-end-line="160" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Login.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Login.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/Login.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2584">
+            <state relative-caret-position="469">
               <caret line="164" selection-start-line="164" selection-end-line="164" />
+              <folding>
+                <element signature="e#4833#6101#0" expanded="true" />
+                <element signature="e#6100#6101#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -291,10 +292,10 @@
   </component>
   <component name="PhpDebugGeneral" listening_started="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="1004" />
-    <option name="height" value="796" />
+    <option name="x" value="-11" />
+    <option name="y" value="-11" />
+    <option name="width" value="1005" />
+    <option name="height" value="797" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -539,14 +540,7 @@
       <workItem from="1528243946145" duration="25000" />
       <workItem from="1528283870116" duration="7366000" />
       <workItem from="1528294671494" duration="11015000" />
-      <workItem from="1528316104053" duration="2847000" />
-    </task>
-    <task id="LOCAL-00018" summary="Readme Atualizado">
-      <created>1526592480931</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1526592480931</updated>
+      <workItem from="1528316104053" duration="3714000" />
     </task>
     <task id="LOCAL-00019" summary="Readme Atualizado">
       <created>1526593368171</created>
@@ -884,15 +878,21 @@
       <option name="project" value="LOCAL" />
       <updated>1528316452398</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Ultimos retoques do layout do relatório&#10;&#10;Validação de dados das textbox, popups adequadas com o problema(introduza numeros, campos em branco)&#10;Pesquisa de cliente já devolve cliente por bi ou por nome">
+      <created>1528320376917</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1528320376917</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106157000" />
+    <option name="totallyTimeSpent" value="107024000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1840" height="1002" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -935,7 +935,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Farmacia.ser novo" />
     <MESSAGE value="Relatórios já apresenta os medicamentos por compra se cliente tiver mais que uma compra" />
     <MESSAGE value="Pesquisa por medicamentos já retorna medicamento certo" />
     <MESSAGE value="Ja Procura Medicamentos (Fix) por {Hugo}!" />
@@ -960,7 +959,8 @@
     <MESSAGE value="Correções nas listagens e alertas" />
     <MESSAGE value="Correções nas listagens e alertas (2)" />
     <MESSAGE value="Ao inserir um cliente atraves do painel de compras já adiciona automaticamente na lista de todos os clientes&#10;&#10;fix inserir cliente se não coloca-se contribuinte" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ao inserir um cliente atraves do painel de compras já adiciona automaticamente na lista de todos os clientes&#10;&#10;fix inserir cliente se não coloca-se contribuinte" />
+    <MESSAGE value="Ultimos retoques do layout do relatório&#10;&#10;Validação de dados das textbox, popups adequadas com o problema(introduza numeros, campos em branco)&#10;Pesquisa de cliente já devolve cliente por bi ou por nome" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ultimos retoques do layout do relatório&#10;&#10;Validação de dados das textbox, popups adequadas com o problema(introduza numeros, campos em branco)&#10;Pesquisa de cliente já devolve cliente por bi ou por nome" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -973,7 +973,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/company/Layout.java</url>
-          <line>1994</line>
+          <line>1995</line>
           <properties />
           <option name="timeStamp" value="47" />
         </line-breakpoint>
@@ -1139,13 +1139,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Importar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2414">
-          <caret line="165" column="41" selection-start-line="165" selection-start-column="41" selection-end-line="165" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Funcionario.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="359">
@@ -1256,30 +1249,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Login.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2584">
-          <caret line="164" selection-start-line="164" selection-end-line="164" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/AWTEventMulticaster.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4216">
           <caret line="277" selection-start-line="277" selection-end-line="277" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Medicamento.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="100" selection-start-line="100" selection-end-line="100" />
-          <folding>
-            <element signature="e#1142#1143#0" expanded="true" />
-            <element signature="e#1172#1173#0" expanded="true" />
-            <element signature="e#1221#1222#0" expanded="true" />
-            <element signature="e#1265#1266#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1300,13 +1273,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/lang/Integer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="661" selection-start-line="661" selection-end-line="661" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Cliente.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
@@ -1322,14 +1288,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/lang/Integer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="769" selection-start-line="769" selection-end-line="769" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Importar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="160" selection-start-line="160" selection-end-line="160" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Medicamento.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="100" selection-start-line="100" selection-end-line="100" />
+          <folding>
+            <element signature="e#1142#1143#0" expanded="true" />
+            <element signature="e#1172#1173#0" expanded="true" />
+            <element signature="e#1221#1222#0" expanded="true" />
+            <element signature="e#1265#1266#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Layout.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="1445" column="53" selection-start-line="1445" selection-start-column="53" selection-end-line="1445" selection-end-column="53" />
+        <state relative-caret-position="403">
+          <caret line="226" column="13" selection-start-line="226" selection-start-column="13" selection-end-line="226" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7347#8017#0" expanded="true" />
-            <element signature="e#8016#8017#0" expanded="true" />
+            <element signature="e#7348#8045#0" expanded="true" />
+            <element signature="e#8044#8045#0" expanded="true" />
             <element signature="e#9113#9445#0" expanded="true" />
             <element signature="e#9444#9445#0" expanded="true" />
             <element signature="e#9613#10007#0" expanded="true" />
@@ -1422,6 +1415,17 @@
             <element signature="e#99780#99781#0" expanded="true" />
             <element signature="e#99979#100419#0" expanded="true" />
             <element signature="e#100418#100419#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="164" selection-start-line="164" selection-end-line="164" />
+          <folding>
+            <element signature="e#4833#6101#0" expanded="true" />
+            <element signature="e#6100#6101#0" expanded="true" />
           </folding>
         </state>
       </provider>
