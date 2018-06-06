@@ -89,7 +89,7 @@ public class Layout extends JFrame implements Variaveis {
     public static void main(String[] args) {
 
         try {
-            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Throwable e) {
             System.out.println(e.getMessage());
         }
@@ -403,6 +403,17 @@ public class Layout extends JFrame implements Variaveis {
         try {
 
             JList list = new JList();
+            list.addMouseListener(new MouseAdapter() {
+            	@Override
+            	public void mouseClicked(MouseEvent e) {
+            		 if (e.getClickCount() == 2) {
+                         Relatorio relat = new Relatorio(farmacia.gestorvendas.getVendas().get(list_3.getSelectedIndex()), farmacias[nrloja], "Costa-Prozelo");
+
+                         Dialog dialog = new Dialog(relat);
+                         dialog.setVisible(true);
+                     }
+            	}
+            });
             
             list.setListData(farmacia.gestorvendas.getVendasSemana().toArray());
             list.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -1579,6 +1590,10 @@ public class Layout extends JFrame implements Variaveis {
                             farmacia.gestorclientes.removerCliente(cliente);
 
                             listClientes.setListData(farmacia.gestorclientes.getClientes().toArray());
+                            
+                            lblNewLabel_10.setText(String.valueOf(farmacia.gestorclientes.totalClientesSemana()));
+                            lblNewLabel_11.setText(String.valueOf(farmacia.gestorclientes.totalClientesMes()));
+                            lblNewLabel_8.setText(String.valueOf(farmacia.gestorclientes.totalClientes()));
 
                         } catch (Exception e1) {
                             // TODO: handle exception
@@ -2293,6 +2308,18 @@ public class Layout extends JFrame implements Variaveis {
         relatorio.add(button_14);
         
                     JList list_1_1 = new JList(farmacia.gestorvendas.getVendas().toArray());
+                    list_1_1.addMouseListener(new MouseAdapter() {
+                    	@Override
+                    	public void mouseClicked(MouseEvent e) {
+                    		
+                    		 if (e.getClickCount() == 2) {
+                                 Relatorio relat = new Relatorio(farmacia.gestorvendas.getVendas().get(list_3.getSelectedIndex()), farmacias[nrloja], "Costa-Prozelo");
+
+                                 Dialog dialog = new Dialog(relat);
+                                 dialog.setVisible(true);
+                             }
+                    	}
+                    });
                     list_1_1.setBorder(new LineBorder(new Color(0, 0, 0)));
                     list_1_1.setBounds(457, 311, 307, 233);
                     relatorio.add(list_1_1);
