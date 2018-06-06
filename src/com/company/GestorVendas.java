@@ -84,7 +84,7 @@ public class GestorVendas implements Serializable {
         Venda vendas_ = new Venda();
         for (Venda venda : vendas) {
             System.out.println(venda.getCod_venda());
-            if (venda.getCod_venda() == codigo_venda){
+            if (venda.getCod_venda() == codigo_venda) {
                 vendas_ = venda;
             }
         }
@@ -93,35 +93,94 @@ public class GestorVendas implements Serializable {
 
     public ArrayList<Venda> getVendasDia() {
         ArrayList<Venda> vendas1 = new ArrayList<>();
-        Date data = Calendar.getInstance().getTime();
 
-        SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
         for (Venda v_ : this.vendas) {
-            try {
-                if (sdf.format(v_.getDataCompra()).equals(sdf.format(data))) {
+
+            Date max = new Date();
+            Date min = Calendar.getInstance().getTime();
+            Date d = v_.getDataCompra();
+
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(Calendar.getInstance().getTime());
+            cal.add(Calendar.DATE, 0);
+            max = cal.getTime();
+
+            Calendar cal1 = Calendar.getInstance();
+            cal1.setTime(Calendar.getInstance().getTime());
+            cal1.add(Calendar.DATE, -1);
+            min = cal1.getTime();
+
+
+            if (d.compareTo(min) > 0 && d.compareTo(max) < 0) {
+                try {
                     vendas1.add(v_);
+
+                } catch (Exception e) {
+                    System.out.print(e.getMessage());
                 }
-            } catch (Exception e) {
-                System.out.print(e.getMessage());
             }
         }
         return vendas1;
     }
 
+
     public ArrayList<Venda> getVendasSemana() {
         ArrayList<Venda> vendas1 = new ArrayList<>();
-        Date data = Calendar.getInstance().getTime();
-        // data-7;
-        for (Venda v_ : this.vendas) {
-            System.out.println(data + " " + v_.getDataCompra());
 
-            try {
-                if (v_.getDataCompra().compareTo(data) == 0) {
-                    System.out.print(v_.getDataCompra().compareTo(data));
+        for (Venda v_ : this.vendas) {
+
+            Date max = new Date();
+            Date min = Calendar.getInstance().getTime();
+            Date d = v_.getDataCompra();
+
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(Calendar.getInstance().getTime());
+            cal.add(Calendar.DATE, 7);
+            max = cal.getTime();
+
+            Calendar cal1 = Calendar.getInstance();
+            cal1.setTime(Calendar.getInstance().getTime());
+            cal1.add(Calendar.DATE, -1);
+            min = cal1.getTime();
+            System.out.println(min + " " + max);
+            System.out.println("Minimo" + d.compareTo(min) + " maximo" + d.compareTo(max));
+            if (d.compareTo(min) > 0 && d.compareTo(max) < 0) {
+                try {
                     vendas1.add(v_);
+                } catch (Exception e) {
+                    System.out.print(e.getMessage());
                 }
-            } catch (Exception e) {
-                System.out.print(e.getMessage());
+            }
+        }
+        return vendas1;
+    }
+
+    public ArrayList<Venda> getVendasMes() {
+        ArrayList<Venda> vendas1 = new ArrayList<>();
+
+        for (Venda v_ : this.vendas) {
+
+            Date max = new Date();
+            Date min = Calendar.getInstance().getTime();
+            Date d = v_.getDataCompra();
+
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(Calendar.getInstance().getTime());
+            cal.add(Calendar.DATE, 30);
+            max = cal.getTime();
+
+            Calendar cal1 = Calendar.getInstance();
+            cal1.setTime(Calendar.getInstance().getTime());
+            cal1.add(Calendar.DATE, -1);
+            min = cal1.getTime();
+            System.out.println(min + " " + max);
+            System.out.println("Minimo" + d.compareTo(min) + " maximo" + d.compareTo(max));
+            if (d.compareTo(min) > 0 && d.compareTo(max) < 0) {
+                try {
+                    vendas1.add(v_);
+                } catch (Exception e) {
+                    System.out.print(e.getMessage());
+                }
             }
         }
         return vendas1;
