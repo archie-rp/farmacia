@@ -1947,17 +1947,25 @@ public class Layout extends JFrame implements Variaveis {
         //Inicializar o Scroll Pane para termos barra de scroll
         JScrollPane scrollPane_1 = new JScrollPane();
 
+        JList list = new JList();
+        list.setBorder(new LineBorder(new Color(0, 0, 0)));
+        list.setBounds(458, 115, 316, 178);
+
+
+        list.setModel(verificarMedicamentos(nrloja));
+        stock.add(list);
+
         btnNewButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
                 if (!editarMedic) {
-
-
-                    if (list_2.getSelectedValue() != null) {
+                    
                         Medicamento medic = new Medicamento();
-                        btnNewButton.setText("Gravar");
-                        medic = (Medicamento) list_2.getSelectedValue();
-
+                     
+                        medic = (Medicamento) list_2.getSelectedValue();                     
+                   
+                        if(medic!=null) {
+                        	   btnNewButton.setText("Gravar");
                         //Ativar os componentes para editar
                         nomeStock.setEditable(true);
                         comboBox.setEnabled(true);
@@ -1966,41 +1974,57 @@ public class Layout extends JFrame implements Variaveis {
                         precoStock.setEditable(true);
                         rdbtnNewRadioButton_1.setEnabled(true);
 
+
+
                         //variavel para controlar botao editar
                         editarMedic = !editarMedic;
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Não selecionou nenhum medicamento");
-
-                    }
+                        }else {
+                        	JOptionPane.showMessageDialog(null, "Não selecionou um medicamento");
+                        }
 
                 } else {
+                	
                     boolean receita = rdbtnNewRadioButton_1.isSelected();
 
-                    Medicamento medic = new Medicamento();
-                    medic = (Medicamento) list_2.getSelectedValue();
-                    medic.setNome(nomeStock.getText());
-                    medic.setPreco(Float.parseFloat(precoStock.getText()));
-                    medic.setDataValidade(dateChooser.getDate());
-                    medic.setCategoria(comboBox.getSelectedIndex());
-                    medic.setViaAdmin(comboBox_1.getSelectedIndex());
-                    medic.setReceita(receita);
+                    try {
+                       
 
-                    farmacia.armarios[nrloja].atualizarMedicamento(medic);
+                        Medicamento medic = new Medicamento();
+                        medic = (Medicamento) list_2.getSelectedValue();
+                        if(medic!=null) {
+                        medic.setNome(nomeStock.getText());
+                        medic.setPreco(Float.parseFloat(precoStock.getText()));
+                        medic.setDataValidade(dateChooser.getDate());
+                        medic.setCategoria(comboBox.getSelectedIndex());
+                        medic.setViaAdmin(comboBox_1.getSelectedIndex());
+                        medic.setReceita(receita);
 
-                    //Desativar os componentes de edição
-                    nomeStock.setEditable(false);
-                    comboBox.setEnabled(false);
-                    comboBox_1.setEnabled(false);
-                    dateChooser.setEnabled(false);
-                    precoStock.setEditable(false);
-                    rdbtnNewRadioButton_1.setEnabled(false);
+                        farmacia.armarios[nrloja].atualizarMedicamento(medic);
 
-                    scrollPane_1.revalidate();
-                    scrollPane_1.repaint();
+                        //Desativar os componentes de edição
+                        nomeStock.setEditable(false);
+                        comboBox.setEnabled(false);
+                        comboBox_1.setEnabled(false);
+                        dateChooser.setEnabled(false);
+                        precoStock.setEditable(false);
+                        rdbtnNewRadioButton_1.setEnabled(false);
 
-                    //variavel para controlar botao editar
-                    editarMedic = !editarMedic;
-                    btnNewButton.setText("Editar");
+                        scrollPane_1.revalidate();
+                        scrollPane_1.repaint();
+
+                        //variavel para controlar botao editar
+                        editarMedic = !editarMedic;
+                        btnNewButton.setText("Editar");
+                        }else {
+                        	JOptionPane.showMessageDialog(null, "Não selecionou um medicamento");
+                        }
+                     
+                    } catch (Exception e) {
+                    	System.out.println(e.getMessage());
+
+                    }
+                    list_2.setListData(farmacia.armarios[nrloja].getTodos().toArray());
+                    list.setListData(verificarMedicamentos(nrloja).toArray());
                 }
             }
         });
@@ -2151,6 +2175,7 @@ public class Layout extends JFrame implements Variaveis {
 
                     }
                     list_2.setListData(farmacia.armarios[nrloja].getTodos().toArray());
+                    list.setListData(verificarMedicamentos(nrloja).toArray());
                     model.removeAllElements();
 
                 } catch (Exception e) {
@@ -2197,39 +2222,39 @@ public class Layout extends JFrame implements Variaveis {
                 }
             }
         });
-        JList list = new JList();
-        list.setBorder(new LineBorder(new Color(0, 0, 0)));
-        list.setBounds(458, 115, 316, 178);
 
 
-        list.setModel(verificarMedicamentos(nrloja));
-        stock.add(list);
         //Evento Selection change e mostra os valores detalhados no form ao lado
         list_2.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent arg0) {
-                Medicamento s = (Medicamento) list_2.getSelectedValue();
-                nomeStock.setText(s.getNome());
-                comboBox.setSelectedIndex(s.getCategoria());
-                comboBox_1.setSelectedIndex(s.getViaAdmin());
-                rdbtnNewRadioButton_1.setSelected(s.isReceita());
+                if (list_2.getSelectedValue() != null) {
+                    Medicamento s = (Medicamento) list_2.getSelectedValue();
+                    nomeStock.setText(s.getNome());
+                    comboBox.setSelectedIndex(s.getCategoria());
+                    comboBox_1.setSelectedIndex(s.getViaAdmin());
+                    rdbtnNewRadioButton_1.setSelected(s.isReceita());
 
 
-                dateChooser.setDate(s.getDataValidade());
+                    dateChooser.setDate(s.getDataValidade());
 
 
-                precoStock.setText(String.valueOf(s.getPreco()));
+                    precoStock.setText(String.valueOf(s.getPreco()));
 
-                //Coloca as texbox BLOQUEADAS
-                nomeStock.setEditable(false);
-                comboBox.setEnabled(false);
-                comboBox_1.setEnabled(false);
+                    //Coloca as texbox BLOQUEADAS
+                    nomeStock.setEditable(false);
+                    comboBox.setEnabled(false);
+                    comboBox_1.setEnabled(false);
 
-                dateChooser.setEnabled(false);
-                precoStock.setEditable(false);
-                //variavel para controlar botao editar
-                editarMedic = false;
-                btnNewButton.setText("Editar");
+                    dateChooser.setEnabled(false);
+                    precoStock.setEditable(false);
+                    //variavel para controlar botao editar
+                    editarMedic = false;
+                    btnNewButton.setText("Editar");
+                } else {
+                    //JOptionPane.showMessageDialog(null, "Não selecionou um medicamento!");
+                }
             }
+
         });
         //botao apagar medicamento
         btnApagar.addMouseListener(new MouseAdapter() {
@@ -2256,6 +2281,8 @@ public class Layout extends JFrame implements Variaveis {
                 }
             }
         });
+
+
         JButton btnStockRelatorio = new JButton("Gerir");
         btnStockRelatorio.addMouseListener(new MouseAdapter() {
             @Override
