@@ -62,9 +62,9 @@ public class Farmacia implements Serializable,Variaveis{
     public void adicionarMedicamento_pendente(Medicamento medicamento_pendente) {
         if (medicamentos_pendentes ==null) {
             this.medicamentos_pendentes = new ArrayList<Medicamento>();
-            this.medicamentos_pendentes.add(new Medicamento(medicamento_pendente));
+            this.medicamentos_pendentes.add(medicamento_pendente);
         }else{
-            this.medicamentos_pendentes.add(new Medicamento(medicamento_pendente));
+            this.medicamentos_pendentes.add(medicamento_pendente);
         }
     }
     public String getFuncionarioNome(){

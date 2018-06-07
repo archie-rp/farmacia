@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 
 public class Medicamento implements Variaveis,Serializable {
     private int id;
@@ -160,5 +161,27 @@ public class Medicamento implements Variaveis,Serializable {
         } else {
             return true;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Medicamento that = (Medicamento) o;
+        return id == that.id &&
+                Float.compare(that.preco, preco) == 0 &&
+                Categoria == that.Categoria &&
+                ViaAdmin == that.ViaAdmin &&
+                receita == that.receita &&
+                estado == that.estado &&
+                cod_compra == that.cod_compra &&
+                Objects.equals(nome, that.nome) &&
+                Objects.equals(dataValidade, that.dataValidade);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, nome, preco, Categoria, ViaAdmin, dataValidade, receita, estado, cod_compra);
     }
 }

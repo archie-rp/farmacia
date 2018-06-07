@@ -11,7 +11,4 @@ public interface Variaveis {
     String estados[] = {"Pendente","OK" };
     int selecao[][] = {{1,2},{0,2},{0,1}};
     Funcionario [] funcionarios = {new Funcionario("Paulo"),new Funcionario("Rita"),new Funcionario("Jéssica")};
-
-
-
 }

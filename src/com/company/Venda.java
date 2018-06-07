@@ -168,10 +168,25 @@ public class Venda  implements Variaveis,Serializable {
     }
 
     public boolean darBaixa(Medicamento medicamento){
-        if (medicamentos.contains(medicamento)){
-            medicamentos.get(medicamentos.indexOf(medicamento)).setEstado(1);
-            return true;
+        boolean estado = false;
+        System.out.println("Medicamento_para_trocar_estado: " + medicamento.toString() + "Endereço"+ System.identityHashCode(medicamento));
+        for (Medicamento medicamento_:medicamentos) {
+
+            System.out.println("Original:" + medicamento_.toString() + "Endereço" + System.identityHashCode(medicamento_));
+            if (medicamento_.getNome() == medicamento.getNome()) {
+                System.out.println("Alerta encontrou!");
+                medicamento_.setEstado(1);
+                estado = true;
+            } else {
+                System.out.println("Nao encontrou!");
+                estado = false;
+
+            }
+            if (estado == true){
+                break;
+            }
         }
-        else{return false;}
-    }
+            return estado;
+        }
+
 }
