@@ -69,22 +69,22 @@ public class Layout extends JFrame implements Variaveis {
     private JTextField textField;
     private JTextField textField_1;
     private JTable table_4;
-    
-    
+
+
     public DefaultListModel verificarMedicamentos(int nrloja) {
-    
-    	model.removeAllElements();
-    for (Medicamento m_ : farmacia.armarios[nrloja].getTodos()) {
-    	
-        if (m_.getDataValidade().compareTo(Calendar.getInstance().getTime()) < 0) {
-           
-                model.addElement(m_);            
+
+        model.removeAllElements();
+        for (Medicamento m_ : farmacia.armarios[nrloja].getTodos()) {
+
+            if (m_.getDataValidade().compareTo(Calendar.getInstance().getTime()) < 0) {
+
+                model.addElement(m_);
+            }
         }
+        return model;
+
     }
-	return model;
-    
-    }
-    
+
 
     public static void main(String[] args) {
 
@@ -328,12 +328,12 @@ public class Layout extends JFrame implements Variaveis {
         gbc_label_16.gridx = 3;
         gbc_label_16.gridy = 0;
         panel_16.add(label_16, gbc_label_16);
-        
+
         JButton button_6 = new JButton("Terminar Sessão");
         button_6.addMouseListener(new MouseAdapter() {
-        	@Override
-        	public void mouseClicked(MouseEvent e) {
-        		try {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
                     FileOutputStream fileOut = new FileOutputStream("Farmacia.ser");
                     ObjectOutputStream out = new ObjectOutputStream(fileOut);
                     out.writeObject(farmacia);
@@ -344,10 +344,10 @@ public class Layout extends JFrame implements Variaveis {
                     i.printStackTrace();
                     farmacia = farmacia_serializada;
                 }
-        		Login login = new Login();
-        		dispose();
-        		login.setVisible(true);
-        	}
+                Login login = new Login();
+                dispose();
+                login.setVisible(true);
+            }
         });
         GridBagConstraints gbc_button_6 = new GridBagConstraints();
         gbc_button_6.insets = new Insets(0, 0, 0, 5);
@@ -403,7 +403,7 @@ public class Layout extends JFrame implements Variaveis {
         try {
 
             JList list = new JList();
-            
+
             list.setListData(farmacia.gestorvendas.getVendasSemana().toArray());
             list.setBorder(new LineBorder(new Color(0, 0, 0)));
             list.setBounds(457, 123, 307, 150);
@@ -457,7 +457,6 @@ public class Layout extends JFrame implements Variaveis {
             //Cria a estrutura e campos representados em cada celula
             scrollPane_Estatisticas.setViewportView(table_1);
 
-          
 
             JLabel lblRelatoriosDoMs = new JLabel("Relatórios total");
             lblRelatoriosDoMs.setFont(new Font("SansSerif", Font.BOLD, 11));
@@ -545,12 +544,12 @@ public class Layout extends JFrame implements Variaveis {
         gbc_lblNewLabel_7.gridy = 0;
         informacao_geral.add(lblNewLabel_7, gbc_lblNewLabel_7);
         lblNewLabel_7.setText(farmacia.getFuncionarioNome());
-        
+
         JButton btnNewButton_5 = new JButton("Terminar Sessão");
         btnNewButton_5.addMouseListener(new MouseAdapter() {
-        	@Override
-        	public void mouseClicked(MouseEvent e) {
-        		try {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
                     FileOutputStream fileOut = new FileOutputStream("Farmacia.ser");
                     ObjectOutputStream out = new ObjectOutputStream(fileOut);
                     out.writeObject(farmacia);
@@ -561,10 +560,10 @@ public class Layout extends JFrame implements Variaveis {
                     i.printStackTrace();
                     farmacia = farmacia_serializada;
                 }
-        		Login login = new Login();
-        		dispose();
-        		login.setVisible(true);
-        	}
+                Login login = new Login();
+                dispose();
+                login.setVisible(true);
+            }
         });
         GridBagConstraints gbc_btnNewButton_5 = new GridBagConstraints();
         gbc_btnNewButton_5.insets = new Insets(0, 0, 0, 5);
@@ -706,14 +705,14 @@ public class Layout extends JFrame implements Variaveis {
         table_2.setBorder(new LineBorder(new Color(0, 0, 0)));
         JButton btnDar_baixa = new JButton("Dar Baixa");
         btnDar_baixa.addMouseListener(new MouseAdapter() {
-        	@Override
-        	public void mouseClicked(MouseEvent arg0) {
-        		try {
-        	    Venda venda_ = farmacia.gestorvendas.procurarCod_venda(farmacia.medicamentos_pendentes.get(table_2.getSelectedRow()).getCod_compra());
-        	    venda_.darBaixa(farmacia.medicamentos_pendentes.get(table_2.getSelectedRow()));
-        	    System.out.println("Baixa de medicamentos com sucesso!");
-                }catch (NullPointerException a){
-        		    System.out.println("Sem medicamentos selecionados!");
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                try {
+                    Venda venda_ = farmacia.gestorvendas.procurarCod_venda(farmacia.medicamentos_pendentes.get(table_2.getSelectedRow()).getCod_compra());
+                    venda_.darBaixa(farmacia.medicamentos_pendentes.get(table_2.getSelectedRow()));
+                    System.out.println("Baixa de medicamentos com sucesso!");
+                } catch (NullPointerException a) {
+                    System.out.println("Sem medicamentos selecionados!");
                 }
             }
         });
@@ -807,12 +806,12 @@ public class Layout extends JFrame implements Variaveis {
         gbc_label_11.gridx = 3;
         gbc_label_11.gridy = 0;
         panel_15.add(label_11, gbc_label_11);
-        
+
         JButton button_5 = new JButton("Terminar Sessão");
         button_5.addMouseListener(new MouseAdapter() {
-        	@Override
-        	public void mouseClicked(MouseEvent e) {
-        		try {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
                     FileOutputStream fileOut = new FileOutputStream("Farmacia.ser");
                     ObjectOutputStream out = new ObjectOutputStream(fileOut);
                     out.writeObject(farmacia);
@@ -823,10 +822,10 @@ public class Layout extends JFrame implements Variaveis {
                     i.printStackTrace();
                     farmacia = farmacia_serializada;
                 }
-        		Login login = new Login();
-        		dispose();
-        		login.setVisible(true);
-        	}
+                Login login = new Login();
+                dispose();
+                login.setVisible(true);
+            }
         });
         GridBagConstraints gbc_button_5 = new GridBagConstraints();
         gbc_button_5.insets = new Insets(0, 0, 0, 5);
@@ -928,73 +927,73 @@ public class Layout extends JFrame implements Variaveis {
         gbl_panel_10.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
         gbl_panel_10.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         panel_10.setLayout(gbl_panel_10);
-        
-                JLabel lblSubtotal = new JLabel("Sub-Total:");
-                lblSubtotal.setFont(new Font("Tahoma", Font.BOLD, 11));
-                GridBagConstraints gbc_lblSubtotal = new GridBagConstraints();
-                gbc_lblSubtotal.anchor = GridBagConstraints.EAST;
-                gbc_lblSubtotal.insets = new Insets(0, 0, 5, 5);
-                gbc_lblSubtotal.gridx = 1;
-                gbc_lblSubtotal.gridy = 1;
-                panel_10.add(lblSubtotal, gbc_lblSubtotal);
-                        
-                                textSub_total = new JTextField();
-                                GridBagConstraints gbc_textSub_total = new GridBagConstraints();
-                                gbc_textSub_total.insets = new Insets(0, 0, 5, 0);
-                                gbc_textSub_total.gridx = 2;
-                                gbc_textSub_total.gridy = 1;
-                                panel_10.add(textSub_total, gbc_textSub_total);
-                                textSub_total.setColumns(10);
-                
-                        JLabel lblIva = new JLabel("IVA:");
-                        lblIva.setFont(new Font("Tahoma", Font.BOLD, 11));
-                        GridBagConstraints gbc_lblIva = new GridBagConstraints();
-                        gbc_lblIva.anchor = GridBagConstraints.EAST;
-                        gbc_lblIva.insets = new Insets(0, 0, 5, 5);
-                        gbc_lblIva.gridx = 1;
-                        gbc_lblIva.gridy = 2;
-                        panel_10.add(lblIva, gbc_lblIva);
-                                
-                                        textIVA = new JTextField();
-                                        GridBagConstraints gbc_textIVA = new GridBagConstraints();
-                                        gbc_textIVA.insets = new Insets(0, 0, 5, 0);
-                                        gbc_textIVA.gridx = 2;
-                                        gbc_textIVA.gridy = 2;
-                                        panel_10.add(textIVA, gbc_textIVA);
-                                        textIVA.setColumns(10);
-                        
-                                JLabel lblDesconto = new JLabel("Desconto:");
-                                lblDesconto.setFont(new Font("Tahoma", Font.BOLD, 11));
-                                GridBagConstraints gbc_lblDesconto = new GridBagConstraints();
-                                gbc_lblDesconto.anchor = GridBagConstraints.EAST;
-                                gbc_lblDesconto.insets = new Insets(0, 0, 5, 5);
-                                gbc_lblDesconto.gridx = 1;
-                                gbc_lblDesconto.gridy = 3;
-                                panel_10.add(lblDesconto, gbc_lblDesconto);
-                                        
-                                                textDesconto = new JTextField();
-                                                GridBagConstraints gbc_textDesconto = new GridBagConstraints();
-                                                gbc_textDesconto.insets = new Insets(0, 0, 5, 0);
-                                                gbc_textDesconto.gridx = 2;
-                                                gbc_textDesconto.gridy = 3;
-                                                panel_10.add(textDesconto, gbc_textDesconto);
-                                                textDesconto.setColumns(10);
-                                
-                                        JLabel lblTotal = new JLabel("Total:");
-                                        lblTotal.setFont(new Font("Tahoma", Font.BOLD, 11));
-                                        GridBagConstraints gbc_lblTotal = new GridBagConstraints();
-                                        gbc_lblTotal.anchor = GridBagConstraints.EAST;
-                                        gbc_lblTotal.insets = new Insets(0, 0, 0, 5);
-                                        gbc_lblTotal.gridx = 1;
-                                        gbc_lblTotal.gridy = 4;
-                                        panel_10.add(lblTotal, gbc_lblTotal);
-                                        
-                                                textTotal = new JTextField();
-                                                GridBagConstraints gbc_textTotal = new GridBagConstraints();
-                                                gbc_textTotal.gridx = 2;
-                                                gbc_textTotal.gridy = 4;
-                                                panel_10.add(textTotal, gbc_textTotal);
-                                                textTotal.setColumns(10);
+
+        JLabel lblSubtotal = new JLabel("Sub-Total:");
+        lblSubtotal.setFont(new Font("Tahoma", Font.BOLD, 11));
+        GridBagConstraints gbc_lblSubtotal = new GridBagConstraints();
+        gbc_lblSubtotal.anchor = GridBagConstraints.EAST;
+        gbc_lblSubtotal.insets = new Insets(0, 0, 5, 5);
+        gbc_lblSubtotal.gridx = 1;
+        gbc_lblSubtotal.gridy = 1;
+        panel_10.add(lblSubtotal, gbc_lblSubtotal);
+
+        textSub_total = new JTextField();
+        GridBagConstraints gbc_textSub_total = new GridBagConstraints();
+        gbc_textSub_total.insets = new Insets(0, 0, 5, 0);
+        gbc_textSub_total.gridx = 2;
+        gbc_textSub_total.gridy = 1;
+        panel_10.add(textSub_total, gbc_textSub_total);
+        textSub_total.setColumns(10);
+
+        JLabel lblIva = new JLabel("IVA:");
+        lblIva.setFont(new Font("Tahoma", Font.BOLD, 11));
+        GridBagConstraints gbc_lblIva = new GridBagConstraints();
+        gbc_lblIva.anchor = GridBagConstraints.EAST;
+        gbc_lblIva.insets = new Insets(0, 0, 5, 5);
+        gbc_lblIva.gridx = 1;
+        gbc_lblIva.gridy = 2;
+        panel_10.add(lblIva, gbc_lblIva);
+
+        textIVA = new JTextField();
+        GridBagConstraints gbc_textIVA = new GridBagConstraints();
+        gbc_textIVA.insets = new Insets(0, 0, 5, 0);
+        gbc_textIVA.gridx = 2;
+        gbc_textIVA.gridy = 2;
+        panel_10.add(textIVA, gbc_textIVA);
+        textIVA.setColumns(10);
+
+        JLabel lblDesconto = new JLabel("Desconto:");
+        lblDesconto.setFont(new Font("Tahoma", Font.BOLD, 11));
+        GridBagConstraints gbc_lblDesconto = new GridBagConstraints();
+        gbc_lblDesconto.anchor = GridBagConstraints.EAST;
+        gbc_lblDesconto.insets = new Insets(0, 0, 5, 5);
+        gbc_lblDesconto.gridx = 1;
+        gbc_lblDesconto.gridy = 3;
+        panel_10.add(lblDesconto, gbc_lblDesconto);
+
+        textDesconto = new JTextField();
+        GridBagConstraints gbc_textDesconto = new GridBagConstraints();
+        gbc_textDesconto.insets = new Insets(0, 0, 5, 0);
+        gbc_textDesconto.gridx = 2;
+        gbc_textDesconto.gridy = 3;
+        panel_10.add(textDesconto, gbc_textDesconto);
+        textDesconto.setColumns(10);
+
+        JLabel lblTotal = new JLabel("Total:");
+        lblTotal.setFont(new Font("Tahoma", Font.BOLD, 11));
+        GridBagConstraints gbc_lblTotal = new GridBagConstraints();
+        gbc_lblTotal.anchor = GridBagConstraints.EAST;
+        gbc_lblTotal.insets = new Insets(0, 0, 0, 5);
+        gbc_lblTotal.gridx = 1;
+        gbc_lblTotal.gridy = 4;
+        panel_10.add(lblTotal, gbc_lblTotal);
+
+        textTotal = new JTextField();
+        GridBagConstraints gbc_textTotal = new GridBagConstraints();
+        gbc_textTotal.gridx = 2;
+        gbc_textTotal.gridy = 4;
+        panel_10.add(textTotal, gbc_textTotal);
+        textTotal.setColumns(10);
 
 
         JPanel panel_4 = new JPanel();
@@ -1153,12 +1152,12 @@ public class Layout extends JFrame implements Variaveis {
         gbc_label_21.gridx = 3;
         gbc_label_21.gridy = 0;
         panel_17.add(label_21, gbc_label_21);
-        
+
         JButton button_7 = new JButton("Terminar Sessão");
         button_7.addMouseListener(new MouseAdapter() {
-        	@Override
-        	public void mouseClicked(MouseEvent e) {
-        		try {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
                     FileOutputStream fileOut = new FileOutputStream("Farmacia.ser");
                     ObjectOutputStream out = new ObjectOutputStream(fileOut);
                     out.writeObject(farmacia);
@@ -1169,10 +1168,10 @@ public class Layout extends JFrame implements Variaveis {
                     i.printStackTrace();
                     farmacia = farmacia_serializada;
                 }
-        		Login login = new Login();
-        		dispose();
-        		login.setVisible(true);
-        	}
+                Login login = new Login();
+                dispose();
+                login.setVisible(true);
+            }
         });
         GridBagConstraints gbc_button_7 = new GridBagConstraints();
         gbc_button_7.insets = new Insets(0, 0, 0, 5);
@@ -1350,66 +1349,65 @@ public class Layout extends JFrame implements Variaveis {
         gbl_panel_7.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
         gbl_panel_7.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
         panel_7.setLayout(gbl_panel_7);
-        
-                JLabel lblNewLabel_3 = new JLabel("Nº de Clientes esta semana:");
-                GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
-                gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
-                gbc_lblNewLabel_3.gridx = 0;
-                gbc_lblNewLabel_3.gridy = 0;
-                panel_7.add(lblNewLabel_3, gbc_lblNewLabel_3);
-                lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 11));
-                        
-                        JLabel lblNewLabel_10 = new JLabel("");
-                        GridBagConstraints gbc_lblNewLabel_10 = new GridBagConstraints();
-                        gbc_lblNewLabel_10.anchor = GridBagConstraints.WEST;
-                        gbc_lblNewLabel_10.insets = new Insets(0, 0, 5, 0);
-                        gbc_lblNewLabel_10.gridx = 1;
-                        gbc_lblNewLabel_10.gridy = 0;
-                        panel_7.add(lblNewLabel_10, gbc_lblNewLabel_10);
-                        
-                        lblNewLabel_10.setText(String.valueOf(farmacia.gestorclientes.totalClientesSemana()));
-                
-                        JLabel lblEsteMs = new JLabel("Nº Clientes este Mês:");
-                        GridBagConstraints gbc_lblEsteMs = new GridBagConstraints();
-                        gbc_lblEsteMs.insets = new Insets(0, 0, 5, 5);
-                        gbc_lblEsteMs.gridx = 0;
-                        gbc_lblEsteMs.gridy = 1;
-                        panel_7.add(lblEsteMs, gbc_lblEsteMs);
-                        lblEsteMs.setFont(new Font("Tahoma", Font.BOLD, 11));
-                                
-                                JLabel lblNewLabel_11 = new JLabel("");
-                                GridBagConstraints gbc_lblNewLabel_11 = new GridBagConstraints();
-                                lblNewLabel_11.setText(String.valueOf(farmacia.gestorclientes.totalClientesMes()));
-                                
-                                gbc_lblNewLabel_11.anchor = GridBagConstraints.WEST;
-                                gbc_lblNewLabel_11.insets = new Insets(0, 0, 5, 0);
-                                gbc_lblNewLabel_11.gridx = 1;
-                                gbc_lblNewLabel_11.gridy = 1;
-                                panel_7.add(lblNewLabel_11, gbc_lblNewLabel_11);
-                        
-                                JLabel lblTotalClientes = new JLabel("Total Clientes: ");
-                                GridBagConstraints gbc_lblTotalClientes = new GridBagConstraints();
-                                gbc_lblTotalClientes.insets = new Insets(0, 0, 0, 5);
-                                gbc_lblTotalClientes.gridx = 0;
-                                gbc_lblTotalClientes.gridy = 2;
-                                panel_7.add(lblTotalClientes, gbc_lblTotalClientes);
-                                lblTotalClientes.setFont(new Font("Tahoma", Font.BOLD, 11));
-                                        
-                                                JLabel lblNewLabel_8 = new JLabel("");
-                                                GridBagConstraints gbc_lblNewLabel_8 = new GridBagConstraints();
-                                                gbc_lblNewLabel_8.anchor = GridBagConstraints.WEST;
-                                                gbc_lblNewLabel_8.gridx = 1;
-                                                gbc_lblNewLabel_8.gridy = 2;
-                                                panel_7.add(lblNewLabel_8, gbc_lblNewLabel_8);
-                                                lblNewLabel_8.setText(String.valueOf(farmacia.gestorclientes.totalClientes()));
+
+        JLabel lblNewLabel_3 = new JLabel("Nº de Clientes esta semana:");
+        GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
+        gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
+        gbc_lblNewLabel_3.gridx = 0;
+        gbc_lblNewLabel_3.gridy = 0;
+        panel_7.add(lblNewLabel_3, gbc_lblNewLabel_3);
+        lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 11));
+
+        JLabel lblNewLabel_10 = new JLabel("");
+        GridBagConstraints gbc_lblNewLabel_10 = new GridBagConstraints();
+        gbc_lblNewLabel_10.anchor = GridBagConstraints.WEST;
+        gbc_lblNewLabel_10.insets = new Insets(0, 0, 5, 0);
+        gbc_lblNewLabel_10.gridx = 1;
+        gbc_lblNewLabel_10.gridy = 0;
+        panel_7.add(lblNewLabel_10, gbc_lblNewLabel_10);
+
+        lblNewLabel_10.setText(String.valueOf(farmacia.gestorclientes.totalClientesSemana()));
+
+        JLabel lblEsteMs = new JLabel("Nº Clientes este Mês:");
+        GridBagConstraints gbc_lblEsteMs = new GridBagConstraints();
+        gbc_lblEsteMs.insets = new Insets(0, 0, 5, 5);
+        gbc_lblEsteMs.gridx = 0;
+        gbc_lblEsteMs.gridy = 1;
+        panel_7.add(lblEsteMs, gbc_lblEsteMs);
+        lblEsteMs.setFont(new Font("Tahoma", Font.BOLD, 11));
+
+        JLabel lblNewLabel_11 = new JLabel("");
+        GridBagConstraints gbc_lblNewLabel_11 = new GridBagConstraints();
+        lblNewLabel_11.setText(String.valueOf(farmacia.gestorclientes.totalClientesMes()));
+
+        gbc_lblNewLabel_11.anchor = GridBagConstraints.WEST;
+        gbc_lblNewLabel_11.insets = new Insets(0, 0, 5, 0);
+        gbc_lblNewLabel_11.gridx = 1;
+        gbc_lblNewLabel_11.gridy = 1;
+        panel_7.add(lblNewLabel_11, gbc_lblNewLabel_11);
+
+        JLabel lblTotalClientes = new JLabel("Total Clientes: ");
+        GridBagConstraints gbc_lblTotalClientes = new GridBagConstraints();
+        gbc_lblTotalClientes.insets = new Insets(0, 0, 0, 5);
+        gbc_lblTotalClientes.gridx = 0;
+        gbc_lblTotalClientes.gridy = 2;
+        panel_7.add(lblTotalClientes, gbc_lblTotalClientes);
+        lblTotalClientes.setFont(new Font("Tahoma", Font.BOLD, 11));
+
+        JLabel lblNewLabel_8 = new JLabel("");
+        GridBagConstraints gbc_lblNewLabel_8 = new GridBagConstraints();
+        gbc_lblNewLabel_8.anchor = GridBagConstraints.WEST;
+        gbc_lblNewLabel_8.gridx = 1;
+        gbc_lblNewLabel_8.gridy = 2;
+        panel_7.add(lblNewLabel_8, gbc_lblNewLabel_8);
+        lblNewLabel_8.setText(String.valueOf(farmacia.gestorclientes.totalClientes()));
 
         JPanel panel_8 = new JPanel();
         panel_8.setBorder(new TitledBorder(null, "Clientes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
         panel_8.setBounds(31, 323, 460, 211);
         clientes.add(panel_8);
         panel_8.setLayout(null);
-        
-        
+
 
         btnAdicionar_2.addMouseListener(new MouseAdapter() {
             @Override
@@ -1420,7 +1418,7 @@ public class Layout extends JFrame implements Variaveis {
                 farmacia.gestorclientes.clientes.add(cliente);
 
                 listClientes.setListData(farmacia.gestorclientes.getClientes().toArray());
-                
+
                 lblNewLabel_10.setText(String.valueOf(farmacia.gestorclientes.totalClientesSemana()));
                 lblNewLabel_11.setText(String.valueOf(farmacia.gestorclientes.totalClientesMes()));
                 lblNewLabel_8.setText(String.valueOf(farmacia.gestorclientes.totalClientes()));
@@ -1463,7 +1461,7 @@ public class Layout extends JFrame implements Variaveis {
             }
         });
         listClientes.setBorder(new LineBorder(new Color(0, 0, 0)));
-        
+
         JPanel panel_19 = new JPanel();
         panel_19.setBorder(new TitledBorder(null, "Editar", TitledBorder.LEADING, TitledBorder.TOP, null, null));
         panel_19.setBounds(509, 312, 272, 211);
@@ -1517,80 +1515,80 @@ public class Layout extends JFrame implements Variaveis {
         gbc_textField_1.gridy = 2;
         panel_2.add(textField_1, gbc_textField_1);
         textField_1.setColumns(10);
-        
-                JButton btnNewButton_2 = new JButton("Editar");
-                btnNewButton_2.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseClicked(MouseEvent arg0) {
 
-                        if (!editarCli) {
-                            btnNewButton_2.setText("Gravar");
-                            Cliente cli = new Cliente();
-                            cli = (Cliente) listClientes.getSelectedValue();
+        JButton btnNewButton_2 = new JButton("Editar");
+        btnNewButton_2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
 
-                            //Ativar os componentes para editar
-                            textField.setEditable(true);
-                            textField_1.setEditable(true);
-                            //variavel para controlar botao editar
-                            editarCli = !editarCli;
+                if (!editarCli) {
+                    btnNewButton_2.setText("Gravar");
+                    Cliente cli = new Cliente();
+                    cli = (Cliente) listClientes.getSelectedValue();
 
-
-                        } else {
-
-                            Cliente cli = new Cliente();
-                            cli = (Cliente) listClientes.getSelectedValue();
-                            cli.setNome(textField.getText());
-                            cli.setBi(Integer.parseInt(textField_1.getText()));
+                    //Ativar os componentes para editar
+                    textField.setEditable(true);
+                    textField_1.setEditable(true);
+                    //variavel para controlar botao editar
+                    editarCli = !editarCli;
 
 
-                            farmacia.gestorclientes.setCliente(cli);
+                } else {
 
-                            //Desativar os componentes de edição
-                            textField.setEditable(false);
-                            textField_1.setEditable(false);
-
-                            //scrollPane_5.revalidate();
-                            // scrollPane_5.repaint();
-
-                            //variavel para controlar botao editar
-                            editarCli = !editarCli;
-                            btnNewButton_2.setText("Editar");
-                        }
-
-                    }
-                });
-                GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();
-                gbc_btnNewButton_2.anchor = GridBagConstraints.EAST;
-                gbc_btnNewButton_2.insets = new Insets(0, 0, 5, 5);
-                gbc_btnNewButton_2.gridx = 1;
-                gbc_btnNewButton_2.gridy = 4;
-                panel_2.add(btnNewButton_2, gbc_btnNewButton_2);
-        
-                JButton btnRemover = new JButton("Remover Cliente");
-                btnRemover.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseClicked(MouseEvent e) {
-
-                        try {
-                            Cliente cliente = new Cliente();
-                            cliente = (Cliente) listClientes.getSelectedValue();
+                    Cliente cli = new Cliente();
+                    cli = (Cliente) listClientes.getSelectedValue();
+                    cli.setNome(textField.getText());
+                    cli.setBi(Integer.parseInt(textField_1.getText()));
 
 
-                            farmacia.gestorclientes.removerCliente(cliente);
+                    farmacia.gestorclientes.setCliente(cli);
 
-                            listClientes.setListData(farmacia.gestorclientes.getClientes().toArray());
+                    //Desativar os componentes de edição
+                    textField.setEditable(false);
+                    textField_1.setEditable(false);
 
-                        } catch (Exception e1) {
-                            // TODO: handle exception
-                        }
-                    }
-                });
-                GridBagConstraints gbc_btnRemover = new GridBagConstraints();
-                gbc_btnRemover.anchor = GridBagConstraints.EAST;
-                gbc_btnRemover.insets = new Insets(0, 0, 5, 5);
-                gbc_btnRemover.gridx = 2;
-                gbc_btnRemover.gridy = 4;
-                panel_2.add(btnRemover, gbc_btnRemover);
+                    //scrollPane_5.revalidate();
+                    // scrollPane_5.repaint();
+
+                    //variavel para controlar botao editar
+                    editarCli = !editarCli;
+                    btnNewButton_2.setText("Editar");
+                }
+
+            }
+        });
+        GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();
+        gbc_btnNewButton_2.anchor = GridBagConstraints.EAST;
+        gbc_btnNewButton_2.insets = new Insets(0, 0, 5, 5);
+        gbc_btnNewButton_2.gridx = 1;
+        gbc_btnNewButton_2.gridy = 4;
+        panel_2.add(btnNewButton_2, gbc_btnNewButton_2);
+
+        JButton btnRemover = new JButton("Remover Cliente");
+        btnRemover.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+                try {
+                    Cliente cliente = new Cliente();
+                    cliente = (Cliente) listClientes.getSelectedValue();
+
+
+                    farmacia.gestorclientes.removerCliente(cliente);
+
+                    listClientes.setListData(farmacia.gestorclientes.getClientes().toArray());
+
+                } catch (Exception e1) {
+                    // TODO: handle exception
+                }
+            }
+        });
+        GridBagConstraints gbc_btnRemover = new GridBagConstraints();
+        gbc_btnRemover.anchor = GridBagConstraints.EAST;
+        gbc_btnRemover.insets = new Insets(0, 0, 5, 5);
+        gbc_btnRemover.gridx = 2;
+        gbc_btnRemover.gridy = 4;
+        panel_2.add(btnRemover, gbc_btnRemover);
 
 
         JButton btnHomeStock = new JButton("Home");
@@ -1649,12 +1647,12 @@ public class Layout extends JFrame implements Variaveis {
         gbc_label_6.gridx = 3;
         gbc_label_6.gridy = 0;
         panel_3.add(label_6, gbc_label_6);
-        
+
         JButton button_1 = new JButton("Terminar Sessão");
         button_1.addMouseListener(new MouseAdapter() {
-        	@Override
-        	public void mouseClicked(MouseEvent e) {
-        		try {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
                     FileOutputStream fileOut = new FileOutputStream("Farmacia.ser");
                     ObjectOutputStream out = new ObjectOutputStream(fileOut);
                     out.writeObject(farmacia);
@@ -1665,10 +1663,10 @@ public class Layout extends JFrame implements Variaveis {
                     i.printStackTrace();
                     farmacia = farmacia_serializada;
                 }
-        		Login login = new Login();
-        		dispose();
-        		login.setVisible(true);
-        	}
+                Login login = new Login();
+                dispose();
+                login.setVisible(true);
+            }
         });
         GridBagConstraints gbc_button_1 = new GridBagConstraints();
         gbc_button_1.insets = new Insets(0, 0, 0, 5);
@@ -2001,7 +1999,7 @@ public class Layout extends JFrame implements Variaveis {
         label_1.setFont(new Font("Tahoma", Font.BOLD, 11));
         label_1.setBounds(207, 116, 141, 16);
         stock.add(label_1);
-        
+
         JPanel panel_18 = new JPanel();
         panel_18.setBounds(31, 164, 166, 141);
         stock.add(panel_18);
@@ -2011,53 +2009,53 @@ public class Layout extends JFrame implements Variaveis {
         gbl_panel_18.columnWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
         gbl_panel_18.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         panel_18.setLayout(gbl_panel_18);
-        
-        
-                JLabel lblNome_4 = new JLabel("Nome:");
-                lblNome_4.setFont(new Font("Tahoma", Font.BOLD, 11));
-                GridBagConstraints gbc_lblNome_4 = new GridBagConstraints();
-                gbc_lblNome_4.anchor = GridBagConstraints.EAST;
-                gbc_lblNome_4.insets = new Insets(0, 0, 5, 0);
-                gbc_lblNome_4.gridx = 2;
-                gbc_lblNome_4.gridy = 0;
-                panel_18.add(lblNome_4, gbc_lblNome_4);
-                
-                        JLabel lblNewLabel = new JLabel("Quantidade:");
-                        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
-                        GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-                        gbc_lblNewLabel.anchor = GridBagConstraints.EAST;
-                        gbc_lblNewLabel.insets = new Insets(0, 0, 5, 0);
-                        gbc_lblNewLabel.gridx = 2;
-                        gbc_lblNewLabel.gridy = 1;
-                        panel_18.add(lblNewLabel, gbc_lblNewLabel);
-                        
-                                JLabel lblPreo_2 = new JLabel("Preço:");
-                                lblPreo_2.setFont(new Font("Tahoma", Font.BOLD, 11));
-                                GridBagConstraints gbc_lblPreo_2 = new GridBagConstraints();
-                                gbc_lblPreo_2.anchor = GridBagConstraints.EAST;
-                                gbc_lblPreo_2.insets = new Insets(0, 0, 5, 0);
-                                gbc_lblPreo_2.gridx = 2;
-                                gbc_lblPreo_2.gridy = 2;
-                                panel_18.add(lblPreo_2, gbc_lblPreo_2);
-                                                        
-                                                                JLabel lblDataValidade_2 = new JLabel("Data Validade");
-                                                                lblDataValidade_2.setFont(new Font("Tahoma", Font.BOLD, 11));
-                                                                GridBagConstraints gbc_lblDataValidade_2 = new GridBagConstraints();
-                                                                gbc_lblDataValidade_2.anchor = GridBagConstraints.EAST;
-                                                                gbc_lblDataValidade_2.insets = new Insets(0, 0, 5, 0);
-                                                                gbc_lblDataValidade_2.gridx = 2;
-                                                                gbc_lblDataValidade_2.gridy = 3;
-                                                                panel_18.add(lblDataValidade_2, gbc_lblDataValidade_2);
-                                                        
-                                                        
-                                                                JLabel lblNewLabel_5 = new JLabel("Necessita Receita:");
-                                                                lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 11));
-                                                                GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
-                                                                gbc_lblNewLabel_5.insets = new Insets(0, 0, 5, 0);
-                                                                gbc_lblNewLabel_5.anchor = GridBagConstraints.EAST;
-                                                                gbc_lblNewLabel_5.gridx = 2;
-                                                                gbc_lblNewLabel_5.gridy = 4;
-                                                                panel_18.add(lblNewLabel_5, gbc_lblNewLabel_5);
+
+
+        JLabel lblNome_4 = new JLabel("Nome:");
+        lblNome_4.setFont(new Font("Tahoma", Font.BOLD, 11));
+        GridBagConstraints gbc_lblNome_4 = new GridBagConstraints();
+        gbc_lblNome_4.anchor = GridBagConstraints.EAST;
+        gbc_lblNome_4.insets = new Insets(0, 0, 5, 0);
+        gbc_lblNome_4.gridx = 2;
+        gbc_lblNome_4.gridy = 0;
+        panel_18.add(lblNome_4, gbc_lblNome_4);
+
+        JLabel lblNewLabel = new JLabel("Quantidade:");
+        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+        GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+        gbc_lblNewLabel.anchor = GridBagConstraints.EAST;
+        gbc_lblNewLabel.insets = new Insets(0, 0, 5, 0);
+        gbc_lblNewLabel.gridx = 2;
+        gbc_lblNewLabel.gridy = 1;
+        panel_18.add(lblNewLabel, gbc_lblNewLabel);
+
+        JLabel lblPreo_2 = new JLabel("Preço:");
+        lblPreo_2.setFont(new Font("Tahoma", Font.BOLD, 11));
+        GridBagConstraints gbc_lblPreo_2 = new GridBagConstraints();
+        gbc_lblPreo_2.anchor = GridBagConstraints.EAST;
+        gbc_lblPreo_2.insets = new Insets(0, 0, 5, 0);
+        gbc_lblPreo_2.gridx = 2;
+        gbc_lblPreo_2.gridy = 2;
+        panel_18.add(lblPreo_2, gbc_lblPreo_2);
+
+        JLabel lblDataValidade_2 = new JLabel("Data Validade");
+        lblDataValidade_2.setFont(new Font("Tahoma", Font.BOLD, 11));
+        GridBagConstraints gbc_lblDataValidade_2 = new GridBagConstraints();
+        gbc_lblDataValidade_2.anchor = GridBagConstraints.EAST;
+        gbc_lblDataValidade_2.insets = new Insets(0, 0, 5, 0);
+        gbc_lblDataValidade_2.gridx = 2;
+        gbc_lblDataValidade_2.gridy = 3;
+        panel_18.add(lblDataValidade_2, gbc_lblDataValidade_2);
+
+
+        JLabel lblNewLabel_5 = new JLabel("Necessita Receita:");
+        lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 11));
+        GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
+        gbc_lblNewLabel_5.insets = new Insets(0, 0, 5, 0);
+        gbc_lblNewLabel_5.anchor = GridBagConstraints.EAST;
+        gbc_lblNewLabel_5.gridx = 2;
+        gbc_lblNewLabel_5.gridy = 4;
+        panel_18.add(lblNewLabel_5, gbc_lblNewLabel_5);
 
         textNome = new JTextField();
         textNome.setBounds(207, 161, 225, 20);
@@ -2112,7 +2110,6 @@ public class Layout extends JFrame implements Variaveis {
         btnNewButton_3.setBounds(341, 335, 120, 28);
         stock.add(btnNewButton_3);
 
-      
 
         JLabel lblNewLabel_9 = new JLabel("Medicamentos fora de validade:");
         lblNewLabel_9.setFont(new Font("SansSerif", Font.BOLD, 12));
@@ -2121,15 +2118,15 @@ public class Layout extends JFrame implements Variaveis {
 
         JButton btnNewButton_4 = new JButton("Remover todos");
         btnNewButton_4.addMouseListener(new MouseAdapter() {
-        	@Override
-        	public void mouseClicked(MouseEvent arg0) {
-        		try {
-        			Medicamento medic=new Medicamento();
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                try {
+                    Medicamento medic = new Medicamento();
                     for (int i = 0; i < model.size(); i++) {
-                    	medic=(Medicamento) model.get(i);
-                    	farmacia.armarios[nrloja].getArmarioGaveta(medic.getCategoria(),medic.getViaAdmin()).removerTodosMedicamento(medic.getNome());
-                    	
-                               
+                        medic = (Medicamento) model.get(i);
+                        farmacia.armarios[nrloja].getArmarioGaveta(medic.getCategoria(), medic.getViaAdmin()).removerTodosMedicamento(medic.getNome());
+
+
                     }
                     list_2.setListData(farmacia.armarios[nrloja].getTodos().toArray());
                     model.removeAllElements();
@@ -2137,10 +2134,10 @@ public class Layout extends JFrame implements Variaveis {
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
-        		
-        	}
+
+            }
         });
-       
+
         btnNewButton_4.setBounds(644, 304, 120, 28);
         stock.add(btnNewButton_4);
         btnAdicionarGerir.addMouseListener(new MouseAdapter() {
@@ -2180,12 +2177,26 @@ public class Layout extends JFrame implements Variaveis {
         });
         JList list = new JList();
         list.setBorder(new LineBorder(new Color(0, 0, 0)));
-        list.setBounds(458, 115, 316, 178);
-       
+        list.setBounds(458, 112, 316, 178);
 
+System.out.println("Tamanho Historico "+farmacia.medicamentosHistorico.size());
 
         list.setModel(verificarMedicamentos(nrloja));
         stock.add(list);
+
+        JButton btnNewButton_6 = new JButton("Encomendas");
+        btnNewButton_6.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                Encomendas dialogEncomendas = new Encomendas(farmacia);
+                dialogEncomendas.setVisible(true);
+
+
+            }
+        });
+        btnNewButton_6.setFont(new Font("SansSerif", Font.BOLD, 12));
+        btnNewButton_6.setBounds(482, 299, 134, 39);
+        stock.add(btnNewButton_6);
         //Evento Selection change e mostra os valores detalhados no form ao lado
         list_2.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent arg0) {
@@ -2291,11 +2302,11 @@ public class Layout extends JFrame implements Variaveis {
         });
         button_14.setBounds(31, 35, 99, 39);
         relatorio.add(button_14);
-        
-                    JList list_1_1 = new JList(farmacia.gestorvendas.getVendas().toArray());
-                    list_1_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-                    list_1_1.setBounds(457, 311, 307, 233);
-                    relatorio.add(list_1_1);
+
+        JList list_1_1 = new JList(farmacia.gestorvendas.getVendas().toArray());
+        list_1_1.setBorder(new LineBorder(new Color(0, 0, 0)));
+        list_1_1.setBounds(457, 311, 307, 233);
+        relatorio.add(list_1_1);
 
     }
 }

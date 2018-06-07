@@ -189,4 +189,6 @@ public class Venda  implements Variaveis,Serializable {
             return estado;
         }
 
+   
+    
 }

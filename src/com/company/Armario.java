@@ -173,9 +173,9 @@ public class Armario implements Serializable {
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
                 if (armario[i][j] != null && armario[i][j].removerMedicamento(medic.getNome().toString())) {
-                	while(this.quantidade>0) {
-                    this.quantidade--;
-                	}
+                    while (this.quantidade > 0) {
+                        this.quantidade--;
+                    }
 
                 }
             }
@@ -186,8 +186,6 @@ public class Armario implements Serializable {
             return false;
         }
     }
-
-
 
 
     public Medicamento procurarMedicamento(String nome) {
@@ -214,6 +212,21 @@ public class Armario implements Serializable {
             return true;
         }
         return false;
+    }
+
+    public ArrayList<Medicamento> verificarStock(Venda venda) {
+        ArrayList<Medicamento> medicamentosEmRuptura = new ArrayList<>();
+            for (Medicamento m : venda.getMedicamentos()) {
+                if (!this.getTodos().contains(m)) {
+
+                    medicamentosEmRuptura.add(m);
+
+                }
+            }
+
+
+        return medicamentosEmRuptura;
+
     }
 
 

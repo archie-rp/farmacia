@@ -9,6 +9,7 @@ public interface Variaveis {
     String farmacias[] = {"Loja 1", "Loja 2", "Loja 3"};
     String descontos[] = {"0%", "5%", "10%"};
     String estados[] = {"Pendente","OK" };
+    String receitas[]={"Necessita Receita","Não necessita receita"};
     int selecao[][] = {{1,2},{0,2},{0,1}};
     Funcionario [] funcionarios = {new Funcionario("Paulo"),new Funcionario("Rita"),new Funcionario("Jéssica")};
 }

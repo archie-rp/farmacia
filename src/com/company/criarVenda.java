@@ -396,6 +396,7 @@ public class criarVenda extends JDialog implements Variaveis{
 							venda_temporaria.setDesconto(comboBox_desconto.getSelectedIndex());
 							farmacia.gestorvendas.adicionarVenda(venda_temporaria);
 							farmacia.gestorclientes.setCliente(cliente1);
+							farmacia.adicionarMedicamentoHistorico(farmacia.armarios[nrloja].verificarStock(venda_temporaria));
 							list_1.setListData(farmacia.gestorvendas.getVendas().toArray());
 							list_3.setListData(farmacia.gestorvendas.getVendas().toArray());
 							list_3.repaint();
@@ -412,9 +413,10 @@ public class criarVenda extends JDialog implements Variaveis{
 							venda_temporaria.setData_compra(new Date());
 							venda_temporaria.setFuncionario(new Funcionario(farmacia.getFuncionarioNome()));
 							venda_temporaria.setFormaPagamento(comboBox_m_pagamento.getSelectedIndex());
-							venda_temporaria.setDesconto(comboBox_desconto.getSelectedIndex());
+							venda_temporaria.setDesconto(comboBox_desconto.getSelectedIndex());						
 							farmacia.gestorvendas.adicionarVenda(venda_temporaria);
 							farmacia.gestorclientes.setCliente(cliente1);
+							farmacia.adicionarMedicamentoHistorico(farmacia.armarios[nrloja].verificarStock(venda_temporaria));
 							list_1.setListData(farmacia.gestorvendas.getVendas().toArray());
 							list_3.setListData(farmacia.gestorvendas.getVendas().toArray());
 							list_3.repaint();
