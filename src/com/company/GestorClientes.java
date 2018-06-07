@@ -45,21 +45,21 @@ public class GestorClientes implements Serializable {
         //
         for (Cliente c : clientes) {
 
-        	 Date max = new Date();
-             Date min = Calendar.getInstance().getTime();
-             Date d = c.getDataInscricao();            
-             
-             Calendar cal = Calendar.getInstance(); 
-             cal.setTime(Calendar.getInstance().getTime()); 
-             cal.add(Calendar.DATE, 7);
-             max = cal.getTime();
-             
-             Calendar cal1 = Calendar.getInstance(); 
-             cal1.setTime(Calendar.getInstance().getTime()); 
-             cal1.add(Calendar.DATE, -1);
-             min = cal1.getTime();
-             
-   if (d.compareTo(min) > 0 && d.compareTo(max) < 0) {
+            Date max = new Date();
+            Date min = Calendar.getInstance().getTime();
+            Date d = c.getDataInscricao();
+
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(Calendar.getInstance().getTime());
+            cal.add(Calendar.DATE, 7);
+            max = cal.getTime();
+
+            Calendar cal1 = Calendar.getInstance();
+            cal1.setTime(Calendar.getInstance().getTime());
+            cal1.add(Calendar.DATE, -1);
+            min = cal1.getTime();
+
+            if (d.compareTo(min) > 0 && d.compareTo(max) < 0) {
                 total++;
             }
         }
@@ -75,15 +75,15 @@ public class GestorClientes implements Serializable {
         for (Cliente c : clientes) {
             Date max = new Date();
             Date min = Calendar.getInstance().getTime();
-            Date d = c.getDataInscricao();            
-            
-            Calendar cal = Calendar.getInstance(); 
-            cal.setTime(Calendar.getInstance().getTime()); 
+            Date d = c.getDataInscricao();
+
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(Calendar.getInstance().getTime());
             cal.add(Calendar.DATE, 30);
             max = cal.getTime();
-            
-            Calendar cal1 = Calendar.getInstance(); 
-            cal1.setTime(Calendar.getInstance().getTime()); 
+
+            Calendar cal1 = Calendar.getInstance();
+            cal1.setTime(Calendar.getInstance().getTime());
             cal1.add(Calendar.DATE, -1);
             min = cal1.getTime();
 
@@ -123,6 +123,37 @@ public class GestorClientes implements Serializable {
                     }
                 }
             }
+            if (encontrou == false) {
+                JOptionPane.showMessageDialog(null, "Cliente não encontrado na base de dados");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+        return null;
+    }
+
+    public Dialog procurarClienteBI(int bi, Farmacia farmacia) {
+        boolean encontrou = false;
+        try {
+
+            for (Cliente cliente_ : clientes) {
+                if (cliente_.getBi() == bi) {
+                    if (farmacia.gestorvendas.comprasCliente(cliente_).size() > 0) {
+                        Relatorio relat = new Relatorio(farmacia.gestorvendas.comprasCliente(cliente_), "Costa-Prozelo");
+                        Dialog dialog = new Dialog(relat);
+                        dialog.setVisible(true);
+                        encontrou = true;
+                        return dialog;
+                    } else {
+                        JOptionPane.showMessageDialog(null, "O Cliente: " + cliente_.getNome() + ", ainda não efectuou compras!");
+                        encontrou = true;
+                        break;
+                    }
+                }
+            }
+
             if (encontrou == false) {
                 JOptionPane.showMessageDialog(null, "Cliente não encontrado na base de dados");
             }

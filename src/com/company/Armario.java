@@ -176,7 +176,7 @@ public class Armario implements Serializable {
                 	while(this.quantidade>0) {
                     this.quantidade--;
                 	}
-                    //medic = null;
+
                 }
             }
         }
