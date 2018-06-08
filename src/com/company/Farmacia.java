@@ -71,19 +71,32 @@ public class Farmacia implements Serializable, Variaveis {
 
 
     public void adicionarMedicamentoHistorico(ArrayList<Medicamento> medic) {
-        for (Medicamento medic_ : medic) {
-            try {
-
-                if (!this.medicamentosHistorico.contains(medic_)) {
-                    this.medicamentosHistorico.add(medic_);
+        Medicamento medicamento = new Medicamento();
+        int existe = 0;
+        if(medicamentosHistorico!=null) {
+            for (Medicamento m_ : medic) {
+                if (medicamentosHistorico.contains(m_)) {
+                    System.out.print("Existe");
+                    existe++;
+                } else {
+                    medicamento = m_;
                 }
-            } catch (Exception e) {
-                this.medicamentosHistorico = new ArrayList<Medicamento>();
-                this.medicamentosHistorico.add(medic_);
-
-                // TODO: handle exception
             }
+            System.out.print(existe);
+            if (existe < 1) {
+                try {
+                    this.medicamentosHistorico.add(medicamento);
+                } catch (Exception e) {
+                    this.medicamentosHistorico = new ArrayList<Medicamento>();
+                    this.medicamentosHistorico.add(medicamento);
+                }
+            }
+        }else{
+            medicamentosHistorico=new ArrayList<>();
+            this.medicamentosHistorico.add(medic.get(0));
+            System.out.print("NULO");
         }
+
     }
 
 

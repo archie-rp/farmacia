@@ -11,26 +11,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.*;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Locale;
 import java.util.Calendar;
-
 import javax.swing.border.LineBorder;
-
-
 import com.toedter.calendar.JDateChooser;
-
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
-
 import com.jgoodies.forms.layout.FormSpecs;
 
 public class Layout extends JFrame implements Variaveis {
@@ -403,13 +394,16 @@ public class Layout extends JFrame implements Variaveis {
 
 
         try {
+            
+            JScrollPane scrollPane = new JScrollPane();
+            scrollPane.setBounds(457, 123, 307, 150);
+            relatorio.add(scrollPane);
 
             JList list = new JList();
+            scrollPane.setViewportView(list);
 
             list.setListData(farmacia.gestorvendas.getVendasSemana().toArray());
             list.setBorder(new LineBorder(new Color(0, 0, 0)));
-            list.setBounds(457, 123, 307, 150);
-            relatorio.add(list);
 
             JPanel panel = new JPanel();
             panel.setBorder(new TitledBorder(null, "Estatiticas dos Medicamentos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -698,6 +692,8 @@ public class Layout extends JFrame implements Variaveis {
             scrollPane_4.setViewportView(table_2);
             table_2.setModel(model_dependentes);
             table_2.setBorder(new LineBorder(new Color(0, 0, 0)));
+            scrollPane_4.revalidate();
+            scrollPane_4.repaint();
 
         } catch (Exception e1) {
             //model_d;
@@ -715,6 +711,25 @@ public class Layout extends JFrame implements Variaveis {
                     System.out.println("Baixa de medicamentos com sucesso!");
                 } catch (NullPointerException a) {
                     System.out.println("Sem medicamentos selecionados!");
+                }
+                
+                try {
+                    DefaultTableModel model_dependentes = new DefaultTableModel(new Object[]{"Nome", "Data", "Receita", "Preço", "Estado"}, 0);
+
+                    //Recebe medicamentos da venda selecionada
+                    ArrayList<Medicamento> med = farmacia.getMedicamentos_pendentes();
+                    //Adiciona os medicamentos na tablela
+                    for (Medicamento meds : med) {
+                        model_dependentes.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.isReceita(), meds.getPreco(), estados[meds.getEstado()]});
+                    }
+                    scrollPane_4.setViewportView(table_2);
+                    table_2.setModel(model_dependentes);
+                    table_2.setBorder(new LineBorder(new Color(0, 0, 0)));
+                    scrollPane_4.revalidate();
+                    scrollPane_4.repaint();
+
+                } catch (Exception e1) {
+                    //model_d;
                 }
             }
         });
@@ -1954,97 +1969,9 @@ public class Layout extends JFrame implements Variaveis {
         gbc_btnApagar.gridx = 2;
         gbc_btnApagar.gridy = 7;
         panel_1.add(btnApagar, gbc_btnApagar);
-
-        JList list = new JList();
         list_2.setBounds(61, 131, 423, 255);
         //Inicializar o Scroll Pane para termos barra de scroll
         JScrollPane scrollPane_1 = new JScrollPane();
-
-        btnNewButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent arg0) {
-                if (!editarMedic) {
-
-                    Medicamento medic = new Medicamento();
-
-                    medic = (Medicamento) list_2.getSelectedValue();
-
-                    if (medic != null) {
-                        btnNewButton.setText("Gravar");
-                        //Ativar os componentes para editar
-                        nomeStock.setEditable(true);
-                        comboBox.setEnabled(true);
-                        comboBox_1.setEnabled(true);
-                        dateChooser.setEnabled(true);
-                        precoStock.setEditable(true);
-                        rdbtnNewRadioButton_1.setEnabled(true);
-
-
-                        //variavel para controlar botao editar
-                        editarMedic = !editarMedic;
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Não selecionou um medicamento");
-                    }
-
-                } else {
-
-                    boolean receita = rdbtnNewRadioButton_1.isSelected();
-
-
-                    try {
-                        Integer.parseInt(precoStock.getText());
-
-
-                        if (!nomeStock.getText().isEmpty() && !precoStock.getText().isEmpty()) {
-
-                            Medicamento medic = new Medicamento();
-                            medic = (Medicamento) list_2.getSelectedValue();
-                            if (medic != null) {
-                                medic.setNome(nomeStock.getText());
-                                medic.setPreco(Float.parseFloat(precoStock.getText()));
-                                medic.setDataValidade(dateChooser.getDate());
-                                medic.setCategoria(comboBox.getSelectedIndex());
-                                medic.setViaAdmin(comboBox_1.getSelectedIndex());
-                                medic.setReceita(receita);
-
-                                farmacia.armarios[nrloja].atualizarMedicamento(medic);
-
-                                //Desativar os componentes de edição
-                                nomeStock.setEditable(false);
-                                comboBox.setEnabled(false);
-                                comboBox_1.setEnabled(false);
-                                dateChooser.setEnabled(false);
-                                precoStock.setEditable(false);
-                                rdbtnNewRadioButton_1.setEnabled(false);
-
-                                scrollPane_1.revalidate();
-                                scrollPane_1.repaint();
-
-                                //variavel para controlar botao editar
-                                editarMedic = !editarMedic;
-                                btnNewButton.setText("Editar");
-                            } else {
-                                // JOptionPane.showMessageDialog(null, "Não selecionou um medicamento");
-                            }
-
-
-
-
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Por preencha todos os campos");
-                        }
-                    } catch (NumberFormatException e) {
-                        JOptionPane.showMessageDialog(null, "Por favor introduza apenas números para o preço!!");
-                    }
-
-
-
-                    list_2.setListData(farmacia.armarios[nrloja].getTodos().toArray());
-                    list.setListData(verificarMedicamentos(nrloja).toArray());
-                }
-            }
-
-            });
 
 
         scrollPane_1.setViewportView(list_2);
@@ -2257,14 +2184,19 @@ public class Layout extends JFrame implements Variaveis {
                 }
             }
         });
-        
-        list.setBorder(new LineBorder(new Color(0, 0, 0)));
-        list.setBounds(458, 112, 316, 178);
 
-System.out.println("Tamanho Historico "+farmacia.medicamentosHistorico.size());
+//System.out.println("Tamanho Historico "+farmacia.medicamentosHistorico.size());
+        
+        JScrollPane scrollPane_7 = new JScrollPane();
+        scrollPane_7.setBounds(458, 112, 316, 178);
+        stock.add(scrollPane_7);
+        
+                JList list = new JList();
+                scrollPane_7.setViewportView(list);
+                
+                list.setBorder(new LineBorder(new Color(0, 0, 0)));
 
         list.setModel(verificarMedicamentos(nrloja));
-        stock.add(list);
 
         JButton btnNewButton_6 = new JButton("Encomendas");
         btnNewButton_6.addMouseListener(new MouseAdapter() {
@@ -2384,11 +2316,14 @@ System.out.println("Tamanho Historico "+farmacia.medicamentosHistorico.size());
         });
         button_14.setBounds(31, 35, 99, 39);
         relatorio.add(button_14);
+        
+        JScrollPane scrollPane_8 = new JScrollPane();
+        scrollPane_8.setBounds(457, 311, 307, 233);
+        relatorio.add(scrollPane_8);
 
         JList list_1_1 = new JList(farmacia.gestorvendas.getVendas().toArray());
+        scrollPane_8.setViewportView(list_1_1);
         list_1_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-        list_1_1.setBounds(457, 311, 307, 233);
-        relatorio.add(list_1_1);
 
         try {
             DefaultTableModel model_dependentes = new DefaultTableModel(new Object[]{"Nome", "Data", "Receita", "Preço", "Estado"}, 0);
@@ -2406,6 +2341,95 @@ System.out.println("Tamanho Historico "+farmacia.medicamentosHistorico.size());
         } catch (Exception e1) {
             //model_d;
         }
+        
+        
+
+        btnNewButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                if (!editarMedic) {
+
+                    Medicamento medic = new Medicamento();
+
+                    medic = (Medicamento) list_2.getSelectedValue();
+
+                    if (medic != null) {
+                        btnNewButton.setText("Gravar");
+                        //Ativar os componentes para editar
+                        nomeStock.setEditable(true);
+                        comboBox.setEnabled(true);
+                        comboBox_1.setEnabled(true);
+                        dateChooser.setEnabled(true);
+                        precoStock.setEditable(true);
+                        rdbtnNewRadioButton_1.setEnabled(true);
+
+
+                        //variavel para controlar botao editar
+                        editarMedic = !editarMedic;
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Não selecionou um medicamento");
+                    }
+
+                } else {
+
+                    boolean receita = rdbtnNewRadioButton_1.isSelected();
+
+
+                    try {
+                        Integer.parseInt(precoStock.getText());
+
+
+                        if (!nomeStock.getText().isEmpty() && !precoStock.getText().isEmpty()) {
+
+                            Medicamento medic = new Medicamento();
+                            medic = (Medicamento) list_2.getSelectedValue();
+                            if (medic != null) {
+                                medic.setNome(nomeStock.getText());
+                                medic.setPreco(Float.parseFloat(precoStock.getText()));
+                                medic.setDataValidade(dateChooser.getDate());
+                                medic.setCategoria(comboBox.getSelectedIndex());
+                                medic.setViaAdmin(comboBox_1.getSelectedIndex());
+                                medic.setReceita(receita);
+
+                                farmacia.armarios[nrloja].atualizarMedicamento(medic);
+
+                                //Desativar os componentes de edição
+                                nomeStock.setEditable(false);
+                                comboBox.setEnabled(false);
+                                comboBox_1.setEnabled(false);
+                                dateChooser.setEnabled(false);
+                                precoStock.setEditable(false);
+                                rdbtnNewRadioButton_1.setEnabled(false);
+
+                                scrollPane_1.revalidate();
+                                scrollPane_1.repaint();
+
+                                //variavel para controlar botao editar
+                                editarMedic = !editarMedic;
+                                btnNewButton.setText("Editar");
+                            } else {
+                                // JOptionPane.showMessageDialog(null, "Não selecionou um medicamento");
+                            }
+
+
+
+
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Por preencha todos os campos");
+                        }
+                    } catch (NumberFormatException e) {
+                        JOptionPane.showMessageDialog(null, "Por favor introduza apenas números para o preço!!");
+                    }
+
+
+
+                    list_2.setListData(farmacia.armarios[nrloja].getTodos().toArray());
+                    list.setListData(verificarMedicamentos(nrloja).toArray());
+                }
+            }
+
+            });
+
 
     }
 }
