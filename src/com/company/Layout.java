@@ -2202,7 +2202,7 @@ public class Layout extends JFrame implements Variaveis {
         btnNewButton_6.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
-                Encomendas dialogEncomendas = new Encomendas(farmacia);
+                Encomendas dialogEncomendas = new Encomendas(farmacia,nrloja);
                 dialogEncomendas.setVisible(true);
 
 

@@ -97,9 +97,7 @@ public class criarVenda extends JDialog implements Variaveis{
 		Venda venda_temporaria = new Venda();
 		JScrollPane scrollPane1 = new JScrollPane();
 		
-		{
-
-			
+		{			
 			{
 				table = new JTable();
 				try {
@@ -147,9 +145,6 @@ public class criarVenda extends JDialog implements Variaveis{
 			text_nome_procurar.setWrapStyleWord(true);
 			text_nome_procurar.setTabSize(5);
 			panel.add(text_nome_procurar, "3, 1, 3, 1, fill, default");
-
-
-
 
 
 		JComboBox comboBox_cat = new JComboBox(categorias);

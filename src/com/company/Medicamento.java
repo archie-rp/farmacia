@@ -41,6 +41,9 @@ public class Medicamento implements Variaveis,Serializable {
 
     }
 
+
+
+
     public Medicamento(Medicamento medicamento) {
         this.id = medicamento.getId();
         this.nome = medicamento.getNome();
