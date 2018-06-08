@@ -16,6 +16,7 @@ public class Medicamento implements Variaveis,Serializable,Cloneable{
     private boolean receita;
     private int estado;
     private int cod_compra;
+    private int quantidadeEncomenda;
 
 
     public Medicamento(int id, String nome, float preco, int cate, int via, Date dataValidade ) {
@@ -27,6 +28,8 @@ public class Medicamento implements Variaveis,Serializable,Cloneable{
         this.dataValidade = dataValidade;
         this.receita=receita;
         this.estado=1;
+        this.quantidadeEncomenda=0;
+        
     }
     
     public Medicamento( String nome, float preco, int cate, int via, Date dataValidade,boolean receita) {
@@ -38,7 +41,7 @@ public class Medicamento implements Variaveis,Serializable,Cloneable{
         this.dataValidade = dataValidade;
         this.receita=receita;
         this.estado=1;
-
+        this.quantidadeEncomenda=0;
     }
 
 
@@ -52,6 +55,7 @@ public class Medicamento implements Variaveis,Serializable,Cloneable{
         this.ViaAdmin = medicamento.getViaAdmin();
         this.dataValidade = medicamento.getDataValidade();
         this.estado=medicamento.getEstado();
+        this.quantidadeEncomenda=medicamento.getQuantidadeEncomenda();
     }
 
     public Medicamento() {
@@ -62,6 +66,7 @@ public class Medicamento implements Variaveis,Serializable,Cloneable{
         this.ViaAdmin = 0;
         this.dataValidade = new Date();
         this.estado=1;
+        this.quantidadeEncomenda=0;
     }
 
 
@@ -138,8 +143,17 @@ public class Medicamento implements Variaveis,Serializable,Cloneable{
         ViaAdmin = viaAdmin;
     }
 
+    public int getQuantidadeEncomenda() {
+        return quantidadeEncomenda;
+    }
+
+    public void setQuantidadeEncomenda(int quantidadeEncomenda) {
+        this.quantidadeEncomenda = quantidadeEncomenda;
+    }
+
     @Override
     public String toString() {
+
         StringBuilder string = new StringBuilder();
         //string.append("\n" + "ID = " + this.id);
         string.append(this.getNome() + " ");

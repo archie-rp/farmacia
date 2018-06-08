@@ -3,6 +3,8 @@ package com.company;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+
+
 public class Farmacia implements Serializable, Variaveis {
     private String nome;
     public GestorVendas gestorvendas;
@@ -10,12 +12,17 @@ public class Farmacia implements Serializable, Variaveis {
     public GestorClientes gestorclientes;
     public ArrayList<Medicamento> medicamentos_pendentes;
     public ArrayList<Medicamento> medicamentosHistorico;
+    public ArrayList<Medicamento> medicamentosEncomendados;
     public Funcionario[] funcionarios;
     public int numero_funcionario;
 
 
     public ArrayList<Medicamento> getMedicamentos_pendentes() {
         return medicamentos_pendentes;
+    }
+
+    public ArrayList<Medicamento> getMedicamentosEncomendados() {
+        return medicamentosEncomendados;
     }
 
     public Farmacia(String nome, GestorVendas gestorvendas, Armario[] armarios, GestorClientes gestorclientes) {
@@ -98,6 +105,8 @@ public class Farmacia implements Serializable, Variaveis {
         }
 
     }
+    
+   
 
 
     public ArrayList<Medicamento> mostrarTodosMedicamentos() {
