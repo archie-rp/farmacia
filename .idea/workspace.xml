@@ -4,8 +4,6 @@
     <list default="true" id="dad6e76c-2b0d-4a65-b9ce-0623d3102971" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Encomendas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Encomendas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Medicamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Medicamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/criarVenda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/criarVenda.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,17 +26,26 @@
       <file leaf-file-name="Medicamento.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Medicamento.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="133" selection-start-line="133" selection-end-line="133" />
+            <state relative-caret-position="415">
+              <caret line="172" column="33" lean-forward="true" selection-start-line="172" selection-start-column="33" selection-end-line="172" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2013#2014#0" expanded="true" />
                 <element signature="e#2049#2050#0" expanded="true" />
+                <element signature="e#2079#2080#0" expanded="true" />
+                <element signature="e#2108#2109#0" expanded="true" />
+                <element signature="e#2342#2343#0" expanded="true" />
+                <element signature="e#2377#2378#0" expanded="true" />
                 <element signature="e#2511#2512#0" expanded="true" />
                 <element signature="e#2543#2544#0" expanded="true" />
                 <element signature="e#2782#2783#0" expanded="true" />
                 <element signature="e#2814#2815#0" expanded="true" />
+                <element signature="e#2930#2931#0" expanded="true" />
                 <element signature="e#2961#2962#0" expanded="true" />
+                <element signature="e#3266#3267#0" expanded="true" />
+                <element signature="e#3308#3309#0" expanded="true" />
+                <element signature="e#3375#3376#0" expanded="true" />
+                <element signature="e#3437#3438#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -77,8 +84,8 @@
       <file leaf-file-name="Layout.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Layout.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-265">
-              <caret line="2194" column="51" lean-forward="true" selection-start-line="2194" selection-start-column="51" selection-end-line="2194" selection-end-column="51" />
+            <state relative-caret-position="228">
+              <caret line="206" column="13" lean-forward="true" selection-start-line="206" selection-start-column="13" selection-end-line="206" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#7179#7876#0" expanded="true" />
@@ -181,9 +188,26 @@
       <file leaf-file-name="Farmacia.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Farmacia.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="77" column="57" selection-start-line="77" selection-start-column="57" selection-end-line="77" selection-end-column="57" />
+            <state relative-caret-position="408">
+              <caret line="24" column="39" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
               <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#590#591#0" expanded="true" />
+                <element signature="e#635#636#0" expanded="true" />
+                <element signature="e#705#706#0" expanded="true" />
+                <element signature="e#750#751#0" expanded="true" />
+                <element signature="e#1003#1004#0" expanded="true" />
+                <element signature="e#1044#1045#0" expanded="true" />
+                <element signature="e#1337#1338#0" expanded="true" />
+                <element signature="e#1372#1373#0" expanded="true" />
+                <element signature="e#1421#1422#0" expanded="true" />
+                <element signature="e#1458#1459#0" expanded="true" />
+                <element signature="e#1489#1490#0" expanded="true" />
+                <element signature="e#1516#1517#0" expanded="true" />
+                <element signature="e#1561#1562#0" expanded="true" />
+                <element signature="e#1596#1597#0" expanded="true" />
+                <element signature="e#1634#1635#0" expanded="true" />
+                <element signature="e#1665#1666#0" expanded="true" />
                 <element signature="e#3313#3314#0" expanded="true" />
                 <element signature="e#3388#3389#0" expanded="true" />
                 <element signature="e#3453#3454#0" expanded="true" />
@@ -219,13 +243,13 @@
       <file leaf-file-name="Encomendas.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/Encomendas.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="119" column="73" selection-start-line="119" selection-start-column="73" selection-end-line="119" selection-end-column="73" />
+            <state relative-caret-position="277">
+              <caret line="212" column="58" lean-forward="true" selection-start-line="212" selection-start-column="58" selection-end-line="212" selection-end-column="58" />
               <folding>
-                <element signature="e#4158#5770#0" expanded="true" />
-                <element signature="e#5769#5770#0" expanded="true" />
-                <element signature="e#5951#6949#0" expanded="true" />
-                <element signature="e#6948#6949#0" expanded="true" />
+                <element signature="e#4171#6197#0" expanded="true" />
+                <element signature="e#6196#6197#0" expanded="true" />
+                <element signature="e#6378#8361#0" expanded="true" />
+                <element signature="e#8360#8361#0" expanded="true" />
                 <element signature="e#9045#9255#0" expanded="true" />
                 <element signature="e#9254#9255#0" expanded="true" />
               </folding>
@@ -323,9 +347,9 @@
         <option value="$PROJECT_DIR$/src/com/company/criarVenda.java" />
         <option value="$PROJECT_DIR$/src/com/company/Armario.java" />
         <option value="$PROJECT_DIR$/src/com/company/Layout.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Farmacia.java" />
         <option value="$PROJECT_DIR$/src/com/company/Medicamento.java" />
         <option value="$PROJECT_DIR$/src/com/company/Encomendas.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Farmacia.java" />
       </list>
     </option>
   </component>
@@ -592,21 +616,7 @@
       <workItem from="1528321147942" duration="50000" />
       <workItem from="1528365550102" duration="2254000" />
       <workItem from="1528375156615" duration="9663000" />
-      <workItem from="1528448401626" duration="9076000" />
-    </task>
-    <task id="LOCAL-00025" summary="Melhoramentos no Relatorio&#10;&#10;Dialog já apresenta todos os dados relativos ao medicamento, cliente e funcionario">
-      <created>1527771747270</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1527771747271</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Login &#10;* Login separado da layout com Jdialog&#10;* nao precisa de parametros para entrar, basta &quot;OK&quot;">
-      <created>1527791234236</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1527791234236</updated>
+      <workItem from="1528448401626" duration="12969000" />
     </task>
     <task id="LOCAL-00027" summary="Login &#10;* Login separado da layout com Jdialog&#10;* nao precisa de parametros para entrar, basta &quot;OK&quot;">
       <created>1527791254589</created>
@@ -937,14 +947,29 @@
       <option name="project" value="LOCAL" />
       <updated>1528465129408</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="Implementação do metodo clone()&#10;-&gt;permite criar um objecto novo igual ao anterior mas com endereço novo sendo um objecto totalmente diferente&#10;Ruptura de stock stage 5&#10;-&gt;Ao encomendar altera o estado para encomendado sem afetar o estado dos outros medicamentos usando o clone()">
+      <created>1528470800907</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1528470800907</updated>
+    </task>
+    <task id="LOCAL-00075" summary="Ruptura de stock Final">
+      <created>1528473877736</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1528473877736</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="128067000" />
+    <option name="totallyTimeSpent" value="131960000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1840" height="1002" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -956,11 +981,11 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32868758" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49775028" visible="true" weight="0.3205575" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49775028" visible="true" weight="0.3205575" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32903227" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2215973" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2215973" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="UML design tool window" order="4" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -997,8 +1022,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Necessario remover &quot;Farmacia&quot;!!!!&#10;Venda com descontos e modo de Pagamento" />
-    <MESSAGE value="Venda com receita" />
     <MESSAGE value="Venda com dados do cliente" />
     <MESSAGE value="Procurar fix" />
     <MESSAGE value="Importar Medicamentos de outra loja (stage 1)" />
@@ -1022,7 +1045,9 @@
     <MESSAGE value="Encomendas state 1" />
     <MESSAGE value="Ruptura de stock stage 3" />
     <MESSAGE value="Ruptura de stock stage 4&#10;&#10;listagens corretas de medicamentos que existem na loja e medicamentos que já não existem devido a não haver stock&#10;&#10;adicionar medicamentos a lista de encomendas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ruptura de stock stage 4&#10;&#10;listagens corretas de medicamentos que existem na loja e medicamentos que já não existem devido a não haver stock&#10;&#10;adicionar medicamentos a lista de encomendas" />
+    <MESSAGE value="Implementação do metodo clone()&#10;-&gt;permite criar um objecto novo igual ao anterior mas com endereço novo sendo um objecto totalmente diferente&#10;Ruptura de stock stage 5&#10;-&gt;Ao encomendar altera o estado para encomendado sem afetar o estado dos outros medicamentos usando o clone()" />
+    <MESSAGE value="Ruptura de stock Final" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ruptura de stock Final" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1040,7 +1065,7 @@
           <option name="timeStamp" value="55" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="69" />
+      <option name="time" value="75" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -1316,21 +1341,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Farmacia.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="77" column="57" selection-start-line="77" selection-start-column="57" selection-end-line="77" selection-end-column="57" />
-          <folding>
-            <element signature="e#3313#3314#0" expanded="true" />
-            <element signature="e#3388#3389#0" expanded="true" />
-            <element signature="e#3453#3454#0" expanded="true" />
-            <element signature="e#3513#3514#0" expanded="true" />
-            <element signature="e#3577#3578#0" expanded="true" />
-            <element signature="e#3621#3622#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Venda.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1751">
@@ -1342,10 +1352,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Armario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="134" selection-start-line="134" selection-end-line="134" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Layout.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-265">
-          <caret line="2194" column="51" lean-forward="true" selection-start-line="2194" selection-start-column="51" selection-end-line="2194" selection-end-column="51" />
+        <state relative-caret-position="228">
+          <caret line="206" column="13" lean-forward="true" selection-start-line="206" selection-start-column="13" selection-end-line="206" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#7179#7876#0" expanded="true" />
@@ -1444,23 +1461,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Medicamento.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="133" selection-start-line="133" selection-end-line="133" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2013#2014#0" expanded="true" />
-            <element signature="e#2049#2050#0" expanded="true" />
-            <element signature="e#2511#2512#0" expanded="true" />
-            <element signature="e#2543#2544#0" expanded="true" />
-            <element signature="e#2782#2783#0" expanded="true" />
-            <element signature="e#2814#2815#0" expanded="true" />
-            <element signature="e#2961#2962#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Gaveta.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
@@ -1471,22 +1471,73 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Armario.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/Medicamento.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="134" selection-start-line="134" selection-end-line="134" />
+        <state relative-caret-position="415">
+          <caret line="172" column="33" lean-forward="true" selection-start-line="172" selection-start-column="33" selection-end-line="172" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2013#2014#0" expanded="true" />
+            <element signature="e#2049#2050#0" expanded="true" />
+            <element signature="e#2079#2080#0" expanded="true" />
+            <element signature="e#2108#2109#0" expanded="true" />
+            <element signature="e#2342#2343#0" expanded="true" />
+            <element signature="e#2377#2378#0" expanded="true" />
+            <element signature="e#2511#2512#0" expanded="true" />
+            <element signature="e#2543#2544#0" expanded="true" />
+            <element signature="e#2782#2783#0" expanded="true" />
+            <element signature="e#2814#2815#0" expanded="true" />
+            <element signature="e#2930#2931#0" expanded="true" />
+            <element signature="e#2961#2962#0" expanded="true" />
+            <element signature="e#3266#3267#0" expanded="true" />
+            <element signature="e#3308#3309#0" expanded="true" />
+            <element signature="e#3375#3376#0" expanded="true" />
+            <element signature="e#3437#3438#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Farmacia.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="39" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#590#591#0" expanded="true" />
+            <element signature="e#635#636#0" expanded="true" />
+            <element signature="e#705#706#0" expanded="true" />
+            <element signature="e#750#751#0" expanded="true" />
+            <element signature="e#1003#1004#0" expanded="true" />
+            <element signature="e#1044#1045#0" expanded="true" />
+            <element signature="e#1337#1338#0" expanded="true" />
+            <element signature="e#1372#1373#0" expanded="true" />
+            <element signature="e#1421#1422#0" expanded="true" />
+            <element signature="e#1458#1459#0" expanded="true" />
+            <element signature="e#1489#1490#0" expanded="true" />
+            <element signature="e#1516#1517#0" expanded="true" />
+            <element signature="e#1561#1562#0" expanded="true" />
+            <element signature="e#1596#1597#0" expanded="true" />
+            <element signature="e#1634#1635#0" expanded="true" />
+            <element signature="e#1665#1666#0" expanded="true" />
+            <element signature="e#3313#3314#0" expanded="true" />
+            <element signature="e#3388#3389#0" expanded="true" />
+            <element signature="e#3453#3454#0" expanded="true" />
+            <element signature="e#3513#3514#0" expanded="true" />
+            <element signature="e#3577#3578#0" expanded="true" />
+            <element signature="e#3621#3622#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Encomendas.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="119" column="73" selection-start-line="119" selection-start-column="73" selection-end-line="119" selection-end-column="73" />
+        <state relative-caret-position="277">
+          <caret line="212" column="58" lean-forward="true" selection-start-line="212" selection-start-column="58" selection-end-line="212" selection-end-column="58" />
           <folding>
-            <element signature="e#4158#5770#0" expanded="true" />
-            <element signature="e#5769#5770#0" expanded="true" />
-            <element signature="e#5951#6949#0" expanded="true" />
-            <element signature="e#6948#6949#0" expanded="true" />
+            <element signature="e#4171#6197#0" expanded="true" />
+            <element signature="e#6196#6197#0" expanded="true" />
+            <element signature="e#6378#8361#0" expanded="true" />
+            <element signature="e#8360#8361#0" expanded="true" />
             <element signature="e#9045#9255#0" expanded="true" />
             <element signature="e#9254#9255#0" expanded="true" />
           </folding>

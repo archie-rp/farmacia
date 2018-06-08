@@ -125,10 +125,10 @@ public class Encomendas extends JDialog implements Variaveis {
                     if (Integer.parseInt(textField.getText()) < (10 - total)) {
                     
                     	  try {
-                              farmacia.medicamentosEncomendados.add(medicamento);
+                              farmacia.medicamentosEncomendados.add(temp);
                           } catch (Exception e) {
                         	  farmacia.medicamentosEncomendados = new ArrayList<Medicamento>();
-                        	  farmacia.medicamentosEncomendados.add(medicamento);
+                        	  farmacia.medicamentosEncomendados.add(temp);
                           }
                     //  System.out.println(farmacia.medicamentosHistorico.get(0).toString());
                         DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
@@ -166,10 +166,10 @@ public class Encomendas extends JDialog implements Variaveis {
                     if (Integer.parseInt(textField_1.getText()) < (10 - total)) {
                     
                     	  try {
-                              farmacia.medicamentosEncomendados.add(medicamento);
+                              farmacia.medicamentosEncomendados.add(temp);
                           } catch (Exception e) {
                         	  farmacia.medicamentosEncomendados = new ArrayList<Medicamento>();
-                        	  farmacia.medicamentosEncomendados.add(medicamento);
+                        	  farmacia.medicamentosEncomendados.add(temp);
                           }
                     //  System.out.println(farmacia.medicamentosHistorico.get(0).toString());
                         DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
@@ -231,7 +231,7 @@ public class Encomendas extends JDialog implements Variaveis {
 
                     DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
                     String formattedDate = df.format(m.getDataValidade());
-                    carrinho.addRow(new Object[]{m.getNome(), categorias[m.getCategoria()], vias[m.getViaAdmin()], receitas[m.isReceita() ? 1 : 0], formattedDate, m.getEstado(),m.getQuantidadeEncomenda(),m.getPreco()});
+                    carrinho.addRow(new Object[]{m.getNome(), categorias[m.getCategoria()], vias[m.getViaAdmin()], receitas[m.isReceita() ? 1 : 0], formattedDate, estados[m.getEstado()],m.getQuantidadeEncomenda(),m.getPreco()});
                     table_2.setModel(carrinho);
                     scrollPane_1.setViewportView(table_3);
                 } else {
