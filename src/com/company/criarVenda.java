@@ -429,7 +429,7 @@ public class criarVenda extends JDialog implements Variaveis{
 								System.out.println("Sem Cliente!");
 							}
 						}
-
+dispose();
 					}
 				});
 				okButton.setActionCommand("OK");
@@ -437,7 +437,7 @@ public class criarVenda extends JDialog implements Variaveis{
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
+				JButton cancelButton = new JButton("Cancelar");
 				cancelButton.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent arg0) {

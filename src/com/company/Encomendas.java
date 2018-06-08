@@ -23,6 +23,7 @@ import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+
 public class Encomendas extends JDialog implements Variaveis {
 
     private final JPanel contentPanel = new JPanel();
@@ -113,19 +114,25 @@ public class Encomendas extends JDialog implements Variaveis {
                 int total = 0;
                 Medicamento medicamento = new Medicamento();
                 String medic;
-                medic = (String) model_d.getValueAt(table.getSelectedRow(), 0);
-                medicamento = farmacia.armarios[nrloja].procurarMedicamento(medic);
-                medicamento.setEstado(2);
-                total = farmacia.armarios[nrloja].getQuantidadGaveta(medicamento.getCategoria(), medicamento.getViaAdmin());
-
-                if (Integer.parseInt(textField.getText()) < (10 - total)) {
-                    //farmacia.armarios[nrloja].adicionarMedicamento(medicamento, Integer.parseInt(textField.getText()));
-                    DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
-                    String formattedDate = df.format(medicamento.getDataValidade());
-                    carrinho.addRow(new Object[]{medicamento.getNome(), categorias[medicamento.getCategoria()], vias[medicamento.getViaAdmin()], receitas[medicamento.isReceita() ? 1 : 0], formattedDate, estados[medicamento.getEstado()], medicamento.getPreco()});
-                    table_2.setModel(carrinho);
+                try {
+                    medic = (String) model_d.getValueAt(table.getSelectedRow(), 0);
+                    medicamento = farmacia.armarios[nrloja].procurarMedicamento(medic);
+                    Medicamento temp = (Medicamento) medicamento.clone();
+                    temp.setEstado(2);
+                    total = farmacia.armarios[nrloja].getQuantidadGaveta(temp.getCategoria(), temp.getViaAdmin());
+                    System.out.print(total);
+                    if (Integer.parseInt(textField.getText()) < (11 - total)) {
+                        //farmacia.armarios[nrloja].adicionarMedicamento(medicamento, Integer.parseInt(textField.getText()));
+                        DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
+                        String formattedDate = df.format(temp.getDataValidade());
+                        System.out.print("Copia medicamento: " + temp.toString());
+                        carrinho.addRow(new Object[]{temp.getNome(), categorias[temp.getCategoria()], vias[temp.getViaAdmin()], receitas[temp.isReceita() ? 1 : 0], formattedDate, estados[temp.getEstado()], temp.getPreco()});
+                        table_2.setModel(carrinho);
+                    }
+                } catch (CloneNotSupportedException e) {
+                    System.out.println(e.getMessage());
+                    e.printStackTrace();
                 }
-
 
             }
         });
@@ -204,6 +211,14 @@ public class Encomendas extends JDialog implements Variaveis {
             getContentPane().add(buttonPane, BorderLayout.SOUTH);
             {
                 JButton okButton = new JButton("OK");
+                okButton.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+
+
+                        dispose();
+                    }
+                });
                 okButton.setActionCommand("OK");
                 buttonPane.add(okButton);
                 getRootPane().setDefaultButton(okButton);

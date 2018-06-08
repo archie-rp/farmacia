@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
 
-public class Medicamento implements Variaveis,Serializable {
+public class Medicamento implements Variaveis,Serializable,Cloneable{
     private int id;
     private String nome;
     private float preco;
@@ -149,6 +149,7 @@ public class Medicamento implements Variaveis,Serializable {
         String formattedDate = df.format(this.getDataValidade());
         string.append(formattedDate + " ");
         string.append(this.preco+ " ");
+        string.append(estados[this.getEstado()]);
         if(this.receita!=false) {
         	  string.append(" Necessita receita\n");
         }else {
@@ -186,5 +187,10 @@ public class Medicamento implements Variaveis,Serializable {
     public int hashCode() {
 
         return Objects.hash(id, nome, preco, Categoria, ViaAdmin, dataValidade, receita, estado, cod_compra);
+    }
+
+
+    public Object clone()throws CloneNotSupportedException{
+        return super.clone();
     }
 }
