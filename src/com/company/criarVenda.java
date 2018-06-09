@@ -15,15 +15,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.Date;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
 
@@ -280,10 +275,24 @@ public class criarVenda extends JDialog implements Variaveis{
 				public void mouseClicked(MouseEvent e) {
 					if (table_1.isRowSelected(table_1.getSelectedRow())){
 						try{
-							//Buscar Medicamento
-							venda_temporaria.medicamentos.add(farmacia.armarios[nrloja].getMedicamentosGaveta(comboBox_cat.getSelectedIndex(),comboBox_via.getSelectedIndex()).get(table_1.getSelectedRow()));
-							//remover do armario
-							farmacia.armarios[nrloja].getMedicamentosGaveta(comboBox_cat.getSelectedIndex(),comboBox_via.getSelectedIndex()).remove(table_1.getSelectedRow());
+							if(farmacia.armarios[nrloja].getMedicamentosGaveta(comboBox_cat.getSelectedIndex(),comboBox_via.getSelectedIndex()).get(table_1.getSelectedRow()).isReceita()){
+								verificarReceita confirmacao = new verificarReceita(farmacia.armarios[nrloja].getMedicamentosGaveta(comboBox_cat.getSelectedIndex(),comboBox_via.getSelectedIndex()).get(table_1.getSelectedRow()));
+								confirmacao.setVisible(true);
+								confirmacao.addWindowListener(new WindowAdapter() {
+									@Override
+									public void windowClosed(WindowEvent e) {
+										if (confirmacao.isEstado()){
+											//Buscar Medicamento
+											venda_temporaria.medicamentos.add(farmacia.armarios[nrloja].getMedicamentosGaveta(comboBox_cat.getSelectedIndex(),comboBox_via.getSelectedIndex()).get(table_1.getSelectedRow()));
+											//remover do armario
+											farmacia.armarios[nrloja].getMedicamentosGaveta(comboBox_cat.getSelectedIndex(),comboBox_via.getSelectedIndex()).remove(table_1.getSelectedRow());
+										}
+										else{
+											System.out.println("Codigo errado!");
+										}
+									}
+								});
+							}
 							comboBox_cat.setSelectedIndex(0);
 							DefaultTableModel cesto = new DefaultTableModel(new Object[]{"Nome", "Quantidade", "Preço","Estado"}, 0);
 							ArrayList<Medicamento> venda_medicamentos = venda_temporaria.getMedicamentos();
