@@ -179,7 +179,6 @@ public class Venda  implements Variaveis,Serializable {
             } else {
                 System.out.println("Nao encontrou!");
                 estado = false;
-
             }
             if (estado == true){
                 break;

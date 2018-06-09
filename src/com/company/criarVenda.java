@@ -393,8 +393,6 @@ public class criarVenda extends JDialog implements Variaveis{
 							farmacia.adicionarMedicamentoHistorico(farmacia.armarios[nrloja].verificarStock(venda_temporaria));
 							list_1.setListData(farmacia.gestorvendas.getVendas().toArray());
 							list_3.setListData(farmacia.gestorvendas.getVendas().toArray());
-							list_3.repaint();
-							list_3.revalidate();
 							JOptionPane optionPane = new JOptionPane("Venda concluida com sucesso!", JOptionPane.WARNING_MESSAGE);
 							JDialog dialog = optionPane.createDialog("Progresso da Compra!");
 							dialog.setAlwaysOnTop(true);
@@ -413,8 +411,6 @@ public class criarVenda extends JDialog implements Variaveis{
 							farmacia.adicionarMedicamentoHistorico(farmacia.armarios[nrloja].verificarStock(venda_temporaria));
 							list_1.setListData(farmacia.gestorvendas.getVendas().toArray());
 							list_3.setListData(farmacia.gestorvendas.getVendas().toArray());
-							list_3.repaint();
-							list_3.revalidate();
 							JOptionPane optionPane = new JOptionPane("Venda concluida com sucesso(sem nr contribuinte)!", JOptionPane.WARNING_MESSAGE);
 							JDialog dialog = optionPane.createDialog("Progresso da Compra!");
 							dialog.setAlwaysOnTop(true);
@@ -443,9 +439,13 @@ dispose();
 						if (venda_temporaria.medicamentos.size() > 0){
 							for (Medicamento med:venda_temporaria.medicamentos){
 								if (med.getEstado() != 0){
+									//Devolve o medicamento para a loja em que esta!
 									farmacia.armarios[nrloja].adicionarMedicamento(med,1);
 								}else{
+									//Devolve o medicamento para a loja de onde veio!
 									farmacia.armarios[nrloja_pendente].adicionarMedicamento(med,1);
+									farmacia.removerMedicamentoPendende(med);
+
 								}
 							}
 						}

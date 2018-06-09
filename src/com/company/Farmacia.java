@@ -133,4 +133,17 @@ public class Farmacia implements Serializable, Variaveis {
     public ArrayList<Medicamento> getMedicamentosHistorico() {
         return medicamentosHistorico;
     }
+    public boolean removerMedicamentoPendende(Medicamento medicamento){
+        boolean estado = false;
+        for (Medicamento medicamento_:medicamentos_pendentes){
+            if (medicamento_.getNome()== medicamento.getNome()){
+                medicamentos_pendentes.remove(medicamento_);
+                estado=true;
+            }
+            if (estado==true){
+                break;
+            }
+        }
+        return estado;
+    }
 }

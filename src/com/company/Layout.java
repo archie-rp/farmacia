@@ -470,7 +470,7 @@ public class Layout extends JFrame implements Variaveis {
         btnHome.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                venda.setVisible(false);
+            	venda.setVisible(false);
                 main.setVisible(true);
                 relatorio.setVisible(false);
                 clientes.setVisible(false);
@@ -681,13 +681,13 @@ public class Layout extends JFrame implements Variaveis {
         table_2 = new JTable();
         scrollPane_4.setViewportView(table_2);
         try {
-            DefaultTableModel model_dependentes = new DefaultTableModel(new Object[]{"Nome", "Data", "Receita", "Preço", "Estado"}, 0);
+            DefaultTableModel model_dependentes = new DefaultTableModel(new Object[]{"Nome", "Data", "Receita", "Preço", "Estado", "Compra"}, 0);
 
             //Recebe medicamentos da venda selecionada
             ArrayList<Medicamento> med = farmacia.getMedicamentos_pendentes();
             //Adiciona os medicamentos na tablela
             for (Medicamento meds : med) {
-                model_dependentes.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.isReceita(), meds.getPreco(), estados[meds.getEstado()]});
+                model_dependentes.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.isReceita(), meds.getPreco(), estados[meds.getEstado()],meds.getCod_compra()});
             }
             scrollPane_4.setViewportView(table_2);
             table_2.setModel(model_dependentes);
@@ -716,13 +716,13 @@ public class Layout extends JFrame implements Variaveis {
                 }
                 
                 try {
-                    DefaultTableModel model_dependentes = new DefaultTableModel(new Object[]{"Nome", "Data", "Receita", "Preço", "Estado"}, 0);
+                    DefaultTableModel model_dependentes = new DefaultTableModel(new Object[]{"Nome", "Data", "Receita", "Preço", "Estado","Compra"}, 0);
 
                     //Recebe medicamentos da venda selecionada
                     ArrayList<Medicamento> med = farmacia.getMedicamentos_pendentes();
                     //Adiciona os medicamentos na tablela
                     for (Medicamento meds : med) {
-                        model_dependentes.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.isReceita(), meds.getPreco(), estados[meds.getEstado()]});
+                        model_dependentes.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.isReceita(), meds.getPreco(), estados[meds.getEstado()],meds.getCod_compra()});
                     }
                     scrollPane_4.setViewportView(table_2);
                     table_2.setModel(model_dependentes);
@@ -1039,7 +1039,8 @@ public class Layout extends JFrame implements Variaveis {
         }
 
         JLabel lblNome = new JLabel("Nome");
-        lblNome.setBounds(6, 22, 46, 14);
+        lblNome.setFont(new Font("Tahoma", Font.BOLD, 11));
+        lblNome.setBounds(6, 15, 46, 14);
         panel_9.add(lblNome);
 
         txtNome_ = new JTextField();
@@ -1048,6 +1049,7 @@ public class Layout extends JFrame implements Variaveis {
         txtNome_.setColumns(10);
 
         JLabel lblBi = new JLabel("Nrº Contribuinte");
+        lblBi.setFont(new Font("Tahoma", Font.BOLD, 11));
         lblBi.setBounds(6, 71, 199, 14);
         panel_9.add(lblBi);
 
@@ -1057,6 +1059,7 @@ public class Layout extends JFrame implements Variaveis {
         textNR.setColumns(10);
 
         JLabel lblNewLabel_4 = new JLabel("Data Criacao Conta");
+        lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 11));
         lblNewLabel_4.setBounds(6, 129, 199, 14);
         panel_9.add(lblNewLabel_4);
 
@@ -1104,8 +1107,13 @@ public class Layout extends JFrame implements Variaveis {
         btnNewButton_1.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
+            	if(farmacia.armarios[nrloja].getTodos().size() > 0) {
                 criarVenda venda = new criarVenda(farmacia, nrloja, list_1, list_3);
                 venda.setVisible(true);
+            	}else{
+            	    //Colocar um jdialog!
+            	    System.out.println("Loja sem medicamentos!");
+                }
             }
         });
         btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -1380,16 +1388,17 @@ public class Layout extends JFrame implements Variaveis {
         clientes.add(panel_7);
         GridBagLayout gbl_panel_7 = new GridBagLayout();
         gbl_panel_7.columnWidths = new int[]{0, 47, 0};
-        gbl_panel_7.rowHeights = new int[]{0, 0, 0, 0};
+        gbl_panel_7.rowHeights = new int[]{23, 29, 29, 24, 0};
         gbl_panel_7.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-        gbl_panel_7.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+        gbl_panel_7.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         panel_7.setLayout(gbl_panel_7);
 
         JLabel lblNewLabel_3 = new JLabel("Nº de Clientes esta semana:");
         GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
+        gbc_lblNewLabel_3.anchor = GridBagConstraints.EAST;
         gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
         gbc_lblNewLabel_3.gridx = 0;
-        gbc_lblNewLabel_3.gridy = 0;
+        gbc_lblNewLabel_3.gridy = 1;
         panel_7.add(lblNewLabel_3, gbc_lblNewLabel_3);
         lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 11));
 
@@ -1398,16 +1407,17 @@ public class Layout extends JFrame implements Variaveis {
         gbc_lblNewLabel_10.anchor = GridBagConstraints.WEST;
         gbc_lblNewLabel_10.insets = new Insets(0, 0, 5, 0);
         gbc_lblNewLabel_10.gridx = 1;
-        gbc_lblNewLabel_10.gridy = 0;
+        gbc_lblNewLabel_10.gridy = 1;
         panel_7.add(lblNewLabel_10, gbc_lblNewLabel_10);
 
         lblNewLabel_10.setText(String.valueOf(farmacia.gestorclientes.totalClientesSemana()));
 
         JLabel lblEsteMs = new JLabel("Nº Clientes este Mês:");
         GridBagConstraints gbc_lblEsteMs = new GridBagConstraints();
+        gbc_lblEsteMs.anchor = GridBagConstraints.EAST;
         gbc_lblEsteMs.insets = new Insets(0, 0, 5, 5);
         gbc_lblEsteMs.gridx = 0;
-        gbc_lblEsteMs.gridy = 1;
+        gbc_lblEsteMs.gridy = 2;
         panel_7.add(lblEsteMs, gbc_lblEsteMs);
         lblEsteMs.setFont(new Font("Tahoma", Font.BOLD, 11));
 
@@ -1418,14 +1428,15 @@ public class Layout extends JFrame implements Variaveis {
         gbc_lblNewLabel_11.anchor = GridBagConstraints.WEST;
         gbc_lblNewLabel_11.insets = new Insets(0, 0, 5, 0);
         gbc_lblNewLabel_11.gridx = 1;
-        gbc_lblNewLabel_11.gridy = 1;
+        gbc_lblNewLabel_11.gridy = 2;
         panel_7.add(lblNewLabel_11, gbc_lblNewLabel_11);
 
         JLabel lblTotalClientes = new JLabel("Total Clientes: ");
         GridBagConstraints gbc_lblTotalClientes = new GridBagConstraints();
+        gbc_lblTotalClientes.anchor = GridBagConstraints.EAST;
         gbc_lblTotalClientes.insets = new Insets(0, 0, 0, 5);
         gbc_lblTotalClientes.gridx = 0;
-        gbc_lblTotalClientes.gridy = 2;
+        gbc_lblTotalClientes.gridy = 3;
         panel_7.add(lblTotalClientes, gbc_lblTotalClientes);
         lblTotalClientes.setFont(new Font("Tahoma", Font.BOLD, 11));
 
@@ -1433,7 +1444,7 @@ public class Layout extends JFrame implements Variaveis {
         GridBagConstraints gbc_lblNewLabel_8 = new GridBagConstraints();
         gbc_lblNewLabel_8.anchor = GridBagConstraints.WEST;
         gbc_lblNewLabel_8.gridx = 1;
-        gbc_lblNewLabel_8.gridy = 2;
+        gbc_lblNewLabel_8.gridy = 3;
         panel_7.add(lblNewLabel_8, gbc_lblNewLabel_8);
         lblNewLabel_8.setText(String.valueOf(farmacia.gestorclientes.totalClientes()));
 
@@ -2328,13 +2339,13 @@ public class Layout extends JFrame implements Variaveis {
         list_1_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 
         try {
-            DefaultTableModel model_dependentes = new DefaultTableModel(new Object[]{"Nome", "Data", "Receita", "Preço", "Estado"}, 0);
+            DefaultTableModel model_dependentes = new DefaultTableModel(new Object[]{"Nome", "Data", "Receita", "Preço", "Estado", "Compra"}, 0);
 
             //Recebe medicamentos da venda selecionada
             ArrayList<Medicamento> med = farmacia.getMedicamentos_pendentes();
             //Adiciona os medicamentos na tablela
             for (Medicamento meds : med) {
-                model_dependentes.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.isReceita(), meds.getPreco(), estados[meds.getEstado()]});
+                model_dependentes.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.isReceita(), meds.getPreco(), estados[meds.getEstado()],meds.getCod_compra()});
             }
             scrollPane_4.setViewportView(table_2);
             table_2.setModel(model_dependentes);

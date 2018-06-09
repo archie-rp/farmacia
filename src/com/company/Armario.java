@@ -76,30 +76,35 @@ public class Armario implements Serializable {
 
     //
     public JDialog adicionarMedicamento(Medicamento medicamento, int quantidade) {
-        if (armario[medicamento.getCategoria()][medicamento.getViaAdmin()] == null) {
-            //Criar gaveta
-            armario[medicamento.getCategoria()][medicamento.getViaAdmin()] = new Gaveta();
-            //Adicionar medicamento na gaveta
-            for (int i = 0; i < quantidade; i++) {
-                armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.add(medicamento);
-                // Aumentar quantidade
-                this.quantidade++;
-            }
-            //Removi notificacao de adicionado com sucesso
-
-        } else {
-            if ((armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.size() + quantidade) <= 10) {
+        medicamento.setEstado(1);
+        try {
+            if (armario[medicamento.getCategoria()][medicamento.getViaAdmin()] == null) {
+                //Criar gaveta
+                armario[medicamento.getCategoria()][medicamento.getViaAdmin()] = new Gaveta();
+                //Adicionar medicamento na gaveta
                 for (int i = 0; i < quantidade; i++) {
-                    armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.add(medicamento);
+                    armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.add((Medicamento) medicamento.clone());
+                    // Aumentar quantidade
                     this.quantidade++;
                 }
+                //Removi notificacao de adicionado com sucesso
+
             } else {
-                JOptionPane optionPane = new JOptionPane("Não é permitido adicionar o medicamento! Quantidade máxima:" + (10 - armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.size()), JOptionPane.WARNING_MESSAGE);
-                JDialog dialog = optionPane.createDialog("Alerta!");
-                dialog.setAlwaysOnTop(true);
-                dialog.setVisible(true);
-                return dialog;
+                if ((armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.size() + quantidade) <= 10) {
+                    for (int i = 0; i < quantidade; i++) {
+                        armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.add((Medicamento) medicamento.clone());
+                        this.quantidade++;
+                    }
+                } else {
+                    JOptionPane optionPane = new JOptionPane("Não é permitido adicionar o medicamento! Quantidade máxima:" + (10 - armario[medicamento.getCategoria()][medicamento.getViaAdmin()].medicamentos.size()), JOptionPane.WARNING_MESSAGE);
+                    JDialog dialog = optionPane.createDialog("Alerta!");
+                    dialog.setAlwaysOnTop(true);
+                    dialog.setVisible(true);
+                    return dialog;
+                }
             }
+        }catch (CloneNotSupportedException e){
+            System.out.println(e);
         }
         return null;
     }
