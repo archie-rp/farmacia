@@ -34,7 +34,7 @@ public class Importar extends JDialog implements Variaveis {
 	/**
 	 * Create the dialog.
 	 */
-	public Importar(Farmacia farmacia,int nrloja,Medicamento m, Venda venda_temporaria, int loja_m,JTable table,JScrollPane scrollPane1) {
+	public Importar(Farmacia farmacia,int nrloja, Medicamento m, Venda venda_temporaria, int loja_m,JTable table,JScrollPane scrollPane1) {
 		setBounds(100, 100, 495, 325);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -163,15 +163,25 @@ public class Importar extends JDialog implements Variaveis {
 							m.setEstado(0);
 							m.setCod_compra(farmacia.gestorvendas.vendas.size()+1);
 							System.out.println("Nr_quantidade a importar:" + nr_quantidade);
-						    for(int i =0;i <nr_quantidade;i++){
+
+							for(int i =0;i <nr_quantidade;i++){
 						        if (m.getEstado() !=0) {
-									farmacia.adicionarMedicamento_pendente(m);
-									venda_temporaria.setMedicamento(m);
+									try {
+										farmacia.adicionarMedicamento_pendente((Medicamento) m.clone());
+										venda_temporaria.setMedicamento((Medicamento) m.clone());
+									}catch (CloneNotSupportedException x){
+										System.out.println(x);
+									}
 									farmacia.armarios[nrloja].removerMedicamento(m);
 								}else{
+									try {
+										farmacia.adicionarMedicamento_pendente((Medicamento) m.clone());
+										venda_temporaria.setMedicamento((Medicamento) m.clone());
+
+									}catch (CloneNotSupportedException x){
+										System.out.println(x);
+									}
 									farmacia.armarios[loja_m].removerMedicamento(m);
-									farmacia.adicionarMedicamento_pendente(m);
-									venda_temporaria.setMedicamento(m);
 								}
 						    }
 							DefaultTableModel model_d = new DefaultTableModel(new Object[]{"Nome", "Quantidade", "Preço", "Estado"}, 0);

@@ -708,6 +708,8 @@ public class Layout extends JFrame implements Variaveis {
                 try {
                     Venda venda_ = farmacia.gestorvendas.procurarCod_venda(farmacia.medicamentos_pendentes.get(table_2.getSelectedRow()).getCod_compra());
                     venda_.darBaixa(farmacia.medicamentos_pendentes.get(table_2.getSelectedRow()));
+                    System.out.println("A remover Objecto"+ farmacia.medicamentos_pendentes.get(table_2.getSelectedRow()).toString() );
+                    farmacia.medicamentos_pendentes.remove(table_2.getSelectedRow());
                     System.out.println("Baixa de medicamentos com sucesso!");
                 } catch (NullPointerException a) {
                     System.out.println("Sem medicamentos selecionados!");

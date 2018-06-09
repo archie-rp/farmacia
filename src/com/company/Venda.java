@@ -169,11 +169,11 @@ public class Venda  implements Variaveis,Serializable {
 
     public boolean darBaixa(Medicamento medicamento){
         boolean estado = false;
-        System.out.println("Medicamento_para_trocar_estado: " + medicamento.toString() + "Endereço"+ System.identityHashCode(medicamento));
+        System.out.println("Medicamento_para_trocar_estado: " + medicamento.getCod_compra() + "estado: "+medicamento.getEstado());
         for (Medicamento medicamento_:medicamentos) {
-            System.out.println("Original:" + medicamento_.toString() + "Endereço" + System.identityHashCode(medicamento_));
-            if (medicamento_.getNome() == medicamento.getNome() && medicamento.getEstado() == 0) {
-                System.out.println("Alerta encontrou!");
+            System.out.println("Venda medicamento:" + medicamento_.toString() + "estado:" + medicamento_.getEstado());
+            if (medicamento_.getNome() == medicamento.getNome() && medicamento_.getEstado() == 0) {
+                System.out.println("Alerta encontrou! estado:" + medicamento_.getEstado());
                 medicamento_.setEstado(1);
                 estado = true;
             } else {

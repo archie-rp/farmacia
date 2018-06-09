@@ -165,7 +165,6 @@ public class criarVenda extends JDialog implements Variaveis{
 						System.out.print( nrloja + m.toString());
 						comboBox_cat.setSelectedIndex(m.getCategoria());
 						comboBox_via.setSelectedIndex(m.getViaAdmin());
-
 					}else {
 						for (int i = 0; i < 2; i++) {
 							m = farmacia.armarios[selecao[nrloja][i]].procurarMedicamento(text_nome_procurar.getText());
