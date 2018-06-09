@@ -22,6 +22,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.border.TitledBorder;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormSpecs;
+import com.jgoodies.forms.layout.RowSpec;
+import java.awt.Font;
 
 
 public class Encomendas extends JDialog implements Variaveis {
@@ -44,25 +50,86 @@ public class Encomendas extends JDialog implements Variaveis {
     public Encomendas(Farmacia farmacia, int nrloja) {
 
 
-        setBounds(100, 100, 841, 699);
+        setBounds(100, 100, 841, 623);
         getContentPane().setLayout(new BorderLayout());
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         getContentPane().add(contentPanel, BorderLayout.CENTER);
         contentPanel.setLayout(null);
 
         JLabel lblEncomendarProdutos = new JLabel("Encomendar Produtos");
+        lblEncomendarProdutos.setFont(new Font("Tahoma", Font.BOLD, 11));
         lblEncomendarProdutos.setBounds(28, 11, 143, 14);
         contentPanel.add(lblEncomendarProdutos);
+        
+        JPanel panel = new JPanel();
+        panel.setBorder(new TitledBorder(null, "Todos os medicamentos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+        panel.setBounds(16, 36, 394, 296);
+        contentPanel.add(panel);
+        panel.setLayout(new FormLayout(new ColumnSpec[] {
+        		FormSpecs.RELATED_GAP_COLSPEC,
+        		FormSpecs.DEFAULT_COLSPEC,
+        		FormSpecs.RELATED_GAP_COLSPEC,
+        		ColumnSpec.decode("max(27dlu;default)"),
+        		FormSpecs.RELATED_GAP_COLSPEC,
+        		ColumnSpec.decode("257px"),},
+        	new RowSpec[] {
+        		FormSpecs.PARAGRAPH_GAP_ROWSPEC,
+        		RowSpec.decode("bottom:max(146dlu;default):grow"),
+        		FormSpecs.RELATED_GAP_ROWSPEC,
+        		RowSpec.decode("top:25px"),}));
+        
+                JScrollPane scrollPane = new JScrollPane();
+                panel.add(scrollPane, "2, 2, 5, 1, fill, fill");
+                
+                        table = new JTable();
+                        scrollPane.setViewportView(table);
+                                
+                                        JLabel lblNewLabel_1 = new JLabel("Quantidade");
+                                        lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+                                        panel.add(lblNewLabel_1, "2, 4");
+                                        
+                                                textField = new JTextField();
+                                                panel.add(textField, "4, 4");
+                                                textField.setColumns(10);
+                                                
+                                                        JButton btnEncomendar = new JButton("Encomendar");
+                                                        panel.add(btnEncomendar, "6, 4, center, default");
+                                                        btnEncomendar.addMouseListener(new MouseAdapter() {
+                                                            @Override
+                                                            public void mouseClicked(MouseEvent arg0) {
+                                                                int total = 0;
+                                                                Medicamento medicamento = new Medicamento();
+                                                                String medic;
+                                                                try {
+                                                                    medic = (String) model_d.getValueAt(table.getSelectedRow(), 0);
+                                                                    medicamento = farmacia.armarios[nrloja].procurarMedicamento(medic);
+                                                                    Medicamento temp = (Medicamento) medicamento.clone();
+                                                                    temp.setEstado(2);
+                                                                    temp.setQuantidadeEncomenda(Integer.parseInt(textField.getText()));
+                                                                    total = farmacia.armarios[nrloja].getQuantidadGaveta(temp.getCategoria(), temp.getViaAdmin());
+                                                                    System.out.print(total);
+                                                                    if (Integer.parseInt(textField.getText()) < (10 - total)) {
+                                                                    
+                                                                    	  try {
+                                                                              farmacia.medicamentosEncomendados.add(temp);
+                                                                          } catch (Exception e) {
+                                                                        	  farmacia.medicamentosEncomendados = new ArrayList<Medicamento>();
+                                                                        	  farmacia.medicamentosEncomendados.add(temp);
+                                                                          }
+                                                                    //  System.out.println(farmacia.medicamentosHistorico.get(0).toString());
+                                                                        DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
+                                                                        String formattedDate = df.format(temp.getDataValidade());
+                                                                       
+                                                                        carrinho.addRow(new Object[]{temp.getNome(), categorias[temp.getCategoria()], vias[temp.getViaAdmin()], receitas[temp.isReceita() ? 1 : 0], formattedDate, estados[temp.getEstado()], temp.getPreco()});
+                                                                        table_2.setModel(carrinho);
+                                                                    }
+                                                                } catch (CloneNotSupportedException e) {
+                                                                    System.out.println(e.getMessage());
+                                                                    e.printStackTrace();
+                                                                }
 
-        JLabel lblTodos = new JLabel("Todos");
-        lblTodos.setBounds(31, 46, 46, 14);
-        contentPanel.add(lblTodos);
-
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(28, 69, 376, 239);
-        contentPanel.add(scrollPane);
-
-        table = new JTable();
+                                                            }
+                                                        });
         try {
 
             ArrayList<Object> array = new ArrayList(farmacia.mostrarTodosMedicamentos());
@@ -78,123 +145,97 @@ public class Encomendas extends JDialog implements Variaveis {
                     JOptionPane.showMessageDialog(null, "O cliente ainda não efectuou compras!");
                 }
             }
-            scrollPane.setViewportView(table);
 
         } catch (Exception e) {
             System.out.print("Sem Medicamentos inseridos");
         }
 
-
-        JLabel lblNewLabel = new JLabel("Produtos em RUPTURA de stock");
-        lblNewLabel.setBounds(453, 46, 190, 14);
-        contentPanel.add(lblNewLabel);
-
         table_1 = new JTable();
 
-
-        JLabel lblCarrinhoEncomenda = new JLabel("Carrinho Encomenda");
-        lblCarrinhoEncomenda.setBounds(28, 343, 217, 14);
-        contentPanel.add(lblCarrinhoEncomenda);
-
         JScrollPane scrollPane_2 = new JScrollPane();
-        scrollPane_2.setBounds(28, 368, 766, 203);
+        scrollPane_2.setBounds(28, 368, 766, 146);
         contentPanel.add(scrollPane_2);
 
         table_2 = new JTable();
         scrollPane_2.setViewportView(table_2);
 
         JButton btnNewButton = new JButton("Remover Linha");
-        btnNewButton.setBounds(571, 592, 125, 23);
+        btnNewButton.setBounds(669, 525, 125, 23);
         contentPanel.add(btnNewButton);
-
-        JButton btnEncomendar = new JButton("Encomendar");
-        btnEncomendar.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent arg0) {
-                int total = 0;
-                Medicamento medicamento = new Medicamento();
-                String medic;
-                try {
-                    medic = (String) model_d.getValueAt(table.getSelectedRow(), 0);
-                    medicamento = farmacia.armarios[nrloja].procurarMedicamento(medic);
-                    Medicamento temp = (Medicamento) medicamento.clone();
-                    temp.setEstado(2);
-                    temp.setQuantidadeEncomenda(Integer.parseInt(textField.getText()));
-                    total = farmacia.armarios[nrloja].getQuantidadGaveta(temp.getCategoria(), temp.getViaAdmin());
-                    System.out.print(total);
-                    if (Integer.parseInt(textField.getText()) < (10 - total)) {
-                    
-                    	  try {
-                              farmacia.medicamentosEncomendados.add(temp);
-                          } catch (Exception e) {
-                        	  farmacia.medicamentosEncomendados = new ArrayList<Medicamento>();
-                        	  farmacia.medicamentosEncomendados.add(temp);
-                          }
-                    //  System.out.println(farmacia.medicamentosHistorico.get(0).toString());
-                        DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
-                        String formattedDate = df.format(temp.getDataValidade());
-                       
-                        carrinho.addRow(new Object[]{temp.getNome(), categorias[temp.getCategoria()], vias[temp.getViaAdmin()], receitas[temp.isReceita() ? 1 : 0], formattedDate, estados[temp.getEstado()], temp.getPreco()});
-                        table_2.setModel(carrinho);
-                    }
-                } catch (CloneNotSupportedException e) {
-                    System.out.println(e.getMessage());
-                    e.printStackTrace();
-                }
-
-            }
-        });
-        btnEncomendar.setBounds(280, 319, 112, 23);
-        contentPanel.add(btnEncomendar);
-
-        JButton button = new JButton("Encomendar");
-        button.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent arg0) {
-            	
-            	int total = 0;
-                Medicamento medicamento = new Medicamento(farmacia.getMedicamentosHistorico().get(table_3.getSelectedRow()));
-              
-                try {
-                  
-                 
-                    Medicamento temp = (Medicamento) medicamento.clone();
-                    temp.setEstado(2);
-                    temp.setQuantidadeEncomenda(Integer.parseInt(textField_1.getText()));
-                    total = farmacia.armarios[nrloja].getQuantidadGaveta(temp.getCategoria(), temp.getViaAdmin());
-                    System.out.print(total);
-                    if (Integer.parseInt(textField_1.getText()) < (10 - total)) {
-                    
-                    	  try {
-                              farmacia.medicamentosEncomendados.add(temp);
-                          } catch (Exception e) {
-                        	  farmacia.medicamentosEncomendados = new ArrayList<Medicamento>();
-                        	  farmacia.medicamentosEncomendados.add(temp);
-                          }
-                    //  System.out.println(farmacia.medicamentosHistorico.get(0).toString());
-                        DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
-                        String formattedDate = df.format(temp.getDataValidade());
-                       
-                        carrinho.addRow(new Object[]{temp.getNome(), categorias[temp.getCategoria()], vias[temp.getViaAdmin()], receitas[temp.isReceita() ? 1 : 0], formattedDate, estados[temp.getEstado()], temp.getPreco()});
-                        table_2.setModel(carrinho);
-                    }
-                } catch (CloneNotSupportedException e) {
-                    System.out.println(e.getMessage());
-                    e.printStackTrace();
-                }
-
-            	
-            
-            }
-        });
-        button.setBounds(670, 319, 112, 23);
-        contentPanel.add(button);
+        
+        JPanel panel_1 = new JPanel();
+        panel_1.setBorder(new TitledBorder(null, "Produtos em ruptura de Stock", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+        panel_1.setBounds(420, 36, 374, 296);
+        contentPanel.add(panel_1);
+        panel_1.setLayout(new FormLayout(new ColumnSpec[] {
+        		FormSpecs.RELATED_GAP_COLSPEC,
+        		FormSpecs.DEFAULT_COLSPEC,
+        		FormSpecs.RELATED_GAP_COLSPEC,
+        		ColumnSpec.decode("max(35dlu;default)"),
+        		FormSpecs.RELATED_GAP_COLSPEC,
+        		ColumnSpec.decode("center:223px"),},
+        	new RowSpec[] {
+        		FormSpecs.PARAGRAPH_GAP_ROWSPEC,
+        		RowSpec.decode("227px"),
+        		FormSpecs.RELATED_GAP_ROWSPEC,
+        		FormSpecs.DEFAULT_ROWSPEC,}));
 
         JScrollPane scrollPane_1 = new JScrollPane();
-        scrollPane_1.setBounds(439, 70, 355, 239);
-        contentPanel.add(scrollPane_1);
+        panel_1.add(scrollPane_1, "1, 2, 6, 1, fill, fill");
 
         table_3 = new JTable();
+        
+                scrollPane_1.setViewportView(table_3);
+                        
+                                JLabel label = new JLabel("Quantidade");
+                                label.setFont(new Font("Tahoma", Font.BOLD, 11));
+                                panel_1.add(label, "2, 4");
+                                
+                                        textField_1 = new JTextField();
+                                        panel_1.add(textField_1, "4, 4");
+                                        textField_1.setColumns(10);
+                                        
+                                                JButton button = new JButton("Encomendar");
+                                                panel_1.add(button, "6, 4");
+                                                button.addMouseListener(new MouseAdapter() {
+                                                    @Override
+                                                    public void mouseClicked(MouseEvent arg0) {
+                                                    	
+                                                    	int total = 0;
+                                                        Medicamento medicamento = new Medicamento(farmacia.getMedicamentosHistorico().get(table_3.getSelectedRow()));
+                                                      
+                                                        try {
+                                                          
+                                                         
+                                                            Medicamento temp = (Medicamento) medicamento.clone();
+                                                            temp.setEstado(2);
+                                                            temp.setQuantidadeEncomenda(Integer.parseInt(textField_1.getText()));
+                                                            total = farmacia.armarios[nrloja].getQuantidadGaveta(temp.getCategoria(), temp.getViaAdmin());
+                                                            System.out.print(total);
+                                                            if (Integer.parseInt(textField_1.getText()) < (10 - total)) {
+                                                            
+                                                            	  try {
+                                                                      farmacia.medicamentosEncomendados.add(temp);
+                                                                  } catch (Exception e) {
+                                                                	  farmacia.medicamentosEncomendados = new ArrayList<Medicamento>();
+                                                                	  farmacia.medicamentosEncomendados.add(temp);
+                                                                  }
+                                                            //  System.out.println(farmacia.medicamentosHistorico.get(0).toString());
+                                                                DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
+                                                                String formattedDate = df.format(temp.getDataValidade());
+                                                               
+                                                                carrinho.addRow(new Object[]{temp.getNome(), categorias[temp.getCategoria()], vias[temp.getViaAdmin()], receitas[temp.isReceita() ? 1 : 0], formattedDate, estados[temp.getEstado()], temp.getPreco()});
+                                                                table_2.setModel(carrinho);
+                                                            }
+                                                        } catch (CloneNotSupportedException e) {
+                                                            System.out.println(e.getMessage());
+                                                            e.printStackTrace();
+                                                        }
+
+                                                    	
+                                                    
+                                                    }
+                                                });
 
 
         try {
@@ -241,32 +282,18 @@ public class Encomendas extends JDialog implements Variaveis {
         } catch (Exception e) {
             System.out.print("Sem Medicamentos em ruptura");
         }
-
-        scrollPane_1.setViewportView(table_3);
-
-        textField = new JTextField();
-        textField.setBounds(183, 320, 86, 20);
-        contentPanel.add(textField);
-        textField.setColumns(10);
-
-        JLabel lblNewLabel_1 = new JLabel("Quantidade");
-        lblNewLabel_1.setBounds(109, 323, 75, 14);
-        contentPanel.add(lblNewLabel_1);
-
-        JLabel label = new JLabel("Quantidade");
-        label.setBounds(494, 323, 75, 14);
-        contentPanel.add(label);
-
-        textField_1 = new JTextField();
-        textField_1.setColumns(10);
-        textField_1.setBounds(571, 320, 86, 20);
-        contentPanel.add(textField_1);
+                                
+                                
+                                        JLabel lblCarrinhoEncomenda = new JLabel("Produtos encomendados");
+                                        lblCarrinhoEncomenda.setFont(new Font("Tahoma", Font.BOLD, 11));
+                                        lblCarrinhoEncomenda.setBounds(28, 343, 360, 14);
+                                        contentPanel.add(lblCarrinhoEncomenda);
         {
             JPanel buttonPane = new JPanel();
             buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
             getContentPane().add(buttonPane, BorderLayout.SOUTH);
             {
-                JButton okButton = new JButton("OK");
+                JButton okButton = new JButton("Confirmar Encomenda");
                 okButton.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
