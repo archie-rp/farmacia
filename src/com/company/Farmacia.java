@@ -12,7 +12,6 @@ public class Farmacia implements Serializable, Variaveis {
     public GestorClientes gestorclientes;
     public ArrayList<Medicamento> medicamentos_pendentes;
     public ArrayList<Medicamento> medicamentosHistorico;
-    public ArrayList<Medicamento> medicamentosEncomendados;
     public Funcionario[] funcionarios;
     public int numero_funcionario;
     private long bi;
@@ -38,9 +37,7 @@ public class Farmacia implements Serializable, Variaveis {
         return medicamentos_pendentes;
     }
 
-    public ArrayList<Medicamento> getMedicamentosEncomendados() {
-        return medicamentosEncomendados;
-    }
+
 
     public Farmacia(String nome, GestorVendas gestorvendas, Armario[] armarios, GestorClientes gestorclientes) {
         this.nome = nome;

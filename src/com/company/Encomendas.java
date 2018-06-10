@@ -248,16 +248,18 @@ public class Encomendas extends JDialog implements Variaveis {
             System.out.print("Sem Medicamentos em ruptura");
         }
         try {
-            ArrayList<Object> array1 = new ArrayList(farmacia.getMedicamentosEncomendados());
+            ArrayList<Object> array1 = new ArrayList(farmacia.getMedicamentos_pendentes());
             for (int i = 0; i < array1.size(); i++) {
                 if (array1.get(i) != null) {
-                    Medicamento m = new Medicamento();
+                    Medicamento m;
                     m = (Medicamento) array1.get(i);
-                    DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
-                    String formattedDate = df.format(m.getDataValidade());
-                    carrinho.addRow(new Object[]{m.getNome(), categorias[m.getCategoria()], vias[m.getViaAdmin()], receitas[m.isReceita() ? 1 : 0], formattedDate, estados[m.getEstado()], m.getQuantidadeEncomenda(), m.getPreco()});
-                    table_2.setModel(carrinho);
-                    scrollPane_1.setViewportView(table_3);
+                    if(m.getEstado()==2) {
+                        DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
+                        String formattedDate = df.format(m.getDataValidade());
+                        carrinho.addRow(new Object[]{m.getNome(), categorias[m.getCategoria()], vias[m.getViaAdmin()], receitas[m.isReceita() ? 1 : 0], formattedDate, estados[m.getEstado()], m.getQuantidadeEncomenda(), m.getPreco()});
+                        table_2.setModel(carrinho);
+                        scrollPane_1.setViewportView(table_3);
+                    }
                 } else {
                     JOptionPane.showMessageDialog(null, "O cliente ainda não efectuou compras!");
                 }
