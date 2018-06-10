@@ -196,11 +196,11 @@ public class Importar extends JDialog implements Variaveis {
 									farmacia.armarios[loja_m].removerMedicamento(m);
 								}
 						    }
-							DefaultTableModel model_d = new DefaultTableModel(new Object[]{"Nome", "Quantidade", "Preço", "Estado"}, 0);
+							DefaultTableModel model_d = new DefaultTableModel(new Object[]{"Nome", "Quantidade", "Preço", "Estado", "Receita"}, 0);
 							ArrayList<Medicamento> med = venda_temporaria.getMedicamentos();
 							//Adiciona os medicamentos na tablela
 							for (Medicamento meds : med) {
-								model_d.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.getPreco(),estados[meds.getEstado()]});
+								model_d.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.getPreco(),estados[meds.getEstado()],meds.isReceita()});
 							}
 							scrollPane1.setViewportView(table);
 							table.setModel(model_d);

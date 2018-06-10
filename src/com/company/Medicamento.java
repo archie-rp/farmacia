@@ -19,6 +19,7 @@ public class Medicamento implements Variaveis,Serializable,Cloneable{
     private int quantidadeEncomenda;
 
 
+
     public Medicamento(int id, String nome, float preco, int cate, int via, Date dataValidade ) {
         this.id = id;
         this.nome = nome;
