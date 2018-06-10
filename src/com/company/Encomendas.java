@@ -51,7 +51,6 @@ public class Encomendas extends JDialog implements Variaveis {
      */
     public Encomendas(Farmacia farmacia, int nrloja) {
 
-
         setBounds(100, 100, 841, 623);
         getContentPane().setLayout(new BorderLayout());
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -104,8 +103,8 @@ public class Encomendas extends JDialog implements Variaveis {
                 String medic;
                 try {
                     medic = (String) model_d.getValueAt(table.getSelectedRow(), 0);
-                    for(int i=0;i<3;i++) {
-                        if(farmacia.armarios[i].procurarMedicamento(medic)!= null) {
+                    for (int i = 0; i < 3; i++) {
+                        if (farmacia.armarios[i].procurarMedicamento(medic) != null) {
                             medicamento = farmacia.armarios[i].procurarMedicamento(medic);
                             break;
                         }
@@ -116,14 +115,12 @@ public class Encomendas extends JDialog implements Variaveis {
                     total = farmacia.armarios[nrloja].getQuantidadGaveta(temp.getCategoria(), temp.getViaAdmin());
                     System.out.print(total);
                     if (Integer.parseInt(textField.getText()) < (10 - total)) {
-
                         try {
                             farmacia.medicamentosEncomendados.add(temp);
                         } catch (Exception e) {
                             farmacia.medicamentosEncomendados = new ArrayList<Medicamento>();
                             farmacia.medicamentosEncomendados.add(temp);
                         }
-                        //  System.out.println(farmacia.medicamentosHistorico.get(0).toString());
                         DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
                         String formattedDate = df.format(temp.getDataValidade());
 
@@ -134,15 +131,13 @@ public class Encomendas extends JDialog implements Variaveis {
                     System.out.println(e.getMessage());
                     e.printStackTrace();
                 }
-
             }
         });
         try {
-
             ArrayList<Object> array = new ArrayList(farmacia.mostrarTodosMedicamentos());
             for (int i = 0; i < array.size(); i++) {
                 if (array.get(i) != null) {
-                    Medicamento m = new Medicamento();
+                    Medicamento m;
                     m = (Medicamento) array.get(i);
                     DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
                     String formattedDate = df.format(m.getDataValidade());
@@ -207,27 +202,21 @@ public class Encomendas extends JDialog implements Variaveis {
         button.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
-
                 int total = 0;
                 Medicamento medicamento = new Medicamento(farmacia.getMedicamentosHistorico().get(table_3.getSelectedRow()));
-
                 try {
-
-
                     Medicamento temp = (Medicamento) medicamento.clone();
                     temp.setEstado(2);
                     temp.setQuantidadeEncomenda(Integer.parseInt(textField_1.getText()));
                     total = farmacia.armarios[nrloja].getQuantidadGaveta(temp.getCategoria(), temp.getViaAdmin());
                     System.out.print(total);
                     if (Integer.parseInt(textField_1.getText()) < (10 - total)) {
-
                         try {
                             farmacia.medicamentosEncomendados.add(temp);
                         } catch (Exception e) {
                             farmacia.medicamentosEncomendados = new ArrayList<Medicamento>();
                             farmacia.medicamentosEncomendados.add(temp);
                         }
-                        //  System.out.println(farmacia.medicamentosHistorico.get(0).toString());
                         DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
                         String formattedDate = df.format(temp.getDataValidade());
 
@@ -238,21 +227,14 @@ public class Encomendas extends JDialog implements Variaveis {
                     System.out.println(e.getMessage());
                     e.printStackTrace();
                 }
-
-
             }
         });
-
-
         try {
             ArrayList<Object> array1 = new ArrayList(farmacia.getMedicamentosHistorico());
-
-            //	ArrayList<Object> array1 = new ArrayList(farmacia.mostrarTodosMedicamentos());
             for (int i = 0; i < array1.size(); i++) {
                 if (array1.get(i) != null) {
                     Medicamento m = new Medicamento();
                     m = (Medicamento) array1.get(i);
-
                     DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
                     String formattedDate = df.format(m.getDataValidade());
                     model_ruptura.addRow(new Object[]{m.getNome(), categorias[m.getCategoria()], vias[m.getViaAdmin()], receitas[m.isReceita() ? 1 : 0], formattedDate, m.getPreco()});
@@ -265,17 +247,12 @@ public class Encomendas extends JDialog implements Variaveis {
         } catch (Exception e) {
             System.out.print("Sem Medicamentos em ruptura");
         }
-
-
         try {
             ArrayList<Object> array1 = new ArrayList(farmacia.getMedicamentosEncomendados());
-
-            //	ArrayList<Object> array1 = new ArrayList(farmacia.mostrarTodosMedicamentos());
             for (int i = 0; i < array1.size(); i++) {
                 if (array1.get(i) != null) {
                     Medicamento m = new Medicamento();
                     m = (Medicamento) array1.get(i);
-
                     DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
                     String formattedDate = df.format(m.getDataValidade());
                     carrinho.addRow(new Object[]{m.getNome(), categorias[m.getCategoria()], vias[m.getViaAdmin()], receitas[m.isReceita() ? 1 : 0], formattedDate, estados[m.getEstado()], m.getQuantidadeEncomenda(), m.getPreco()});
@@ -288,7 +265,6 @@ public class Encomendas extends JDialog implements Variaveis {
         } catch (Exception e) {
             System.out.print("Sem Medicamentos em ruptura");
         }
-
 
         JLabel lblCarrinhoEncomenda = new JLabel("Produtos encomendados");
         lblCarrinhoEncomenda.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -303,8 +279,6 @@ public class Encomendas extends JDialog implements Variaveis {
                 okButton.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
-
-
                         dispose();
                     }
                 });

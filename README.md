@@ -32,7 +32,7 @@
 - [x] Guardar Farmacia ao sair | Hugo
 
 ##### Painel Home
-    - [x] Detalhes da Farmacia
+   - [x] Detalhes da Farmacia
     - [x] Produtos adicionados recentemente
     - [x] Vendas mais recentes
     - [x] Produtos a caminho
@@ -83,6 +83,7 @@
 - [x] JList sempre atualizada adicionando ou removendo medicamentos | Hugo Rafael
 - [x] Botão pesquisar por nome e apresentar na JList | Hugo
 - [x] Inserir os itens | Hugo
+- [x] Medicamentos em ruptura de Stock | Hugo
 
 ..Concluir...
 
@@ -91,6 +92,8 @@
 - [x] Todos os medicamentos | Hugo
 - [x] Produtos de Ruptura | Hugo
 - [x] Produtos Encomendados | hugo
+- [x] Encomendar (x) quantidade sem exeder o limite de 10 medicamentos | hugo
+
 ...
 
 ##### Medicamentos
@@ -125,6 +128,9 @@
 - [x] Registar Clientes | Hugo
 - [x] Remover Clientes | Hugo
 - [x] Adicionar Exceptions | Rafael Hugo
+- [x] Editar Clientes |hugo
+- [x] Pesquisar
+- [x] Detalhes de Cliente
 - etc..
 
 ##### Gestor de Vendas e Vendas
@@ -146,10 +152,7 @@
     - [x] Gerar relatório por venda | Rafael Hugo
     
     
-##### Gestor de Alertas e Alertas
-- [ ] Criar um gestor para tratar os alertas e apresenta-los
-    - [ ] Metodo para guardar os alertas em ficheiro
-    - [ ] Metodo para ler alertas
+
 
 
 ##### Save Data

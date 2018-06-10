@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dad6e76c-2b0d-4a65-b9ce-0623d3102971" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Encomendas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Encomendas.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -94,28 +94,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Encomendas.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Encomendas.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Encomendas.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="109" column="25" selection-start-line="109" selection-start-column="25" selection-end-line="109" selection-end-column="25" />
+            <state relative-caret-position="374">
+              <caret line="51" column="54" selection-start-line="51" selection-start-column="54" selection-end-line="51" selection-end-column="54" />
               <folding>
                 <element signature="e#3796#5936#0" expanded="true" />
                 <element signature="e#5935#5936#0" expanded="true" />
                 <element signature="e#8757#10613#0" expanded="true" />
                 <element signature="e#10612#10613#0" expanded="true" />
-                <element signature="e#13362#13550#0" expanded="true" />
-                <element signature="e#13549#13550#0" expanded="true" />
+                <element signature="e#13291#13477#0" expanded="true" />
+                <element signature="e#13476#13477#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Component.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/Component.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="6591" selection-start-line="6591" selection-end-line="6591" />
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="1445">
+                <caret line="85" column="45" selection-start-line="85" selection-start-column="45" selection-end-line="85" selection-end-column="45" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -125,18 +128,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="7038">
               <caret line="434" selection-start-line="434" selection-end-line="434" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GestorVendas.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/GestorVendas.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="40" selection-start-line="40" selection-end-line="40" />
-              <folding>
-                <element signature="e#1041#1042#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -191,7 +182,6 @@
         <option value="$PROJECT_DIR$/.classpath" />
         <option value="$PROJECT_DIR$/src/com/company/teste.form" />
         <option value="$PROJECT_DIR$/src/com/company/GestorRelatorio.java" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/com/company/CatVia.java" />
         <option value="$PROJECT_DIR$/src/com/company/App.java" />
         <option value="$PROJECT_DIR$/src/com/company/Cliente.java" />
@@ -213,6 +203,7 @@
         <option value="$PROJECT_DIR$/src/com/company/Medicamento.java" />
         <option value="$PROJECT_DIR$/src/com/company/Farmacia.java" />
         <option value="$PROJECT_DIR$/src/com/company/Encomendas.java" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -601,14 +592,7 @@
       <workItem from="1528448401626" duration="13004000" />
       <workItem from="1528474778088" duration="320000" />
       <workItem from="1528622845080" duration="933000" />
-      <workItem from="1528646449197" duration="916000" />
-    </task>
-    <task id="LOCAL-00028" summary="Farmacia Class&#10;* Falta alguns promenores&#10;* Tens de executar com o login e nao layout agora&#10;* Troquei o nome de CatVia para &quot;Variaveis&quot;">
-      <created>1527793092438</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1527793092438</updated>
+      <workItem from="1528646449197" duration="2052000" />
     </task>
     <task id="LOCAL-00029" summary="Troquei o nome da array farmacia e objecto farmacia1 para farmacia">
       <created>1527794365401</created>
@@ -946,11 +930,18 @@
       <option name="project" value="LOCAL" />
       <updated>1528474672245</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="Correção de bug &#10;-&gt; encontra medicamentos nas 3 farmácias para encomendar">
+      <created>1528649844577</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1528649844578</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="134164000" />
+    <option name="totallyTimeSpent" value="135300000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1840" height="1002" extended-state="6" />
@@ -966,7 +957,7 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49943757" weight="0.32868758" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49662542" weight="0.3205575" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49662542" visible="true" weight="0.3205575" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32903227" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
@@ -1007,7 +998,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Procurar fix" />
     <MESSAGE value="Importar Medicamentos de outra loja (stage 1)" />
     <MESSAGE value="Importar Medicamentos de outra loja (stage 2)" />
     <MESSAGE value="Editar dados cliente&#10;Remoção de cliente&#10;&#10;Procurar medicamento já atualiza a lista" />
@@ -1032,7 +1022,8 @@
     <MESSAGE value="Implementação do metodo clone()&#10;-&gt;permite criar um objecto novo igual ao anterior mas com endereço novo sendo um objecto totalmente diferente&#10;Ruptura de stock stage 5&#10;-&gt;Ao encomendar altera o estado para encomendado sem afetar o estado dos outros medicamentos usando o clone()" />
     <MESSAGE value="Ruptura de stock Final" />
     <MESSAGE value="Correção de pequeno bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="Correção de pequeno bug" />
+    <MESSAGE value="Correção de bug &#10;-&gt; encontra medicamentos nas 3 farmácias para encomendar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correção de bug &#10;-&gt; encontra medicamentos nas 3 farmácias para encomendar" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1054,13 +1045,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/company/Armario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Variaveis.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1158,7 +1142,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md" />
     <entry file="uml://JAVA/com.company.GestorVendas" />
     <entry file="file://$PROJECT_DIR$/src/com/company/App.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1371,18 +1354,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/security/ProtectionDomain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="86" selection-start-line="86" selection-end-line="86" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Encomendas.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="109" column="25" selection-start-line="109" selection-start-column="25" selection-end-line="109" selection-end-column="25" />
+        <state relative-caret-position="374">
+          <caret line="51" column="54" selection-start-line="51" selection-start-column="54" selection-end-line="51" selection-end-column="54" />
           <folding>
             <element signature="e#3796#5936#0" expanded="true" />
             <element signature="e#5935#5936#0" expanded="true" />
             <element signature="e#8757#10613#0" expanded="true" />
             <element signature="e#10612#10613#0" expanded="true" />
-            <element signature="e#13362#13550#0" expanded="true" />
-            <element signature="e#13549#13550#0" expanded="true" />
+            <element signature="e#13291#13477#0" expanded="true" />
+            <element signature="e#13476#13477#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="1445">
+            <caret line="85" column="45" selection-start-line="85" selection-start-column="45" selection-end-line="85" selection-end-column="45" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
