@@ -263,7 +263,7 @@ public class Encomendas extends JDialog implements Variaveis {
                 }
             }
         } catch (Exception e) {
-            System.out.print("Sem Medicamentos em ruptura");
+            System.out.print("Sem Medicamentos encomendados");
         }
 
         JLabel lblCarrinhoEncomenda = new JLabel("Produtos encomendados");
