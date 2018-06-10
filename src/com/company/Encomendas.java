@@ -116,10 +116,10 @@ public class Encomendas extends JDialog implements Variaveis {
                     System.out.print(total);
                     if (Integer.parseInt(textField.getText()) < (10 - total)) {
                         try {
-                            farmacia.medicamentosEncomendados.add(temp);
+                            farmacia.medicamentos_pendentes.add(temp);
                         } catch (Exception e) {
-                            farmacia.medicamentosEncomendados = new ArrayList<Medicamento>();
-                            farmacia.medicamentosEncomendados.add(temp);
+                            farmacia.medicamentos_pendentes = new ArrayList<Medicamento>();
+                            farmacia.medicamentos_pendentes.add(temp);
                         }
                         DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
                         String formattedDate = df.format(temp.getDataValidade());
@@ -212,10 +212,10 @@ public class Encomendas extends JDialog implements Variaveis {
                     System.out.print(total);
                     if (Integer.parseInt(textField_1.getText()) < (10 - total)) {
                         try {
-                            farmacia.medicamentosEncomendados.add(temp);
+                            farmacia.medicamentos_pendentes.add(temp);
                         } catch (Exception e) {
-                            farmacia.medicamentosEncomendados = new ArrayList<Medicamento>();
-                            farmacia.medicamentosEncomendados.add(temp);
+                            farmacia.medicamentos_pendentes = new ArrayList<Medicamento>();
+                            farmacia.medicamentos_pendentes.add(temp);
                         }
                         DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
                         String formattedDate = df.format(temp.getDataValidade());

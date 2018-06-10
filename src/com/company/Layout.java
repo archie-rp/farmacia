@@ -685,15 +685,13 @@ public class Layout extends JFrame implements Variaveis {
 
             //Recebe medicamentos da venda selecionada
             ArrayList<Medicamento> med = farmacia.getMedicamentos_pendentes();
-            ArrayList<Medicamento> medEncom = farmacia.getMedicamentosEncomendados();
-            System.out.println(farmacia.getMedicamentosEncomendados().size());
             //Adiciona os medicamentos na tablela
             for (Medicamento meds : med) {
-                model_dependentes.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.isReceita(), meds.getPreco(), estados[meds.getEstado()],meds.getCod_compra()});
+                if (meds != null) {
+                    model_dependentes.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.isReceita(), meds.getPreco(), estados[meds.getEstado()], meds.getCod_compra()});
+                }
             }
-           for (Medicamento medEncomendas : medEncom) {
-                model_dependentes.addRow(new Object[]{medEncomendas.getNome(), medEncomendas.getDataValidade(), medEncomendas.isReceita(), medEncomendas.getPreco(), estados[medEncomendas.getEstado()],0});
-            }
+
             table_2.setModel(model_dependentes);
             table_2.setBorder(new LineBorder(new Color(0, 0, 0)));
             scrollPane_4.setViewportView(table_2);
