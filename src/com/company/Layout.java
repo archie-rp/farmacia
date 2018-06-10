@@ -359,9 +359,9 @@ public class Layout extends JFrame implements Variaveis {
         relatorio.add(button_10);
 
 
-        JLabel lblUltimosRelatrios = new JLabel("Relatórios do Dia");
+        JLabel lblUltimosRelatrios = new JLabel("Relatórios do Dia (Duplo clique para ver mais)");
         lblUltimosRelatrios.setFont(new Font("SansSerif", Font.BOLD, 11));
-        lblUltimosRelatrios.setBounds(30, 85, 135, 16);
+        lblUltimosRelatrios.setBounds(30, 96, 292, 16);
         relatorio.add(lblUltimosRelatrios);
 
         JLabel lblAlertas = new JLabel("Relatórios da Semana");
@@ -382,7 +382,7 @@ public class Layout extends JFrame implements Variaveis {
                 if (e.getClickCount() == 2) {
                     Relatorio relat = new Relatorio(farmacia.gestorvendas.getVendas().get(list_3.getSelectedIndex()), farmacias[nrloja], "Costa-Prozelo");
 
-                    Dialog dialog = new Dialog(relat);
+                    Dialog dialog = new Dialog(relat,farmacia);
                     dialog.setVisible(true);
                 }
             }
@@ -1110,7 +1110,31 @@ public class Layout extends JFrame implements Variaveis {
             	if(farmacia.armarios[nrloja].getTodos().size() > 0) {
                 criarVenda venda = new criarVenda(farmacia, nrloja, list_1, list_3);
                 venda.setVisible(true);
-            	}else{
+                venda.addWindowListener(new WindowAdapter() {
+					@Override
+					public void windowClosed(WindowEvent e) {
+						 try {
+					            DefaultTableModel model_dependentes = new DefaultTableModel(new Object[]{"Nome", "Data", "Receita", "Preço", "Estado", "Compra"}, 0);
+
+					            //Recebe medicamentos da venda selecionada
+					            ArrayList<Medicamento> med = farmacia.getMedicamentos_pendentes();
+					            //Adiciona os medicamentos na tablela
+					            for (Medicamento meds : med) {
+					                model_dependentes.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.isReceita(), meds.getPreco(), estados[meds.getEstado()],meds.getCod_compra()});
+					            }
+					            scrollPane_4.setViewportView(table_2);
+					            table_2.setModel(model_dependentes);
+					            table_2.setBorder(new LineBorder(new Color(0, 0, 0)));
+					            scrollPane_4.revalidate();
+					            scrollPane_4.repaint();
+
+					        } catch (Exception e1) {
+					            //model_d;
+					        }
+					        scrollPane_4.setBounds(10, 23, 345, 183);
+					        panel_14.add(scrollPane_4);
+					}});
+				}else{
             	    //Colocar um jdialog!
             	    System.out.println("Loja sem medicamentos!");
                 }
@@ -1508,7 +1532,7 @@ public class Layout extends JFrame implements Variaveis {
                     cliente = (Cliente) listClientes.getSelectedValue();
                     if (farmacia.gestorvendas.getVendas(cliente).size() > 0) {
                         Relatorio relat = new Relatorio(farmacia.gestorvendas.getVendas(cliente), "Costa-Prozelo");
-                        Dialog dialog = new Dialog(relat);
+                        Dialog dialog = new Dialog(relat,farmacia);
                         dialog.setVisible(true);
                     } else {
                         JOptionPane.showMessageDialog(null, "O cliente: " + cliente.getNome() + " ainda não efectuou compras!");
@@ -2004,11 +2028,11 @@ public class Layout extends JFrame implements Variaveis {
         stock.add(label_1);
 
         JPanel panel_18 = new JPanel();
-        panel_18.setBounds(31, 164, 166, 141);
+        panel_18.setBounds(31, 162, 170, 143);
         stock.add(panel_18);
         GridBagLayout gbl_panel_18 = new GridBagLayout();
         gbl_panel_18.columnWidths = new int[]{0, 0, 0, 0};
-        gbl_panel_18.rowHeights = new int[]{29, 28, 28, 0, 26, 0, 0};
+        gbl_panel_18.rowHeights = new int[]{30, 24, 28, 26, 26, 0, 0};
         gbl_panel_18.columnWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
         gbl_panel_18.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         panel_18.setLayout(gbl_panel_18);
@@ -2041,7 +2065,7 @@ public class Layout extends JFrame implements Variaveis {
         gbc_lblPreo_2.gridy = 2;
         panel_18.add(lblPreo_2, gbc_lblPreo_2);
 
-        JLabel lblDataValidade_2 = new JLabel("Data Validade");
+        JLabel lblDataValidade_2 = new JLabel("Data Validade:");
         lblDataValidade_2.setFont(new Font("Tahoma", Font.BOLD, 11));
         GridBagConstraints gbc_lblDataValidade_2 = new GridBagConstraints();
         gbc_lblDataValidade_2.anchor = GridBagConstraints.EAST;
@@ -2061,22 +2085,22 @@ public class Layout extends JFrame implements Variaveis {
         panel_18.add(lblNewLabel_5, gbc_lblNewLabel_5);
 
         textNome = new JTextField();
-        textNome.setBounds(207, 161, 225, 20);
+        textNome.setBounds(207, 167, 225, 20);
         stock.add(textNome);
         textNome.setColumns(10);
 
         textQuantidade = new JTextField();
-        textQuantidade.setBounds(207, 186, 225, 20);
+        textQuantidade.setBounds(207, 192, 225, 20);
         stock.add(textQuantidade);
         textQuantidade.setColumns(10);
 
         textPreco = new JTextField();
-        textPreco.setBounds(207, 211, 225, 20);
+        textPreco.setBounds(207, 217, 225, 20);
         stock.add(textPreco);
         textPreco.setColumns(10);
 
         JRadioButton rdbtnNewRadioButton = new JRadioButton("");
-        rdbtnNewRadioButton.setBounds(207, 261, 21, 21);
+        rdbtnNewRadioButton.setBounds(202, 269, 21, 21);
         stock.add(rdbtnNewRadioButton);
 
         JComboBox comboCat = new JComboBox(categorias);
@@ -2089,7 +2113,7 @@ public class Layout extends JFrame implements Variaveis {
 
         JDateChooser dateChooser_1 = new JDateChooser();
         dateChooser_1.setDateFormatString("dd-MM-yyyy");
-        dateChooser_1.setBounds(207, 236, 225, 20);
+        dateChooser_1.setBounds(207, 242, 225, 20);
         stock.add(dateChooser_1);
 
         //Botao Adicionar Medicamento

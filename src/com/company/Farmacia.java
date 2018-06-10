@@ -15,6 +15,23 @@ public class Farmacia implements Serializable, Variaveis {
     public ArrayList<Medicamento> medicamentosEncomendados;
     public Funcionario[] funcionarios;
     public int numero_funcionario;
+    private long bi;
+    private long nib;
+
+    public long getBi() {
+        return bi;
+    }
+
+    public long getNib() {
+        return nib;
+    }
+
+    public String getCapital() {
+        return capital;
+    }
+
+    private String capital;
+
 
 
     public ArrayList<Medicamento> getMedicamentos_pendentes() {
@@ -31,6 +48,9 @@ public class Farmacia implements Serializable, Variaveis {
         this.armarios = new Armario[3];
         this.gestorclientes = gestorclientes;
         this.funcionarios = Variaveis.funcionarios;
+        this.bi=435567822;
+        this.nib=98844399;
+        this.capital= "1.499.123";
     }
 
     public int getNumero_funcionario() {

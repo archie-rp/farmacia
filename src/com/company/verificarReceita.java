@@ -3,17 +3,14 @@ package com.company;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.layout.FormSpecs;
-import javax.swing.JLabel;
+
 import java.awt.Font;
-import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -32,13 +29,11 @@ public class verificarReceita extends JDialog implements Variaveis {
 		this.textCodigo = null;
 		this.estado=false;
 
-		setBounds(100, 100, 268, 255);
+		setBounds(100, 100, 296, 255);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new FormLayout(new ColumnSpec[] {
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
 				FormSpecs.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("max(67dlu;default)"),
 				FormSpecs.RELATED_GAP_COLSPEC,
@@ -65,48 +60,52 @@ public class verificarReceita extends JDialog implements Variaveis {
 		{
 			JLabel lblDetalhesDoMedicamento = new JLabel("Detalhes do Medicamento");
 			lblDetalhesDoMedicamento.setFont(new Font("Tahoma", Font.BOLD, 11));
-			contentPanel.add(lblDetalhesDoMedicamento, "4, 2");
+			contentPanel.add(lblDetalhesDoMedicamento, "2, 2, 3, 1");
 		}
 		{
 			JLabel lblNome = new JLabel("Nome");
-			contentPanel.add(lblNome, "4, 4, right, default");
+			lblNome.setFont(new Font("Tahoma", Font.BOLD, 11));
+			contentPanel.add(lblNome, "2, 4, right, default");
 		}
 		{
 			JLabel lblNome = new JLabel(medicamento.getNome());
-			contentPanel.add(lblNome, "8, 4");
+			contentPanel.add(lblNome, "4, 4");
 		}
 		{
 			JLabel lblCategoria = new JLabel("Categoria");
-			contentPanel.add(lblCategoria, "4, 6, right, default");
+			lblCategoria.setFont(new Font("Tahoma", Font.BOLD, 11));
+			contentPanel.add(lblCategoria, "2, 6, right, default");
 		}
 		{
 			JLabel lblCategoria = new JLabel(categorias[medicamento.getCategoria()]);
-			contentPanel.add(lblCategoria, "6, 6");
+			contentPanel.add(lblCategoria, "4, 6");
 		}
 		{
 			JLabel lblViaDeAdministrao = new JLabel("Via de Administração");
-			contentPanel.add(lblViaDeAdministrao, "4, 8, right, default");
+			lblViaDeAdministrao.setFont(new Font("Tahoma", Font.BOLD, 11));
+			contentPanel.add(lblViaDeAdministrao, "2, 8, right, default");
 		}
 		{
 			JLabel lblVia = new JLabel(vias[medicamento.getViaAdmin()]);
-			contentPanel.add(lblVia, "6, 8");
+			contentPanel.add(lblVia, "4, 8");
 		}
 		{
 			JLabel lblDataValidade = new JLabel("Data Validade");
-			contentPanel.add(lblDataValidade, "4, 10, right, default");
+			lblDataValidade.setFont(new Font("Tahoma", Font.BOLD, 11));
+			contentPanel.add(lblDataValidade, "2, 10, right, default");
 		}
 		{
 			JLabel lblDataValidade = new JLabel("" + medicamento.getDataValidade());
-			contentPanel.add(lblDataValidade, "6, 10");
+			contentPanel.add(lblDataValidade, "4, 10");
 		}
 		{
 			JLabel lblCodigoDaReceita = new JLabel("Codigo da Receita");
 			lblCodigoDaReceita.setFont(new Font("Tahoma", Font.BOLD, 11));
-			contentPanel.add(lblCodigoDaReceita, "4, 14");
+			contentPanel.add(lblCodigoDaReceita, "2, 14");
 		}
 		{
 			textCodigo = new JTextField();
-			contentPanel.add(textCodigo, "4, 16, fill, default");
+			contentPanel.add(textCodigo, "4, 14, fill, default");
 			textCodigo.setColumns(10);
 		}
 		{
@@ -126,7 +125,7 @@ public class verificarReceita extends JDialog implements Variaveis {
 							dispose();
 							estado= true;
 						}else{
-							System.out.println("Codigo incorrecto ou sem valor introduzido!");
+							JOptionPane.showMessageDialog(null, "Código incorrecto ou sem valor introduzido!");
 						}
 					}
 				});

@@ -30,6 +30,7 @@ public class criarVenda extends JDialog implements Variaveis{
 	private JTextField text_nome;
 	private JTextField text_nr_contr;
 	public int nrloja_pendente;
+	private JTextField text_nome_procurar;
 
 	/**
 	 * Create the dialog.
@@ -128,23 +129,21 @@ public class criarVenda extends JDialog implements Variaveis{
 					FormSpecs.DEFAULT_COLSPEC,
 					FormSpecs.RELATED_GAP_COLSPEC,
 					FormSpecs.DEFAULT_COLSPEC,},
-					new RowSpec[] {
-							RowSpec.decode("default:grow"),}));
+				new RowSpec[] {
+					RowSpec.decode("default:grow"),}));
 			{
 				JLabel lblNome = new JLabel("Nome:");
-				panel.add(lblNome, "1, 1");
+				panel.add(lblNome, "1, 1, right, default");
 			}
-
-			JTextArea text_nome_procurar = new JTextArea();
-			text_nome_procurar.setLineWrap(true);
-			text_nome_procurar.setWrapStyleWord(true);
-			text_nome_procurar.setTabSize(5);
-			panel.add(text_nome_procurar, "3, 1, 3, 1, fill, default");
 
 
 		JComboBox comboBox_cat = new JComboBox(categorias);
 		
 		JComboBox comboBox_via = new JComboBox(vias);
+		
+		text_nome_procurar = new JTextField();
+		panel.add(text_nome_procurar, "3, 1, fill, default");
+		text_nome_procurar.setColumns(10);
 		JButton btnProcurar = new JButton("Procurar");
 	
 		panel.add(btnProcurar, "7, 1");
@@ -273,6 +272,7 @@ public class criarVenda extends JDialog implements Variaveis{
 			btnAdicionar.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
+					int produto_sel=table_1.getSelectedRow();
 					if (table_1.isRowSelected(table_1.getSelectedRow())){
 						try{
 							if(farmacia.armarios[nrloja].getMedicamentosGaveta(comboBox_cat.getSelectedIndex(),comboBox_via.getSelectedIndex()).get(table_1.getSelectedRow()).isReceita()){
@@ -283,12 +283,27 @@ public class criarVenda extends JDialog implements Variaveis{
 									public void windowClosed(WindowEvent e) {
 										if (confirmacao.isEstado()){
 											//Buscar Medicamento
-											venda_temporaria.medicamentos.add(farmacia.armarios[nrloja].getMedicamentosGaveta(comboBox_cat.getSelectedIndex(),comboBox_via.getSelectedIndex()).get(table_1.getSelectedRow()));
+											venda_temporaria.medicamentos.add(farmacia.armarios[nrloja].getMedicamentosGaveta(comboBox_cat.getSelectedIndex(),comboBox_via.getSelectedIndex()).get(produto_sel));
 											//remover do armario
-											farmacia.armarios[nrloja].getMedicamentosGaveta(comboBox_cat.getSelectedIndex(),comboBox_via.getSelectedIndex()).remove(table_1.getSelectedRow());
+											farmacia.armarios[nrloja].getMedicamentosGaveta(comboBox_cat.getSelectedIndex(),comboBox_via.getSelectedIndex()).remove(produto_sel);
+
+											comboBox_cat.setSelectedIndex(0);
+											DefaultTableModel cesto = new DefaultTableModel(new Object[]{"Nome", "Quantidade", "Preço","Estado"}, 0);
+											ArrayList<Medicamento> venda_medicamentos = venda_temporaria.getMedicamentos();
+											//Adiciona os medicamentos na tablela
+											for (Medicamento med : venda_medicamentos) {
+												cesto.addRow(new Object[]{med.getNome(), med.getDataValidade(), med.getPreco(),estados[med.getEstado()]});
+											}
+											scrollPane1.setViewportView(table);
+											table.setModel(cesto);
+											table.setBorder(new LineBorder(new Color(0, 0, 0)));
+											contentPanel.add(scrollPane1, "8, 6, 4, 5, fill, fill");
+											lbl_valor_iva.setText(""+ venda_temporaria.getIVA());
+											lbl_valor_sub.setText("" + venda_temporaria.getPreco_sub());
+											lbl_valor_total.setText(""+ venda_temporaria.getPreco_total());
 										}
 										else{
-											System.out.println("Codigo errado!");
+											JOptionPane.showMessageDialog(null, "Código Errado!");
 										}
 									}
 								});
@@ -402,7 +417,7 @@ public class criarVenda extends JDialog implements Variaveis{
 							farmacia.adicionarMedicamentoHistorico(farmacia.armarios[nrloja].verificarStock(venda_temporaria));
 							list_1.setListData(farmacia.gestorvendas.getVendas().toArray());
 							list_3.setListData(farmacia.gestorvendas.getVendas().toArray());
-							JOptionPane optionPane = new JOptionPane("Venda concluida com sucesso!", JOptionPane.WARNING_MESSAGE);
+							JOptionPane optionPane = new JOptionPane("Venda concluida com sucesso!(com nr contribuinte)", JOptionPane.WARNING_MESSAGE);
 							JDialog dialog = optionPane.createDialog("Progresso da Compra!");
 							dialog.setAlwaysOnTop(true);
 							dialog.setVisible(true);
@@ -427,10 +442,10 @@ public class criarVenda extends JDialog implements Variaveis{
 							dispose();
 						}else{
 							if (venda_temporaria.medicamentos.size() == 0){
-								System.out.println("Sem medicamentos na compra");
+								JOptionPane.showMessageDialog(null, "Sem medicamentos na compra!");
 							}
 							if (text_nome.getText().isEmpty()){
-								System.out.println("Sem Cliente!");
+								JOptionPane.showMessageDialog(null, "Sem Cliente!");
 							}
 						}
 dispose();

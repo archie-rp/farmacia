@@ -111,7 +111,7 @@ public class GestorClientes implements Serializable {
                     if (cliente.getNome().toLowerCase().equals(nomeCliente.toLowerCase())) {
                         if (farmacia.gestorvendas.comprasCliente(cliente).size() > 0) {
                             Relatorio relat = new Relatorio(farmacia.gestorvendas.comprasCliente(cliente), "Costa-Prozelo");
-                            Dialog dialog = new Dialog(relat);
+                            Dialog dialog = new Dialog(relat,farmacia);
                             dialog.setVisible(true);
                             encontrou = true;
                             return dialog;
@@ -142,7 +142,7 @@ public class GestorClientes implements Serializable {
                 if (cliente_.getBi() == bi) {
                     if (farmacia.gestorvendas.comprasCliente(cliente_).size() > 0) {
                         Relatorio relat = new Relatorio(farmacia.gestorvendas.comprasCliente(cliente_), "Costa-Prozelo");
-                        Dialog dialog = new Dialog(relat);
+                        Dialog dialog = new Dialog(relat,farmacia);
                         dialog.setVisible(true);
                         encontrou = true;
                         return dialog;
