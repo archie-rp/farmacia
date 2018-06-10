@@ -708,16 +708,27 @@ public class Layout extends JFrame implements Variaveis {
         btnDar_baixa.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
-                try {
-                    Venda venda_ = farmacia.gestorvendas.procurarCod_venda(farmacia.medicamentos_pendentes.get(table_2.getSelectedRow()).getCod_compra());
-                    venda_.darBaixa(farmacia.medicamentos_pendentes.get(table_2.getSelectedRow()));
-                    System.out.println("A remover Objecto"+ farmacia.medicamentos_pendentes.get(table_2.getSelectedRow()).toString() );
-                    farmacia.medicamentos_pendentes.remove(table_2.getSelectedRow());
-                    System.out.println("Baixa de medicamentos com sucesso!");
-                } catch (NullPointerException a) {
-                    System.out.println("Sem medicamentos selecionados!");
+            	if (farmacia.medicamentos_pendentes.get(table_2.getSelectedRow()).getEstado() == 0){
+                    try {
+                        Venda venda_ = farmacia.gestorvendas.procurarCod_venda(farmacia.medicamentos_pendentes.get(table_2.getSelectedRow()).getCod_compra());
+                        venda_.darBaixa(farmacia.medicamentos_pendentes.get(table_2.getSelectedRow()));
+                        System.out.println("A remover Objecto"+ farmacia.medicamentos_pendentes.get(table_2.getSelectedRow()).toString() );
+                        farmacia.medicamentos_pendentes.remove(table_2.getSelectedRow());
+                        System.out.println("Baixa de medicamentos com sucesso!");
+                    } catch (NullPointerException a) {
+                        System.out.println("Sem medicamentos selecionados!");
+                    }
+                }else{
+                    try {
+                        Medicamento med = farmacia.medicamentos_pendentes.get(table_2.getSelectedRow());
+                        med.setEstado(1);
+                        farmacia.armarios[nrloja].adicionarMedicamento(med,1);
+                        farmacia.medicamentos_pendentes.remove(table_2.getSelectedRow());
+                        System.out.println("Baixa de medicamentos com sucesso!");
+                    } catch (NullPointerException a) {
+                        System.out.println("Sem medicamentos selecionados!");
+                    }
                 }
-                
                 try {
                     DefaultTableModel model_dependentes = new DefaultTableModel(new Object[]{"Nome", "Data", "Receita", "Preço", "Estado","Compra"}, 0);
 
@@ -2244,8 +2255,30 @@ public class Layout extends JFrame implements Variaveis {
             public void mouseClicked(MouseEvent arg0) {
                 Encomendas dialogEncomendas = new Encomendas(farmacia,nrloja);
                 dialogEncomendas.setVisible(true);
-
-
+                dialogEncomendas.addWindowListener(new WindowAdapter() {
+					@Override
+					public void windowClosed(WindowEvent e) {
+		                try {
+		                    DefaultTableModel model_dependentes = new DefaultTableModel(new Object[]{"Nome", "Data", "Receita", "Preço", "Estado","Compra"}, 0);
+		
+		                    //Recebe medicamentos da venda selecionada
+		                    ArrayList<Medicamento> med = farmacia.getMedicamentos_pendentes();
+		                    //Adiciona os medicamentos na tablela
+		                    for (Medicamento meds : med) {
+		                        model_dependentes.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.isReceita(), meds.getPreco(), estados[meds.getEstado()],meds.getCod_compra()});
+		                    }
+		                    scrollPane_4.setViewportView(table_2);
+		                    table_2.setModel(model_dependentes);
+		                    table_2.setBorder(new LineBorder(new Color(0, 0, 0)));
+		                    scrollPane_4.revalidate();
+		                    scrollPane_4.repaint();
+		
+		                } catch (Exception e1) {
+		                    //model_d;
+		                }
+					}
+				});
+                
             }
         });
         btnNewButton_6.setFont(new Font("SansSerif", Font.BOLD, 12));
