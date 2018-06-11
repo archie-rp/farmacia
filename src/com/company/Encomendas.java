@@ -42,7 +42,7 @@ public class Encomendas extends JDialog implements Variaveis {
     private JTable table_3;
     DefaultTableModel model_d = new DefaultTableModel(new Object[]{"Medicamento", "Categoria", "Via Administração", "Receita", "Data Validade", "Preço"}, 0);
     DefaultTableModel model_ruptura = new DefaultTableModel(new Object[]{"Medicamento", "Categoria", "Via Administração", "Receita", "Data Validade", "Preço"}, 0);
-    DefaultTableModel carrinho = new DefaultTableModel(new Object[]{"Medicamento", "Categoria", "Via Administração", "Receita", "Data Validade", "Estado", "Quantidade", "Preço"}, 0);
+    DefaultTableModel carrinho = new DefaultTableModel(new Object[]{"Medicamento", "Categoria", "Via Administração", "Receita", "Data Validade", "Estado", "Preço"}, 0);
     private JTextField textField_1;
 
 
@@ -66,18 +66,18 @@ public class Encomendas extends JDialog implements Variaveis {
         panel.setBorder(new TitledBorder(null, "Todos os medicamentos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
         panel.setBounds(16, 36, 394, 296);
         contentPanel.add(panel);
-        panel.setLayout(new FormLayout(new ColumnSpec[] {
-        		FormSpecs.RELATED_GAP_COLSPEC,
-        		FormSpecs.DEFAULT_COLSPEC,
-        		FormSpecs.RELATED_GAP_COLSPEC,
-        		ColumnSpec.decode("max(27dlu;default):grow"),
-        		FormSpecs.RELATED_GAP_COLSPEC,
-        		ColumnSpec.decode("257px"),},
-        	new RowSpec[] {
-        		FormSpecs.PARAGRAPH_GAP_ROWSPEC,
-        		RowSpec.decode("bottom:max(146dlu;default):grow"),
-        		FormSpecs.RELATED_GAP_ROWSPEC,
-        		RowSpec.decode("top:25px"),}));
+        panel.setLayout(new FormLayout(new ColumnSpec[]{
+                FormSpecs.RELATED_GAP_COLSPEC,
+                FormSpecs.DEFAULT_COLSPEC,
+                FormSpecs.RELATED_GAP_COLSPEC,
+                ColumnSpec.decode("max(27dlu;default):grow"),
+                FormSpecs.RELATED_GAP_COLSPEC,
+                ColumnSpec.decode("257px"),},
+                new RowSpec[]{
+                        FormSpecs.PARAGRAPH_GAP_ROWSPEC,
+                        RowSpec.decode("bottom:max(146dlu;default):grow"),
+                        FormSpecs.RELATED_GAP_ROWSPEC,
+                        RowSpec.decode("top:25px"),}));
 
         JScrollPane scrollPane = new JScrollPane();
         panel.add(scrollPane, "2, 2, 5, 1, fill, fill");
@@ -88,15 +88,15 @@ public class Encomendas extends JDialog implements Variaveis {
         JLabel lblNewLabel_1 = new JLabel("Quantidade");
         lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 11));
         panel.add(lblNewLabel_1, "2, 4, right, default");
-        
+
         String[] items = new String[50];
-		for (int i = 1; i <= 10; i++) {
-			items[i] = "" + i;
-		}
-		// Change the current max visible rows
-		  int maxVisibleRows = 10;
-        
-        
+        for (int i = 1; i <= 10; i++) {
+            items[i] = "" + i;
+        }
+        // Change the current max visible rows
+        int maxVisibleRows = 10;
+
+
         JComboBox comboBox = new JComboBox(items);
         panel.add(comboBox, "4, 4, fill, default");
 
@@ -110,32 +110,30 @@ public class Encomendas extends JDialog implements Variaveis {
                 String medic;
                 try {
                     medic = (String) model_d.getValueAt(table.getSelectedRow(), 0);
-                    for (int i = 0; i < 3; i++) {
-                        if (farmacia.armarios[i].procurarMedicamento(medic) != null) {
-                            medicamento = farmacia.armarios[i].procurarMedicamento(medic);
-                            break;
-                        }
+
+                    if (farmacia.armarios[nrloja].procurarMedicamento(medic) != null) {
+                        medicamento = farmacia.armarios[nrloja].procurarMedicamento(medic);
                     }
                     Medicamento temp = (Medicamento) medicamento.clone();
                     temp.setEstado(2);
-                    temp.setQuantidadeEncomenda(comboBox.getSelectedIndex());
+
                     total = farmacia.armarios[nrloja].getQuantidadGaveta(temp.getCategoria(), temp.getViaAdmin());
                     System.out.print(total);
                     if (comboBox.getSelectedIndex() < (10 - total)) {
-	                    for(int x=0;x<comboBox.getSelectedIndex();x++) {    
-	                    	try {
-	                            farmacia.medicamentos_pendentes.add((Medicamento) temp.clone());
-	                        } catch (Exception e) {
-	                            farmacia.medicamentos_pendentes = new ArrayList<Medicamento>();
-	                            farmacia.medicamentos_pendentes.add((Medicamento) temp.clone());
-	                        }
-	                        DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
-	                        String formattedDate = df.format(temp.getDataValidade());
-	
-	                        carrinho.addRow(new Object[]{temp.getNome(), categorias[temp.getCategoria()], vias[temp.getViaAdmin()], receitas[temp.isReceita() ? 1 : 0], formattedDate, estados[temp.getEstado()], temp.getPreco()});
-	                        
-	                    }
-                    table_2.setModel(carrinho);
+                        for (int x = 0; x < comboBox.getSelectedIndex(); x++) {
+                            try {
+                                farmacia.medicamentos_pendentes.add((Medicamento) temp.clone());
+                            } catch (Exception e) {
+                                farmacia.medicamentos_pendentes = new ArrayList<Medicamento>();
+                                farmacia.medicamentos_pendentes.add((Medicamento) temp.clone());
+                            }
+                            DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
+                            String formattedDate = df.format(temp.getDataValidade());
+
+                            carrinho.addRow(new Object[]{temp.getNome(), categorias[temp.getCategoria()], vias[temp.getViaAdmin()], receitas[temp.isReceita() ? 1 : 0], formattedDate, estados[temp.getEstado()], temp.getPreco()});
+
+                        }
+                        table_2.setModel(carrinho);
                     }
                 } catch (CloneNotSupportedException e) {
                     System.out.println(e.getMessage());
@@ -144,7 +142,7 @@ public class Encomendas extends JDialog implements Variaveis {
             }
         });
         try {
-            ArrayList<Object> array = new ArrayList(farmacia.mostrarTodosMedicamentos());
+            ArrayList<Object> array = new ArrayList(farmacia.armarios[nrloja].getTodos());
             for (int i = 0; i < array.size(); i++) {
                 if (array.get(i) != null) {
                     Medicamento m;
@@ -172,6 +170,26 @@ public class Encomendas extends JDialog implements Variaveis {
         scrollPane_2.setViewportView(table_2);
 
         JButton btnNewButton = new JButton("Remover Linha");
+        btnNewButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                Medicamento medicamento = new Medicamento();
+                String medic;
+                try {
+                    medic = (String) carrinho.getValueAt(table_2.getSelectedRow(), 0);
+                    for(Medicamento m:farmacia.medicamentos_pendentes) {
+                        if (m.getNome()==medic){
+                         farmacia.removerMedicamentoEncomenda(m);
+                         carrinho.removeRow(table_2.getSelectedRow());
+
+                         System.out.println("Removeu linha");
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.print(e.getMessage());
+                }
+            }
+        });
         btnNewButton.setBounds(669, 525, 125, 23);
         contentPanel.add(btnNewButton);
 
@@ -179,18 +197,18 @@ public class Encomendas extends JDialog implements Variaveis {
         panel_1.setBorder(new TitledBorder(null, "Produtos em ruptura de Stock", TitledBorder.LEADING, TitledBorder.TOP, null, null));
         panel_1.setBounds(420, 36, 374, 296);
         contentPanel.add(panel_1);
-        panel_1.setLayout(new FormLayout(new ColumnSpec[] {
-        		FormSpecs.RELATED_GAP_COLSPEC,
-        		FormSpecs.DEFAULT_COLSPEC,
-        		FormSpecs.RELATED_GAP_COLSPEC,
-        		ColumnSpec.decode("max(35dlu;default)"),
-        		FormSpecs.RELATED_GAP_COLSPEC,
-        		ColumnSpec.decode("center:223px"),},
-        	new RowSpec[] {
-        		FormSpecs.PARAGRAPH_GAP_ROWSPEC,
-        		RowSpec.decode("227px"),
-        		FormSpecs.RELATED_GAP_ROWSPEC,
-        		FormSpecs.DEFAULT_ROWSPEC,}));
+        panel_1.setLayout(new FormLayout(new ColumnSpec[]{
+                FormSpecs.RELATED_GAP_COLSPEC,
+                FormSpecs.DEFAULT_COLSPEC,
+                FormSpecs.RELATED_GAP_COLSPEC,
+                ColumnSpec.decode("max(35dlu;default)"),
+                FormSpecs.RELATED_GAP_COLSPEC,
+                ColumnSpec.decode("center:223px"),},
+                new RowSpec[]{
+                        FormSpecs.PARAGRAPH_GAP_ROWSPEC,
+                        RowSpec.decode("227px"),
+                        FormSpecs.RELATED_GAP_ROWSPEC,
+                        FormSpecs.DEFAULT_ROWSPEC,}));
 
         JScrollPane scrollPane_1 = new JScrollPane();
         panel_1.add(scrollPane_1, "1, 2, 6, 1, fill, fill");
@@ -202,16 +220,16 @@ public class Encomendas extends JDialog implements Variaveis {
         JLabel label = new JLabel("Quantidade");
         label.setFont(new Font("Tahoma", Font.BOLD, 11));
         panel_1.add(label, "2, 4, right, default");
-        
+
         String[] item = new String[50];
-		for (int i = 1; i <= 10; i++) {
-			item[i] = "" + i;
-		}
-		// Change the current max visible rows
-		  int maxVisibleRowsz = 10;
-        
+        for (int i = 1; i <= 10; i++) {
+            item[i] = "" + i;
+        }
+        // Change the current max visible rows
+        int maxVisibleRowsz = 10;
+
         JComboBox comboBox_quant2 = new JComboBox(item);
-        
+
         panel_1.add(comboBox_quant2, "4, 4, fill, default");
 
         JButton button = new JButton("Encomendar");
@@ -224,23 +242,22 @@ public class Encomendas extends JDialog implements Variaveis {
                 try {
                     Medicamento temp = (Medicamento) medicamento.clone();
                     temp.setEstado(2);
-                    temp.setQuantidadeEncomenda(comboBox_quant2.getSelectedIndex());
                     total = farmacia.armarios[nrloja].getQuantidadGaveta(temp.getCategoria(), temp.getViaAdmin());
                     System.out.print(total);
                     if (comboBox_quant2.getSelectedIndex() < (10 - total)) {
-                        for(int x=0;x<comboBox_quant2.getSelectedIndex();x++) {
-	                    	try {
-	                            farmacia.medicamentos_pendentes.add((Medicamento) temp.clone());
-	                        } catch (Exception e) {
-	                            farmacia.medicamentos_pendentes = new ArrayList<Medicamento>();
-	                            farmacia.medicamentos_pendentes.add((Medicamento) temp.clone());
-	                        }
-	                        DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
-	                        String formattedDate = df.format(temp.getDataValidade());
-	
-	                        carrinho.addRow(new Object[]{temp.getNome(), categorias[temp.getCategoria()], vias[temp.getViaAdmin()], receitas[temp.isReceita() ? 1 : 0], formattedDate, estados[temp.getEstado()], temp.getPreco()});
-                        table_2.setModel(carrinho);
-                    	}
+                        for (int x = 0; x < comboBox_quant2.getSelectedIndex(); x++) {
+                            try {
+                                farmacia.medicamentos_pendentes.add((Medicamento) temp.clone());
+                            } catch (Exception e) {
+                                farmacia.medicamentos_pendentes = new ArrayList<Medicamento>();
+                                farmacia.medicamentos_pendentes.add((Medicamento) temp.clone());
+                            }
+                            DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
+                            String formattedDate = df.format(temp.getDataValidade());
+
+                            carrinho.addRow(new Object[]{temp.getNome(), categorias[temp.getCategoria()], vias[temp.getViaAdmin()], receitas[temp.isReceita() ? 1 : 0], formattedDate, estados[temp.getEstado()], temp.getPreco()});
+                            table_2.setModel(carrinho);
+                        }
                     }
                 } catch (CloneNotSupportedException e) {
                     System.out.println(e.getMessage());
@@ -272,10 +289,10 @@ public class Encomendas extends JDialog implements Variaveis {
                 if (array1.get(i) != null) {
                     Medicamento m;
                     m = (Medicamento) array1.get(i);
-                    if(m.getEstado()==2) {
+                    if (m.getEstado() == 2) {
                         DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
                         String formattedDate = df.format(m.getDataValidade());
-                        carrinho.addRow(new Object[]{m.getNome(), categorias[m.getCategoria()], vias[m.getViaAdmin()], receitas[m.isReceita() ? 1 : 0], formattedDate, estados[m.getEstado()], m.getQuantidadeEncomenda(), m.getPreco()});
+                        carrinho.addRow(new Object[]{m.getNome(), categorias[m.getCategoria()], vias[m.getViaAdmin()], receitas[m.isReceita() ? 1 : 0], formattedDate, estados[m.getEstado()], m.getPreco()});
                         table_2.setModel(carrinho);
                         scrollPane_1.setViewportView(table_3);
                     }
@@ -310,10 +327,10 @@ public class Encomendas extends JDialog implements Variaveis {
             {
                 JButton cancelButton = new JButton("Cancelar");
                 cancelButton.addMouseListener(new MouseAdapter() {
-                	@Override
-                	public void mouseClicked(MouseEvent e) {
-                		dispose();
-                	}
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        dispose();
+                    }
                 });
                 cancelButton.setActionCommand("Cancel");
                 buttonPane.add(cancelButton);
