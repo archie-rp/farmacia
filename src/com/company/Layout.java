@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -16,6 +17,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Calendar;
 import javax.swing.border.LineBorder;
+import javax.swing.table.TableCellRenderer;
+
 import com.toedter.calendar.JDateChooser;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -421,19 +424,42 @@ public class Layout extends JFrame implements Variaveis {
 
             comboBox_1.setBounds(10, 52, 159, 20);
             panel.add(comboBox_1);
-
+            
+            final Color[] rowColors = new Color[] {
+                    Color.RED, Color.GREEN, Color.CYAN
+            };
             JScrollPane scrollPane_Estatisticas = new JScrollPane();
             scrollPane_Estatisticas.setBounds(10, 83, 382, 170);
             panel.add(scrollPane_Estatisticas);
+            table_1 = new JTable(){
+                    @Override
+                    public Class<?> getColumnClass(int column) {
+                        if(convertColumnIndexToModel(column)==0) return Double.class;
+                        return super.getColumnClass(column);
+                    }
+                };
+        table_1.setDefaultRenderer(Double.class, new DefaultTableCellRenderer(){
+                    @Override
+                    public Component getTableCellRendererComponent(JTable table,Object value,boolean isSelected,boolean hasFocus,int row,int column) {
+                        Component c = super.getTableCellRendererComponent(table,value,isSelected,hasFocus,row,column);
+                        String s = table.getModel().getValueAt(row, 1 ).toString();
+                        if (Float.valueOf(s) >= 6){
+                            c.setForeground(Color.GREEN);
+                        }else if(Float.valueOf(s) < 5){
+                            c.setForeground(Color.RED);
+                        }else if(Float.valueOf(s) == 5){
+                        c.setForeground(Color.ORANGE);
+                        }
 
-            table_1 = new JTable();
-
+                        return c;
+                    }
+                });
             //Default
             DefaultTableModel model_d = new DefaultTableModel(new Object[]{"Nome Categoria", "Quantidade", "Preço Total"}, 0);
             //Adiciona os medicamentos na tablela
             try {
                 for (int i = 0; i < 20; i++) {
-                    model_d.addRow(new Object[]{categorias[i], farmacia.armarios[nrloja].getQuantidadGaveta(i, 0), farmacia.armarios[nrloja].getPrecoGaveta(i, 0)});
+                    model_d.addRow(new Object[]{categorias[i], farmacia.armarios[nrloja].getQuantidadGaveta(i, 0), farmacia.armarios[nrloja].getPrecoGaveta(i, 0) + "€"});
                 }
                 table_1.setModel(model_d);
             } catch (IndexOutOfBoundsException e) {
@@ -444,7 +470,7 @@ public class Layout extends JFrame implements Variaveis {
                     DefaultTableModel model = new DefaultTableModel(new Object[]{"Nome Categoria", "Quantidade", "Preço Total"}, 0);
                     //Adiciona os medicamentos na tablela
                     for (int i = 0; i < 20; i++) {
-                        model.addRow(new Object[]{categorias[i], farmacia.armarios[nrloja].getQuantidadGaveta(i, comboBox_1.getSelectedIndex()), farmacia.armarios[nrloja].getPrecoGaveta(i, comboBox_1.getSelectedIndex())});
+                        model.addRow(new Object[]{categorias[i], farmacia.armarios[nrloja].getQuantidadGaveta(i, comboBox_1.getSelectedIndex()), farmacia.armarios[nrloja].getPrecoGaveta(i, comboBox_1.getSelectedIndex()) + "€"});
                     }
                     table_1.setModel(model);
                 }
@@ -777,7 +803,7 @@ public class Layout extends JFrame implements Variaveis {
         ArrayList<Medicamento> medds = farmacia.armarios[nrloja].getTodos();
         //Adiciona os medicamentos na tablela
         for (Medicamento meds : medds) {
-            model_meds.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.isReceita(), meds.getPreco()});
+            model_meds.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.isReceita(), meds.getPreco()+ "€"});
         }
 
         table_4.setModel(model_meds);
@@ -1096,7 +1122,7 @@ public class Layout extends JFrame implements Variaveis {
                     DefaultTableModel model = new DefaultTableModel(new Object[]{"Nome", "Categoria", "Via de Administração", "Data Validade", "Preço", "Estado"}, 0);
                     //Adiciona os medicamentos na tablela
                     for (Medicamento meds : med) {
-                        model.addRow(new Object[]{meds.getNome(), categorias[meds.getCategoria()], vias[meds.getViaAdmin()], meds.getDataValidade(), meds.getPreco(), estados[meds.getEstado()]});
+                        model.addRow(new Object[]{meds.getNome(), categorias[meds.getCategoria()], vias[meds.getViaAdmin()], meds.getDataValidade(), meds.getPreco()+ "€", estados[meds.getEstado()]});
                     }
                     table.setModel(model);
                     scrollPane_2.setViewportView(table);
@@ -1105,10 +1131,10 @@ public class Layout extends JFrame implements Variaveis {
                     textNR.setText("" + farmacia.gestorvendas.getVendas().get(list_1.getSelectedIndex()).getCliente().getBi());
                     textData_c.setText("" + farmacia.gestorvendas.getVendas().get(list_1.getSelectedIndex()).getCliente().getDataInscricao());
 
-                    textTotal.setText(String.valueOf(farmacia.gestorvendas.getVendas().get(list_1.getSelectedIndex()).getPreco_total()));
-                    textIVA.setText(String.valueOf(farmacia.gestorvendas.getVendas().get(list_1.getSelectedIndex()).getIVA()));
-                    textDesconto.setText(String.valueOf(farmacia.gestorvendas.getVendas().get(list_1.getSelectedIndex()).getDesconto()));
-                    textSub_total.setText(String.valueOf(farmacia.gestorvendas.getVendas().get(list_1.getSelectedIndex()).getPreco_sub()));
+                    textTotal.setText(String.valueOf(farmacia.gestorvendas.getVendas().get(list_1.getSelectedIndex()).getPreco_total())+ "€");
+                    textIVA.setText(String.valueOf(farmacia.gestorvendas.getVendas().get(list_1.getSelectedIndex()).getIVA())+ "€");
+                    textDesconto.setText(String.valueOf(farmacia.gestorvendas.getVendas().get(list_1.getSelectedIndex()).getDesconto())+"%");
+                    textSub_total.setText(String.valueOf(farmacia.gestorvendas.getVendas().get(list_1.getSelectedIndex()).getPreco_sub())+ "€");
                 } catch (Exception e1) {
                     model1.removeAllElements();
                 }
@@ -1134,7 +1160,7 @@ public class Layout extends JFrame implements Variaveis {
 					            ArrayList<Medicamento> med = farmacia.getMedicamentos_pendentes();
 					            //Adiciona os medicamentos na tablela
 					            for (Medicamento meds : med) {
-					                model_dependentes.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.isReceita(), meds.getPreco(), estados[meds.getEstado()],meds.getCod_compra()});
+					                model_dependentes.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.isReceita(), meds.getPreco()+ "€", estados[meds.getEstado()],meds.getCod_compra()});
 					            }
 					            scrollPane_4.setViewportView(table_2);
 					            table_2.setModel(model_dependentes);
@@ -2265,7 +2291,7 @@ public class Layout extends JFrame implements Variaveis {
 		                    ArrayList<Medicamento> med = farmacia.getMedicamentos_pendentes();
 		                    //Adiciona os medicamentos na tablela
 		                    for (Medicamento meds : med) {
-		                        model_dependentes.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.isReceita(), meds.getPreco(), estados[meds.getEstado()],meds.getCod_compra()});
+		                        model_dependentes.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.isReceita(), meds.getPreco()+ "€", estados[meds.getEstado()],meds.getCod_compra()});
 		                    }
 		                    scrollPane_4.setViewportView(table_2);
 		                    table_2.setModel(model_dependentes);
@@ -2405,7 +2431,7 @@ public class Layout extends JFrame implements Variaveis {
             ArrayList<Medicamento> med = farmacia.getMedicamentos_pendentes();
             //Adiciona os medicamentos na tablela
             for (Medicamento meds : med) {
-                model_dependentes.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.isReceita(), meds.getPreco(), estados[meds.getEstado()],meds.getCod_compra()});
+                model_dependentes.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.isReceita(), meds.getPreco()+ "€", estados[meds.getEstado()],meds.getCod_compra()});
             }
             scrollPane_4.setViewportView(table_2);
             table_2.setModel(model_dependentes);

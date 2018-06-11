@@ -101,7 +101,7 @@ public class criarVenda extends JDialog implements Variaveis{
 					ArrayList<Medicamento> med = venda_temporaria.getMedicamentos();
 					//Adiciona os medicamentos na tablela
 					for (Medicamento meds : med) {
-						model_d.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.getPreco(),estados[meds.getEstado()],meds.isReceita()});
+						model_d.addRow(new Object[]{meds.getNome(), meds.getDataValidade(), meds.getPreco()+ "€",estados[meds.getEstado()],meds.isReceita()});
 					}
 					scrollPane1.setViewportView(table);
 					table.setModel(model_d);
@@ -189,7 +189,7 @@ public class criarVenda extends JDialog implements Variaveis{
 				ArrayList<Medicamento> med = farmacia.armarios[nrloja].getMedicamentosGaveta(comboBox_cat.getSelectedIndex(), comboBox_via.getSelectedIndex());
 				//Adiciona os medicamentos na tablela
 				for (Medicamento meds : med) {
-					model_d.addRow(new Object[]{meds.getNome(), meds.getDataValidade(),meds.isReceita(), meds.getPreco()});
+					model_d.addRow(new Object[]{meds.getNome(), meds.getDataValidade(),meds.isReceita(), meds.getPreco()+ "€"});
 				}
 				scrollPane.setViewportView(table_1);
 				table_1.setModel(model_d);
@@ -207,7 +207,7 @@ public class criarVenda extends JDialog implements Variaveis{
 						ArrayList<Medicamento> meds = farmacia.armarios[nrloja].getMedicamentosGaveta(comboBox_cat.getSelectedIndex(), comboBox_via.getSelectedIndex());
 						//Adiciona os medicamentos na tablela
 						for (Medicamento med : meds) {
-							model_cat.addRow(new Object[]{med.getNome(), med.getDataValidade(),med.isReceita(), med.getPreco()});
+							model_cat.addRow(new Object[]{med.getNome(), med.getDataValidade(),med.isReceita(), med.getPreco()+ "€"});
 						}
 						scrollPane.setViewportView(table_1);
 						table_1.setModel(model_cat);
@@ -226,7 +226,7 @@ public class criarVenda extends JDialog implements Variaveis{
 						ArrayList<Medicamento> meds = farmacia.armarios[nrloja].getMedicamentosGaveta(comboBox_cat.getSelectedIndex(), comboBox_via.getSelectedIndex());
 						//Adiciona os medicamentos na tablela
 						for (Medicamento med : meds) {
-							model_cat.addRow(new Object[]{med.getNome(), med.getDataValidade(),med.isReceita(), med.getPreco()});
+							model_cat.addRow(new Object[]{med.getNome(), med.getDataValidade(),med.isReceita(), med.getPreco()+ "€"});
 						}
 						scrollPane.setViewportView(table_1);
 						table_1.setModel(model_cat);
@@ -298,9 +298,9 @@ public class criarVenda extends JDialog implements Variaveis{
 											table.setModel(cesto);
 											table.setBorder(new LineBorder(new Color(0, 0, 0)));
 											contentPanel.add(scrollPane1, "8, 6, 4, 5, fill, fill");
-											lbl_valor_iva.setText(""+ venda_temporaria.getIVA());
-											lbl_valor_sub.setText("" + venda_temporaria.getPreco_sub());
-											lbl_valor_total.setText(""+ venda_temporaria.getPreco_total());
+											lbl_valor_iva.setText(""+ venda_temporaria.getIVA()+ "€");
+											lbl_valor_sub.setText("" + venda_temporaria.getPreco_sub()+ "€");
+											lbl_valor_total.setText(""+ venda_temporaria.getPreco_total()+ "€");
 										}
 										else{
 											JOptionPane.showMessageDialog(null, "Código Errado!");
@@ -317,30 +317,30 @@ public class criarVenda extends JDialog implements Variaveis{
 								ArrayList<Medicamento> venda_medicamentos = venda_temporaria.getMedicamentos();
 								//Adiciona os medicamentos na tablela
 								for (Medicamento med : venda_medicamentos) {
-									cesto.addRow(new Object[]{med.getNome(), med.getDataValidade(), med.getPreco(),estados[med.getEstado()],med.isReceita()});
+									cesto.addRow(new Object[]{med.getNome(), med.getDataValidade(), med.getPreco()+ "€",estados[med.getEstado()],med.isReceita()});
 								}
 								scrollPane1.setViewportView(table);
 								table.setModel(cesto);
 								table.setBorder(new LineBorder(new Color(0, 0, 0)));
 								contentPanel.add(scrollPane1, "8, 6, 4, 5, fill, fill");
-								lbl_valor_iva.setText(""+ venda_temporaria.getIVA());
-								lbl_valor_sub.setText("" + venda_temporaria.getPreco_sub());
-								lbl_valor_total.setText(""+ venda_temporaria.getPreco_total());
+								lbl_valor_iva.setText(""+ venda_temporaria.getIVA()+ "€");
+								lbl_valor_sub.setText("" + venda_temporaria.getPreco_sub()+ "€");
+								lbl_valor_total.setText(""+ venda_temporaria.getPreco_total()+ "€");
 							}
 							comboBox_cat.setSelectedIndex(0);
 							DefaultTableModel cesto = new DefaultTableModel(new Object[]{"Nome", "Quantidade", "Preço","Estado","Receita"}, 0);
 							ArrayList<Medicamento> venda_medicamentos = venda_temporaria.getMedicamentos();
 							//Adiciona os medicamentos na tablela
 							for (Medicamento med : venda_medicamentos) {
-								cesto.addRow(new Object[]{med.getNome(), med.getDataValidade(), med.getPreco(),estados[med.getEstado()],med.isReceita()});
+								cesto.addRow(new Object[]{med.getNome(), med.getDataValidade(), med.getPreco()+ "€",estados[med.getEstado()],med.isReceita()});
 							}
 							scrollPane1.setViewportView(table);
 							table.setModel(cesto);
 							table.setBorder(new LineBorder(new Color(0, 0, 0)));
 							contentPanel.add(scrollPane1, "8, 6, 4, 5, fill, fill");
-							lbl_valor_iva.setText(""+ venda_temporaria.getIVA());
-							lbl_valor_sub.setText("" + venda_temporaria.getPreco_sub());
-							lbl_valor_total.setText(""+ venda_temporaria.getPreco_total());
+							lbl_valor_iva.setText(""+ venda_temporaria.getIVA()+ "€");
+							lbl_valor_sub.setText("" + venda_temporaria.getPreco_sub()+ "€");
+							lbl_valor_total.setText(""+ venda_temporaria.getPreco_total()+ "€");
 						}catch (NullPointerException x){
 
 						}
@@ -367,13 +367,13 @@ public class criarVenda extends JDialog implements Variaveis{
 							ArrayList<Medicamento> venda_medicamentos = venda_temporaria.getMedicamentos();
 							//Adiciona os medicamentos na tablela
 							for (Medicamento med : venda_medicamentos) {
-								cesto.addRow(new Object[]{med.getNome(), med.getDataValidade(), med.getPreco(),estados[med.getEstado()],med.isReceita()});
+								cesto.addRow(new Object[]{med.getNome(), med.getDataValidade(), med.getPreco()+ "€",estados[med.getEstado()],med.isReceita()});
 							}
 							scrollPane1.setViewportView(table);
 							table.setModel(cesto);
-							lbl_valor_iva.setText(""+ venda_temporaria.getIVA());
-							lbl_valor_sub.setText("" + venda_temporaria.getPreco_sub());
-							lbl_valor_total.setText(""+ venda_temporaria.getPreco_total());
+							lbl_valor_iva.setText(""+ venda_temporaria.getIVA()+ "€");
+							lbl_valor_sub.setText("" + venda_temporaria.getPreco_sub()+ "€");
+							lbl_valor_total.setText(""+ venda_temporaria.getPreco_total()+ "€");
 							table.setBorder(new LineBorder(new Color(0, 0, 0)));
 							contentPanel.add(scrollPane1, "8, 6, 4, 5, fill, fill");
 						}catch (NullPointerException x){
