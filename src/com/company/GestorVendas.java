@@ -1,7 +1,12 @@
 package com.company;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class GestorVendas implements Serializable {
     private String nome;
@@ -70,4 +75,41 @@ public class GestorVendas implements Serializable {
         }
         return vendas_cliente;
     }
+    public ArrayList<Venda> getVendasDia() {
+        ArrayList<Venda> vendas1 = new ArrayList<>();
+        Date data =  Calendar.getInstance().getTime();
+    	for (Venda v_:this.vendas) {
+    	    System.out.println(data +" "+ v_.getDataCompra());
+
+    		try {
+                if (v_.getDataCompra().compareTo(data) == 0 ) {
+                    System.out.print(v_.getDataCompra().compareTo(data));
+                    vendas1.add(v_);
+                }
+            }catch (Exception e){
+    		    System.out.print(e.getMessage());
+            }
+    	}
+        return vendas1;
+    }
+
+    public ArrayList<Venda> getVendasSemana() {
+        ArrayList<Venda> vendas1 = new ArrayList<>();
+        Date data =  Calendar.getInstance().getTime();
+        data-7;
+        for (Venda v_:this.vendas) {
+            System.out.println(data +" "+ v_.getDataCompra());
+
+            try {
+                if (v_.getDataCompra().compareTo(data) == 0 ) {
+                    System.out.print(v_.getDataCompra().compareTo(data));
+                    vendas1.add(v_);
+                }
+            }catch (Exception e){
+                System.out.print(e.getMessage());
+            }
+        }
+        return vendas1;
+    }
+    
 }
